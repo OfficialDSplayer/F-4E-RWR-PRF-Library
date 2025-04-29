@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>F-4E RWR PRF Library</title>
+  <title>F-4E RWR PRF Sound Library</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -95,13 +95,14 @@
     let playingSources = [];
     let audioContext;
     let gainNode;
+    let soundBuffers = {};
 
     async function loadWavFiles() {
       try {
         const response = await fetch('wav_list.json');
         let wavFiles = await response.json();
 
-        wavFiles.sort((a, b) => a.localeCompare(b)); // Alphabetical sort
+        wavFiles.sort((a, b) => a.localeCompare(b));
 
         const audioList = document.getElementById('audio-list');
         audioList.innerHTML = '';
@@ -111,12 +112,28 @@
         gainNode.connect(audioContext.destination);
 
         const volumeSlider = document.getElementById('volume-slider');
+
+        // Load volume from localStorage if exists
+        const savedVolume = localStorage.getItem('volumeLevel');
+        if (savedVolume !== null) {
+          volumeSlider.value = savedVolume;
+          gainNode.gain.setValueAtTime(parseInt(savedVolume) / 100, audioContext.currentTime);
+        }
+
+        // Update volume and save to localStorage
         volumeSlider.addEventListener('input', function() {
           const volume = parseInt(this.value) / 100;
           gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+          localStorage.setItem('volumeLevel', this.value);
         });
 
+        // Preload all sounds
         for (const file of wavFiles) {
+          const fetchResponse = await fetch(file);
+          const arrayBuffer = await fetchResponse.arrayBuffer();
+          const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+          soundBuffers[file] = audioBuffer;
+
           const card = document.createElement('div');
           card.className = 'audio-card';
 
@@ -135,33 +152,8 @@
           stopButton.className = 'stop-button';
           stopButton.textContent = 'Stop';
 
-          let sourceNode = null;
-
-          async function startLoop() {
-            if (sourceNode) return; // Already playing
-            const fetchResponse = await fetch(file);
-            const arrayBuffer = await fetchResponse.arrayBuffer();
-            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-
-            sourceNode = audioContext.createBufferSource();
-            sourceNode.buffer = audioBuffer;
-            sourceNode.loop = true;
-            sourceNode.connect(gainNode);
-            sourceNode.start(0);
-            playingSources.push(sourceNode);
-          }
-
-          function stopLoop() {
-            if (sourceNode) {
-              sourceNode.stop();
-              sourceNode.disconnect();
-              playingSources = playingSources.filter(src => src !== sourceNode);
-              sourceNode = null;
-            }
-          }
-
-          playButton.onclick = startLoop;
-          stopButton.onclick = stopLoop;
+          playButton.onclick = () => startLoop(file);
+          stopButton.onclick = () => stopLoop(file);
 
           buttonGroup.appendChild(playButton);
           buttonGroup.appendChild(stopButton);
@@ -175,15 +167,41 @@
       }
     }
 
-    function stopAll() {
-      playingSources.forEach(source => {
-        if (source) {
+    function startLoop(file) {
+      stopLoop(file);
+      const buffer = soundBuffers[file];
+      if (!buffer) return;
+
+      const sourceNode = audioContext.createBufferSource();
+      sourceNode.buffer = buffer;
+      sourceNode.loop = true;
+      sourceNode.connect(gainNode);
+      sourceNode.start(0);
+      playingSources.push({ file, node: sourceNode });
+    }
+
+    function stopLoop(file) {
+      playingSources = playingSources.filter(src => {
+        if (src.file === file) {
           try {
-            source.stop();
-            source.disconnect();
+            src.node.stop();
+            src.node.disconnect();
           } catch (e) {
             console.error(e);
           }
+          return false;
+        }
+        return true;
+      });
+    }
+
+    function stopAll() {
+      playingSources.forEach(src => {
+        try {
+          src.node.stop();
+          src.node.disconnect();
+        } catch (e) {
+          console.error(e);
         }
       });
       playingSources = [];
@@ -191,7 +209,7 @@
 
     function playAll() {
       stopAll();
-      document.querySelectorAll('.play-button').forEach(btn => btn.click());
+      Object.keys(soundBuffers).forEach(file => startLoop(file));
     }
 
     loadWavFiles();
