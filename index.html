@@ -154,8 +154,9 @@
   <body>
     <h1>F-4E RWR PRF Sound Player</h1>
     <hr class="solid" />
-    <h2>By DSplayer using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>Highly WIP!! Last updated 2025-04-29 (using DCS 2.9.15.9599)</h3>
+    <h2>By DSplayer</h2>
+    <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
+    <h3>!!Highly WIP!! Last updated 2025-04-29 (using DCS 2.9.15.9599)</h3>
     <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
     <div class="controls">
@@ -179,9 +180,14 @@
           font-size: 14px;
           border-radius: 5px;
           border: 1px solid #ccc;
-          margin-bottom: 20px;
+          margin-bottom: 0px;
         "
       />
+    </div>
+
+    <div class="controls">
+      <button class="global-button" onclick="expandAllGroups()">Expand All Groups</button>
+      <button class="global-button" onclick="collapseAllGroups()">Expand All Groups</button>
     </div>
 
     <div id="audio-list">Loading sounds...</div>
@@ -192,6 +198,7 @@
       let gainNode;
       let soundBuffers = {};
       let groupsData = {};
+      let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
 
       // Set theme on page load (saved or auto-detect)
@@ -301,6 +308,12 @@
           const groupGrid = document.createElement("div");
           groupGrid.className = "audio-grid";
 
+          if (collapsedGroups.includes(groupName)) {
+            groupGrid.classList.add("collapsed");
+            groupGrid.style.transform = "scaleY(0)";
+            groupGrid.style.opacity = "0";
+          }
+
           for (const sound of sortedSounds) {
             const card = document.createElement("div");
             card.className = "audio-card";
@@ -336,15 +349,17 @@
           }
 
           groupTitle.addEventListener("click", () => {
-            if (!groupGrid.classList.contains("collapsed")) {
-              // Collapse group
+            const isCollapsed = groupGrid.classList.contains("collapsed");
+
+            if (!isCollapsed) {
               groupGrid.style.transform = "scaleY(0)";
               groupGrid.style.opacity = "0";
               setTimeout(() => {
                 groupGrid.classList.add("collapsed");
-              }, 400); // Match your CSS transition time
+                if (!collapsedGroups.includes(groupName)) collapsedGroups.push(groupName);
+                localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
+              }, 400);
             } else {
-              // Expand group
               groupGrid.classList.remove("collapsed");
               groupGrid.style.transform = "scaleY(0)";
               groupGrid.style.opacity = "0";
@@ -352,6 +367,8 @@
                 groupGrid.style.transform = "scaleY(1)";
                 groupGrid.style.opacity = "1";
               });
+              collapsedGroups = collapsedGroups.filter((name) => name !== groupName);
+              localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
             }
           });
 
@@ -410,6 +427,33 @@
         const value = e.target.value.trim();
         displayGroups(soundMeta, value);
       });
+
+      function expandAllGroups() {
+        document.querySelectorAll(".audio-grid").forEach((grid) => {
+          grid.classList.remove("collapsed");
+          grid.style.transform = "scaleY(0)";
+          grid.style.opacity = "0";
+          requestAnimationFrame(() => {
+            grid.style.transform = "scaleY(1)";
+            grid.style.opacity = "1";
+          });
+        });
+        collapsedGroups = [];
+        localStorage.setItem("collapsedGroups", "[]");
+      }
+      function collapseAllGroups() {
+        document.querySelectorAll(".audio-grid").forEach((grid) => {
+          grid.style.transform = "scaleY(0)";
+          grid.style.opacity = "0";
+          setTimeout(() => {
+            grid.classList.add("collapsed");
+          }, 400); // Match your CSS transition time
+        });
+        collapsedGroups = Array.from(document.querySelectorAll(".group-title")).map((title) =>
+          title.textContent.trim()
+        );
+        localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
+      }
     </script>
   </body>
 </html>

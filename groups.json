@@ -957,13 +957,13 @@
     "group": "SAM Radar (NATO)",
     "name": "Hawk sr Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Hawk tr_SEARCH.wav": {
     "group": "SAM Radar (NATO)",
     "name": "Hawk tr Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
     "group": "SAM Radar (NATO)",
@@ -981,7 +981,7 @@
     "group": "SAM Radar (NATO)",
     "name": "Hawk_cwar Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Head_Net_1_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1214,61 +1214,61 @@
   "imported_wavs/N-005_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-005 Search",
-    "description": "",
+    "description": "MiG-25 Radar",
     "hidden": false
   },
   "imported_wavs/N-005_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-005 Track",
-    "description": "",
+    "description": "MiG-25 Radar",
     "hidden": false
   },
   "imported_wavs/N-008_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-008 Search",
-    "description": "",
+    "description": "MiG-23 Radar",
     "hidden": false
   },
   "imported_wavs/N-008_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-008 Track",
-    "description": "",
+    "description": "MiG-23 Radar",
     "hidden": false
   },
   "imported_wavs/N-011M_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-011M Search",
-    "description": "",
-    "hidden": false
+    "description": "Su-30 **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/N-011M_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-011M Track",
-    "description": "",
-    "hidden": false
+    "description": "Su-30 **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/N-019M_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-019M Search",
-    "description": "",
-    "hidden": false
+    "description": "MiG-29S **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/N-019M_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-019M Track",
-    "description": "",
-    "hidden": false
+    "description": "MiG-29S **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/N-019_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-019 Search",
-    "description": "",
+    "description": "MiG-29 Radar",
     "hidden": false
   },
   "imported_wavs/N-019_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-019 Track",
-    "description": "",
+    "description": "MiG-29 Radar",
     "hidden": false
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
@@ -1285,14 +1285,14 @@
   },
   "imported_wavs/N_001_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "N_001 Search",
-    "description": "",
+    "name": "N-001 Search",
+    "description": "Su-27/J-11/Su-30/Su-33/Su-34 Radar",
     "hidden": false
   },
   "imported_wavs/N_001_TRACK.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "N_001 Track",
-    "description": "",
+    "name": "N-001 Track",
+    "description": "Su-27/J-11/Su-30/Su-33/Su-34 Radar",
     "hidden": false
   },
   "imported_wavs/Orion-A_SEARCH.wav": {
@@ -1537,14 +1537,14 @@
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "RP_22SMA Search",
-    "description": "",
+    "name": "RP-22SMA Search",
+    "description": "MiG-21bis Radar",
     "hidden": false
   },
   "imported_wavs/RP_22SMA_TRACK.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "RP_22SMA Track",
-    "description": "",
+    "name": "RP-22SMA Track",
+    "description": "MiG-21bis Radar",
     "hidden": false
   },
   "imported_wavs/RP_5_search_SEARCH.wav": {
