@@ -112,62 +112,62 @@
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "group": "Missiles",
     "name": "AIM_120_Seeker_SEARCH",
-    "description": ""
+    "description": "AIM-120B/C Search (Same as Track)"
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "AIM_120_Seeker_TRACK",
-    "description": ""
+    "description": "AIM-120B/C Track (Same as Search)"
   },
   "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
     "group": "Missiles",
     "name": "AIM_54_Seeker_SEARCH",
-    "description": ""
+    "description": "AIM-54A/C Search (Same as Track)"
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "AIM_54_Seeker_TRACK",
-    "description": ""
+    "description": "AIM-54A/C Track (Same as Search)"
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-63_SEARCH",
-    "description": ""
+    "description": "F-15C & F-15E Radar (Search)"
   },
   "imported_wavs/AN_APG-63_TRACK.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-63_TRACK",
-    "description": ""
+    "description": "F-15C & F-15E Radar (Track)"
   },
   "imported_wavs/AN_APG-68_SEARCH.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-68_SEARCH",
-    "description": ""
+    "description": "F-16C Radar (Search)"
   },
   "imported_wavs/AN_APG-68_TRACK.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-68_TRACK",
-    "description": ""
+    "description": "F-16C Radar (Track)"
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-71_SEARCH",
-    "description": ""
+    "description": "F-14A/B Radar (Search)"
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-71_TRACK",
-    "description": ""
+    "description": "F-14A/B Radar (Track)"
   },
   "imported_wavs/AN_APG-73_SEARCH.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-73_SEARCH",
-    "description": ""
+    "description": "F/A-18C Radar (Search)"
   },
   "imported_wavs/AN_APG-73_TRACK.wav": {
     "group": "NATO Air Radars",
     "name": "AN_APG-73_TRACK",
-    "description": ""
+    "description": "F/A-18C Radar (Track)"
   },
   "imported_wavs/AN_APG-78_SEARCH.wav": {
     "group": "NATO Air Radars",
