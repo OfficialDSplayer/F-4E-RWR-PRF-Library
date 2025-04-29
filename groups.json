@@ -48,37 +48,37 @@
     "hidden": false
   },
   "imported_wavs/1L13 EWR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Early Warning Radar (Soviet)",
     "name": "1L13 EWR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/1L13 EWR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Early Warning Radar (Soviet)",
     "name": "1L13 EWR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/2S6 Tunguska_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "2S6 Tunguska Search",
-    "description": "",
+    "name": "SA-19 Grison Search",
+    "description": "SA-19 Grison - 2S6 Tunguska",
     "hidden": false
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "2S6 Tunguska Track",
-    "description": "",
+    "name": "SA-19 Grison Track",
+    "description": "SA-19 Grison - 2S6 Tunguska",
     "hidden": false
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Early Warning Radar (Soviet)",
     "name": "55G6 EWR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/55G6 EWR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Early Warning Radar (Soviet)",
     "name": "55G6 EWR Track",
     "description": "",
     "hidden": false
@@ -709,15 +709,15 @@
   },
   "imported_wavs/Big_bird_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "Big_bird Search",
-    "description": "",
+    "name": "SA-10 Big Bird SR Search",
+    "description": "SA-10 Big Bird",
     "hidden": false
   },
   "imported_wavs/Big_bird_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "Big_bird Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/BridgeMaster_E_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1081,15 +1081,15 @@
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "Kub 1S91 str Search",
-    "description": "",
+    "name": "SA-6 STR Search",
+    "description": "SA-6 Kub 1S91 STR",
     "hidden": false
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "Kub 1S91 str Track",
-    "description": "",
-    "hidden": false
+    "name": "SA-6 STR Search Track",
+    "description": "SA-6 Kub 1S91 STR",
+    "hidden": true
   },
   "imported_wavs/LW_01_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1525,14 +1525,14 @@
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "RPC S-200 TR Search",
-    "description": "",
-    "hidden": false
+    "name": "SA-5 Gammon TR Search",
+    "description": "RPC S-200 TR",
+    "hidden": true
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "RPC S-200 TR Track",
-    "description": "",
+    "name": "SA-5 Gammon TR Track",
+    "description": "RPC S-200 TR",
     "hidden": false
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
@@ -1681,79 +1681,79 @@
   },
   "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "S-300PS 40B6M tr Search",
-    "description": "",
-    "hidden": false
+    "name": "SA-10 Flap Lid TR Search",
+    "description": "S-300PS 40B6M",
+    "hidden": true
   },
   "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "S-300PS 40B6M tr Track",
-    "description": "",
+    "name": "SA-10 Flap Lid TR Track",
+    "description": "SA-10 Flap Lid S-300PS 40B6M TR",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "S-300PS 40B6MD sr Search",
-    "description": "",
+    "name": "SA-10 Clam Shell SR Search",
+    "description": "S-300PS 40B6MD",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "S-300PS 40B6MD sr Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "S-300PS 64H6E sr Search",
-    "description": "",
-    "hidden": false
+    "description": "SA-10 Big Bird Overwritten???",
+    "hidden": true
   },
   "imported_wavs/S-300PS 64H6E sr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 64H6E sr Track",
-    "description": "",
-    "hidden": false
+    "description": "SA-10 Big Bird Overwritten???",
+    "hidden": true
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk SR 9S18M1 Search",
-    "description": "",
-    "hidden": false
+    "description": "SA-11 **Overridden**",
+    "hidden": true
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk SR 9S18M1 Track",
-    "description": "",
-    "hidden": false
+    "description": "SA-11 **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk TR Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-11 Buk TR Track",
-    "description": "",
+    "name": "SA-11 Snow Drift Buk TR Track",
+    "description": "SA-11 Buk",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA_11_Snow_Drift Search",
-    "description": "",
+    "name": "SA-11 Snow Drift Buk SR Search",
+    "description": "SA-11 Buk",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA_11_Snow_Drift Track",
+    "name": "SA-11 Snow Drift Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "Scrum Search",
+    "name": "SA-15 Scrum Search",
     "description": "SA-15 Gauntlet Search Radar",
     "hidden": false
   },
@@ -2259,12 +2259,12 @@
     "group": "SAM Radar (Soviet)",
     "name": "SA-2 Fan Song Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/fan_song_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-2 Fan Song Track",
-    "description": "",
+    "description": "SA-2 Fan Song Track Radar",
     "hidden": false
   },
   "imported_wavs/molniya search radar_SEARCH.wav": {
@@ -2306,7 +2306,7 @@
   "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
     "group": "Soviet SAM Search Radar (Soviet)",
     "name": "S-125 Flat Face Search",
-    "description": "SA-2/3/5 Flat Face Search Radar",
+    "description": "SA-2/SA-3/SA-5 Flat Face Search Radar",
     "hidden": false
   },
   "imported_wavs/p-19 s-125 sr_TRACK.wav": {
@@ -2367,37 +2367,37 @@
     "group": "SAM Radar (Soviet)",
     "name": "SA-6 TR Search",
     "description": "SA-6 Track Radar (Search)",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 TR Track",
-    "description": "SA-6 Track Radar (Track)",
+    "name": "SA-6 STR Track",
+    "description": "SA-6 Kub 1S91 STR",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "sa_8_Search_high Search",
-    "description": "",
-    "hidden": false
+    "name": "SA-8 High Search",
+    "description": "SA-8 Gecko Osa",
+    "hidden": true
   },
   "imported_wavs/sa_8_Search_high_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_high Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "sa_8_Search_low Search",
-    "description": "",
+    "name": "SA-8 Search",
+    "description": "SA-8 Gecko Osa",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_low Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/seasparrow tr_SEARCH.wav": {
     "group": "Ungrouped",
