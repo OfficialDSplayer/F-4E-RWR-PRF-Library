@@ -1,10 +1,10 @@
-name: Copy WAV Files from DCS-Datamine-Raw-Files and Update wav_list.json
+name: Sync WAV Files and Groups
 
 on:
   workflow_dispatch: # Manual trigger
 
 jobs:
-  copy-wav-files:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,50 +21,73 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/OfficialDSplayer/DCS-Datamine-Raw-Files.git source-repo
 
-      - name: Copy .wav files and Save Commit Message
+      - name: Copy .wav files
         run: |
-          # Capture latest commit message BEFORE deleting source-repo
-          cd source-repo
-          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
-          cd ..
-
-          echo "$LATEST_COMMIT_MSG" > latest_commit_msg.txt
-
-          # Clean old WAV files
           rm -rf imported_wavs
           mkdir -p imported_wavs
-
-          # Copy WAV files
           cp source-repo/Mods/aircraft/F-4E/Sounds/Effects/Aircrafts/RHAW/radars/*.wav imported_wavs/
-
-          # Remove the source-repo to avoid untracked files
           rm -rf source-repo
 
       - name: Generate wav_list.json
         run: |
           echo "[" > wav_list.json
           find imported_wavs -name "*.wav" | sort | sed 's/^/"/;s/$/",/' >> wav_list.json
-          sed -i '$ s/,$//' wav_list.json # Remove trailing comma
+          sed -i '$ s/,$//' wav_list.json
           echo "]" >> wav_list.json
 
+      - name: Generate or Update groups.json
+        run: |
+          if [ ! -f groups.json ]; then
+            echo "{}" > groups.json
+          fi
+
+          python3 <<EOF
+import json
+from pathlib import Path
+
+# Load wav_list
+with open('wav_list.json') as f:
+    wav_files = json.load(f)
+
+# Load or initialize groups.json
+groups_path = Path('groups.json')
+if groups_path.exists():
+    with groups_path.open() as f:
+        groups = json.load(f)
+else:
+    groups = {}
+
+# Update groups.json
+updated = False
+for wav in wav_files:
+    if wav not in groups:
+        groups[wav] = {
+            "group": "Ungrouped",
+            "name": Path(wav).stem
+        }
+        updated = True
+
+# Only save if changes were made
+if updated:
+    with groups_path.open('w') as f:
+        json.dump(groups, f, indent=2)
+EOF
 
       - name: Commit and Push Changes
         run: |
-          # Load latest commit message
-          LATEST_COMMIT_MSG=$(cat latest_commit_msg.txt)
+          # Load latest commit message (optional fallback message if needed)
+          COMMIT_MESSAGE="Update imported WAVs and groups.json"
 
           # Get current UTC timestamp
           COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          
-          # Create final commit message
-          FINAL_COMMIT_MSG="$LATEST_COMMIT_MSG (Synced on $COMMIT_TIMESTAMP)"
+          FINAL_COMMIT_MSG="$COMMIT_MESSAGE (Synced on $COMMIT_TIMESTAMP)"
 
-          echo "Final commit message will be: $FINAL_COMMIT_MSG"
+          echo "Final commit message: $FINAL_COMMIT_MSG"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add imported_wavs wav_list.json
+          git add imported_wavs wav_list.json groups.json
 
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
