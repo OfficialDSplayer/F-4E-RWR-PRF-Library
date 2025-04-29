@@ -11,13 +11,13 @@
       background-color: #f5f5f5;
       margin: 0;
     }
-    h1 {
+    h1, h2, h3, h4 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .controls {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
     .audio-grid {
       display: grid;
@@ -73,14 +73,19 @@
     input[type="range"] {
       width: 200px;
     }
+    .group-title {
+      font-size: 1.5em;
+      margin: 30px 0 10px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <h1>F-4E RWR PRF Sound Player</h1>
   <h2>By DSplayer using sounds from the DCS Heatblur F-4E Module</h2>
   <h3>Highly WIP!! Last updated 2025-04-29 (using DCS 2.9.15.9599)</h3>
-
   <h4>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</h4>
+
   <div class="controls">
     <button class="global-button" onclick="playAll()">Play All</button>
     <button class="global-button" onclick="stopAll()">Stop All</button>
@@ -90,7 +95,7 @@
     </div>
   </div>
 
-  <div id="audio-list" class="audio-grid">
+  <div id="audio-list">
     Loading sounds...
   </div>
 
@@ -99,50 +104,81 @@
     let audioContext;
     let gainNode;
     let soundBuffers = {};
+    let groupsData = {};
 
     async function loadWavFiles() {
       try {
-        const response = await fetch('wav_list.json');
-        let wavFiles = await response.json();
+        const [wavListResponse, groupsResponse] = await Promise.all([
+          fetch('wav_list.json'),
+          fetch('groups.json')
+        ]);
+        let wavFiles = await wavListResponse.json();
+        groupsData = await groupsResponse.json();
 
         wavFiles.sort((a, b) => a.localeCompare(b));
-
-        const audioList = document.getElementById('audio-list');
-        audioList.innerHTML = '';
 
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         gainNode = audioContext.createGain();
         gainNode.connect(audioContext.destination);
 
         const volumeSlider = document.getElementById('volume-slider');
-
-        // Load volume from localStorage if exists
         const savedVolume = localStorage.getItem('volumeLevel');
         if (savedVolume !== null) {
           volumeSlider.value = savedVolume;
           gainNode.gain.setValueAtTime(parseInt(savedVolume) / 100, audioContext.currentTime);
         }
 
-        // Update volume and save to localStorage
         volumeSlider.addEventListener('input', function() {
           const volume = parseInt(this.value) / 100;
           gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
           localStorage.setItem('volumeLevel', this.value);
         });
 
-        // Preload all sounds
+        const groups = {};
+
         for (const file of wavFiles) {
           const fetchResponse = await fetch(file);
           const arrayBuffer = await fetchResponse.arrayBuffer();
           const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
           soundBuffers[file] = audioBuffer;
 
+          const groupInfo = groupsData[file] || { group: "Other", name: file.split('/').pop() };
+
+          if (!groups[groupInfo.group]) {
+            groups[groupInfo.group] = [];
+          }
+
+          groups[groupInfo.group].push({ file, displayName: groupInfo.name });
+        }
+
+        displayGroups(groups);
+
+      } catch (error) {
+        console.error('Error loading JSON files:', error);
+        document.getElementById('audio-list').textContent = 'Failed to load sounds.';
+      }
+    }
+
+    function displayGroups(groups) {
+      const audioList = document.getElementById('audio-list');
+      audioList.innerHTML = '';
+
+      for (const groupName of Object.keys(groups).sort()) {
+        const groupTitle = document.createElement('h2');
+        groupTitle.className = 'group-title';
+        groupTitle.textContent = groupName;
+        audioList.appendChild(groupTitle);
+
+        const groupGrid = document.createElement('div');
+        groupGrid.className = 'audio-grid';
+
+        for (const sound of groups[groupName]) {
           const card = document.createElement('div');
           card.className = 'audio-card';
 
           const name = document.createElement('div');
           name.className = 'file-name';
-          name.textContent = file.split('/').pop();
+          name.textContent = sound.displayName;
 
           const buttonGroup = document.createElement('div');
           buttonGroup.className = 'button-group';
@@ -155,18 +191,17 @@
           stopButton.className = 'stop-button';
           stopButton.textContent = 'Stop';
 
-          playButton.onclick = () => startLoop(file);
-          stopButton.onclick = () => stopLoop(file);
+          playButton.onclick = () => startLoop(sound.file);
+          stopButton.onclick = () => stopLoop(sound.file);
 
           buttonGroup.appendChild(playButton);
           buttonGroup.appendChild(stopButton);
           card.appendChild(name);
           card.appendChild(buttonGroup);
-          audioList.appendChild(card);
+          groupGrid.appendChild(card);
         }
-      } catch (error) {
-        console.error('Error loading wav_list.json:', error);
-        document.getElementById('audio-list').textContent = 'Failed to load sounds.';
+
+        audioList.appendChild(groupGrid);
       }
     }
 
