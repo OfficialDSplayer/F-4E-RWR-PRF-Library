@@ -1,4 +1,4 @@
-name: Copy WAV Files from DCS-Datamine-Raw-Files
+name: Copy WAV Files from DCS-Datamine-Raw-Files and Update wav_list.json
 
 on:
   workflow_dispatch: # Manual trigger
@@ -39,6 +39,7 @@ jobs:
 
           # Remove the source-repo to avoid untracked files
           rm -rf source-repo
+
       - name: Generate wav_list.json
         run: |
           echo "[" > wav_list.json
@@ -62,7 +63,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add imported_wavs
+          git add imported_wavs wav_list.json
 
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
@@ -71,4 +72,4 @@ jobs:
             git push
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
