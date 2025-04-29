@@ -3,27 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <title>F-4E RWR PRF Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      background-color: #f5f5f5;
     }
     h1 {
       text-align: center;
+      margin-bottom: 30px;
     }
-    .audio-file {
-      margin-bottom: 20px;
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .audio-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .file-name {
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .play-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .stop-button {
+      background-color: #f44336;
+      color: white;
+    }
+    #audio-list {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <h1>F-4E RWR PRF Sound Library</h1>
-  <div id="audio-list">
-    Loading sound files...
+  <div id="audio-list" class="audio-grid">
+    Loading sounds...
   </div>
 
   <script>
@@ -34,22 +72,60 @@
         const audioList = document.getElementById('audio-list');
         audioList.innerHTML = '';
 
-        wavFiles.forEach(file => {
-          const div = document.createElement('div');
-          div.className = 'audio-file';
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        for (const file of wavFiles) {
+          const card = document.createElement('div');
+          card.className = 'audio-card';
 
           const name = document.createElement('div');
           name.className = 'file-name';
-          name.textContent = file.split('/').pop(); // Just filename
+          name.textContent = file.split('/').pop(); // Show just file name
 
-          const audio = document.createElement('audio');
-          audio.controls = true;
-          audio.src = file;
+          const buttonGroup = document.createElement('div');
+          buttonGroup.className = 'button-group';
 
-          div.appendChild(name);
-          div.appendChild(audio);
-          audioList.appendChild(div);
-        });
+          const playButton = document.createElement('button');
+          playButton.className = 'play-button';
+          playButton.textContent = 'Play';
+
+          const stopButton = document.createElement('button');
+          stopButton.className = 'stop-button';
+          stopButton.textContent = 'Stop';
+
+          let sourceNode = null;
+
+          async function startLoop() {
+            if (sourceNode) return; // Already playing
+
+            const fetchResponse = await fetch(file);
+            const arrayBuffer = await fetchResponse.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+            sourceNode = audioContext.createBufferSource();
+            sourceNode.buffer = audioBuffer;
+            sourceNode.loop = true;
+            sourceNode.connect(audioContext.destination);
+            sourceNode.start(0);
+          }
+
+          function stopLoop() {
+            if (sourceNode) {
+              sourceNode.stop();
+              sourceNode.disconnect();
+              sourceNode = null;
+            }
+          }
+
+          playButton.onclick = startLoop;
+          stopButton.onclick = stopLoop;
+
+          buttonGroup.appendChild(playButton);
+          buttonGroup.appendChild(stopButton);
+          card.appendChild(name);
+          card.appendChild(buttonGroup);
+          audioList.appendChild(card);
+        }
       } catch (error) {
         console.error('Error loading wav_list.json:', error);
         document.getElementById('audio-list').textContent = 'Failed to load sounds.';
