@@ -1,0 +1,1634 @@
+{
+  "imported_wavs/052B SAM SR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "052B SAM SR_SEARCH"
+  },
+  "imported_wavs/052B SAM SR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "052B SAM SR_TRACK"
+  },
+  "imported_wavs/052B SAM TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "052B SAM TR_SEARCH"
+  },
+  "imported_wavs/052B SAM TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "052B SAM TR_TRACK"
+  },
+  "imported_wavs/052C SAM STR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "052C SAM STR_SEARCH"
+  },
+  "imported_wavs/052C SAM STR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "052C SAM STR_TRACK"
+  },
+  "imported_wavs/054A SAM TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "054A SAM TR_SEARCH"
+  },
+  "imported_wavs/054A SAM TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "054A SAM TR_TRACK"
+  },
+  "imported_wavs/1L13 EWR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "1L13 EWR_SEARCH"
+  },
+  "imported_wavs/1L13 EWR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "1L13 EWR_TRACK"
+  },
+  "imported_wavs/2S6 Tunguska_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "2S6 Tunguska_SEARCH"
+  },
+  "imported_wavs/2S6 Tunguska_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "2S6 Tunguska_TRACK"
+  },
+  "imported_wavs/55G6 EWR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "55G6 EWR_SEARCH"
+  },
+  "imported_wavs/55G6 EWR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "55G6 EWR_TRACK"
+  },
+  "imported_wavs/AESA_KJ2000_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_1_SEARCH"
+  },
+  "imported_wavs/AESA_KJ2000_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_1_TRACK"
+  },
+  "imported_wavs/AESA_KJ2000_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_2_SEARCH"
+  },
+  "imported_wavs/AESA_KJ2000_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_2_TRACK"
+  },
+  "imported_wavs/AESA_KJ2000_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_3_SEARCH"
+  },
+  "imported_wavs/AESA_KJ2000_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_3_TRACK"
+  },
+  "imported_wavs/AESA_KJ2000_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_SEARCH"
+  },
+  "imported_wavs/AESA_KJ2000_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AESA_KJ2000_TRACK"
+  },
+  "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AIM_120_Seeker_SEARCH"
+  },
+  "imported_wavs/AIM_120_Seeker_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AIM_120_Seeker_TRACK"
+  },
+  "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AIM_54_Seeker_SEARCH"
+  },
+  "imported_wavs/AIM_54_Seeker_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AIM_54_Seeker_TRACK"
+  },
+  "imported_wavs/AN_APG-63_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-63_SEARCH"
+  },
+  "imported_wavs/AN_APG-63_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-63_TRACK"
+  },
+  "imported_wavs/AN_APG-68_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-68_SEARCH"
+  },
+  "imported_wavs/AN_APG-68_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-68_TRACK"
+  },
+  "imported_wavs/AN_APG-71_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-71_SEARCH"
+  },
+  "imported_wavs/AN_APG-71_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-71_TRACK"
+  },
+  "imported_wavs/AN_APG-73_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-73_SEARCH"
+  },
+  "imported_wavs/AN_APG-73_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-73_TRACK"
+  },
+  "imported_wavs/AN_APG-78_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-78_SEARCH"
+  },
+  "imported_wavs/AN_APG-78_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG-78_TRACK"
+  },
+  "imported_wavs/AN_APG_70_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG_70_SEARCH"
+  },
+  "imported_wavs/AN_APG_70_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APG_70_TRACK"
+  },
+  "imported_wavs/AN_APQ-120_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-120_SEARCH"
+  },
+  "imported_wavs/AN_APQ-120_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-120_TRACK"
+  },
+  "imported_wavs/AN_APQ-153_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-153_SEARCH"
+  },
+  "imported_wavs/AN_APQ-153_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-153_TRACK"
+  },
+  "imported_wavs/AN_APQ-159_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-159_SEARCH"
+  },
+  "imported_wavs/AN_APQ-159_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APQ-159_TRACK"
+  },
+  "imported_wavs/AN_APS-137_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-137_SEARCH"
+  },
+  "imported_wavs/AN_APS-137_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-137_TRACK"
+  },
+  "imported_wavs/AN_APS-138_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_2_SEARCH"
+  },
+  "imported_wavs/AN_APS-138_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_2_TRACK"
+  },
+  "imported_wavs/AN_APS-138_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_3_SEARCH"
+  },
+  "imported_wavs/AN_APS-138_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_3_TRACK"
+  },
+  "imported_wavs/AN_APS-138_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_SEARCH"
+  },
+  "imported_wavs/AN_APS-138_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-138_TRACK"
+  },
+  "imported_wavs/AN_APS-142_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-142_SEARCH"
+  },
+  "imported_wavs/AN_APS-142_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS-142_TRACK"
+  },
+  "imported_wavs/AN_APS_124_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS_124_SEARCH"
+  },
+  "imported_wavs/AN_APS_124_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APS_124_TRACK"
+  },
+  "imported_wavs/AN_APY-1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APY-1_SEARCH"
+  },
+  "imported_wavs/AN_APY-1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APY-1_TRACK"
+  },
+  "imported_wavs/AN_APY_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APY_1_SEARCH"
+  },
+  "imported_wavs/AN_APY_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_APY_1_TRACK"
+  },
+  "imported_wavs/AN_MPQ_53_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_MPQ_53_SEARCH"
+  },
+  "imported_wavs/AN_MPQ_53_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_MPQ_53_TRACK"
+  },
+  "imported_wavs/AN_SPG_60_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPG_60_SEARCH"
+  },
+  "imported_wavs/AN_SPG_60_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPG_60_TRACK"
+  },
+  "imported_wavs/AN_SPG_62_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPG_62_SEARCH"
+  },
+  "imported_wavs/AN_SPG_62_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPG_62_TRACK"
+  },
+  "imported_wavs/AN_SPN_41_Az_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_41_Az_SEARCH"
+  },
+  "imported_wavs/AN_SPN_41_Az_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_41_Az_TRACK"
+  },
+  "imported_wavs/AN_SPN_41_El_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_41_El_SEARCH"
+  },
+  "imported_wavs/AN_SPN_41_El_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_41_El_TRACK"
+  },
+  "imported_wavs/AN_SPN_43C_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_43C_SEARCH"
+  },
+  "imported_wavs/AN_SPN_43C_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPN_43C_TRACK"
+  },
+  "imported_wavs/AN_SPQ_9B_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_1_SEARCH"
+  },
+  "imported_wavs/AN_SPQ_9B_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_1_TRACK"
+  },
+  "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_2_SEARCH"
+  },
+  "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_2_TRACK"
+  },
+  "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_3_SEARCH"
+  },
+  "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPQ_9B_3_TRACK"
+  },
+  "imported_wavs/AN_SPS_40_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_40_SEARCH"
+  },
+  "imported_wavs/AN_SPS_40_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_40_TRACK"
+  },
+  "imported_wavs/AN_SPS_48C_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_48C_SEARCH"
+  },
+  "imported_wavs/AN_SPS_48C_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_48C_TRACK"
+  },
+  "imported_wavs/AN_SPS_48E_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_48E_SEARCH"
+  },
+  "imported_wavs/AN_SPS_48E_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_48E_TRACK"
+  },
+  "imported_wavs/AN_SPS_49_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_49_SEARCH"
+  },
+  "imported_wavs/AN_SPS_49_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_49_TRACK"
+  },
+  "imported_wavs/AN_SPS_55_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_55_SEARCH"
+  },
+  "imported_wavs/AN_SPS_55_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_55_TRACK"
+  },
+  "imported_wavs/AN_SPS_64V9_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_64V9_SEARCH"
+  },
+  "imported_wavs/AN_SPS_64V9_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_64V9_TRACK"
+  },
+  "imported_wavs/AN_SPS_67_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_67_SEARCH"
+  },
+  "imported_wavs/AN_SPS_67_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_67_TRACK"
+  },
+  "imported_wavs/AN_SPS_73_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_73_SEARCH"
+  },
+  "imported_wavs/AN_SPS_73_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPS_73_TRACK"
+  },
+  "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_front_SEARCH"
+  },
+  "imported_wavs/AN_SPY_1_front_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_front_TRACK"
+  },
+  "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_left_SEARCH"
+  },
+  "imported_wavs/AN_SPY_1_left_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_left_TRACK"
+  },
+  "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_rear_SEARCH"
+  },
+  "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_rear_TRACK"
+  },
+  "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_right_SEARCH"
+  },
+  "imported_wavs/AN_SPY_1_right_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "AN_SPY_1_right_TRACK"
+  },
+  "imported_wavs/ARI 23274_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "ARI 23274_SEARCH"
+  },
+  "imported_wavs/ARI 23274_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "ARI 23274_TRACK"
+  },
+  "imported_wavs/B-1B SS radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "B-1B SS radar_SEARCH"
+  },
+  "imported_wavs/B-1B SS radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "B-1B SS radar_TRACK"
+  },
+  "imported_wavs/B-52H SS radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "B-52H SS radar_SEARCH"
+  },
+  "imported_wavs/B-52H SS radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "B-52H SS radar_TRACK"
+  },
+  "imported_wavs/BRLS-8B_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "BRLS-8B_SEARCH"
+  },
+  "imported_wavs/BRLS-8B_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "BRLS-8B_TRACK"
+  },
+  "imported_wavs/Band_Stand_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Band_Stand_SEARCH"
+  },
+  "imported_wavs/Band_Stand_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Band_Stand_TRACK"
+  },
+  "imported_wavs/Bass_Tilt_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Bass_Tilt_SEARCH"
+  },
+  "imported_wavs/Bass_Tilt_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Bass_Tilt_TRACK"
+  },
+  "imported_wavs/Berkut-95_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Berkut-95_SEARCH"
+  },
+  "imported_wavs/Berkut-95_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Berkut-95_TRACK"
+  },
+  "imported_wavs/Big_Net_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Big_Net_SEARCH"
+  },
+  "imported_wavs/Big_Net_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Big_Net_TRACK"
+  },
+  "imported_wavs/Big_bird_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Big_bird_SEARCH"
+  },
+  "imported_wavs/Big_bird_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Big_bird_TRACK"
+  },
+  "imported_wavs/BridgeMaster_E_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "BridgeMaster_E_SEARCH"
+  },
+  "imported_wavs/BridgeMaster_E_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "BridgeMaster_E_TRACK"
+  },
+  "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_SEARCH"
+  },
+  "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_TRACK"
+  },
+  "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_Track_SEARCH"
+  },
+  "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_Track_TRACK"
+  },
+  "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_search_2_SEARCH"
+  },
+  "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_search_2_TRACK"
+  },
+  "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_search_3_SEARCH"
+  },
+  "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "C_RAM_Phalanx_search_3_TRACK"
+  },
+  "imported_wavs/Castor_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Castor_2_SEARCH"
+  },
+  "imported_wavs/Castor_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Castor_2_TRACK"
+  },
+  "imported_wavs/Cross_Sword_S_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Cross_Sword_S_SEARCH"
+  },
+  "imported_wavs/Cross_Sword_S_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Cross_Sword_S_TRACK"
+  },
+  "imported_wavs/Cross_Sword_T_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Cross_Sword_T_SEARCH"
+  },
+  "imported_wavs/Cross_Sword_T_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Cross_Sword_T_TRACK"
+  },
+  "imported_wavs/DA_02_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "DA_02_SEARCH"
+  },
+  "imported_wavs/DA_02_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "DA_02_TRACK"
+  },
+  "imported_wavs/DA_08_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "DA_08_SEARCH"
+  },
+  "imported_wavs/DA_08_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "DA_08_TRACK"
+  },
+  "imported_wavs/Dog Ear radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Dog Ear radar_SEARCH"
+  },
+  "imported_wavs/Dog Ear radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Dog Ear radar_TRACK"
+  },
+  "imported_wavs/Don_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Don_2_SEARCH"
+  },
+  "imported_wavs/Don_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Don_2_TRACK"
+  },
+  "imported_wavs/FPS-117_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "FPS-117_SEARCH"
+  },
+  "imported_wavs/FPS-117_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "FPS-117_TRACK"
+  },
+  "imported_wavs/FPS_117_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "FPS_117_SEARCH"
+  },
+  "imported_wavs/FPS_117_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "FPS_117_TRACK"
+  },
+  "imported_wavs/Front_Dome_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Front_Dome_SEARCH"
+  },
+  "imported_wavs/Front_Dome_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Front_Dome_TRACK"
+  },
+  "imported_wavs/Gepard_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Gepard_SEARCH"
+  },
+  "imported_wavs/Gepard_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Gepard_TRACK"
+  },
+  "imported_wavs/H-6J RADAR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "H-6J RADAR_SEARCH"
+  },
+  "imported_wavs/H-6J RADAR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "H-6J RADAR_TRACK"
+  },
+  "imported_wavs/HQ-7 SR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "HQ-7 SR_SEARCH"
+  },
+  "imported_wavs/HQ-7 SR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "HQ-7 SR_TRACK"
+  },
+  "imported_wavs/HQ-7 TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "HQ-7 TR_SEARCH"
+  },
+  "imported_wavs/HQ-7 TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "HQ-7 TR_TRACK"
+  },
+  "imported_wavs/Hawk sr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk sr_SEARCH"
+  },
+  "imported_wavs/Hawk sr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk sr_TRACK"
+  },
+  "imported_wavs/Hawk tr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk tr_SEARCH"
+  },
+  "imported_wavs/Hawk tr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk tr_TRACK"
+  },
+  "imported_wavs/Hawk_cwar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk_cwar_SEARCH"
+  },
+  "imported_wavs/Hawk_cwar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Hawk_cwar_TRACK"
+  },
+  "imported_wavs/Head_Net_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Head_Net_1_SEARCH"
+  },
+  "imported_wavs/Head_Net_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Head_Net_1_TRACK"
+  },
+  "imported_wavs/Head_Net_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Head_Net_2_SEARCH"
+  },
+  "imported_wavs/Head_Net_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Head_Net_2_TRACK"
+  },
+  "imported_wavs/Hot_Flash_T_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Hot_Flash_T_SEARCH"
+  },
+  "imported_wavs/Hot_Flash_T_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Hot_Flash_T_TRACK"
+  },
+  "imported_wavs/Hot_Shot_search_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Hot_Shot_search_SEARCH"
+  },
+  "imported_wavs/Hot_Shot_search_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Hot_Shot_search_TRACK"
+  },
+  "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "KKS R-790 Tsunami-BM_SEARCH"
+  },
+  "imported_wavs/KKS R-790 Tsunami-BM_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "KKS R-790 Tsunami-BM_TRACK"
+  },
+  "imported_wavs/KLJ-7_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "KLJ-7_SEARCH"
+  },
+  "imported_wavs/KLJ-7_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "KLJ-7_TRACK"
+  },
+  "imported_wavs/Kite_Screech_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Kite_Screech_SEARCH"
+  },
+  "imported_wavs/Kite_Screech_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Kite_Screech_TRACK"
+  },
+  "imported_wavs/Kopyo_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Kopyo_SEARCH"
+  },
+  "imported_wavs/Kopyo_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Kopyo_TRACK"
+  },
+  "imported_wavs/Kub 1S91 str_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Kub 1S91 str_SEARCH"
+  },
+  "imported_wavs/Kub 1S91 str_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Kub 1S91 str_TRACK"
+  },
+  "imported_wavs/LW_01_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "LW_01_SEARCH"
+  },
+  "imported_wavs/LW_01_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "LW_01_TRACK"
+  },
+  "imported_wavs/LW_08_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "LW_08_SEARCH"
+  },
+  "imported_wavs/LW_08_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "LW_08_TRACK"
+  },
+  "imported_wavs/MPDR_12_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "MPDR_12_SEARCH"
+  },
+  "imported_wavs/MPDR_12_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "MPDR_12_TRACK"
+  },
+  "imported_wavs/MR_350_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "MR_350_SEARCH"
+  },
+  "imported_wavs/MR_350_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "MR_350_TRACK"
+  },
+  "imported_wavs/Mark_92_S_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Mark_92_S_SEARCH"
+  },
+  "imported_wavs/Mark_92_S_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Mark_92_S_TRACK"
+  },
+  "imported_wavs/Mark_92_T_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Mark_92_T_SEARCH"
+  },
+  "imported_wavs/Mark_92_T_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Mark_92_T_TRACK"
+  },
+  "imported_wavs/Mk_95_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Mk_95_SEARCH"
+  },
+  "imported_wavs/Mk_95_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Mk_95_TRACK"
+  },
+  "imported_wavs/Muff_Cob_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Muff_Cob_SEARCH"
+  },
+  "imported_wavs/Muff_Cob_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Muff_Cob_TRACK"
+  },
+  "imported_wavs/Mys-M1_SR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Mys-M1_SR_SEARCH"
+  },
+  "imported_wavs/Mys-M1_SR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Mys-M1_SR_TRACK"
+  },
+  "imported_wavs/N-001_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-001_SEARCH"
+  },
+  "imported_wavs/N-001_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-001_TRACK"
+  },
+  "imported_wavs/N-005_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-005_SEARCH"
+  },
+  "imported_wavs/N-005_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-005_TRACK"
+  },
+  "imported_wavs/N-008_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-008_SEARCH"
+  },
+  "imported_wavs/N-008_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-008_TRACK"
+  },
+  "imported_wavs/N-011M_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-011M_SEARCH"
+  },
+  "imported_wavs/N-011M_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-011M_TRACK"
+  },
+  "imported_wavs/N-019M_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-019M_SEARCH"
+  },
+  "imported_wavs/N-019M_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-019M_TRACK"
+  },
+  "imported_wavs/N-019_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N-019_SEARCH"
+  },
+  "imported_wavs/N-019_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N-019_TRACK"
+  },
+  "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "NASAMS_Radar_MPQ64F1_SEARCH"
+  },
+  "imported_wavs/NASAMS_Radar_MPQ64F1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "NASAMS_Radar_MPQ64F1_TRACK"
+  },
+  "imported_wavs/N_001_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "N_001_SEARCH"
+  },
+  "imported_wavs/N_001_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "N_001_TRACK"
+  },
+  "imported_wavs/Orion-A_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Orion-A_SEARCH"
+  },
+  "imported_wavs/Orion-A_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Orion-A_TRACK"
+  },
+  "imported_wavs/Osa 9A33 ln_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Osa 9A33 ln_SEARCH"
+  },
+  "imported_wavs/Osa 9A33 ln_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Osa 9A33 ln_TRACK"
+  },
+  "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "PLAN Search Radar A_SEARCH"
+  },
+  "imported_wavs/PLAN Search Radar A_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "PLAN Search Radar A_TRACK"
+  },
+  "imported_wavs/PLAN Search Radar B_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "PLAN Search Radar B_SEARCH"
+  },
+  "imported_wavs/PLAN Search Radar B_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "PLAN Search Radar B_TRACK"
+  },
+  "imported_wavs/PNA-D Leninets_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "PNA-D Leninets_SEARCH"
+  },
+  "imported_wavs/PNA-D Leninets_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "PNA-D Leninets_TRACK"
+  },
+  "imported_wavs/PS-37A_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "PS-37A_SEARCH"
+  },
+  "imported_wavs/PS-37A_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "PS-37A_TRACK"
+  },
+  "imported_wavs/Palm_Frond_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Palm_Frond_SEARCH"
+  },
+  "imported_wavs/Palm_Frond_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Palm_Frond_TRACK"
+  },
+  "imported_wavs/Patriot str_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Patriot str_SEARCH"
+  },
+  "imported_wavs/Patriot str_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Patriot str_TRACK"
+  },
+  "imported_wavs/Peel_Pair_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Peel_Pair_SEARCH"
+  },
+  "imported_wavs/Peel_Pair_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Peel_Pair_TRACK"
+  },
+  "imported_wavs/Poisk_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Poisk_SEARCH"
+  },
+  "imported_wavs/Poisk_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Poisk_TRACK"
+  },
+  "imported_wavs/Pop_Group_T_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Pop_Group_T_SEARCH"
+  },
+  "imported_wavs/Pop_Group_T_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Pop_Group_T_TRACK"
+  },
+  "imported_wavs/R-77_Seeker_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "R-77_Seeker_SEARCH"
+  },
+  "imported_wavs/R-77_Seeker_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "R-77_Seeker_TRACK"
+  },
+  "imported_wavs/RDI_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RDI_SEARCH"
+  },
+  "imported_wavs/RDI_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RDI_TRACK"
+  },
+  "imported_wavs/RDY_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RDY_SEARCH"
+  },
+  "imported_wavs/RDY_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RDY_TRACK"
+  },
+  "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_2_SEARCH"
+  },
+  "imported_wavs/RLS_19J6_Beam_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_2_TRACK"
+  },
+  "imported_wavs/RLS_19J6_Beam_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_3_SEARCH"
+  },
+  "imported_wavs/RLS_19J6_Beam_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_3_TRACK"
+  },
+  "imported_wavs/RLS_19J6_Beam_4_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_4_SEARCH"
+  },
+  "imported_wavs/RLS_19J6_Beam_4_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_Beam_4_TRACK"
+  },
+  "imported_wavs/RLS_19J6_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_SEARCH"
+  },
+  "imported_wavs/RLS_19J6_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RLS_19J6_TRACK"
+  },
+  "imported_wavs/RM_1290_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RM_1290_SEARCH"
+  },
+  "imported_wavs/RM_1290_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RM_1290_TRACK"
+  },
+  "imported_wavs/RPC S-200 TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RPC S-200 TR_SEARCH"
+  },
+  "imported_wavs/RPC S-200 TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RPC S-200 TR_TRACK"
+  },
+  "imported_wavs/RP_22SMA_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RP_22SMA_SEARCH"
+  },
+  "imported_wavs/RP_22SMA_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RP_22SMA_TRACK"
+  },
+  "imported_wavs/RP_5_search_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RP_5_search_SEARCH"
+  },
+  "imported_wavs/RP_5_search_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RP_5_search_TRACK"
+  },
+  "imported_wavs/RP_5_track_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RP_5_track_SEARCH"
+  },
+  "imported_wavs/RP_5_track_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RP_5_track_TRACK"
+  },
+  "imported_wavs/RQ-1 Predator SAR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "RQ-1 Predator SAR_SEARCH"
+  },
+  "imported_wavs/RQ-1 Predator SAR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "RQ-1 Predator SAR_TRACK"
+  },
+  "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Rapier_Blindfire_SEARCH"
+  },
+  "imported_wavs/Rapier_Blindfire_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Rapier_Blindfire_TRACK"
+  },
+  "imported_wavs/Rapier_Dagger_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Rapier_Dagger_SEARCH"
+  },
+  "imported_wavs/Rapier_Dagger_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Rapier_Dagger_TRACK"
+  },
+  "imported_wavs/Rice_Bowl_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Rice_Bowl_SEARCH"
+  },
+  "imported_wavs/Rice_Bowl_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Rice_Bowl_TRACK"
+  },
+  "imported_wavs/Roland ADS_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Roland ADS_SEARCH"
+  },
+  "imported_wavs/Roland ADS_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Roland ADS_TRACK"
+  },
+  "imported_wavs/Roland Radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Roland Radar_SEARCH"
+  },
+  "imported_wavs/Roland Radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Roland Radar_TRACK"
+  },
+  "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Roland_MPDR_16_SEARCH"
+  },
+  "imported_wavs/Roland_MPDR_16_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Roland_MPDR_16_TRACK"
+  },
+  "imported_wavs/Rubidy MM_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Rubidy MM_SEARCH"
+  },
+  "imported_wavs/Rubidy MM_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Rubidy MM_TRACK"
+  },
+  "imported_wavs/S-300PS 40B6M tr navy_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6M tr navy_SEARCH"
+  },
+  "imported_wavs/S-300PS 40B6M tr navy_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6M tr navy_TRACK"
+  },
+  "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6M tr_SEARCH"
+  },
+  "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6M tr_TRACK"
+  },
+  "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6MD sr_SEARCH"
+  },
+  "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 40B6MD sr_TRACK"
+  },
+  "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 64H6E sr_SEARCH"
+  },
+  "imported_wavs/S-300PS 64H6E sr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "S-300PS 64H6E sr_TRACK"
+  },
+  "imported_wavs/SA-11 Buk SR 9S18M1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SA-11 Buk SR 9S18M1_SEARCH"
+  },
+  "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SA-11 Buk SR 9S18M1_TRACK"
+  },
+  "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SA-11 Buk TR_SEARCH"
+  },
+  "imported_wavs/SA-11 Buk TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SA-11 Buk TR_TRACK"
+  },
+  "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SA_11_Snow_Drift_SEARCH"
+  },
+  "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SA_11_Snow_Drift_TRACK"
+  },
+  "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_1_SEARCH"
+  },
+  "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_1_TRACK"
+  },
+  "imported_wavs/Scrum_Half_Search_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_2_SEARCH"
+  },
+  "imported_wavs/Scrum_Half_Search_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_2_TRACK"
+  },
+  "imported_wavs/Scrum_Half_Search_3_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_3_SEARCH"
+  },
+  "imported_wavs/Scrum_Half_Search_3_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Scrum_Half_Search_3_TRACK"
+  },
+  "imported_wavs/Shmel_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Shmel_SEARCH"
+  },
+  "imported_wavs/Shmel_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Shmel_TRACK"
+  },
+  "imported_wavs/Strut_Curve_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Curve_SEARCH"
+  },
+  "imported_wavs/Strut_Curve_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Curve_TRACK"
+  },
+  "imported_wavs/Strut_Pair_1_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Pair_1_SEARCH"
+  },
+  "imported_wavs/Strut_Pair_1_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Pair_1_TRACK"
+  },
+  "imported_wavs/Strut_Pair_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Pair_2_SEARCH"
+  },
+  "imported_wavs/Strut_Pair_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Strut_Pair_2_TRACK"
+  },
+  "imported_wavs/TAS_MK_23_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "TAS_MK_23_SEARCH"
+  },
+  "imported_wavs/TAS_MK_23_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "TAS_MK_23_TRACK"
+  },
+  "imported_wavs/Tomb_Stone_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Tomb_Stone_SEARCH"
+  },
+  "imported_wavs/Tomb_Stone_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Tomb_Stone_TRACK"
+  },
+  "imported_wavs/Top_Dome_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Dome_SEARCH"
+  },
+  "imported_wavs/Top_Dome_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Dome_TRACK"
+  },
+  "imported_wavs/Top_Plate_L_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Plate_L_SEARCH"
+  },
+  "imported_wavs/Top_Plate_L_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Plate_L_TRACK"
+  },
+  "imported_wavs/Top_Plate_S_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Plate_S_SEARCH"
+  },
+  "imported_wavs/Top_Plate_S_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Plate_S_TRACK"
+  },
+  "imported_wavs/Top_Sail_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Sail_SEARCH"
+  },
+  "imported_wavs/Top_Sail_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Sail_TRACK"
+  },
+  "imported_wavs/Top_Steer_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Steer_SEARCH"
+  },
+  "imported_wavs/Top_Steer_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Top_Steer_TRACK"
+  },
+  "imported_wavs/Tor 9A331_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Tor 9A331_SEARCH"
+  },
+  "imported_wavs/Tor 9A331_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Tor 9A331_TRACK"
+  },
+  "imported_wavs/Tornado SS radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Tornado SS radar_SEARCH"
+  },
+  "imported_wavs/Tornado SS radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Tornado SS radar_TRACK"
+  },
+  "imported_wavs/Triton_S_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Triton_S_SEARCH"
+  },
+  "imported_wavs/Triton_S_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Triton_S_TRACK"
+  },
+  "imported_wavs/Type_1006_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_1006_SEARCH"
+  },
+  "imported_wavs/Type_1006_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_1006_TRACK"
+  },
+  "imported_wavs/Type_1022_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_1022_SEARCH"
+  },
+  "imported_wavs/Type_1022_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_1022_TRACK"
+  },
+  "imported_wavs/Type_344_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_344_SEARCH"
+  },
+  "imported_wavs/Type_344_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_344_TRACK"
+  },
+  "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Front_left_SEARCH"
+  },
+  "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Front_left_TRACK"
+  },
+  "imported_wavs/Type_346_Search_Front_right_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Front_right_SEARCH"
+  },
+  "imported_wavs/Type_346_Search_Front_right_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Front_right_TRACK"
+  },
+  "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Rear_left_SEARCH"
+  },
+  "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Rear_left_TRACK"
+  },
+  "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Rear_right_SEARCH"
+  },
+  "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Search_Rear_right_TRACK"
+  },
+  "imported_wavs/Type_346_Track_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Track_SEARCH"
+  },
+  "imported_wavs/Type_346_Track_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_346_Track_TRACK"
+  },
+  "imported_wavs/Type_360_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_360_SEARCH"
+  },
+  "imported_wavs/Type_360_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_360_TRACK"
+  },
+  "imported_wavs/Type_364_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_364_SEARCH"
+  },
+  "imported_wavs/Type_364_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_364_TRACK"
+  },
+  "imported_wavs/Type_382_Large_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_382_Large_SEARCH"
+  },
+  "imported_wavs/Type_382_Large_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_382_Large_TRACK"
+  },
+  "imported_wavs/Type_382_Small_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_382_Small_SEARCH"
+  },
+  "imported_wavs/Type_382_Small_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_382_Small_TRACK"
+  },
+  "imported_wavs/Type_517_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_517_SEARCH"
+  },
+  "imported_wavs/Type_517_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_517_TRACK"
+  },
+  "imported_wavs/Type_903_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_903_SEARCH"
+  },
+  "imported_wavs/Type_903_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_903_TRACK"
+  },
+  "imported_wavs/Type_909_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_909_SEARCH"
+  },
+  "imported_wavs/Type_909_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_909_TRACK"
+  },
+  "imported_wavs/Type_965_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_965_SEARCH"
+  },
+  "imported_wavs/Type_965_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_965_TRACK"
+  },
+  "imported_wavs/Type_992Q_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_992Q_SEARCH"
+  },
+  "imported_wavs/Type_992Q_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_992Q_TRACK"
+  },
+  "imported_wavs/Type_992_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Type_992_SEARCH"
+  },
+  "imported_wavs/Type_992_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Type_992_TRACK"
+  },
+  "imported_wavs/VIRTUAL_AUDIO_SENSOR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "VIRTUAL_AUDIO_SENSOR_SEARCH"
+  },
+  "imported_wavs/VIRTUAL_AUDIO_SENSOR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "VIRTUAL_AUDIO_SENSOR_TRACK"
+  },
+  "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Winglong-1 SAR_SEARCH"
+  },
+  "imported_wavs/Winglong-1 SAR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Winglong-1 SAR_TRACK"
+  },
+  "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "ZSU-23-4 Shilka_SEARCH"
+  },
+  "imported_wavs/ZSU-23-4 Shilka_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "ZSU-23-4 Shilka_TRACK"
+  },
+  "imported_wavs/ZW_01_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "ZW_01_SEARCH"
+  },
+  "imported_wavs/ZW_01_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "ZW_01_TRACK"
+  },
+  "imported_wavs/albatros search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "albatros search radar_SEARCH"
+  },
+  "imported_wavs/albatros search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "albatros search radar_TRACK"
+  },
+  "imported_wavs/amazonka_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "amazonka_SEARCH"
+  },
+  "imported_wavs/amazonka_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "amazonka_TRACK"
+  },
+  "imported_wavs/carrier search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "carrier search radar_SEARCH"
+  },
+  "imported_wavs/carrier search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "carrier search radar_TRACK"
+  },
+  "imported_wavs/fan_song_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "fan_song_SEARCH"
+  },
+  "imported_wavs/fan_song_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "fan_song_TRACK"
+  },
+  "imported_wavs/molniya search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "molniya search radar_SEARCH"
+  },
+  "imported_wavs/molniya search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "molniya search radar_TRACK"
+  },
+  "imported_wavs/moskva search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "moskva search radar_SEARCH"
+  },
+  "imported_wavs/moskva search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "moskva search radar_TRACK"
+  },
+  "imported_wavs/neustrashimy search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "neustrashimy search radar_SEARCH"
+  },
+  "imported_wavs/neustrashimy search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "neustrashimy search radar_TRACK"
+  },
+  "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "p-19 s-125 sr_SEARCH"
+  },
+  "imported_wavs/p-19 s-125 sr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "p-19 s-125 sr_TRACK"
+  },
+  "imported_wavs/p_19_beam_2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "p_19_beam_2_SEARCH"
+  },
+  "imported_wavs/p_19_beam_2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "p_19_beam_2_TRACK"
+  },
+  "imported_wavs/perry search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "perry search radar_SEARCH"
+  },
+  "imported_wavs/perry search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "perry search radar_TRACK"
+  },
+  "imported_wavs/piotr velikiy search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "piotr velikiy search radar_SEARCH"
+  },
+  "imported_wavs/piotr velikiy search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "piotr velikiy search radar_TRACK"
+  },
+  "imported_wavs/rezki search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "rezki search radar_SEARCH"
+  },
+  "imported_wavs/rezki search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "rezki search radar_TRACK"
+  },
+  "imported_wavs/sa_6_TR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "sa_6_TR_SEARCH"
+  },
+  "imported_wavs/sa_6_TR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "sa_6_TR_TRACK"
+  },
+  "imported_wavs/sa_8_Search_high_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "sa_8_Search_high_SEARCH"
+  },
+  "imported_wavs/sa_8_Search_high_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "sa_8_Search_high_TRACK"
+  },
+  "imported_wavs/sa_8_Search_low_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "sa_8_Search_low_SEARCH"
+  },
+  "imported_wavs/sa_8_Search_low_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "sa_8_Search_low_TRACK"
+  },
+  "imported_wavs/seasparrow tr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "seasparrow tr_SEARCH"
+  },
+  "imported_wavs/seasparrow tr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "seasparrow tr_TRACK"
+  },
+  "imported_wavs/snr s-125 tr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "snr s-125 tr_SEARCH"
+  },
+  "imported_wavs/snr s-125 tr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "snr s-125 tr_TRACK"
+  },
+  "imported_wavs/son-9 tr_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "son-9 tr_SEARCH"
+  },
+  "imported_wavs/son-9 tr_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "son-9 tr_TRACK"
+  },
+  "imported_wavs/ticonderoga search radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "ticonderoga search radar_SEARCH"
+  },
+  "imported_wavs/ticonderoga search radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "ticonderoga search radar_TRACK"
+  }
+}
