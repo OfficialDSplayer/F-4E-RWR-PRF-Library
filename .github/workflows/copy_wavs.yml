@@ -45,19 +45,21 @@ jobs:
       
           echo "Final commit message will be: $FINAL_COMMIT_MSG"
       
-          # Ignore the cloned source repo
-          echo "source-repo/" >> .gitignore
-          git add .gitignore
-      
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
       
-          if [ -n "$(git status --porcelain)" ]; then
-            git add imported_wavs
+          # Ignore the cloned source repo
+          echo "source-repo/" >> .gitignore
+      
+          # Stage everything we care about
+          git add imported_wavs .gitignore
+      
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "⚠️ No changes detected, skipping commit."
+          else
             git commit -m "$FINAL_COMMIT_MSG"
             git push
-          else
-            echo "⚠️ No changes to commit."
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}
