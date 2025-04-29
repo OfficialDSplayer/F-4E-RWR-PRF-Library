@@ -40,38 +40,34 @@ jobs:
           if [ ! -f groups.json ]; then
             echo "{}" > groups.json
           fi
-
-          python3 <<EOF
-import json
-from pathlib import Path
-
-# Load wav_list
-with open('wav_list.json') as f:
-    wav_files = json.load(f)
-
-# Load or initialize groups.json
-groups_path = Path('groups.json')
-if groups_path.exists():
-    with groups_path.open() as f:
-        groups = json.load(f)
-else:
-    groups = {}
-
-# Update groups.json
-updated = False
-for wav in wav_files:
-    if wav not in groups:
-        groups[wav] = {
-            "group": "Ungrouped",
-            "name": Path(wav).stem
-        }
-        updated = True
-
-# Only save if changes were made
-if updated:
-    with groups_path.open('w') as f:
-        json.dump(groups, f, indent=2)
-EOF
+      
+          python3 -c "
+          import json
+          from pathlib import Path
+          
+          with open('wav_list.json') as f:
+              wav_files = json.load(f)
+          
+          groups_path = Path('groups.json')
+          if groups_path.exists():
+              with groups_path.open() as f:
+                  groups = json.load(f)
+          else:
+              groups = {}
+          
+          updated = False
+          for wav in wav_files:
+              if wav not in groups:
+                  groups[wav] = {
+                      'group': 'Ungrouped',
+                      'name': Path(wav).stem
+                  }
+                  updated = True
+          
+          if updated:
+              with groups_path.open('w') as f:
+                  json.dump(groups, f, indent=2)
+          "
 
       - name: Commit and Push Changes
         run: |
