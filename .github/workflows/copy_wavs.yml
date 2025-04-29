@@ -49,25 +49,31 @@ jobs:
               wav_files = json.load(f)
           
           groups_path = Path('groups.json')
+          groups = {}
           if groups_path.exists():
               with groups_path.open() as f:
                   groups = json.load(f)
-          else:
-              groups = {}
           
           updated = False
           for wav in wav_files:
               if wav not in groups:
                   groups[wav] = {
                       'group': 'Ungrouped',
-                      'name': Path(wav).stem
+                      'name': Path(wav).stem,
+                      'description': ''
                   }
                   updated = True
+              else:
+                  # Fill in missing description if someone deleted it
+                  if 'description' not in groups[wav]:
+                      groups[wav]['description'] = ''
+                      updated = True
           
           if updated:
               with groups_path.open('w') as f:
                   json.dump(groups, f, indent=2)
           "
+
 
       - name: Commit and Push Changes
         run: |
