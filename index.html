@@ -23,6 +23,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+      margin-bottom: 20px;
     }
     .audio-card {
       background: white;
@@ -77,6 +78,11 @@
       font-size: 1.5em;
       margin: 30px 0 10px;
       text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .collapsed {
+      display: none;
     }
   </style>
 </head>
@@ -137,18 +143,13 @@
         const groups = {};
 
         for (const file of wavFiles) {
-          const fetchResponse = await fetch(file);
-          const arrayBuffer = await fetchResponse.arrayBuffer();
-          const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-          soundBuffers[file] = audioBuffer;
+          const info = groupsData[file] || { group: "Other", name: file.split('/').pop() };
 
-          const groupInfo = groupsData[file] || { group: "Other", name: file.split('/').pop() };
-
-          if (!groups[groupInfo.group]) {
-            groups[groupInfo.group] = [];
+          if (!groups[info.group]) {
+            groups[info.group] = [];
           }
 
-          groups[groupInfo.group].push({ file, displayName: groupInfo.name });
+          groups[info.group].push({ file, displayName: info.name });
         }
 
         displayGroups(groups);
@@ -167,7 +168,6 @@
         const groupTitle = document.createElement('h2');
         groupTitle.className = 'group-title';
         groupTitle.textContent = groupName;
-        audioList.appendChild(groupTitle);
 
         const groupGrid = document.createElement('div');
         groupGrid.className = 'audio-grid';
@@ -201,6 +201,12 @@
           groupGrid.appendChild(card);
         }
 
+        // Setup collapse/expand behavior
+        groupTitle.addEventListener('click', () => {
+          groupGrid.classList.toggle('collapsed');
+        });
+
+        audioList.appendChild(groupTitle);
         audioList.appendChild(groupGrid);
       }
     }
