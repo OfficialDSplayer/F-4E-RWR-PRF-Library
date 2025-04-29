@@ -168,6 +168,22 @@
       </div>
     </div>
 
+    <div class="controls">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search sounds..."
+        style="
+          padding: 8px 14px;
+          width: 300px;
+          font-size: 14px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin-bottom: 20px;
+        "
+      />
+    </div>
+
     <div id="audio-list">Loading sounds...</div>
 
     <script>
@@ -250,7 +266,7 @@
         }
       }
 
-      function displayGroups(sounds) {
+      function displayGroups(sounds, searchTerm = "") {
         const audioList = document.getElementById("audio-list");
         audioList.innerHTML = "";
 
@@ -263,11 +279,20 @@
         }
 
         for (const groupName of Object.keys(grouped).sort()) {
-          // First: filter visible sounds in this group
-          const visibleSounds = grouped[groupName].filter((sound) => !sound.hidden);
+          // Filter visible sounds
+          const visibleSounds = grouped[groupName].filter((sound) => {
+            if (sound.hidden) return false;
+            const haystack = `${sound.name} ${sound.description}`.toLowerCase();
+            return haystack.includes(searchTerm.toLowerCase());
+          });
 
-          // If no visible sounds, skip this group
+          // Skip group if no visible sounds
           if (visibleSounds.length === 0) continue;
+
+          // Sort visible sounds by their 'name'
+          const sortedSounds = visibleSounds.sort((a, b) =>
+            a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" })
+          );
 
           const groupTitle = document.createElement("h2");
           groupTitle.className = "group-title";
@@ -276,7 +301,7 @@
           const groupGrid = document.createElement("div");
           groupGrid.className = "audio-grid";
 
-          for (const sound of visibleSounds) {
+          for (const sound of sortedSounds) {
             const card = document.createElement("div");
             card.className = "audio-card";
 
@@ -312,14 +337,14 @@
 
           groupTitle.addEventListener("click", () => {
             if (!groupGrid.classList.contains("collapsed")) {
-              // Collapse
+              // Collapse group
               groupGrid.style.transform = "scaleY(0)";
               groupGrid.style.opacity = "0";
               setTimeout(() => {
                 groupGrid.classList.add("collapsed");
-              }, 400); // Match CSS transition time
+              }, 400); // Match your CSS transition time
             } else {
-              // Expand
+              // Expand group
               groupGrid.classList.remove("collapsed");
               groupGrid.style.transform = "scaleY(0)";
               groupGrid.style.opacity = "0";
@@ -381,6 +406,10 @@
       }
 
       loadWavFiles();
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        const value = e.target.value.trim();
+        displayGroups(soundMeta, value);
+      });
     </script>
   </body>
 </html>

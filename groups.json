@@ -841,7 +841,7 @@
   },
   "imported_wavs/Dog Ear radar_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
-    "name": "Dog Ear radar Search",
+    "name": "Dog Ear EWR Search",
     "description": "",
     "hidden": false
   },
@@ -849,7 +849,7 @@
     "group": "Early Warning Radar (Soviet)",
     "name": "Dog Ear radar Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Don_2_SEARCH.wav": {
     "group": "Ungrouped",
@@ -933,13 +933,13 @@
     "group": "SAM Radar (Chinese)",
     "name": "HQ-7 SR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/HQ-7 TR_SEARCH.wav": {
     "group": "SAM Radar (Chinese)",
     "name": "HQ-7 TR Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/HQ-7 TR_TRACK.wav": {
     "group": "SAM Radar (Chinese)",
@@ -1190,26 +1190,26 @@
   "imported_wavs/Mys-M1_SR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "Mys-M1_SR Search",
-    "description": "",
-    "hidden": false
+    "description": "Tor-M1 SR **Not Used**",
+    "hidden": true
   },
   "imported_wavs/Mys-M1_SR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "Mys-M1_SR Track",
-    "description": "",
-    "hidden": false
+    "description": "Tor-M1 SR **Not Used**",
+    "hidden": true
   },
   "imported_wavs/N-001_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-001 Search",
-    "description": "",
-    "hidden": false
+    "description": "N-001 **Overwritten**",
+    "hidden": true
   },
   "imported_wavs/N-001_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "N-001 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/N-005_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
@@ -1549,26 +1549,26 @@
   },
   "imported_wavs/RP_5_search_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "RP_5_search Search",
-    "description": "",
+    "name": "RP-5 Search",
+    "description": "MiG-19P Radar",
     "hidden": false
   },
   "imported_wavs/RP_5_search_TRACK.wav": {
     "group": "Air Radar (Soviet)",
     "name": "RP_5_search Track",
-    "description": "",
-    "hidden": false
+    "description": "MiG-19P Radar",
+    "hidden": true
   },
   "imported_wavs/RP_5_track_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "RP_5_track Search",
-    "description": "",
-    "hidden": false
+    "description": "MiG-19P Radar",
+    "hidden": true
   },
   "imported_wavs/RP_5_track_TRACK.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "RP_5_track Track",
-    "description": "",
+    "name": "RP-5 Track",
+    "description": "MiG-19P Radar",
     "hidden": false
   },
   "imported_wavs/RQ-1 Predator SAR_SEARCH.wav": {
@@ -1752,40 +1752,40 @@
     "hidden": false
   },
   "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Scrum_Half_Search_1 Search",
-    "description": "",
+    "group": "SAM Radar (Soviet)",
+    "name": "Scrum Search",
+    "description": "SA-15 Gauntlet Search Radar",
     "hidden": false
   },
   "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "Scrum_Half_Search_1 Track",
-    "description": "",
-    "hidden": false
+    "description": "SA-15 Gauntlet Search Radar",
+    "hidden": true
   },
   "imported_wavs/Scrum_Half_Search_2_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "Scrum_Half_Search_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Scrum_Half_Search_2_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "Scrum_Half_Search_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Scrum_Half_Search_3_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "Scrum_Half_Search_3 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Scrum_Half_Search_3_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "Scrum_Half_Search_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Shmel_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1923,12 +1923,12 @@
     "group": "SAM Radar (Soviet)",
     "name": "Tor 9A331 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "Tor 9A331 Track",
-    "description": "",
+    "name": "SA-15 Gauntlet Tor 9A331 Track",
+    "description": "SA-15 Gauntlet Tor Track Radar",
     "hidden": false
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
@@ -2175,13 +2175,13 @@
     "group": "Ungrouped",
     "name": "VIRTUAL_AUDIO_SENSOR Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_TRACK.wav": {
     "group": "Ungrouped",
     "name": "VIRTUAL_AUDIO_SENSOR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
     "group": "Ungrouped",
@@ -2235,7 +2235,7 @@
     "group": "SAM Radar (Soviet)",
     "name": "SA-2 RD-75 Amazonka Search",
     "description": "SA-2 Rangefinding Radar Search (Same as Track)",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/amazonka_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
