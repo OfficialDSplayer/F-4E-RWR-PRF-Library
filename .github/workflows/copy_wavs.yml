@@ -11,9 +11,9 @@ jobs:
       - name: Checkout target repo (F-4E-RWR-PRF-Library)
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Git credentials for cloning
+      - name: Setup Git credentials for cloning source
         run: |
           git config --global url."https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
@@ -32,15 +32,28 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
+          # Get latest commit message from DCS-Datamine-Raw-Files
+          cd source-repo
+          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          cd ..
+
+          # Get current UTC timestamp
+          COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          # Create final commit message
+          FINAL_COMMIT_MSG="$LATEST_COMMIT_MSG (Synced on $COMMIT_TIMESTAMP)"
+
+          echo "Final commit message will be: $FINAL_COMMIT_MSG"
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           if [ -n "$(git status --porcelain)" ]; then
             git add imported_wavs
-            git commit -m "Update imported .wav files from DCS-Datamine-Raw-Files"
+            git commit -m "$FINAL_COMMIT_MSG"
             git push
           else
-            echo "No changes to commit."
+            echo "⚠️ No changes to commit."
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
