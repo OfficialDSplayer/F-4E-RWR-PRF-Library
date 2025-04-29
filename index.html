@@ -70,7 +70,18 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
         margin-bottom: 20px;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform-origin: top;
+        opacity: 1;
+        transform: scaleY(1);
       }
+
+      .audio-grid.collapsed {
+        transform: scaleY(0);
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .audio-card {
         background: var(--card-bg);
         padding: 15px;
@@ -300,7 +311,23 @@
           }
 
           groupTitle.addEventListener("click", () => {
-            groupGrid.classList.toggle("collapsed");
+            if (!groupGrid.classList.contains("collapsed")) {
+              // Collapse
+              groupGrid.style.transform = "scaleY(0)";
+              groupGrid.style.opacity = "0";
+              setTimeout(() => {
+                groupGrid.classList.add("collapsed");
+              }, 400); // Match CSS transition time
+            } else {
+              // Expand
+              groupGrid.classList.remove("collapsed");
+              groupGrid.style.transform = "scaleY(0)";
+              groupGrid.style.opacity = "0";
+              requestAnimationFrame(() => {
+                groupGrid.style.transform = "scaleY(1)";
+                groupGrid.style.opacity = "1";
+              });
+            }
           });
 
           audioList.appendChild(groupTitle);
