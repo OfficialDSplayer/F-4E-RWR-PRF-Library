@@ -11,7 +11,7 @@ jobs:
       - name: Checkout target repo (F-4E-RWR-PRF-Library)
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Setup Git credentials for cloning source
         run: |
@@ -29,32 +29,27 @@ jobs:
       - name: Copy .wav files
         run: |
           cp source-repo/Mods/aircraft/F-4E/Sounds/Effects/Aircrafts/RHAW/radars/*.wav imported_wavs/
+          # Immediately remove the source repo to avoid git issues
+          rm -rf source-repo
 
       - name: Commit and Push Changes
         run: |
           # Get latest commit message from DCS-Datamine-Raw-Files
-          cd source-repo
-          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
-          cd ..
-      
+          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s" --source-repo)
+
           # Get current UTC timestamp
           COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           
           # Create final commit message
           FINAL_COMMIT_MSG="$LATEST_COMMIT_MSG (Synced on $COMMIT_TIMESTAMP)"
-      
+
           echo "Final commit message will be: $FINAL_COMMIT_MSG"
-      
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-      
-          # Ignore the cloned source repo
-          echo "source-repo/" >> .gitignore
-      
-          # Stage everything we care about
-          git add imported_wavs .gitignore
-      
-          # Only commit if there are changes
+
+          git add imported_wavs
+
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
           else
