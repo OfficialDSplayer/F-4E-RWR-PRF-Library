@@ -198,6 +198,7 @@
               group: meta.group,
               name: meta.name,
               description: meta.description,
+              hidden: meta.hidden || false,
             });
 
             const fetchResponse = await fetch(file);
@@ -234,6 +235,8 @@
           groupGrid.className = "audio-grid";
 
           for (const sound of grouped[groupName]) {
+            if (sound.hidden) continue;
+
             const card = document.createElement("div");
             card.className = "audio-card";
 

@@ -40,40 +40,43 @@ jobs:
           if [ ! -f groups.json ]; then
             echo "{}" > groups.json
           fi
-      
+
           python3 -c "
           import json
           from pathlib import Path
-          
+
           with open('wav_list.json') as f:
               wav_files = json.load(f)
-          
+
           groups_path = Path('groups.json')
           groups = {}
           if groups_path.exists():
               with groups_path.open() as f:
                   groups = json.load(f)
-          
+
           updated = False
           for wav in wav_files:
-              if wav not in groups:
-                  groups[wav] = {
-                      'group': 'Ungrouped',
-                      'name': Path(wav).stem,
-                      'description': ''
-                  }
-                  updated = True
-              else:
-                  # Fill in missing description if someone deleted it
-                  if 'description' not in groups[wav]:
-                      groups[wav]['description'] = ''
-                      updated = True
-          
+            if wav not in groups:
+                groups[wav] = {
+                    'group': 'Ungrouped',
+                    'name': Path(wav).stem,
+                    'description': 'Add a description here',
+                    'hidden': False
+                }
+                updated = True
+            else:
+                # Fill missing fields
+                if 'description' not in groups[wav]:
+                    groups[wav]['description'] = 'Add a description here'
+                    updated = True
+                if 'hidden' not in groups[wav]:
+                    groups[wav]['hidden'] = False
+                    updated = True
+
           if updated:
               with groups_path.open('w') as f:
                   json.dump(groups, f, indent=2)
           "
-
 
       - name: Commit and Push Changes
         run: |
