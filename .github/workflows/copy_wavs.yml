@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: Checkout target repo (F-4E-RWR-PRF-Library)
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Setup Git credentials for cloning
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
       - name: Clone source repo (DCS-Datamine-Raw-Files)
         run: |
