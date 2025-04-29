@@ -60,13 +60,13 @@
     "hidden": false
   },
   "imported_wavs/2S6 Tunguska_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "2S6 Tunguska Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "2S6 Tunguska Track",
     "description": "",
     "hidden": false
@@ -135,7 +135,7 @@
     "group": "Missiles",
     "name": "AIM-120 Seeker Search",
     "description": "AIM-120B/C Search (Same as Track)",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
     "group": "Missiles",
@@ -147,7 +147,7 @@
     "group": "Missiles",
     "name": "AIM-54 Seeker Search",
     "description": "AIM-54A/C Search (Same as Track)",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
     "group": "Missiles",
@@ -156,112 +156,112 @@
     "hidden": false
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-63 Search",
     "description": "F-15C Radar (Search)",
     "hidden": false
   },
   "imported_wavs/AN_APG-63_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-63 Track",
     "description": "F-15C Radar (Track)",
     "hidden": false
   },
   "imported_wavs/AN_APG-68_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-68 Search",
     "description": "F-16C Radar (Search)",
     "hidden": false
   },
   "imported_wavs/AN_APG-68_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-68 Track",
     "description": "F-16C Radar (Track)",
     "hidden": false
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-71 Search",
     "description": "F-14A/B Radar (Search)",
     "hidden": false
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-71 Track",
     "description": "F-14A/B Radar (Track)",
     "hidden": false
   },
   "imported_wavs/AN_APG-73_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-73 Search",
     "description": "F/A-18C Radar (Search)",
     "hidden": false
   },
   "imported_wavs/AN_APG-73_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-73 Track",
     "description": "F/A-18C Radar (Track)",
     "hidden": false
   },
   "imported_wavs/AN_APG-78_SEARCH.wav": {
-    "group": "NATO Air Radars",
-    "name": "AN/APG-78 Search",
-    "description": "",
+    "group": "Air Radar (NATO)",
+    "name": "AN/APG-78 Longbow Search",
+    "description": "AH-64D Longbow Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-78_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-78 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APG_70_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-70 Search",
     "description": "F-15E Radar (Search)",
     "hidden": false
   },
   "imported_wavs/AN_APG_70_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APG-70 Track",
     "description": "F-15E Radar (Track)",
     "hidden": false
   },
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-120 Search",
     "description": "F-4E Radar Search (Same as Track)",
     "hidden": false
   },
   "imported_wavs/AN_APQ-120_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-120 Track",
     "description": "F-4E Radar Track (Same as Search)",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APQ-153_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-153 Search",
-    "description": "",
+    "description": "F-5E Radar Search (Same as Track)",
     "hidden": false
   },
   "imported_wavs/AN_APQ-153_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-153 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APQ-159_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-159 Search",
-    "description": "",
+    "description": "F-5E-3 Radar Search (Same as Track)",
     "hidden": false
   },
   "imported_wavs/AN_APQ-159_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "AN/APQ-159 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APS-137_SEARCH.wav": {
     "group": "Ungrouped",
@@ -708,13 +708,13 @@
     "hidden": false
   },
   "imported_wavs/Big_bird_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Big_bird Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Big_bird_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Big_bird Track",
     "description": "",
     "hidden": false
@@ -732,52 +732,52 @@
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
-    "name": "C_RAM_Phalanx Search",
+    "group": "Anti-Aircraft Artillery (NATO)",
+    "name": "C-RAM Phalanx Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
-    "name": "C_RAM_Phalanx Track",
+    "group": "Anti-Aircraft Artillery (NATO)",
+    "name": "C-RAM Phalanx Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_Track Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_Track Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_search_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_search_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_search_3 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C_RAM_Phalanx_search_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
     "group": "Ungrouped",
@@ -840,13 +840,13 @@
     "hidden": false
   },
   "imported_wavs/Dog Ear radar_SEARCH.wav": {
-    "group": "Soviet Early Warning Radar",
+    "group": "Early Warning Radar (Soviet)",
     "name": "Dog Ear radar Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Dog Ear radar_TRACK.wav": {
-    "group": "Soviet Early Warning Radar",
+    "group": "Early Warning Radar (Soviet)",
     "name": "Dog Ear radar Track",
     "description": "",
     "hidden": false
@@ -864,28 +864,28 @@
     "hidden": false
   },
   "imported_wavs/FPS-117_SEARCH.wav": {
-    "group": "NATO Early Warning Radar",
+    "group": "Early Warning Radar (NATO)",
     "name": "FPS-117 Search",
-    "description": "",
-    "hidden": false
+    "description": "FPS-117 EWR **Overriden Radar**",
+    "hidden": true
   },
   "imported_wavs/FPS-117_TRACK.wav": {
-    "group": "NATO Early Warning Radar",
+    "group": "Early Warning Radar (NATO)",
     "name": "FPS-117 Track",
-    "description": "",
-    "hidden": false
+    "description": "FPS-117 EWR **Overriden Radar**",
+    "hidden": true
   },
   "imported_wavs/FPS_117_SEARCH.wav": {
-    "group": "NATO Early Warning Radar",
-    "name": "FPS_117 Search",
-    "description": "",
+    "group": "Early Warning Radar (NATO)",
+    "name": "FPS-117 Search",
+    "description": "FPS-117 EWR",
     "hidden": false
   },
   "imported_wavs/FPS_117_TRACK.wav": {
-    "group": "NATO Early Warning Radar",
+    "group": "Early Warning Radar (NATO)",
     "name": "FPS_117 Track",
-    "description": "",
-    "hidden": false
+    "description": "FPS-117 EWR",
+    "hidden": true
   },
   "imported_wavs/Front_Dome_SEARCH.wav": {
     "group": "Ungrouped",
@@ -900,85 +900,85 @@
     "hidden": false
   },
   "imported_wavs/Gepard_SEARCH.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "Gepard Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Gepard_TRACK.wav": {
-    "group": "NATO Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (NATO)",
     "name": "Gepard Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
-    "group": "Redfor Air Radars",
+    "group": "Air Radar (Chinese)",
     "name": "H-6J RADAR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/H-6J RADAR_TRACK.wav": {
-    "group": "Redfor Air Radars",
+    "group": "Air Radar (Chinese)",
     "name": "H-6J RADAR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
-    "group": "Chinese SAM Radar",
+    "group": "SAM Radar (Chinese)",
     "name": "HQ-7 SR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/HQ-7 SR_TRACK.wav": {
-    "group": "Chinese SAM Radar",
+    "group": "SAM Radar (Chinese)",
     "name": "HQ-7 SR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/HQ-7 TR_SEARCH.wav": {
-    "group": "Chinese SAM Radar",
+    "group": "SAM Radar (Chinese)",
     "name": "HQ-7 TR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/HQ-7 TR_TRACK.wav": {
-    "group": "Chinese SAM Radar",
+    "group": "SAM Radar (Chinese)",
     "name": "HQ-7 TR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk sr_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk sr Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk sr_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk sr Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk tr_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk tr Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk tr Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk_cwar_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk_cwar Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Hawk_cwar_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Hawk_cwar Track",
     "description": "",
     "hidden": false
@@ -1044,13 +1044,13 @@
     "hidden": false
   },
   "imported_wavs/KLJ-7_SEARCH.wav": {
-    "group": "Redfor Air Radars",
+    "group": "Air Radar (Chinese)",
     "name": "KLJ-7 Search",
     "description": "JF-17 Radar (Search)",
     "hidden": false
   },
   "imported_wavs/KLJ-7_TRACK.wav": {
-    "group": "Redfor Air Radars",
+    "group": "Air Radar (Chinese)",
     "name": "KLJ-7 Track",
     "description": "JF-17 Radar (Track)",
     "hidden": false
@@ -1080,13 +1080,13 @@
     "hidden": false
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Kub 1S91 str Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Kub 1S91 str Track",
     "description": "",
     "hidden": false
@@ -1188,109 +1188,109 @@
     "hidden": false
   },
   "imported_wavs/Mys-M1_SR_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Mys-M1_SR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Mys-M1_SR_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Mys-M1_SR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-001_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-001 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-001_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-001 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-005_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-005 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-005_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-005 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-008_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-008 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-008_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-008 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-011M_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-011M Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-011M_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-011M Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-019M_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-019M Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-019M_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-019M Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-019_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-019 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N-019_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N-019 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "NASAMS_Radar_MPQ64F1 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "NASAMS_Radar_MPQ64F1 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N_001_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N_001 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/N_001_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "N_001 Track",
     "description": "",
     "hidden": false
@@ -1430,38 +1430,38 @@
   "imported_wavs/R-77_Seeker_SEARCH.wav": {
     "group": "Missiles",
     "name": "R-77 Seeker Search",
-    "description": "",
-    "hidden": false
+    "description": "R-77 Missile",
+    "hidden": true
   },
   "imported_wavs/R-77_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "R-77 Seeker Track",
-    "description": "",
+    "description": "R-77 Track (Same as Search)",
     "hidden": false
   },
   "imported_wavs/RDI_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "RDI Search",
-    "description": "",
+    "description": "Mirage 2000C Search",
     "hidden": false
   },
   "imported_wavs/RDI_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "RDI Track",
-    "description": "",
+    "description": "Mirage 2000C Track",
     "hidden": false
   },
   "imported_wavs/RDY_SEARCH.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "RDY Search",
-    "description": "",
+    "description": "Mirage F1Cx/F1Ex Radar Search (Same as Track)",
     "hidden": false
   },
   "imported_wavs/RDY_TRACK.wav": {
-    "group": "NATO Air Radars",
+    "group": "Air Radar (NATO)",
     "name": "RDY Track",
-    "description": "",
-    "hidden": false
+    "description": "Mirage F1Cx/F1Ex Radar Track (Same as Search)",
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1524,49 +1524,49 @@
     "hidden": false
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "RPC S-200 TR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "RPC S-200 TR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_22SMA Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_22SMA_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_22SMA Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_5_search_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_5_search Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_5_search_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_5_search Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_5_track_SEARCH.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_5_track Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/RP_5_track_TRACK.wav": {
-    "group": "Soviet Air Radar",
+    "group": "Air Radar (Soviet)",
     "name": "RP_5_track Track",
     "description": "",
     "hidden": false
@@ -1584,25 +1584,25 @@
     "hidden": false
   },
   "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Rapier_Blindfire Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Rapier_Blindfire_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Rapier_Blindfire Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Rapier_Dagger_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Rapier_Dagger Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Rapier_Dagger_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Rapier_Dagger Track",
     "description": "",
     "hidden": false
@@ -1620,37 +1620,37 @@
     "hidden": false
   },
   "imported_wavs/Roland ADS_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland ADS Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Roland ADS_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland ADS Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Roland Radar_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland Radar Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Roland Radar_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland Radar Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland_MPDR_16 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Roland_MPDR_16_TRACK.wav": {
-    "group": "NATO SAM Radar",
+    "group": "SAM Radar (NATO)",
     "name": "Roland_MPDR_16 Track",
     "description": "",
     "hidden": false
@@ -1680,31 +1680,31 @@
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 40B6M tr Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 40B6M tr Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 40B6MD sr Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 40B6MD sr Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "S-300PS 64H6E sr Search",
     "description": "",
     "hidden": false
@@ -1722,31 +1722,31 @@
     "hidden": false
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk SR 9S18M1 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk TR Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-11 Buk TR Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA_11_Snow_Drift Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA_11_Snow_Drift Track",
     "description": "",
     "hidden": false
@@ -1920,13 +1920,13 @@
     "hidden": false
   },
   "imported_wavs/Tor 9A331_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Tor 9A331 Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "Tor 9A331 Track",
     "description": "",
     "hidden": false
@@ -2196,13 +2196,13 @@
     "hidden": false
   },
   "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
-    "group": "Soviet Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (Soviet)",
     "name": "ZSU-23-4 Shilka Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/ZSU-23-4 Shilka_TRACK.wav": {
-    "group": "Soviet Anti-Aircraft Artillery",
+    "group": "Anti-Aircraft Artillery (Soviet)",
     "name": "ZSU-23-4 Shilka Track",
     "description": "",
     "hidden": false
@@ -2232,13 +2232,13 @@
     "hidden": false
   },
   "imported_wavs/amazonka_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-2 RD-75 Amazonka Search",
     "description": "SA-2 Rangefinding Radar Search (Same as Track)",
     "hidden": false
   },
   "imported_wavs/amazonka_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-2 RD-75 Amazonka Track",
     "description": "SA-2 Rangefinding Radar Track (Same as Search)",
     "hidden": false
@@ -2256,13 +2256,13 @@
     "hidden": false
   },
   "imported_wavs/fan_song_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-2 Fan Song Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/fan_song_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-2 Fan Song Track",
     "description": "",
     "hidden": false
@@ -2304,28 +2304,28 @@
     "hidden": false
   },
   "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "p-19 s-125 sr Search",
-    "description": "",
+    "group": "Soviet SAM Search Radar (Soviet)",
+    "name": "S-125 Flat Face Search",
+    "description": "SA-2/3/5 Flat Face Search Radar",
     "hidden": false
   },
   "imported_wavs/p-19 s-125 sr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Search Radar (Soviet)",
     "name": "p-19 s-125 sr Track",
-    "description": "",
-    "hidden": false
+    "description": "SA-2/3/5 Flat Face Track (Same as Search)",
+    "hidden": true
   },
   "imported_wavs/p_19_beam_2_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "p_19_beam_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/p_19_beam_2_TRACK.wav": {
     "group": "Ungrouped",
     "name": "p_19_beam_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/perry search radar_SEARCH.wav": {
     "group": "Ungrouped",
@@ -2364,37 +2364,37 @@
     "hidden": false
   },
   "imported_wavs/sa_6_TR_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-6 TR Search",
     "description": "SA-6 Track Radar (Search)",
     "hidden": false
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-6 TR Track",
     "description": "SA-6 Track Radar (Track)",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_high Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_high_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_high Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_low Search",
     "description": "",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "sa_8_Search_low Track",
     "description": "",
     "hidden": false
@@ -2412,13 +2412,13 @@
     "hidden": false
   },
   "imported_wavs/snr s-125 tr_SEARCH.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-3 Goa TR Search",
     "description": "SA-3 Goa Track Radar (Search)",
     "hidden": false
   },
   "imported_wavs/snr s-125 tr_TRACK.wav": {
-    "group": "Soviet SAM Radar",
+    "group": "SAM Radar (Soviet)",
     "name": "SA-3 Goa TR Track",
     "description": "SA-3 Goa Track Radar (Track)",
     "hidden": false

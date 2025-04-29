@@ -174,12 +174,12 @@
           gainNode = audioContext.createGain();
           gainNode.connect(audioContext.destination);
 
+          // Default volume of 50%
           const volumeSlider = document.getElementById("volume-slider");
           const savedVolume = localStorage.getItem("volumeLevel");
-          if (savedVolume !== null) {
-            volumeSlider.value = savedVolume;
-            gainNode.gain.setValueAtTime(parseInt(savedVolume) / 100, audioContext.currentTime);
-          }
+          const initialVolume = savedVolume !== null ? parseInt(savedVolume) : 50;
+          volumeSlider.value = initialVolume;
+          gainNode.gain.setValueAtTime(initialVolume / 100, audioContext.currentTime);
 
           volumeSlider.addEventListener("input", function () {
             const volume = parseInt(this.value) / 100;
@@ -227,6 +227,12 @@
         }
 
         for (const groupName of Object.keys(grouped).sort()) {
+          // First: filter visible sounds in this group
+          const visibleSounds = grouped[groupName].filter((sound) => !sound.hidden);
+
+          // If no visible sounds, skip this group
+          if (visibleSounds.length === 0) continue;
+
           const groupTitle = document.createElement("h2");
           groupTitle.className = "group-title";
           groupTitle.textContent = groupName;
@@ -234,9 +240,7 @@
           const groupGrid = document.createElement("div");
           groupGrid.className = "audio-grid";
 
-          for (const sound of grouped[groupName]) {
-            if (sound.hidden) continue;
-
+          for (const sound of visibleSounds) {
             const card = document.createElement("div");
             card.className = "audio-card";
 
