@@ -21,21 +21,29 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/OfficialDSplayer/DCS-Datamine-Raw-Files.git source-repo
 
-      - name: Clean old WAV files
+      - name: Copy .wav files and Save Commit Message
         run: |
+          # Capture latest commit message BEFORE deleting source-repo
+          cd source-repo
+          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          cd ..
+
+          echo "$LATEST_COMMIT_MSG" > latest_commit_msg.txt
+
+          # Clean old WAV files
           rm -rf imported_wavs
           mkdir -p imported_wavs
 
-      - name: Copy .wav files
-        run: |
+          # Copy WAV files
           cp source-repo/Mods/aircraft/F-4E/Sounds/Effects/Aircrafts/RHAW/radars/*.wav imported_wavs/
-          # Immediately remove the source repo to avoid git issues
+
+          # Remove the source-repo to avoid untracked files
           rm -rf source-repo
 
       - name: Commit and Push Changes
         run: |
-          # Get latest commit message from DCS-Datamine-Raw-Files
-          LATEST_COMMIT_MSG=$(git log -1 --pretty=format:"%s" --source-repo)
+          # Load latest commit message
+          LATEST_COMMIT_MSG=$(cat latest_commit_msg.txt)
 
           # Get current UTC timestamp
           COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
@@ -57,4 +65,4 @@ jobs:
             git push
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
