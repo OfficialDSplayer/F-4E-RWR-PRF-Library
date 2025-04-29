@@ -5,11 +5,29 @@
   <title>F-4E RWR PRF Sound Library</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg-color: #f5f5f5;
+      --text-color: #000;
+      --card-bg: #fff;
+      --card-text: #000;
+      --highlight: #666;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --card-bg: #1e1e1e;
+      --card-text: #f0f0f0;
+      --highlight: #aaa;
+    }
+
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-color: #f5f5f5;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
     h1, h2, h3, h4 {
       text-align: center;
@@ -26,24 +44,26 @@
       margin-bottom: 20px;
     }
     .audio-card {
-      background: white;
+      background: var(--card-bg);
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background 0.3s;
     }
     .file-name {
       font-weight: bold;
       margin-bottom: 5px;
       text-align: center;
       font-size: 1rem;
+      color: var(--card-text);
     }
     .file-description {
       font-size: 0.9em;
       text-align: center;
-      color: #666;
+      color: var(--highlight);
       margin-bottom: 8px;
     }
     .button-group {
@@ -101,6 +121,7 @@
   <div class="controls">
     <button class="global-button" onclick="playAll()">Play All</button>
     <button class="global-button" onclick="stopAll()">Stop All</button>
+    <button class="global-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     <div class="volume-control">
       <label for="volume-slider">Volume:</label>
       <input type="range" id="volume-slider" min="0" max="100" value="100">
@@ -118,6 +139,20 @@
     let soundBuffers = {};
     let groupsData = {};
     let soundMeta = [];
+
+    // Detect system dark mode preference initially
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    function toggleDarkMode() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
 
     async function loadWavFiles() {
       try {
