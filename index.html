@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>F-4E RWR PRF Library</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .audio-file {
+      margin-bottom: 20px;
+    }
+    .file-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>F-4E RWR PRF Sound Library</h1>
+  <div id="audio-list">
+    Loading sound files...
+  </div>
+
+  <script>
+    async function loadWavFiles() {
+      try {
+        const response = await fetch('wav_list.json');
+        const wavFiles = await response.json();
+        const audioList = document.getElementById('audio-list');
+        audioList.innerHTML = '';
+
+        wavFiles.forEach(file => {
+          const div = document.createElement('div');
+          div.className = 'audio-file';
+
+          const name = document.createElement('div');
+          name.className = 'file-name';
+          name.textContent = file.split('/').pop(); // Just filename
+
+          const audio = document.createElement('audio');
+          audio.controls = true;
+          audio.src = file;
+
+          div.appendChild(name);
+          div.appendChild(audio);
+          audioList.appendChild(div);
+        });
+      } catch (error) {
+        console.error('Error loading wav_list.json:', error);
+        document.getElementById('audio-list').textContent = 'Failed to load sounds.';
+      }
+    }
+
+    loadWavFiles();
+  </script>
+</body>
+</html>
