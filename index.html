@@ -9,10 +9,15 @@
       font-family: Arial, sans-serif;
       padding: 20px;
       background-color: #f5f5f5;
+      margin: 0;
     }
     h1 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 20px;
     }
     .audio-grid {
       display: grid;
@@ -53,26 +58,63 @@
       background-color: #f44336;
       color: white;
     }
-    #audio-list {
-      margin-top: 20px;
+    .global-button {
+      background-color: #2196F3;
+      color: white;
+      margin: 5px;
+    }
+    .volume-control {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    input[type="range"] {
+      width: 200px;
     }
   </style>
 </head>
 <body>
   <h1>F-4E RWR PRF Sound Library</h1>
+
+  <div class="controls">
+    <button class="global-button" onclick="playAll()">Play All</button>
+    <button class="global-button" onclick="stopAll()">Stop All</button>
+    <div class="volume-control">
+      <label for="volume-slider">Volume:</label>
+      <input type="range" id="volume-slider" min="0" max="100" value="100">
+    </div>
+  </div>
+
   <div id="audio-list" class="audio-grid">
     Loading sounds...
   </div>
 
   <script>
+    let playingSources = [];
+    let audioContext;
+    let gainNode;
+
     async function loadWavFiles() {
       try {
         const response = await fetch('wav_list.json');
-        const wavFiles = await response.json();
+        let wavFiles = await response.json();
+
+        wavFiles.sort((a, b) => a.localeCompare(b)); // Alphabetical sort
+
         const audioList = document.getElementById('audio-list');
         audioList.innerHTML = '';
 
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        gainNode = audioContext.createGain();
+        gainNode.connect(audioContext.destination);
+
+        const volumeSlider = document.getElementById('volume-slider');
+        volumeSlider.addEventListener('input', function() {
+          const volume = parseInt(this.value) / 100;
+          gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+        });
 
         for (const file of wavFiles) {
           const card = document.createElement('div');
@@ -80,7 +122,7 @@
 
           const name = document.createElement('div');
           name.className = 'file-name';
-          name.textContent = file.split('/').pop(); // Show just file name
+          name.textContent = file.split('/').pop();
 
           const buttonGroup = document.createElement('div');
           buttonGroup.className = 'button-group';
@@ -97,7 +139,6 @@
 
           async function startLoop() {
             if (sourceNode) return; // Already playing
-
             const fetchResponse = await fetch(file);
             const arrayBuffer = await fetchResponse.arrayBuffer();
             const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
@@ -105,14 +146,16 @@
             sourceNode = audioContext.createBufferSource();
             sourceNode.buffer = audioBuffer;
             sourceNode.loop = true;
-            sourceNode.connect(audioContext.destination);
+            sourceNode.connect(gainNode);
             sourceNode.start(0);
+            playingSources.push(sourceNode);
           }
 
           function stopLoop() {
             if (sourceNode) {
               sourceNode.stop();
               sourceNode.disconnect();
+              playingSources = playingSources.filter(src => src !== sourceNode);
               sourceNode = null;
             }
           }
@@ -130,6 +173,25 @@
         console.error('Error loading wav_list.json:', error);
         document.getElementById('audio-list').textContent = 'Failed to load sounds.';
       }
+    }
+
+    function stopAll() {
+      playingSources.forEach(source => {
+        if (source) {
+          try {
+            source.stop();
+            source.disconnect();
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      });
+      playingSources = [];
+    }
+
+    function playAll() {
+      stopAll();
+      document.querySelectorAll('.play-button').forEach(btn => btn.click());
     }
 
     loadWavFiles();
