@@ -43,9 +43,10 @@ jobs:
       - name: Generate wav_list.json
         run: |
           echo "[" > wav_list.json
-          find imported_wavs -name "*.wav" | sed 's/^/"/;s/$/",/' >> wav_list.json
+          find imported_wavs -name "*.wav" | sort | sed 's/^/"/;s/$/",/' >> wav_list.json
           sed -i '$ s/,$//' wav_list.json # Remove trailing comma
           echo "]" >> wav_list.json
+
 
       - name: Commit and Push Changes
         run: |
