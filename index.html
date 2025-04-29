@@ -1,319 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>F-4E RWR PRF Sound Library</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      --bg-color: #f5f5f5;
-      --text-color: #000;
-      --card-bg: #fff;
-      --card-text: #000;
-      --highlight: #666;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --card-bg: #1e1e1e;
-      --card-text: #f0f0f0;
-      --highlight: #aaa;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    h1, h2, h3, h4 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .controls {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .audio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .audio-card {
-      background: var(--card-bg);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: background 0.3s;
-    }
-    .file-name {
-      font-weight: bold;
-      margin-bottom: 5px;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--card-text);
-    }
-    .file-description {
-      font-size: 0.9em;
-      text-align: center;
-      color: var(--highlight);
-      margin-bottom: 8px;
-    }
-    .button-group {
-      display: flex;
-      gap: 10px;
-    }
-    button {
-      padding: 8px 14px;
-      font-size: 14px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .play-button {
-      background-color: #4CAF50;
-      color: white;
-    }
-    .stop-button {
-      background-color: #f44336;
-      color: white;
-    }
-    .global-button {
-      background-color: #2196F3;
-      color: white;
-      margin: 5px;
-    }
-    .volume-control {
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    input[type="range"] {
-      width: 200px;
-    }
-    .group-title {
-      font-size: 1.5em;
-      margin: 30px 0 10px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-    }
-    .collapsed {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>F-4E RWR PRF Sound Player</h1>
-  <h2>By DSplayer using sounds from the DCS Heatblur F-4E Module</h2>
-  <h3>Highly WIP!! Last updated 2025-04-29 (using DCS 2.9.15.9599)</h3>
-  <h4>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</h4>
-
-  <div class="controls">
-    <button class="global-button" onclick="playAll()">Play All</button>
-    <button class="global-button" onclick="stopAll()">Stop All</button>
-    <button class="global-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <div class="volume-control">
-      <label for="volume-slider">Volume:</label>
-      <input type="range" id="volume-slider" min="0" max="100" value="100">
-    </div>
-  </div>
-
-  <div id="audio-list">
-    Loading sounds...
-  </div>
-
-  <script>
-    let playingSources = [];
-    let audioContext;
-    let gainNode;
-    let soundBuffers = {};
-    let groupsData = {};
-    let soundMeta = [];
-
-    // Detect system dark mode preference initially
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
-    function toggleDarkMode() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
+  <head>
+    <meta charset="UTF-8" />
+    <title>F-4E RWR PRF Sound Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --bg-color: #f5f5f5;
+        --text-color: #000;
+        --card-bg: #fff;
+        --card-text: #000;
+        --highlight: #666;
       }
-    }
 
-    async function loadWavFiles() {
-      try {
-        const [wavListResponse, groupsResponse] = await Promise.all([
-          fetch('wav_list.json?v=' + Date.now()),
-          fetch('groups.json?v=' + Date.now())
-        ]);
-        let wavFiles = await wavListResponse.json();
-        groupsData = await groupsResponse.json();
+      [data-theme="dark"] {
+        --bg-color: #121212;
+        --text-color: #f0f0f0;
+        --card-bg: #1e1e1e;
+        --card-text: #f0f0f0;
+        --highlight: #aaa;
+      }
 
-        wavFiles.sort((a, b) => a.localeCompare(b));
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .controls {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .audio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .audio-card {
+        background: var(--card-bg);
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 0.3s;
+      }
+      .file-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+        font-size: 1rem;
+        color: var(--card-text);
+      }
+      .file-description {
+        font-size: 0.9em;
+        text-align: center;
+        color: var(--highlight);
+        margin-bottom: 8px;
+      }
+      .button-group {
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 8px 14px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .play-button {
+        background-color: #4caf50;
+        color: white;
+      }
+      .stop-button {
+        background-color: #f44336;
+        color: white;
+      }
+      .global-button {
+        background-color: #2196f3;
+        color: white;
+        margin: 5px;
+      }
+      .volume-control {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      input[type="range"] {
+        width: 200px;
+      }
+      .group-title {
+        font-size: 1.5em;
+        margin: 30px 0 10px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .collapsed {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>F-4E RWR PRF Sound Player</h1>
+    <hr class="solid" />
+    <h2>By DSplayer using sounds from the DCS Heatblur F-4E Module</h2>
+    <h3>Highly WIP!! Last updated 2025-04-29 (using DCS 2.9.15.9599)</h3>
+    <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        gainNode = audioContext.createGain();
-        gainNode.connect(audioContext.destination);
+    <div class="controls">
+      <button class="global-button" onclick="playAll()">Play All</button>
+      <button class="global-button" onclick="stopAll()">Stop All</button>
+      <button class="global-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+      <div class="volume-control">
+        <label for="volume-slider">Volume:</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="100" />
+      </div>
+    </div>
 
-        const volumeSlider = document.getElementById('volume-slider');
-        const savedVolume = localStorage.getItem('volumeLevel');
-        if (savedVolume !== null) {
-          volumeSlider.value = savedVolume;
-          gainNode.gain.setValueAtTime(parseInt(savedVolume) / 100, audioContext.currentTime);
+    <div id="audio-list">Loading sounds...</div>
+
+    <script>
+      let playingSources = [];
+      let audioContext;
+      let gainNode;
+      let soundBuffers = {};
+      let groupsData = {};
+      let soundMeta = [];
+
+      // Detect system dark mode preference initially
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+
+      function toggleDarkMode() {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        if (currentTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
         }
+      }
 
-        volumeSlider.addEventListener('input', function() {
-          const volume = parseInt(this.value) / 100;
-          gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
-          localStorage.setItem('volumeLevel', this.value);
-        });
+      async function loadWavFiles() {
+        try {
+          const [wavListResponse, groupsResponse] = await Promise.all([
+            fetch("wav_list.json?v=" + Date.now()),
+            fetch("groups.json?v=" + Date.now()),
+          ]);
+          let wavFiles = await wavListResponse.json();
+          groupsData = await groupsResponse.json();
 
-        for (const file of wavFiles) {
-          const meta = groupsData[file] || { group: "Other", name: file.split('/').pop(), description: "" };
-          soundMeta.push({
-            file,
-            group: meta.group,
-            name: meta.name,
-            description: meta.description
+          wavFiles.sort((a, b) => a.localeCompare(b));
+
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          gainNode = audioContext.createGain();
+          gainNode.connect(audioContext.destination);
+
+          const volumeSlider = document.getElementById("volume-slider");
+          const savedVolume = localStorage.getItem("volumeLevel");
+          if (savedVolume !== null) {
+            volumeSlider.value = savedVolume;
+            gainNode.gain.setValueAtTime(parseInt(savedVolume) / 100, audioContext.currentTime);
+          }
+
+          volumeSlider.addEventListener("input", function () {
+            const volume = parseInt(this.value) / 100;
+            gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+            localStorage.setItem("volumeLevel", this.value);
           });
 
-          const fetchResponse = await fetch(file);
-          const arrayBuffer = await fetchResponse.arrayBuffer();
-          const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-          soundBuffers[file] = audioBuffer;
+          for (const file of wavFiles) {
+            const meta = groupsData[file] || {
+              group: "Other",
+              name: file.split("/").pop(),
+              description: "",
+            };
+            soundMeta.push({
+              file,
+              group: meta.group,
+              name: meta.name,
+              description: meta.description,
+            });
+
+            const fetchResponse = await fetch(file);
+            const arrayBuffer = await fetchResponse.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            soundBuffers[file] = audioBuffer;
+          }
+
+          displayGroups(soundMeta);
+        } catch (error) {
+          console.error("Error loading JSON files:", error);
+          document.getElementById("audio-list").textContent = "Failed to load sounds.";
         }
-
-        displayGroups(soundMeta);
-
-      } catch (error) {
-        console.error('Error loading JSON files:', error);
-        document.getElementById('audio-list').textContent = 'Failed to load sounds.';
       }
-    }
 
-    function displayGroups(sounds) {
-      const audioList = document.getElementById('audio-list');
-      audioList.innerHTML = '';
+      function displayGroups(sounds) {
+        const audioList = document.getElementById("audio-list");
+        audioList.innerHTML = "";
 
-      const grouped = {};
-      for (const sound of sounds) {
-        if (!grouped[sound.group]) {
-          grouped[sound.group] = [];
+        const grouped = {};
+        for (const sound of sounds) {
+          if (!grouped[sound.group]) {
+            grouped[sound.group] = [];
+          }
+          grouped[sound.group].push(sound);
         }
-        grouped[sound.group].push(sound);
+
+        for (const groupName of Object.keys(grouped).sort()) {
+          const groupTitle = document.createElement("h2");
+          groupTitle.className = "group-title";
+          groupTitle.textContent = groupName;
+
+          const groupGrid = document.createElement("div");
+          groupGrid.className = "audio-grid";
+
+          for (const sound of grouped[groupName]) {
+            const card = document.createElement("div");
+            card.className = "audio-card";
+
+            const name = document.createElement("div");
+            name.className = "file-name";
+            name.textContent = sound.name;
+
+            const desc = document.createElement("div");
+            desc.className = "file-description";
+            desc.textContent = sound.description || "";
+
+            const buttonGroup = document.createElement("div");
+            buttonGroup.className = "button-group";
+
+            const playButton = document.createElement("button");
+            playButton.className = "play-button";
+            playButton.textContent = "Play";
+
+            const stopButton = document.createElement("button");
+            stopButton.className = "stop-button";
+            stopButton.textContent = "Stop";
+
+            playButton.onclick = () => startLoop(sound.file);
+            stopButton.onclick = () => stopLoop(sound.file);
+
+            buttonGroup.appendChild(playButton);
+            buttonGroup.appendChild(stopButton);
+            card.appendChild(name);
+            card.appendChild(desc);
+            card.appendChild(buttonGroup);
+            groupGrid.appendChild(card);
+          }
+
+          groupTitle.addEventListener("click", () => {
+            groupGrid.classList.toggle("collapsed");
+          });
+
+          audioList.appendChild(groupTitle);
+          audioList.appendChild(groupGrid);
+        }
       }
 
-      for (const groupName of Object.keys(grouped).sort()) {
-        const groupTitle = document.createElement('h2');
-        groupTitle.className = 'group-title';
-        groupTitle.textContent = groupName;
+      function startLoop(file) {
+        stopLoop(file);
+        const buffer = soundBuffers[file];
+        if (!buffer) return;
 
-        const groupGrid = document.createElement('div');
-        groupGrid.className = 'audio-grid';
+        const sourceNode = audioContext.createBufferSource();
+        sourceNode.buffer = buffer;
+        sourceNode.loop = true;
+        sourceNode.connect(gainNode);
+        sourceNode.start(0);
+        playingSources.push({ file, node: sourceNode });
+      }
 
-        for (const sound of grouped[groupName]) {
-          const card = document.createElement('div');
-          card.className = 'audio-card';
-
-          const name = document.createElement('div');
-          name.className = 'file-name';
-          name.textContent = sound.name;
-
-          const desc = document.createElement('div');
-          desc.className = 'file-description';
-          desc.textContent = sound.description || '';
-
-          const buttonGroup = document.createElement('div');
-          buttonGroup.className = 'button-group';
-
-          const playButton = document.createElement('button');
-          playButton.className = 'play-button';
-          playButton.textContent = 'Play';
-
-          const stopButton = document.createElement('button');
-          stopButton.className = 'stop-button';
-          stopButton.textContent = 'Stop';
-
-          playButton.onclick = () => startLoop(sound.file);
-          stopButton.onclick = () => stopLoop(sound.file);
-
-          buttonGroup.appendChild(playButton);
-          buttonGroup.appendChild(stopButton);
-          card.appendChild(name);
-          card.appendChild(desc);
-          card.appendChild(buttonGroup);
-          groupGrid.appendChild(card);
-        }
-
-        groupTitle.addEventListener('click', () => {
-          groupGrid.classList.toggle('collapsed');
+      function stopLoop(file) {
+        playingSources = playingSources.filter((src) => {
+          if (src.file === file) {
+            try {
+              src.node.stop();
+              src.node.disconnect();
+            } catch (e) {
+              console.error(e);
+            }
+            return false;
+          }
+          return true;
         });
-
-        audioList.appendChild(groupTitle);
-        audioList.appendChild(groupGrid);
       }
-    }
 
-    function startLoop(file) {
-      stopLoop(file);
-      const buffer = soundBuffers[file];
-      if (!buffer) return;
-
-      const sourceNode = audioContext.createBufferSource();
-      sourceNode.buffer = buffer;
-      sourceNode.loop = true;
-      sourceNode.connect(gainNode);
-      sourceNode.start(0);
-      playingSources.push({ file, node: sourceNode });
-    }
-
-    function stopLoop(file) {
-      playingSources = playingSources.filter(src => {
-        if (src.file === file) {
+      function stopAll() {
+        playingSources.forEach((src) => {
           try {
             src.node.stop();
             src.node.disconnect();
           } catch (e) {
             console.error(e);
           }
-          return false;
-        }
-        return true;
-      });
-    }
+        });
+        playingSources = [];
+      }
 
-    function stopAll() {
-      playingSources.forEach(src => {
-        try {
-          src.node.stop();
-          src.node.disconnect();
-        } catch (e) {
-          console.error(e);
-        }
-      });
-      playingSources = [];
-    }
+      function playAll() {
+        stopAll();
+        Object.keys(soundBuffers).forEach((file) => startLoop(file));
+      }
 
-    function playAll() {
-      stopAll();
-      Object.keys(soundBuffers).forEach(file => startLoop(file));
-    }
-
-    loadWavFiles();
-  </script>
-</body>
+      loadWavFiles();
+    </script>
+  </body>
 </html>

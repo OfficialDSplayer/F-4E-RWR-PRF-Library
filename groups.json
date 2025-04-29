@@ -111,22 +111,22 @@
   },
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "group": "Missiles",
-    "name": "AIM_120_Seeker Search",
+    "name": "AIM-120 Seeker Search",
     "description": "AIM-120B/C Search (Same as Track)"
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
     "group": "Missiles",
-    "name": "AIM_120_Seeker Track",
+    "name": "AIM-120 Seeker Track",
     "description": "AIM-120B/C Track (Same as Search)"
   },
   "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
     "group": "Missiles",
-    "name": "AIM_54_Seeker Search",
+    "name": "AIM-54 Seeker Search",
     "description": "AIM-54A/C Search (Same as Track)"
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
     "group": "Missiles",
-    "name": "AIM_54_Seeker Track",
+    "name": "AIM-54 Seeker Track",
     "description": "AIM-54A/C Track (Same as Search)"
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
@@ -192,12 +192,12 @@
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
     "group": "NATO Air Radars",
     "name": "AN/APQ-120 Search",
-    "description": ""
+    "description": "F-4E Radar Search (Same as Track)"
   },
   "imported_wavs/AN_APQ-120_TRACK.wav": {
     "group": "NATO Air Radars",
     "name": "AN/APQ-120 Track",
-    "description": ""
+    "description": "F-4E Radar Track (Same as Search)"
   },
   "imported_wavs/AN_APQ-153_SEARCH.wav": {
     "group": "NATO Air Radars",
