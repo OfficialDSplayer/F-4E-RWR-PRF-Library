@@ -1,0 +1,40 @@
+name: Copy WAV Files from DCS-Datamine-Raw-Files
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  copy-wav-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout target repo (F-4E-RWR-PRF-Library)
+        uses: actions/checkout@v4
+
+      - name: Clone source repo (DCS-Datamine-Raw-Files)
+        run: |
+          git clone --depth=1 https://github.com/OfficialDSplayer/DCS-Datamine-Raw-Files.git source-repo
+
+      - name: Clean old WAV files
+        run: |
+          rm -rf imported_wavs
+          mkdir -p imported_wavs
+
+      - name: Copy .wav files
+        run: |
+          cp source-repo/Mods/aircraft/F-4E/Sounds/Effects/Aircrafts/RHAW/radars/*.wav imported_wavs/
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add imported_wavs
+            git commit -m "Update imported .wav files from DCS-Datamine-Raw-Files"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
