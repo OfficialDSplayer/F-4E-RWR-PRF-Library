@@ -36,9 +36,15 @@
     }
     .file-name {
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       text-align: center;
       font-size: 1rem;
+    }
+    .file-description {
+      font-size: 0.9em;
+      text-align: center;
+      color: #666;
+      margin-bottom: 8px;
     }
     .button-group {
       display: flex;
@@ -111,12 +117,13 @@
     let gainNode;
     let soundBuffers = {};
     let groupsData = {};
+    let soundMeta = [];
 
     async function loadWavFiles() {
       try {
         const [wavListResponse, groupsResponse] = await Promise.all([
-          fetch('wav_list.json'),
-          fetch('groups.json')
+          fetch('wav_list.json?v=' + Date.now()),
+          fetch('groups.json?v=' + Date.now())
         ]);
         let wavFiles = await wavListResponse.json();
         groupsData = await groupsResponse.json();
@@ -140,19 +147,22 @@
           localStorage.setItem('volumeLevel', this.value);
         });
 
-        const groups = {};
-
         for (const file of wavFiles) {
-          const info = groupsData[file] || { group: "Other", name: file.split('/').pop() };
+          const meta = groupsData[file] || { group: "Other", name: file.split('/').pop(), description: "" };
+          soundMeta.push({
+            file,
+            group: meta.group,
+            name: meta.name,
+            description: meta.description
+          });
 
-          if (!groups[info.group]) {
-            groups[info.group] = [];
-          }
-
-          groups[info.group].push({ file, displayName: info.name });
+          const fetchResponse = await fetch(file);
+          const arrayBuffer = await fetchResponse.arrayBuffer();
+          const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+          soundBuffers[file] = audioBuffer;
         }
 
-        displayGroups(groups);
+        displayGroups(soundMeta);
 
       } catch (error) {
         console.error('Error loading JSON files:', error);
@@ -160,11 +170,19 @@
       }
     }
 
-    function displayGroups(groups) {
+    function displayGroups(sounds) {
       const audioList = document.getElementById('audio-list');
       audioList.innerHTML = '';
 
-      for (const groupName of Object.keys(groups).sort()) {
+      const grouped = {};
+      for (const sound of sounds) {
+        if (!grouped[sound.group]) {
+          grouped[sound.group] = [];
+        }
+        grouped[sound.group].push(sound);
+      }
+
+      for (const groupName of Object.keys(grouped).sort()) {
         const groupTitle = document.createElement('h2');
         groupTitle.className = 'group-title';
         groupTitle.textContent = groupName;
@@ -172,13 +190,17 @@
         const groupGrid = document.createElement('div');
         groupGrid.className = 'audio-grid';
 
-        for (const sound of groups[groupName]) {
+        for (const sound of grouped[groupName]) {
           const card = document.createElement('div');
           card.className = 'audio-card';
 
           const name = document.createElement('div');
           name.className = 'file-name';
-          name.textContent = sound.displayName;
+          name.textContent = sound.name;
+
+          const desc = document.createElement('div');
+          desc.className = 'file-description';
+          desc.textContent = sound.description || '';
 
           const buttonGroup = document.createElement('div');
           buttonGroup.className = 'button-group';
@@ -197,11 +219,11 @@
           buttonGroup.appendChild(playButton);
           buttonGroup.appendChild(stopButton);
           card.appendChild(name);
+          card.appendChild(desc);
           card.appendChild(buttonGroup);
           groupGrid.appendChild(card);
         }
 
-        // Setup collapse/expand behavior
         groupTitle.addEventListener('click', () => {
           groupGrid.classList.toggle('collapsed');
         });
