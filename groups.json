@@ -50,12 +50,12 @@
     "description": ""
   },
   "imported_wavs/2S6 Tunguska_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "2S6 Tunguska Search",
     "description": ""
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "2S6 Tunguska Track",
     "description": ""
   },
@@ -191,322 +191,322 @@
   },
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-120 Search",
+    "name": "AN/APQ-120 Search",
     "description": ""
   },
   "imported_wavs/AN_APQ-120_TRACK.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-120 Track",
+    "name": "AN/APQ-120 Track",
     "description": ""
   },
   "imported_wavs/AN_APQ-153_SEARCH.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-153 Search",
+    "name": "AN/APQ-153 Search",
     "description": ""
   },
   "imported_wavs/AN_APQ-153_TRACK.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-153 Track",
+    "name": "AN/APQ-153 Track",
     "description": ""
   },
   "imported_wavs/AN_APQ-159_SEARCH.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-159 Search",
+    "name": "AN/APQ-159 Search",
     "description": ""
   },
   "imported_wavs/AN_APQ-159_TRACK.wav": {
     "group": "NATO Air Radars",
-    "name": "AN_APQ-159 Track",
+    "name": "AN/APQ-159 Track",
     "description": ""
   },
   "imported_wavs/AN_APS-137_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-137 Search",
+    "name": "AN/APS-137 Search",
     "description": ""
   },
   "imported_wavs/AN_APS-137_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-137 Track",
+    "name": "AN/APS-137 Track",
     "description": ""
   },
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138_2 Search",
+    "name": "AN/APS-138_2 Search",
     "description": ""
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138_2 Track",
+    "name": "AN/APS-138_2 Track",
     "description": ""
   },
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138_3 Search",
+    "name": "AN/APS-138_3 Search",
     "description": ""
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138_3 Track",
+    "name": "AN/APS-138_3 Track",
     "description": ""
   },
   "imported_wavs/AN_APS-138_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138 Search",
+    "name": "AN/APS-138 Search",
     "description": ""
   },
   "imported_wavs/AN_APS-138_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-138 Track",
+    "name": "AN/APS-138 Track",
     "description": ""
   },
   "imported_wavs/AN_APS-142_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-142 Search",
+    "name": "AN/APS-142 Search",
     "description": ""
   },
   "imported_wavs/AN_APS-142_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS-142 Track",
+    "name": "AN/APS-142 Track",
     "description": ""
   },
   "imported_wavs/AN_APS_124_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS_124 Search",
+    "name": "AN/APS_124 Search",
     "description": ""
   },
   "imported_wavs/AN_APS_124_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APS_124 Track",
+    "name": "AN/APS_124 Track",
     "description": ""
   },
   "imported_wavs/AN_APY-1_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APY-1 Search",
+    "name": "AN/APY-1 Search",
     "description": ""
   },
   "imported_wavs/AN_APY-1_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APY-1 Track",
+    "name": "AN/APY-1 Track",
     "description": ""
   },
   "imported_wavs/AN_APY_1_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_APY_1 Search",
+    "name": "AN/APY_1 Search",
     "description": ""
   },
   "imported_wavs/AN_APY_1_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_APY_1 Track",
+    "name": "AN/APY_1 Track",
     "description": ""
   },
   "imported_wavs/AN_MPQ_53_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_MPQ_53 Search",
+    "name": "AN/MPQ_53 Search",
     "description": ""
   },
   "imported_wavs/AN_MPQ_53_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_MPQ_53 Track",
+    "name": "AN/MPQ_53 Track",
     "description": ""
   },
   "imported_wavs/AN_SPG_60_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPG_60 Search",
+    "name": "AN/SPG_60 Search",
     "description": ""
   },
   "imported_wavs/AN_SPG_60_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPG_60 Track",
+    "name": "AN/SPG_60 Track",
     "description": ""
   },
   "imported_wavs/AN_SPG_62_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPG_62 Search",
+    "name": "AN/SPG_62 Search",
     "description": ""
   },
   "imported_wavs/AN_SPG_62_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPG_62 Track",
+    "name": "AN/SPG_62 Track",
     "description": ""
   },
   "imported_wavs/AN_SPN_41_Az_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_41_Az Search",
+    "name": "AN/SPN_41_Az Search",
     "description": ""
   },
   "imported_wavs/AN_SPN_41_Az_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_41_Az Track",
+    "name": "AN/SPN_41_Az Track",
     "description": ""
   },
   "imported_wavs/AN_SPN_41_El_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_41_El Search",
+    "name": "AN/SPN_41_El Search",
     "description": ""
   },
   "imported_wavs/AN_SPN_41_El_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_41_El Track",
+    "name": "AN/SPN_41_El Track",
     "description": ""
   },
   "imported_wavs/AN_SPN_43C_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_43C Search",
+    "name": "AN/SPN_43C Search",
     "description": ""
   },
   "imported_wavs/AN_SPN_43C_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPN_43C Track",
+    "name": "AN/SPN_43C Track",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_1_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_1 Search",
+    "name": "AN/SPQ_9B_1 Search",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_1_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_1 Track",
+    "name": "AN/SPQ_9B_1 Track",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_2 Search",
+    "name": "AN/SPQ_9B_2 Search",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_2 Track",
+    "name": "AN/SPQ_9B_2 Track",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_3 Search",
+    "name": "AN/SPQ_9B_3 Search",
     "description": ""
   },
   "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPQ_9B_3 Track",
+    "name": "AN/SPQ_9B_3 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_40_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_40 Search",
+    "name": "AN/SPS_40 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_40_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_40 Track",
+    "name": "AN/SPS_40 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_48C_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_48C Search",
+    "name": "AN/SPS_48C Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_48C_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_48C Track",
+    "name": "AN/SPS_48C Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_48E_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_48E Search",
+    "name": "AN/SPS_48E Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_48E_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_48E Track",
+    "name": "AN/SPS_48E Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_49_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_49 Search",
+    "name": "AN/SPS_49 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_49_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_49 Track",
+    "name": "AN/SPS_49 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_55_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_55 Search",
+    "name": "AN/SPS_55 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_55_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_55 Track",
+    "name": "AN/SPS_55 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_64V9_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_64V9 Search",
+    "name": "AN/SPS_64V9 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_64V9_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_64V9 Track",
+    "name": "AN/SPS_64V9 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_67_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_67 Search",
+    "name": "AN/SPS_67 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_67_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_67 Track",
+    "name": "AN/SPS_67 Track",
     "description": ""
   },
   "imported_wavs/AN_SPS_73_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_73 Search",
+    "name": "AN/SPS_73 Search",
     "description": ""
   },
   "imported_wavs/AN_SPS_73_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPS_73 Track",
+    "name": "AN/SPS_73 Track",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_front Search",
+    "name": "AN/SPY_1_front Search",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_front_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_front Track",
+    "name": "AN/SPY_1_front Track",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_left Search",
+    "name": "AN/SPY_1_left Search",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_left_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_left Track",
+    "name": "AN/SPY_1_left Track",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_rear Search",
+    "name": "AN/SPY_1_rear Search",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_rear Track",
+    "name": "AN/SPY_1_rear Track",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_right Search",
+    "name": "AN/SPY_1_right Search",
     "description": ""
   },
   "imported_wavs/AN_SPY_1_right_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN_SPY_1_right Track",
+    "name": "AN/SPY_1_right Track",
     "description": ""
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
@@ -590,12 +590,12 @@
     "description": ""
   },
   "imported_wavs/Big_bird_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Big_bird Search",
     "description": ""
   },
   "imported_wavs/Big_bird_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Big_bird Track",
     "description": ""
   },
@@ -610,42 +610,42 @@
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx Search",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx Track",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_Track Search",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_Track Track",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_search_2 Search",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_search_2 Track",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_search_3 Search",
     "description": ""
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "C_RAM_Phalanx_search_3 Track",
     "description": ""
   },
@@ -700,12 +700,12 @@
     "description": ""
   },
   "imported_wavs/Dog Ear radar_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Early Warning Radar",
     "name": "Dog Ear radar Search",
     "description": ""
   },
   "imported_wavs/Dog Ear radar_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Early Warning Radar",
     "name": "Dog Ear radar Track",
     "description": ""
   },
@@ -720,22 +720,22 @@
     "description": ""
   },
   "imported_wavs/FPS-117_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Early Warning Radar",
     "name": "FPS-117 Search",
     "description": ""
   },
   "imported_wavs/FPS-117_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Early Warning Radar",
     "name": "FPS-117 Track",
     "description": ""
   },
   "imported_wavs/FPS_117_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Early Warning Radar",
     "name": "FPS_117 Search",
     "description": ""
   },
   "imported_wavs/FPS_117_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Early Warning Radar",
     "name": "FPS_117 Track",
     "description": ""
   },
@@ -750,72 +750,72 @@
     "description": ""
   },
   "imported_wavs/Gepard_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "Gepard Search",
     "description": ""
   },
   "imported_wavs/Gepard_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Anti-Aircraft Artillery",
     "name": "Gepard Track",
     "description": ""
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Redfor Air Radars",
     "name": "H-6J RADAR Search",
     "description": ""
   },
   "imported_wavs/H-6J RADAR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Redfor Air Radars",
     "name": "H-6J RADAR Track",
     "description": ""
   },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Chinese SAM Radar",
     "name": "HQ-7 SR Search",
     "description": ""
   },
   "imported_wavs/HQ-7 SR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Chinese SAM Radar",
     "name": "HQ-7 SR Track",
     "description": ""
   },
   "imported_wavs/HQ-7 TR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Chinese SAM Radar",
     "name": "HQ-7 TR Search",
     "description": ""
   },
   "imported_wavs/HQ-7 TR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Chinese SAM Radar",
     "name": "HQ-7 TR Track",
     "description": ""
   },
   "imported_wavs/Hawk sr_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk sr Search",
     "description": ""
   },
   "imported_wavs/Hawk sr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk sr Track",
     "description": ""
   },
   "imported_wavs/Hawk tr_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk tr Search",
     "description": ""
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk tr Track",
     "description": ""
   },
   "imported_wavs/Hawk_cwar_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk_cwar Search",
     "description": ""
   },
   "imported_wavs/Hawk_cwar_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Hawk_cwar Track",
     "description": ""
   },
@@ -870,14 +870,14 @@
     "description": ""
   },
   "imported_wavs/KLJ-7_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Redfor Air Radars",
     "name": "KLJ-7 Search",
-    "description": ""
+    "description": "JF-17 Radar (Search)"
   },
   "imported_wavs/KLJ-7_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Redfor Air Radars",
     "name": "KLJ-7 Track",
-    "description": ""
+    "description": "JF-17 Radar (Track)"
   },
   "imported_wavs/Kite_Screech_SEARCH.wav": {
     "group": "Ungrouped",
@@ -900,12 +900,12 @@
     "description": ""
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Kub 1S91 str Search",
     "description": ""
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Kub 1S91 str Track",
     "description": ""
   },
@@ -990,92 +990,92 @@
     "description": ""
   },
   "imported_wavs/Mys-M1_SR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Mys-M1_SR Search",
     "description": ""
   },
   "imported_wavs/Mys-M1_SR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Mys-M1_SR Track",
     "description": ""
   },
   "imported_wavs/N-001_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-001 Search",
     "description": ""
   },
   "imported_wavs/N-001_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-001 Track",
     "description": ""
   },
   "imported_wavs/N-005_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-005 Search",
     "description": ""
   },
   "imported_wavs/N-005_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-005 Track",
     "description": ""
   },
   "imported_wavs/N-008_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-008 Search",
     "description": ""
   },
   "imported_wavs/N-008_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-008 Track",
     "description": ""
   },
   "imported_wavs/N-011M_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-011M Search",
     "description": ""
   },
   "imported_wavs/N-011M_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-011M Track",
     "description": ""
   },
   "imported_wavs/N-019M_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-019M Search",
     "description": ""
   },
   "imported_wavs/N-019M_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-019M Track",
     "description": ""
   },
   "imported_wavs/N-019_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-019 Search",
     "description": ""
   },
   "imported_wavs/N-019_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N-019 Track",
     "description": ""
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "NASAMS_Radar_MPQ64F1 Search",
     "description": ""
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "NASAMS_Radar_MPQ64F1 Track",
     "description": ""
   },
   "imported_wavs/N_001_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N_001 Search",
     "description": ""
   },
   "imported_wavs/N_001_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "N_001 Track",
     "description": ""
   },
@@ -1190,32 +1190,32 @@
     "description": ""
   },
   "imported_wavs/R-77_Seeker_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "R-77_Seeker Search",
+    "group": "Missiles",
+    "name": "R-77 Seeker Search",
     "description": ""
   },
   "imported_wavs/R-77_Seeker_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "R-77_Seeker Track",
+    "group": "Missiles",
+    "name": "R-77 Seeker Track",
     "description": ""
   },
   "imported_wavs/RDI_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Air Radars",
     "name": "RDI Search",
     "description": ""
   },
   "imported_wavs/RDI_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Air Radars",
     "name": "RDI Track",
     "description": ""
   },
   "imported_wavs/RDY_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Air Radars",
     "name": "RDY Search",
     "description": ""
   },
   "imported_wavs/RDY_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO Air Radars",
     "name": "RDY Track",
     "description": ""
   },
@@ -1270,42 +1270,42 @@
     "description": ""
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "RPC S-200 TR Search",
     "description": ""
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "RPC S-200 TR Track",
     "description": ""
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_22SMA Search",
     "description": ""
   },
   "imported_wavs/RP_22SMA_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_22SMA Track",
     "description": ""
   },
   "imported_wavs/RP_5_search_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_5_search Search",
     "description": ""
   },
   "imported_wavs/RP_5_search_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_5_search Track",
     "description": ""
   },
   "imported_wavs/RP_5_track_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_5_track Search",
     "description": ""
   },
   "imported_wavs/RP_5_track_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Air Radar",
     "name": "RP_5_track Track",
     "description": ""
   },
@@ -1320,22 +1320,22 @@
     "description": ""
   },
   "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Rapier_Blindfire Search",
     "description": ""
   },
   "imported_wavs/Rapier_Blindfire_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Rapier_Blindfire Track",
     "description": ""
   },
   "imported_wavs/Rapier_Dagger_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Rapier_Dagger Search",
     "description": ""
   },
   "imported_wavs/Rapier_Dagger_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Rapier_Dagger Track",
     "description": ""
   },
@@ -1350,32 +1350,32 @@
     "description": ""
   },
   "imported_wavs/Roland ADS_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland ADS Search",
     "description": ""
   },
   "imported_wavs/Roland ADS_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland ADS Track",
     "description": ""
   },
   "imported_wavs/Roland Radar_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland Radar Search",
     "description": ""
   },
   "imported_wavs/Roland Radar_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland Radar Track",
     "description": ""
   },
   "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland_MPDR_16 Search",
     "description": ""
   },
   "imported_wavs/Roland_MPDR_16_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "NATO SAM Radar",
     "name": "Roland_MPDR_16 Track",
     "description": ""
   },
@@ -1400,27 +1400,27 @@
     "description": ""
   },
   "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "S-300PS 40B6M tr Search",
     "description": ""
   },
   "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "S-300PS 40B6M tr Track",
     "description": ""
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "S-300PS 40B6MD sr Search",
     "description": ""
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "S-300PS 40B6MD sr Track",
     "description": ""
   },
   "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "S-300PS 64H6E sr Search",
     "description": ""
   },
@@ -1435,27 +1435,27 @@
     "description": ""
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "SA-11 Buk SR 9S18M1 Track",
     "description": ""
   },
   "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "SA-11 Buk TR Search",
     "description": ""
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "SA-11 Buk TR Track",
     "description": ""
   },
   "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "SA_11_Snow_Drift Search",
     "description": ""
   },
   "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "SA_11_Snow_Drift Track",
     "description": ""
   },
@@ -1600,12 +1600,12 @@
     "description": ""
   },
   "imported_wavs/Tor 9A331_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Tor 9A331 Search",
     "description": ""
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "Tor 9A331 Track",
     "description": ""
   },
@@ -1830,12 +1830,12 @@
     "description": ""
   },
   "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Anti-Aircraft Artillery",
     "name": "ZSU-23-4 Shilka Search",
     "description": ""
   },
   "imported_wavs/ZSU-23-4 Shilka_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet Anti-Aircraft Artillery",
     "name": "ZSU-23-4 Shilka Track",
     "description": ""
   },
@@ -1860,14 +1860,14 @@
     "description": ""
   },
   "imported_wavs/amazonka_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "amazonka Search",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-2 RD-75 Amazonka Search",
+    "description": "SA-2 Rangefinding Radar Search (Same as Track)"
   },
   "imported_wavs/amazonka_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "amazonka Track",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-2 RD-75 Amazonka Track",
+    "description": "SA-2 Rangefinding Radar Track (Same as Search)"
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1880,13 +1880,13 @@
     "description": ""
   },
   "imported_wavs/fan_song_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "fan_song Search",
+    "group": "Soviet SAM Radar",
+    "name": "SA-2 Fan Song Search",
     "description": ""
   },
   "imported_wavs/fan_song_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "fan_song Track",
+    "group": "Soviet SAM Radar",
+    "name": "SA-2 Fan Song Track",
     "description": ""
   },
   "imported_wavs/molniya search radar_SEARCH.wav": {
@@ -1970,32 +1970,32 @@
     "description": ""
   },
   "imported_wavs/sa_6_TR_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "sa_6_TR Search",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-6 TR Search",
+    "description": "SA-6 Track Radar (Search)"
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "sa_6_TR Track",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-6 TR Track",
+    "description": "SA-6 Track Radar (Track)"
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "sa_8_Search_high Search",
     "description": ""
   },
   "imported_wavs/sa_8_Search_high_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "sa_8_Search_high Track",
     "description": ""
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "sa_8_Search_low Search",
     "description": ""
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Soviet SAM Radar",
     "name": "sa_8_Search_low Track",
     "description": ""
   },
@@ -2010,14 +2010,14 @@
     "description": ""
   },
   "imported_wavs/snr s-125 tr_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "snr s-125 tr Search",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-3 Goa TR Search",
+    "description": "SA-3 Goa Track Radar (Search)"
   },
   "imported_wavs/snr s-125 tr_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "snr s-125 tr Track",
-    "description": ""
+    "group": "Soviet SAM Radar",
+    "name": "SA-3 Goa TR Track",
+    "description": "SA-3 Goa Track Radar (Track)"
   },
   "imported_wavs/son-9 tr_SEARCH.wav": {
     "group": "Ungrouped",
