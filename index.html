@@ -308,7 +308,10 @@
             }
           }
 
-          displayGroups(soundMeta);
+          // ✅ Ensure UI is rendered even if no input is typed yet
+          document.getElementById("audio-list").innerHTML = "";
+          const currentSearch = document.getElementById("search-input").value || "";
+          displayGroups(soundMeta, currentSearch);
         } catch (error) {
           console.error("Error loading JSON files:", error);
           document.getElementById("audio-list").textContent = "Failed to load sounds.";
