@@ -579,7 +579,8 @@
       }
 
       async function playAll() {
-        stopAll();
+        stopAll(); // Clear running sounds
+        cancelledLoads.clear(); // ✅ Reset the cancellation list
 
         const playAllBtn = document.querySelector('button[onclick="playAll()"]');
         if (playAllBtn) {
