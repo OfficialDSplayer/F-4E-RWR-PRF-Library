@@ -1,0 +1,75 @@
+name: Auto-Update Custom Groups JSON
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "custom_wavs/**"
+      - ".github/workflows/update_custom_groups.yml"
+
+jobs:
+  update-groups-custom:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Generate groups_custom.json
+        run: |
+          node <<EOF
+          const fs = require('fs');
+          const path = require('path');
+
+          const WAV_DIR = 'custom_wavs';
+          const GROUPS_FILE = 'groups_custom.json';
+
+          const defaultGroup = 'Custom Sounds';
+          let groups = {};
+
+          if (fs.existsSync(GROUPS_FILE)) {
+            groups = JSON.parse(fs.readFileSync(GROUPS_FILE, 'utf8'));
+          }
+
+          const wavFiles = fs.readdirSync(WAV_DIR).filter(f => f.endsWith('.wav'));
+          let updated = false;
+
+          for (const file of wavFiles) {
+            const relPath = path.join(WAV_DIR, file);
+            if (!groups[relPath]) {
+              groups[relPath] = {
+                group: defaultGroup,
+                name: path.parse(file).name,
+                description: '',
+                hidden: false
+              };
+              updated = true;
+            }
+          }
+
+          if (updated) {
+            fs.writeFileSync(GROUPS_FILE, JSON.stringify(groups, null, 2));
+            console.log('✅ groups_custom.json updated');
+          } else {
+            console.log('✅ No changes to groups_custom.json');
+          }
+          EOF
+
+      - name: Commit & push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add groups_custom.json
+            git commit -m "Update groups_custom.json from GitHub Action"
+            git push
+          else
+            echo "No changes to commit."
+          fi

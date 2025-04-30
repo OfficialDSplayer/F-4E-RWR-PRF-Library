@@ -265,20 +265,28 @@
 
       async function loadWavFiles() {
         try {
-          const [wavListResponse, groupsResponse] = await Promise.all([
-            fetch("wav_list.json?v=" + Date.now()),
-            fetch("groups.json?v=" + Date.now()),
-          ]);
-          let wavFiles = await wavListResponse.json();
-          groupsData = await groupsResponse.json();
+          const [wavListResponse, customWavListResponse, groupsMainResponse, groupsCustomResponse] =
+            await Promise.all([
+              fetch("wav_list.json?v=" + Date.now()),
+              fetch("custom_wav_list.json?v=" + Date.now()),
+              fetch("groups.json?v=" + Date.now()),
+              fetch("groups_custom.json?v=" + Date.now()),
+            ]);
 
-          wavFiles.sort((a, b) => a.localeCompare(b));
+          const wavFiles = await wavListResponse.json();
+          const customWavFiles = await customWavListResponse.json();
+          const groupsMain = await groupsMainResponse.json();
+          const groupsCustom = await groupsCustomResponse.json();
+
+          const allFiles = [...wavFiles, ...customWavFiles];
+          const allGroups = { ...groupsMain, ...groupsCustom };
+
+          allFiles.sort((a, b) => a.localeCompare(b));
 
           audioContext = new (window.AudioContext || window.webkitAudioContext)();
           gainNode = audioContext.createGain();
           gainNode.connect(audioContext.destination);
 
-          // Default volume of 50%
           const volumeSlider = document.getElementById("volume-slider");
           const savedVolume = localStorage.getItem("volumeLevel");
           const initialVolume = savedVolume !== null ? parseInt(savedVolume) : 50;
@@ -291,9 +299,9 @@
             localStorage.setItem("volumeLevel", this.value);
           });
 
-          for (const file of wavFiles) {
+          for (const file of allFiles) {
             try {
-              const meta = groupsData[file] || {
+              const meta = allGroups[file] || {
                 group: "Other",
                 name: file.split("/").pop(),
                 description: "",
@@ -323,15 +331,12 @@
             }
           }
 
-          // ✅ Ensure UI is rendered even if no input is typed yet
-          // After all sounds are processed:
-          document.getElementById("audio-list").innerHTML = ""; // Clear "Loading sounds..."
-
+          document.getElementById("audio-list").innerHTML = ""; // Clear 'Loading sounds...'
           const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
           displayGroups(soundMeta, searchTerm);
         } catch (error) {
-          console.error("Error loading JSON files:", error);
-          document.getElementById("audio-list").textContent = "Failed to load sounds.";
+          console.error("Error loading sound metadata or audio files:", error);
+          document.getElementById("audio-list").textContent = "❌ Failed to load sounds.";
         }
       }
 
