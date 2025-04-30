@@ -1082,7 +1082,7 @@
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-6 STR Search",
-    "description": "SA-6 Kub 1S91 STR",
+    "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
@@ -2372,7 +2372,7 @@
   "imported_wavs/sa_6_TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-6 STR Track",
-    "description": "SA-6 Kub 1S91 STR",
+    "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
