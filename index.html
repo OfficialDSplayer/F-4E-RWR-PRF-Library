@@ -409,7 +409,7 @@
       }
 
       function startLoop(file) {
-        stopLoop(file);
+        stopLoop(file); // Only stops that sound if already playing
 
         const buffer = soundBuffers[file];
         if (!buffer) return;
@@ -421,14 +421,9 @@
         sourceNode.start(0);
         playingSources.push({ file, node: sourceNode });
 
-        // Highlight active play button
-        document.querySelectorAll(".play-button").forEach((btn) => {
-          if (btn.dataset.file === file) {
-            btn.classList.add("active");
-          } else {
-            btn.classList.remove("active");
-          }
-        });
+        // Only activate this file's button
+        const btn = document.querySelector(`.play-button[data-file="${file}"]`);
+        if (btn) btn.classList.add("active");
       }
 
       function stopLoop(file) {
