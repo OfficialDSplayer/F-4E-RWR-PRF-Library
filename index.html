@@ -271,6 +271,7 @@
       let audioContext;
       let gainNode;
       let soundBuffers = {};
+      let currentPlayAllSession = 0;
       let groupsData = {};
       let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
@@ -497,20 +498,17 @@
             const fetchResponse = await fetch(file);
             const arrayBuffer = await fetchResponse.arrayBuffer();
 
-            // Cancelled while loading
-            if (cancelledLoads.has(file)) {
-              console.log(`❌ Skipped loading ${file} (was cancelled)`);
-              if (btn) btn.classList.remove("loading");
+            // Cancel if session changed
+            if (sessionId !== null && sessionId !== currentPlayAllSession) {
+              if (btn) btn.classList.remove("loading", "active");
               return;
             }
 
             const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
             soundBuffers[file] = audioBuffer;
           }
-          // Cancelled after decode
-          if (cancelledLoads.has(file)) {
-            console.log(`❌ Skipped playing ${file} (was cancelled post-decode)`);
-            if (btn) btn.classList.remove("loading");
+          if (sessionId !== null && sessionId !== currentPlayAllSession) {
+            if (btn) btn.classList.remove("loading", "active");
             return;
           }
 
@@ -528,7 +526,7 @@
           }
           return Promise.resolve(); // ✅ resolve when playback starts
         } catch (error) {
-          console.error(`❌ Error loading or playing ${file}:`, error);
+          console.error(`❌ Error in startLoop(${file}):`, error);
           if (btn) btn.classList.remove("loading", "active");
           return Promise.reject(error);
         }
@@ -582,27 +580,29 @@
         stopAll(); // Clear running sounds
         cancelledLoads.clear(); // ✅ Reset the cancellation list
 
+        currentPlayAllSession++;
+        const thisSession = currentPlayAllSession;
+
         const playAllBtn = document.querySelector('button[onclick="playAll()"]');
         if (playAllBtn) {
           playAllBtn.classList.add("loading");
           playAllBtn.disabled = true;
         }
 
-        const promises = soundMeta.map((sound) => startLoop(sound.file));
+        const promises = soundMeta.map((sound) => startLoop(sound.file, thisSession));
 
         try {
           await Promise.all(promises);
-          if (playAllBtn) {
+          if (currentPlayAllSession === thisSession && playAllBtn) {
             playAllBtn.classList.remove("loading");
             playAllBtn.classList.add("active");
           }
         } catch (err) {
           console.warn("Some sounds failed to load during Play All:", err);
-          if (playAllBtn) {
-            playAllBtn.classList.remove("loading");
-          }
         } finally {
-          if (playAllBtn) playAllBtn.disabled = false;
+          if (currentPlayAllSession === thisSession && playAllBtn) {
+            playAllBtn.disabled = false;
+          }
         }
       }
 
