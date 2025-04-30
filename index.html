@@ -483,13 +483,12 @@
         }
       }
 
-      async function startLoop(file) {
-        stopLoop(file); // Only stops that sound if already playing
+      async function startLoop(file, sessionId = null) {
+        stopLoop(file); // Stop any existing instance of this sound
 
         const btn = document.querySelector(`.play-button[data-file="${file}"]`);
         if (btn) btn.classList.add("loading");
 
-        // Remove from cancel list in case it's replayed manually
         cancelledLoads.delete(file);
 
         try {
@@ -497,19 +496,8 @@
           if (!soundBuffers[file]) {
             const fetchResponse = await fetch(file);
             const arrayBuffer = await fetchResponse.arrayBuffer();
-
-            // Cancel if session changed
-            if (sessionId !== null && sessionId !== currentPlayAllSession) {
-              if (btn) btn.classList.remove("loading", "active");
-              return;
-            }
-
             const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
             soundBuffers[file] = audioBuffer;
-          }
-          if (sessionId !== null && sessionId !== currentPlayAllSession) {
-            if (btn) btn.classList.remove("loading", "active");
-            return;
           }
 
           const sourceNode = audioContext.createBufferSource();
@@ -519,14 +507,15 @@
           sourceNode.start(0);
           playingSources.push({ file, node: sourceNode });
 
-          // Mark button as actively playing
+          // Apply play state
           if (btn) {
             btn.classList.remove("loading");
             btn.classList.add("active");
           }
-          return Promise.resolve(); // ✅ resolve when playback starts
+
+          return Promise.resolve();
         } catch (error) {
-          console.error(`❌ Error in startLoop(${file}):`, error);
+          console.error(`❌ Error loading or playing ${file}:`, error);
           if (btn) btn.classList.remove("loading", "active");
           return Promise.reject(error);
         }
@@ -589,20 +578,55 @@
           playAllBtn.disabled = true;
         }
 
-        const promises = soundMeta.map((sound) => startLoop(sound.file, thisSession));
-
+        // Step 1: Preload all sounds (but don't play yet)
         try {
-          await Promise.all(promises);
-          if (currentPlayAllSession === thisSession && playAllBtn) {
-            playAllBtn.classList.remove("loading");
-            playAllBtn.classList.add("active");
+          await Promise.all(
+            soundMeta.map(async (sound) => {
+              if (!soundBuffers[sound.file]) {
+                const fetchResponse = await fetch(sound.file);
+                const arrayBuffer = await fetchResponse.arrayBuffer();
+                const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+                soundBuffers[sound.file] = audioBuffer;
+              }
+            })
+          );
+        } catch (error) {
+          console.error("❌ Error during preload:", error);
+        }
+
+        // Step 2: Check session validity and play all
+        if (thisSession !== currentPlayAllSession) {
+          console.log("⚠️ Cancelled session, not starting playback.");
+          return;
+        }
+
+        soundMeta.forEach((sound) => {
+          try {
+            const buffer = soundBuffers[sound.file];
+            if (!buffer) return;
+
+            const sourceNode = audioContext.createBufferSource();
+            sourceNode.buffer = buffer;
+            sourceNode.loop = true;
+            sourceNode.connect(gainNode);
+            sourceNode.start(0);
+            playingSources.push({ file: sound.file, node: sourceNode });
+
+            const btn = document.querySelector(`.play-button[data-file="${sound.file}"]`);
+            if (btn) {
+              btn.classList.remove("loading");
+              btn.classList.add("active");
+            }
+          } catch (e) {
+            console.error(`❌ Failed to play ${sound.file}:`, e);
           }
-        } catch (err) {
-          console.warn("Some sounds failed to load during Play All:", err);
-        } finally {
-          if (currentPlayAllSession === thisSession && playAllBtn) {
-            playAllBtn.disabled = false;
-          }
+        });
+
+        // Activate the Play All button
+        if (thisSession === currentPlayAllSession && playAllBtn) {
+          playAllBtn.classList.remove("loading");
+          playAllBtn.classList.add("active");
+          playAllBtn.disabled = false;
         }
       }
 
