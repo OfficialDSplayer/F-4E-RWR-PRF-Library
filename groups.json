@@ -49,8 +49,8 @@
   },
   "imported_wavs/1L13 EWR_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
-    "name": "1L13 EWR 'Box Spring' Search",
-    "description": "",
+    "name": "1L13 EWR Search",
+    "description": "1L13 'Box Spring' EWR",
     "hidden": false
   },
   "imported_wavs/1L13 EWR_TRACK.wav": {
@@ -73,8 +73,8 @@
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
-    "name": "55G6 'Tall Rack' EWR Search",
-    "description": "",
+    "name": "55G6 EWR Search",
+    "description": "55G6 'Tall Rack' EWR",
     "hidden": false
   },
   "imported_wavs/55G6 EWR_TRACK.wav": {
@@ -84,16 +84,16 @@
     "hidden": true
   },
   "imported_wavs/AESA_KJ2000_1_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AESA_KJ2000_1 Search",
-    "description": "",
+    "group": "Airborne Early Warning",
+    "name": "KJ-2000 Search",
+    "description": "KJ-2000 'Mainring' (NOT DETECTABLE BY ALR-46)",
     "hidden": false
   },
   "imported_wavs/AESA_KJ2000_1_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AESA_KJ2000_1 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_2_SEARCH.wav": {
     "group": "Ungrouped",
@@ -105,13 +105,13 @@
     "group": "Ungrouped",
     "name": "AESA_KJ2000_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_3_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AESA_KJ2000_3 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_3_TRACK.wav": {
     "group": "Ungrouped",
@@ -123,13 +123,13 @@
     "group": "Ungrouped",
     "name": "AESA_KJ2000 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AESA_KJ2000 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "group": "Missiles",
@@ -338,26 +338,26 @@
   "imported_wavs/AN_APY-1_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/APY-1 Search",
-    "description": "",
-    "hidden": false
+    "description": "E-3 Sentry **Overridden**",
+    "hidden": true
   },
   "imported_wavs/AN_APY-1_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/APY-1 Track",
-    "description": "",
-    "hidden": false
+    "description": "E-3 Sentry **Overridden**",
+    "hidden": true
   },
   "imported_wavs/AN_APY_1_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/APY_1 Search",
-    "description": "",
+    "group": "Airborne Early Warning",
+    "name": "AN/APY-1 Search",
+    "description": "E-3 Sentry",
     "hidden": false
   },
   "imported_wavs/AN_APY_1_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/APY_1 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_MPQ_53_SEARCH.wav": {
     "group": "SAM Radar (NATO)",
@@ -1436,7 +1436,7 @@
   "imported_wavs/R-77_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "R-77 Seeker Track",
-    "description": "R-77 (AA-12 Adder) Radar (Same as Search)",
+    "description": "R-77 (AA-12 Adder) Track (Same as Search)",
     "hidden": false
   },
   "imported_wavs/RDI_SEARCH.wav": {
@@ -1788,16 +1788,16 @@
     "hidden": true
   },
   "imported_wavs/Shmel_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Airborne Early Warning",
     "name": "Shmel Search",
-    "description": "",
+    "description": "A-50 'Mainstay'",
     "hidden": false
   },
   "imported_wavs/Shmel_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Shmel Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Strut_Curve_SEARCH.wav": {
     "group": "Ungrouped",
