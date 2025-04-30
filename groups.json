@@ -181,13 +181,13 @@
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/APG-71 Search",
+    "name": "AN/AWG-9 Search",
     "description": "F-14A/B Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/APG-71 Track",
+    "name": "AN/AWG-9 Track",
     "description": "F-14A/B Radar",
     "hidden": false
   },
