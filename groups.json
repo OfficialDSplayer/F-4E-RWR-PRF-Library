@@ -2304,9 +2304,9 @@
     "hidden": false
   },
   "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
-    "group": "SAM Search Radar (Soviet)",
-    "name": "S-125 Flat Face Search",
-    "description": "SA-2/SA-3/SA-5 Flat Face Search Radar",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-2/SA-3/SA-5 Flat Face Search",
+    "description": "S-125 Flat Face Search Radar",
     "hidden": false
   },
   "imported_wavs/p-19 s-125 sr_TRACK.wav": {
