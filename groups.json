@@ -2,50 +2,50 @@
   "imported_wavs/052B SAM SR_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "052B SAM SR Search",
-    "description": "",
-    "hidden": false
+    "description": "**Replaced**",
+    "hidden": true
   },
   "imported_wavs/052B SAM SR_TRACK.wav": {
     "group": "Ungrouped",
     "name": "052B SAM SR Track",
-    "description": "",
-    "hidden": false
+    "description": "**Replaced**",
+    "hidden": true
   },
   "imported_wavs/052B SAM TR_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "052B SAM TR Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/052B SAM TR_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (Chinese)",
     "name": "052B SAM TR Track",
-    "description": "",
+    "description": "Type 093 SAM TR",
     "hidden": false
   },
   "imported_wavs/052C SAM STR_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "052C SAM STR Search",
-    "description": "",
-    "hidden": false
+    "description": "**Replaced**",
+    "hidden": true
   },
   "imported_wavs/052C SAM STR_TRACK.wav": {
     "group": "Ungrouped",
     "name": "052C SAM STR Track",
-    "description": "",
-    "hidden": false
+    "description": "**Replaced**",
+    "hidden": true
   },
   "imported_wavs/054A SAM TR_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "054A SAM TR Search",
-    "description": "",
-    "hidden": false
+    "description": "**Apparently Not Used**",
+    "hidden": true
   },
   "imported_wavs/054A SAM TR_TRACK.wav": {
     "group": "Ungrouped",
     "name": "054A SAM TR Track",
-    "description": "",
-    "hidden": false
+    "description": "**Apparently Not Used**",
+    "hidden": true
   },
   "imported_wavs/1L13 EWR_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
@@ -63,12 +63,12 @@
     "group": "SAM Radar (Soviet)",
     "name": "SA-19 Grison Search",
     "description": "SA-19 Grison - 2S6 Tunguska",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-19 Grison Track",
-    "description": "SA-19 Grison - 2S6 Tunguska",
+    "description": "SA-19 Grison - 2S6 Tunguska - Hot Shot TR",
     "hidden": false
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
@@ -99,7 +99,7 @@
     "group": "Ungrouped",
     "name": "AESA_KJ2000_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_2_TRACK.wav": {
     "group": "Ungrouped",
@@ -117,7 +117,7 @@
     "group": "Ungrouped",
     "name": "AESA_KJ2000_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_SEARCH.wav": {
     "group": "Ungrouped",
@@ -564,52 +564,52 @@
     "hidden": false
   },
   "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPY_1_front Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPY-1 Search/Track",
+    "description": "Arleigh Burke, Ticonderoga AEGIS Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPY_1_front_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_front Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_left Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_left_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_left Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_rear Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_rear Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_right Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_right_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPY_1_right Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
     "group": "Air Radar (NATO)",
@@ -891,12 +891,12 @@
     "group": "Ungrouped",
     "name": "Front_Dome Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Front_Dome_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Front_Dome Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Front Dome Track",
+    "description": "Type 052B & Type 054A Track Radar",
     "hidden": false
   },
   "imported_wavs/Gepard_SEARCH.wav": {
@@ -1011,25 +1011,25 @@
     "group": "Ungrouped",
     "name": "Hot_Flash_T Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Hot_Flash_T_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Hot_Flash_T Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Hot Flash T Track",
+    "description": "Pyotr Velikiy Track Radar",
     "hidden": false
   },
   "imported_wavs/Hot_Shot_search_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Hot_Shot_search Search",
-    "description": "",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-19 Grison Search",
+    "description": "SA-19 Grison - 2S6 Tunguska - Hot Shot SR",
     "hidden": false
   },
   "imported_wavs/Hot_Shot_search_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Hot_Shot_search Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1081,7 +1081,7 @@
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 STR Search",
+    "name": "SA-6 Straight Flush STR Search",
     "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
@@ -1628,7 +1628,7 @@
   "imported_wavs/Roland ADS_TRACK.wav": {
     "group": "SAM Radar (NATO)",
     "name": "Roland ADS Track",
-    "description": "Roland Track Radar",
+    "description": "Roland ADS Track Radar",
     "hidden": false
   },
   "imported_wavs/Roland Radar_SEARCH.wav": {
@@ -1646,7 +1646,7 @@
   "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
     "group": "SAM Radar (NATO)",
     "name": "Roland MPDR-16 Search",
-    "description": "Roland MPDR-16 Search Radar",
+    "description": "Roland ADS MPDR-16 Search Radar",
     "hidden": false
   },
   "imported_wavs/Roland_MPDR_16_TRACK.wav": {
@@ -1872,28 +1872,28 @@
     "hidden": false
   },
   "imported_wavs/Top_Plate_L_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Top_Plate_L Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Top Plate L Search",
+    "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR",
     "hidden": false
   },
   "imported_wavs/Top_Plate_L_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Top_Plate_L Track",
-    "description": "",
-    "hidden": false
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Top Plate L Track",
+    "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR CONFUSED???",
+    "hidden": true
   },
   "imported_wavs/Top_Plate_S_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (Soviet)",
     "name": "Top_Plate_S Search",
-    "description": "",
+    "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR",
     "hidden": false
   },
   "imported_wavs/Top_Plate_S_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Top_Plate_S Track",
-    "description": "",
-    "hidden": false
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Top Plate S Track",
+    "description": "Kuznetsov SR, Piotr Velikiy SR, Neustrashimy SR, Type 052B TR",
+    "hidden": true
   },
   "imported_wavs/Top_Sail_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1956,28 +1956,28 @@
     "hidden": false
   },
   "imported_wavs/Type_1006_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_1006 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Type 1006 Search",
+    "description": "HMS Invincible Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_1006_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_1006 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_1022_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_1022 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Type 1022 Search",
+    "description": "HMS Invincible Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_1022_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_1022 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_344_SEARCH.wav": {
     "group": "Ungrouped",
@@ -2127,12 +2127,12 @@
     "group": "Ungrouped",
     "name": "Type_909 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_909_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Type_909 Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Type 909 Track",
+    "description": "HMS Invincible Track Radar",
     "hidden": false
   },
   "imported_wavs/Type_965_SEARCH.wav": {
@@ -2160,16 +2160,16 @@
     "hidden": false
   },
   "imported_wavs/Type_992_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_992 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Type 992 Search",
+    "description": "HMS Invincible Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_992_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_992 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_SEARCH.wav": {
     "group": "Ungrouped",
@@ -2240,7 +2240,7 @@
   "imported_wavs/amazonka_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-2 RD-75 Amazonka Track",
-    "description": "SA-2 Rangefinding Radar Track (Same as Search)",
+    "description": "SA-2 Rangefinding Radar",
     "hidden": false
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
@@ -2257,13 +2257,13 @@
   },
   "imported_wavs/fan_song_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 Fan Song Search",
-    "description": "",
-    "hidden": true
+    "name": "SA-2 Guideline Acquisition",
+    "description": "SA-2 Fan Song Track Radar",
+    "hidden": false
   },
   "imported_wavs/fan_song_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 Fan Song Track",
+    "name": "SA-2 Guideline Track",
     "description": "SA-2 Fan Song Track Radar",
     "hidden": false
   },
@@ -2365,13 +2365,13 @@
   },
   "imported_wavs/sa_6_TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 TR Search",
+    "name": "SA-6 Straight Flush TR Search",
     "description": "SA-6 Track Radar",
     "hidden": true
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 STR Track",
+    "name": "SA-6 Straight Flush STR Track",
     "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
@@ -2389,7 +2389,7 @@
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-8 Search",
+    "name": "SA-8 Osa Search",
     "description": "SA-8 Osa 9A33 'Gecko'",
     "hidden": false
   },
@@ -2413,14 +2413,14 @@
   },
   "imported_wavs/snr s-125 tr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-3 Goa TR Search",
-    "description": "SA-3 Goa Track Radar",
+    "name": "SA-3 Goa TR Acquisition",
+    "description": "SA-3 Goa 'Low Blow' Track Radar",
     "hidden": false
   },
   "imported_wavs/snr s-125 tr_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-3 Goa TR Track",
-    "description": "SA-3 Goa Track Radar",
+    "description": "SA-3 Goa 'Low Blow' Track Radar",
     "hidden": false
   },
   "imported_wavs/son-9 tr_SEARCH.wav": {
