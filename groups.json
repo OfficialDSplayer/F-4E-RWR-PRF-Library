@@ -276,40 +276,40 @@
     "hidden": false
   },
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/APS-138_2 Search",
-    "description": "",
+    "group": "Airborne Early Warning",
+    "name": "AN/APS-138 2 Search",
+    "description": "E-2 Hawkeye",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/APS-138_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/APS-138_3 Search",
-    "description": "",
+    "group": "Airborne Early Warning",
+    "name": "AN/APS-138 3 Search",
+    "description": "E-2 Hawkeye",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/APS-138_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APS-138_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/APS-138 Search",
-    "description": "",
+    "group": "Airborne Early Warning",
+    "name": "AN/APS-138 1 Search",
+    "description": "E-2 Hawkeye",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/APS-138 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_APS-142_SEARCH.wav": {
     "group": "Ungrouped",
@@ -612,15 +612,15 @@
     "hidden": false
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "ARI 23274 Search",
-    "description": "",
+    "description": "Tornado GR4/IDS Radar",
     "hidden": false
   },
   "imported_wavs/ARI 23274_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "ARI 23274 Track",
-    "description": "",
+    "description": "Tornado GR4/IDS Radar",
     "hidden": false
   },
   "imported_wavs/B-1B SS radar_SEARCH.wav": {
@@ -648,15 +648,15 @@
     "hidden": true
   },
   "imported_wavs/BRLS-8B_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (Soviet)",
     "name": "BRLS-8B Search",
-    "description": "",
+    "description": "MiG-31 Radar",
     "hidden": false
   },
   "imported_wavs/BRLS-8B_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (Soviet)",
     "name": "BRLS-8B Track",
-    "description": "",
+    "description": "MiG-31 Radar",
     "hidden": false
   },
   "imported_wavs/Band_Stand_SEARCH.wav": {
@@ -926,7 +926,7 @@
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
     "group": "SAM Radar (Chinese)",
     "name": "HQ-7 SR Search",
-    "description": "",
+    "description": "CH-SA-4 HQ-7",
     "hidden": false
   },
   "imported_wavs/HQ-7 SR_TRACK.wav": {
@@ -944,7 +944,7 @@
   "imported_wavs/HQ-7 TR_TRACK.wav": {
     "group": "SAM Radar (Chinese)",
     "name": "HQ-7 TR Track",
-    "description": "",
+    "description": "CH-SA-4 HQ-7",
     "hidden": false
   },
   "imported_wavs/Hawk sr_SEARCH.wav": {
@@ -1356,15 +1356,15 @@
     "hidden": false
   },
   "imported_wavs/PS-37A_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "PS-37A Search",
-    "description": "",
+    "description": "AJS-37 Viggen",
     "hidden": false
   },
   "imported_wavs/PS-37A_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "PS-37A Track",
-    "description": "",
+    "description": "AJS-37 Viggen",
     "hidden": false
   },
   "imported_wavs/Palm_Frond_SEARCH.wav": {
