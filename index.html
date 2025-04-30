@@ -233,6 +233,9 @@
     </h4>
 
     <div id="audio-list">Loading sounds...</div>
+    <!-- <div id="audio-list">
+      <div style="text-align: center; font-size: 1.1rem">Loading sounds...</div>
+    </div> -->
 
     <script>
       let playingSources = [];
@@ -321,9 +324,11 @@
           }
 
           // ✅ Ensure UI is rendered even if no input is typed yet
-          document.getElementById("audio-list").innerHTML = "";
-          const currentSearch = document.getElementById("search-input").value || "";
-          displayGroups(soundMeta, currentSearch);
+          // After all sounds are processed:
+          document.getElementById("audio-list").innerHTML = ""; // Clear "Loading sounds..."
+
+          const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
+          displayGroups(soundMeta, searchTerm);
         } catch (error) {
           console.error("Error loading JSON files:", error);
           document.getElementById("audio-list").textContent = "Failed to load sounds.";
