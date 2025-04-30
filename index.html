@@ -133,6 +133,11 @@
       .play-button:active {
         background-color: #388e3c; /* darker green */
       }
+      .play-button.loading {
+        background-color: #81c784; /* light green */
+        color: black;
+        animation: pulse 1.2s infinite;
+      }
 
       .stop-button:active {
         background-color: #c62828; /* darker red */
@@ -464,30 +469,38 @@
 
       async function startLoop(file) {
         stopLoop(file); // Only stops that sound if already playing
-        stopLoop(file);
 
-        // Lazy load audio if not already loaded
-        if (!soundBuffers[file]) {
-          try {
+        const btn = document.querySelector(`.play-button[data-file="${file}"]`);
+        if (btn) btn.classList.add("loading");
+
+        try {
+          // Lazy-load if needed
+          if (!soundBuffers[file]) {
             const fetchResponse = await fetch(file);
             const arrayBuffer = await fetchResponse.arrayBuffer();
             const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
             soundBuffers[file] = audioBuffer;
-          } catch (error) {
-            console.error(`❌ Error lazy-loading ${file}:`, error);
-            return;
+          }
+
+          const sourceNode = audioContext.createBufferSource();
+          sourceNode.buffer = soundBuffers[file];
+          sourceNode.loop = true;
+          sourceNode.connect(gainNode);
+          sourceNode.start(0);
+          playingSources.push({ file, node: sourceNode });
+
+          // Mark button as actively playing
+          if (btn) {
+            btn.classList.remove("loading");
+            btn.classList.add("active");
+          }
+        } catch (error) {
+          console.error(`❌ Error loading or playing ${file}:`, error);
+          if (btn) {
+            btn.classList.remove("loading");
+            btn.classList.remove("active");
           }
         }
-
-        const sourceNode = audioContext.createBufferSource();
-        sourceNode.buffer = soundBuffers[file];
-        sourceNode.loop = true;
-        sourceNode.connect(gainNode);
-        sourceNode.start(0);
-        playingSources.push({ file, node: sourceNode });
-
-        const btn = document.querySelector(`.play-button[data-file="${file}"]`);
-        if (btn) btn.classList.add("active");
       }
 
       function stopLoop(file) {
@@ -506,6 +519,7 @@
         document.querySelectorAll(".play-button").forEach((btn) => {
           if (btn.dataset.file === file) {
             btn.classList.remove("active");
+            btn.classList.remove("loading");
           }
         });
       }
