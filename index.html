@@ -277,23 +277,35 @@
           });
 
           for (const file of wavFiles) {
-            const meta = groupsData[file] || {
-              group: "Other",
-              name: file.split("/").pop(),
-              description: "",
-            };
-            soundMeta.push({
-              file,
-              group: meta.group,
-              name: meta.name,
-              description: meta.description,
-              hidden: meta.hidden || false,
-            });
+            try {
+              const meta = groupsData[file] || {
+                group: "Other",
+                name: file.split("/").pop(),
+                description: "",
+                hidden: false,
+              };
 
-            const fetchResponse = await fetch(file);
-            const arrayBuffer = await fetchResponse.arrayBuffer();
-            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-            soundBuffers[file] = audioBuffer;
+              soundMeta.push({
+                file,
+                group: meta.group,
+                name: meta.name,
+                description: meta.description,
+                hidden: meta.hidden || false,
+              });
+
+              const fetchResponse = await fetch(file);
+              if (!fetchResponse.ok) {
+                console.warn(`⚠️ Failed to fetch ${file}: ${fetchResponse.status}`);
+                continue;
+              }
+
+              const arrayBuffer = await fetchResponse.arrayBuffer();
+              const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+              soundBuffers[file] = audioBuffer;
+            } catch (error) {
+              console.error(`❌ Error loading sound file ${file}:`, error);
+              continue;
+            }
           }
 
           displayGroups(soundMeta);
