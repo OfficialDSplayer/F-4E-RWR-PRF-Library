@@ -274,6 +274,7 @@
       let groupsData = {};
       let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
+      const cancelledLoads = new Set();
 
       // Set theme on page load (saved or auto-detect)
       const savedTheme = localStorage.getItem("theme");
@@ -487,13 +488,30 @@
         const btn = document.querySelector(`.play-button[data-file="${file}"]`);
         if (btn) btn.classList.add("loading");
 
+        // Remove from cancel list in case it's replayed manually
+        cancelledLoads.delete(file);
+
         try {
           // Lazy-load if needed
           if (!soundBuffers[file]) {
             const fetchResponse = await fetch(file);
             const arrayBuffer = await fetchResponse.arrayBuffer();
+
+            // Cancelled while loading
+            if (cancelledLoads.has(file)) {
+              console.log(`❌ Skipped loading ${file} (was cancelled)`);
+              if (btn) btn.classList.remove("loading");
+              return;
+            }
+
             const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
             soundBuffers[file] = audioBuffer;
+          }
+          // Cancelled after decode
+          if (cancelledLoads.has(file)) {
+            console.log(`❌ Skipped playing ${file} (was cancelled post-decode)`);
+            if (btn) btn.classList.remove("loading");
+            return;
           }
 
           const sourceNode = audioContext.createBufferSource();
@@ -511,10 +529,7 @@
           return Promise.resolve(); // ✅ resolve when playback starts
         } catch (error) {
           console.error(`❌ Error loading or playing ${file}:`, error);
-          if (btn) {
-            btn.classList.remove("loading");
-            btn.classList.remove("active");
-          }
+          if (btn) btn.classList.remove("loading", "active");
           return Promise.reject(error);
         }
       }
@@ -549,11 +564,17 @@
             console.error(e);
           }
         });
+
         playingSources = [];
 
-        // Reset play button states
+        // ✅ Reset visual buttons
         document.querySelectorAll(".play-button, .global-button").forEach((btn) => {
-          btn.classList.remove("active");
+          btn.classList.remove("active", "loading");
+        });
+
+        // ✅ Mark all currently loading sounds as "cancelled"
+        soundMeta.forEach((sound) => {
+          cancelledLoads.add(sound.file);
         });
       }
 
