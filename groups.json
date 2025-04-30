@@ -49,7 +49,7 @@
   },
   "imported_wavs/1L13 EWR_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
-    "name": "1L13 EWR Search",
+    "name": "1L13 EWR 'Box Spring' Search",
     "description": "",
     "hidden": false
   },
@@ -73,7 +73,7 @@
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
-    "name": "55G6 EWR Search",
+    "name": "55G6 'Tall Rack' EWR Search",
     "description": "",
     "hidden": false
   },
@@ -81,7 +81,7 @@
     "group": "Early Warning Radar (Soviet)",
     "name": "55G6 EWR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AESA_KJ2000_1_SEARCH.wav": {
     "group": "Ungrouped",
@@ -360,15 +360,15 @@
     "hidden": false
   },
   "imported_wavs/AN_MPQ_53_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/MPQ_53 Search",
-    "description": "",
+    "group": "SAM Radar (NATO)",
+    "name": "Patriot AN/MPQ-53 Search",
+    "description": "Patriot AN/MPQ-53 STR",
     "hidden": false
   },
   "imported_wavs/AN_MPQ_53_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "AN/MPQ_53 Track",
-    "description": "",
+    "group": "SAM Radar (NATO)",
+    "name": "Patriot AN/MPQ-53 Track",
+    "description": "Patriot AN/MPQ-53 STR",
     "hidden": false
   },
   "imported_wavs/AN_SPG_60_SEARCH.wav": {
@@ -624,28 +624,28 @@
     "hidden": false
   },
   "imported_wavs/B-1B SS radar_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "B-1B SS radar Search",
-    "description": "",
+    "group": "Air Radar (NATO)",
+    "name": "B-1B SS Radar Search",
+    "description": "B-1B Search Radar",
     "hidden": false
   },
   "imported_wavs/B-1B SS radar_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "B-1B SS radar Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/B-52H SS radar_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "B-52H SS radar Search",
-    "description": "",
+    "group": "Air Radar (NATO)",
+    "name": "B-52H SS Radar Search",
+    "description": "B-52H Search Radar",
     "hidden": false
   },
   "imported_wavs/B-52H SS radar_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (NATO)",
     "name": "B-52H SS radar Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/BRLS-8B_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1311,12 +1311,12 @@
     "group": "Ungrouped",
     "name": "Osa 9A33 ln Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Osa 9A33 ln Track",
-    "description": "",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-8 Osa Track",
+    "description": "SA-8 Osa 9A33 'Gecko",
     "hidden": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
@@ -1464,61 +1464,61 @@
     "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_2_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_3_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_3 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_3_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_4_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_4 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_4_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "SAM Radar (Soviet)",
     "name": "RLS_19J6_Beam_4 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RLS_19J6_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "RLS_19J6 Search",
-    "description": "",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-5/SA-10 Tin Shield RLS-19J6 Search",
+    "description": "SA-5/SA-10 Tin Shield RLS-19J6",
     "hidden": false
   },
   "imported_wavs/RLS_19J6_TRACK.wav": {
     "group": "Ungrouped",
     "name": "RLS_19J6 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/RM_1290_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (Chinese)",
     "name": "RM_1290 Search",
-    "description": "",
+    "description": "Type 054",
     "hidden": false
   },
   "imported_wavs/RM_1290_TRACK.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (Chinese)",
     "name": "RM_1290 Track",
     "description": "",
     "hidden": false
@@ -1753,8 +1753,8 @@
   },
   "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15 Scrum Search",
-    "description": "SA-15 Gauntlet Search Radar",
+    "name": "SA-15 Gauntlet Tor Search",
+    "description": "SA-15 'Gauntlet' Tor 9A331 Search Radar",
     "hidden": false
   },
   "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
@@ -1927,8 +1927,8 @@
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15 Gauntlet Tor 9A331 Track",
-    "description": "SA-15 Gauntlet Tor Track Radar",
+    "name": "SA-15 Gauntlet Tor Track",
+    "description": "SA-15 'Gauntlet' Tor 9A331 Track Radar",
     "hidden": false
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
@@ -2184,7 +2184,7 @@
     "hidden": true
   },
   "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Air Radar (Chinese)",
     "name": "Winglong-1 SAR Search",
     "description": "",
     "hidden": false
@@ -2193,7 +2193,7 @@
     "group": "Ungrouped",
     "name": "Winglong-1 SAR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (Soviet)",
@@ -2378,7 +2378,7 @@
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 High Search",
-    "description": "SA-8 Gecko Osa",
+    "description": "SA-8 Osa 9A33 'Gecko' High Radar",
     "hidden": true
   },
   "imported_wavs/sa_8_Search_high_TRACK.wav": {
@@ -2390,7 +2390,7 @@
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 Search",
-    "description": "SA-8 Gecko Osa",
+    "description": "SA-8 Osa 9A33 'Gecko'",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
