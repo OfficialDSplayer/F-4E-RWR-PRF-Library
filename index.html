@@ -543,6 +543,8 @@
       }
 
       function stopAll() {
+        currentPlayAllSession++;
+
         playingSources.forEach((src) => {
           try {
             src.node.stop();
@@ -596,7 +598,11 @@
 
         // Step 2: Check session validity and play all
         if (thisSession !== currentPlayAllSession) {
-          console.log("⚠️ Cancelled session, not starting playback.");
+          console.warn("⚠️ Play All session was cancelled before playback.");
+          if (playAllBtn) {
+            playAllBtn.classList.remove("loading");
+            playAllBtn.disabled = false;
+          }
           return;
         }
 
