@@ -232,6 +232,16 @@
       ALR-46's Handoff mode.
     </h4>
 
+    <div
+      id="progress-container"
+      style="height: 6px; background: #ddd; width: 100%; margin-top: 10px"
+    >
+      <div
+        id="progress-bar"
+        style="height: 100%; width: 0%; background-color: #2196f3; transition: width 0.3s"
+      ></div>
+    </div>
+
     <div id="audio-list">Loading sounds...</div>
     <!-- <div id="audio-list">
       <div style="text-align: center; font-size: 1.1rem">Loading sounds...</div>
@@ -264,6 +274,8 @@
       }
 
       async function loadWavFiles() {
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = "0%";
         try {
           const [wavListResponse, customWavListResponse, groupsMainResponse, groupsCustomResponse] =
             await Promise.all([
@@ -299,6 +311,10 @@
             localStorage.setItem("volumeLevel", this.value);
           });
 
+          // ✅ Skip hidden entries and skip loading WAVs up front (lazy load)
+          let processed = 0;
+          const total = allFiles.length;
+
           for (const file of allFiles) {
             try {
               const meta = allGroups[file] || {
@@ -308,26 +324,24 @@
                 hidden: false,
               };
 
+              // ✅ Skip hidden sounds entirely
+              if (meta.hidden) continue;
+
               soundMeta.push({
                 file,
                 group: meta.group,
                 name: meta.name,
                 description: meta.description,
-                hidden: meta.hidden || false,
+                hidden: false,
               });
-
-              const fetchResponse = await fetch(file);
-              if (!fetchResponse.ok) {
-                console.warn(`⚠️ Failed to fetch ${file}: ${fetchResponse.status}`);
-                continue;
-              }
-
-              const arrayBuffer = await fetchResponse.arrayBuffer();
-              const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-              soundBuffers[file] = audioBuffer;
+              // ✅ Don't fetch or decode anything now (lazy load in startLoop)
+              // (soundBuffers[file] will be filled later on-demand)
             } catch (error) {
-              console.error(`❌ Error loading sound file ${file}:`, error);
+              console.error(`❌ Failed to process metadata for ${file}:`, error);
               continue;
+            } finally {
+              processed++;
+              progressBar.style.width = `${Math.floor((processed / total) * 100)}%`;
             }
           }
 
@@ -335,9 +349,12 @@
           const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
           displayGroups(soundMeta, searchTerm);
         } catch (error) {
-          console.error("Error loading sound metadata or audio files:", error);
+          console.error("❌ Error loading sound metadata or audio files:", error);
           document.getElementById("audio-list").textContent = "❌ Failed to load sounds.";
         }
+        setTimeout(() => {
+          document.getElementById("progress-container").style.display = "none";
+        }, 300); // fade out after short delay
       }
 
       function displayGroups(sounds, searchTerm = "") {
@@ -445,20 +462,30 @@
         }
       }
 
-      function startLoop(file) {
+      async function startLoop(file) {
         stopLoop(file); // Only stops that sound if already playing
+        stopLoop(file);
 
-        const buffer = soundBuffers[file];
-        if (!buffer) return;
+        // Lazy load audio if not already loaded
+        if (!soundBuffers[file]) {
+          try {
+            const fetchResponse = await fetch(file);
+            const arrayBuffer = await fetchResponse.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            soundBuffers[file] = audioBuffer;
+          } catch (error) {
+            console.error(`❌ Error lazy-loading ${file}:`, error);
+            return;
+          }
+        }
 
         const sourceNode = audioContext.createBufferSource();
-        sourceNode.buffer = buffer;
+        sourceNode.buffer = soundBuffers[file];
         sourceNode.loop = true;
         sourceNode.connect(gainNode);
         sourceNode.start(0);
         playingSources.push({ file, node: sourceNode });
 
-        // Only activate this file's button
         const btn = document.querySelector(`.play-button[data-file="${file}"]`);
         if (btn) btn.classList.add("active");
       }
