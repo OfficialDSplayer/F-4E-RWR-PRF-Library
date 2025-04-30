@@ -129,6 +129,31 @@
         color: white;
         margin: 5px;
       }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0px rgba(255, 202, 40, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 12px rgba(255, 202, 40, 0.9);
+        }
+        100% {
+          box-shadow: 0 0 0px rgba(255, 202, 40, 0.4);
+        }
+      }
+
+      .play-button.active {
+        background-color: #ffca28; /* amber */
+        color: black;
+        animation: pulse 1.2s infinite;
+      }
+
+      .global-button.active {
+        background-color: #ffca28;
+        color: black;
+        animation: pulse 1.2s infinite;
+      }
+
       .volume-control {
         margin-top: 10px;
         display: flex;
@@ -189,6 +214,11 @@
       <button class="global-button" onclick="expandAllGroups()">Expand All Groups</button>
       <button class="global-button" onclick="collapseAllGroups()">Collapse All Groups</button>
     </div>
+
+    <h4>
+      This site is intended to help users learn and memorize what the PRF tones for radars for the
+      ALR-46's Handoff mode.
+    </h4>
 
     <div id="audio-list">Loading sounds...</div>
 
@@ -331,6 +361,7 @@
 
             const playButton = document.createElement("button");
             playButton.className = "play-button";
+            playButton.dataset.file = sound.file;
             playButton.textContent = "Play";
 
             const stopButton = document.createElement("button");
@@ -379,6 +410,7 @@
 
       function startLoop(file) {
         stopLoop(file);
+
         const buffer = soundBuffers[file];
         if (!buffer) return;
 
@@ -388,6 +420,15 @@
         sourceNode.connect(gainNode);
         sourceNode.start(0);
         playingSources.push({ file, node: sourceNode });
+
+        // Highlight active play button
+        document.querySelectorAll(".play-button").forEach((btn) => {
+          if (btn.dataset.file === file) {
+            btn.classList.add("active");
+          } else {
+            btn.classList.remove("active");
+          }
+        });
       }
 
       function stopLoop(file) {
@@ -403,6 +444,11 @@
           }
           return true;
         });
+        document.querySelectorAll(".play-button").forEach((btn) => {
+          if (btn.dataset.file === file) {
+            btn.classList.remove("active");
+          }
+        });
       }
 
       function stopAll() {
@@ -415,11 +461,25 @@
           }
         });
         playingSources = [];
+
+        // Reset play button states
+        document.querySelectorAll(".play-button, .global-button").forEach((btn) => {
+          btn.classList.remove("active");
+        });
       }
 
       function playAll() {
         stopAll();
         Object.keys(soundBuffers).forEach((file) => startLoop(file));
+
+        // Highlight all play buttons
+        document.querySelectorAll(".play-button").forEach((btn) => {
+          btn.classList.add("active");
+        });
+
+        // Highlight the Play All button
+        const playAllBtn = document.querySelector('button[onclick="playAll()"]');
+        if (playAllBtn) playAllBtn.classList.add("active");
       }
 
       loadWavFiles();
