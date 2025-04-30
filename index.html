@@ -152,6 +152,11 @@
       .global-button:active {
         background-color: #1976d2; /* darker blue */
       }
+      .global-button.loading {
+        background-color: #81c784;
+        color: black;
+        animation: pulse 1.2s infinite;
+      }
 
       @keyframes pulse {
         0% {
@@ -503,12 +508,14 @@
             btn.classList.remove("loading");
             btn.classList.add("active");
           }
+          return Promise.resolve(); // ✅ resolve when playback starts
         } catch (error) {
           console.error(`❌ Error loading or playing ${file}:`, error);
           if (btn) {
             btn.classList.remove("loading");
             btn.classList.remove("active");
           }
+          return Promise.reject(error);
         }
       }
 
@@ -550,18 +557,31 @@
         });
       }
 
-      function playAll() {
+      async function playAll() {
         stopAll();
-        Object.keys(soundBuffers).forEach((file) => startLoop(file));
 
-        // Highlight all play buttons
-        document.querySelectorAll(".play-button").forEach((btn) => {
-          btn.classList.add("active");
-        });
-
-        // Highlight the Play All button
         const playAllBtn = document.querySelector('button[onclick="playAll()"]');
-        if (playAllBtn) playAllBtn.classList.add("active");
+        if (playAllBtn) {
+          playAllBtn.classList.add("loading");
+          playAllBtn.disabled = true;
+        }
+
+        const promises = soundMeta.map((sound) => startLoop(sound.file));
+
+        try {
+          await Promise.all(promises);
+          if (playAllBtn) {
+            playAllBtn.classList.remove("loading");
+            playAllBtn.classList.add("active");
+          }
+        } catch (err) {
+          console.warn("Some sounds failed to load during Play All:", err);
+          if (playAllBtn) {
+            playAllBtn.classList.remove("loading");
+          }
+        } finally {
+          if (playAllBtn) playAllBtn.disabled = false;
+        }
       }
 
       loadWavFiles();
