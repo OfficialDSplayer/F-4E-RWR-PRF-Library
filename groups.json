@@ -158,49 +158,49 @@
   "imported_wavs/AN_APG-63_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-63 Search",
-    "description": "F-15C Radar",
+    "description": "F-15C Eagle Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-63_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-63 Track",
-    "description": "F-15C Radar",
+    "description": "F-15C Eagle Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-68_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-68 Search",
-    "description": "F-16C Radar",
+    "description": "F-16C Viper Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-68_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-68 Track",
-    "description": "F-16C Radar",
+    "description": "F-16C Viper Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/AWG-9 Search",
-    "description": "F-14A/B Radar",
+    "description": "F-14A/B Tomcat Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/AWG-9 Track",
-    "description": "F-14A/B Radar",
+    "description": "F-14A/B Tomcat Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-73_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-73 Search",
-    "description": "F/A-18C Radar",
+    "description": "F/A-18C Hornet Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-73_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-73 Track",
-    "description": "F/A-18C Radar",
+    "description": "F/A-18C Hornet Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-78_SEARCH.wav": {
@@ -218,13 +218,13 @@
   "imported_wavs/AN_APG_70_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-70 Search",
-    "description": "F-15E Radar",
+    "description": "F-15E Strike Eagle Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG_70_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "AN/APG-70 Track",
-    "description": "F-15E Radar",
+    "description": "F-15E Strike Eagle Radar",
     "hidden": false
   },
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
@@ -913,15 +913,15 @@
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
     "group": "Air Radar (Chinese)",
-    "name": "H-6J RADAR Search",
-    "description": "",
+    "name": "H-6J Radar Search",
+    "description": "H-6J Badger",
     "hidden": false
   },
   "imported_wavs/H-6J RADAR_TRACK.wav": {
     "group": "Air Radar (Chinese)",
     "name": "H-6J RADAR Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
     "group": "SAM Radar (Chinese)",
