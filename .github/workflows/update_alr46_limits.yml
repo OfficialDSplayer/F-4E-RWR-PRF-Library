@@ -59,6 +59,11 @@ jobs:
           for name, band in create_entries:
               radar_band_data[name.replace("/", "_")] = float(band)
 
+          # Step 3.5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
+
           # Step 4: Handle CreateRadarFromBase(name, base) → inherit band
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
