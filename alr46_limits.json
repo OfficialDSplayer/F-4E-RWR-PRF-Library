@@ -60,10 +60,10 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AESA_KJ2000_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "undetectable": false
@@ -222,16 +222,16 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPS_40_SEARCH.wav": {
     "undetectable": true
@@ -288,22 +288,22 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPY_1_left_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPY_1_right_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
     "undetectable": false
@@ -372,22 +372,22 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
     "undetectable": false
@@ -534,10 +534,10 @@
     "undetectable": false
   },
   "imported_wavs/Kopyo_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Kopyo_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
     "undetectable": false
@@ -642,10 +642,10 @@
     "undetectable": false
   },
   "imported_wavs/N_001_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/N_001_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Orion-A_SEARCH.wav": {
     "undetectable": true
@@ -702,16 +702,16 @@
     "undetectable": false
   },
   "imported_wavs/Poisk_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Poisk_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Pop_Group_T_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Pop_Group_T_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/R-77_Seeker_SEARCH.wav": {
     "undetectable": false
@@ -906,16 +906,16 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_1_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Strut_Pair_1_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/TAS_MK_23_SEARCH.wav": {
     "undetectable": true
@@ -930,10 +930,10 @@
     "undetectable": false
   },
   "imported_wavs/Top_Dome_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Dome_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Plate_L_SEARCH.wav": {
     "undetectable": true
@@ -996,10 +996,10 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_right_SEARCH.wav": {
     "undetectable": false
@@ -1008,16 +1008,16 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Type_346_Track_SEARCH.wav": {
     "undetectable": false
@@ -1086,10 +1086,10 @@
     "undetectable": false
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
     "undetectable": true
