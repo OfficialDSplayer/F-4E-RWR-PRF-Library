@@ -33,52 +33,52 @@ jobs:
           BAND_MIN = 1.5
           BAND_MAX = 20.0
 
-          rwr_path = Path("imported_luas/rwr.lua")
-          radars_path = Path("imported_luas/radars.lua")
-          wav_list_path = Path("wav_list.json")
-          output_path = Path("alr46_limits.json")
+          # Load files
+          rwr = Path("imported_luas/rwr.lua").read_text(encoding="utf-8")
+          radars = Path("imported_luas/radars.lua").read_text(encoding="utf-8")
+          wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
 
-          if not rwr_path.exists() or not radars_path.exists() or not wav_list_path.exists():
-              print("❌ Required file missing.")
-              exit(1)
+          # Extract base radar band data from radars.lua
+          radars_dict = dict(re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)', radars))
+          radars_dict = {k: float(v) for k, v in radars_dict.items()}
 
-          rwr_data = rwr_path.read_text(encoding="utf-8")
-          radars_data = radars_path.read_text(encoding="utf-8")
-          wav_list = json.loads(wav_list_path.read_text(encoding="utf-8"))
+          # Override/add radar bands from rwr.lua
+          rwr_dict = dict(re.findall(r'(?:CreateRadar|OverrideRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr))
+          rwr_dict = {k: float(v) for k, v in rwr_dict.items()}
 
-          # Extract band values from radars.lua
-          base_radars = dict(re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)', radars_data))
-          base_radars = {k: float(v) for k, v in base_radars.items()}
+          # Merge: rwr overrides base
+          combined = radars_dict.copy()
+          combined.update(rwr_dict)
 
-          # Extract and override with rwr.lua CreateRadar and OverrideRadar
-          radar_defs = dict(re.findall(r'(?:CreateRadar|OverrideRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr_data))
-          radar_defs = {k: float(v) for k, v in radar_defs.items()}
+          # Normalize radar keys: use underscore versions
+          band_lookup = {k.replace("/", "_"): v for k, v in combined.items()}
 
-          # Override base values with rwr.lua values
-          all_radars = base_radars.copy()
-          all_radars.update(radar_defs)
-
-          # Create lookup: name.replace("/", "_") → band
-          normalized_bands = {
-              k.replace("/", "_"): v for k, v in all_radars.items()
-          }
-
-          # Generate final mapping to wav names
+          # Create results
           limits = {}
+          missing = []
+
           for wav in wav_list:
-              name = Path(wav).stem  # includes _SEARCH, _TRACK
-              radar_name = name  # keep as-is
-              band = normalized_bands.get(radar_name)
+              filename = Path(wav).stem  # e.g. "SA-2_SEARCH"
+              base_name = re.sub(r"_(SEARCH|TRACK)$", "", filename)
+
+              band = band_lookup.get(base_name)
+              if band is None:
+                  missing.append(base_name)
+                  undetectable = True
+              else:
+                  undetectable = band < BAND_MIN or band > BAND_MAX
+
               limits[wav] = {
-                  "undetectable": band is None or band < BAND_MIN or band > BAND_MAX
+                  "undetectable": undetectable
               }
 
-          new_json = json.dumps(limits, indent=2)
-          if not output_path.exists() or output_path.read_text(encoding="utf-8") != new_json:
-              output_path.write_text(new_json, encoding="utf-8")
-              print("✅ alr46_limits.json updated.")
-          else:
-              print("⚠️ No changes to alr46_limits.json.")
+          # Log missing
+          if missing:
+              print(f"⚠️ {len(missing)} radars not found in band data:")
+              print(", ".join(sorted(set(missing))[:10]))
+
+          # Write the final JSON
+          Path("alr46_limits.json").write_text(json.dumps(limits, indent=2), encoding="utf-8")
           EOF
 
       - name: Commit and push changes
