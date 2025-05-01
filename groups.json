@@ -229,8 +229,8 @@
   },
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/APQ-120 Search",
-    "description": "F-4E Radar Search (Same as Track)",
+    "name": "AN/APQ-120 Search/Track",
+    "description": "F-4E Phantom II Radar",
     "hidden": false
   },
   "imported_wavs/AN_APQ-120_TRACK.wav": {
@@ -241,8 +241,8 @@
   },
   "imported_wavs/AN_APQ-153_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/APQ-153 Search",
-    "description": "F-5E Radar Search (Same as Track)",
+    "name": "AN/APQ-153 Search/Track",
+    "description": "F-5E Tiger II Radar",
     "hidden": false
   },
   "imported_wavs/AN_APQ-153_TRACK.wav": {
@@ -253,8 +253,8 @@
   },
   "imported_wavs/AN_APQ-159_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/APQ-159 Search",
-    "description": "F-5E-3 Radar Search (Same as Track)",
+    "name": "AN/APQ-159 Search/Track",
+    "description": "F-5E-3 Tiger II Radar",
     "hidden": false
   },
   "imported_wavs/AN_APQ-159_TRACK.wav": {
@@ -278,7 +278,7 @@
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
     "group": "Airborne Early Warning",
     "name": "AN/APS-138 2 Search",
-    "description": "E-2 Hawkeye",
+    "description": "E-2 Hawkey (NOT DETECTABLE BY ALR-46)",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
@@ -290,7 +290,7 @@
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
     "group": "Airborne Early Warning",
     "name": "AN/APS-138 3 Search",
-    "description": "E-2 Hawkeye",
+    "description": "E-2 Hawkeye (NOT DETECTABLE BY ALR-46)",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
@@ -302,7 +302,7 @@
   "imported_wavs/AN_APS-138_SEARCH.wav": {
     "group": "Airborne Early Warning",
     "name": "AN/APS-138 1 Search",
-    "description": "E-2 Hawkeye",
+    "description": "E-2 Hawkeye (NOT DETECTABLE BY ALR-46)",
     "hidden": false
   },
   "imported_wavs/AN_APS-138_TRACK.wav": {
@@ -1316,7 +1316,7 @@
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 Osa Track",
-    "description": "SA-8 Osa 9A33 'Gecko",
+    "description": "SA-8 Osa 9A33 'Gecko'",
     "hidden": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
@@ -1442,13 +1442,13 @@
   "imported_wavs/RDI_SEARCH.wav": {
     "group": "Air Radar (NATO)",
     "name": "RDI Search",
-    "description": "Mirage 2000C Search",
+    "description": "Mirage 2000C Radar",
     "hidden": false
   },
   "imported_wavs/RDI_TRACK.wav": {
     "group": "Air Radar (NATO)",
     "name": "RDI Track",
-    "description": "Mirage 2000C Track",
+    "description": "Mirage 2000C Radar",
     "hidden": false
   },
   "imported_wavs/RDY_SEARCH.wav": {
@@ -1790,7 +1790,7 @@
   "imported_wavs/Shmel_SEARCH.wav": {
     "group": "Airborne Early Warning",
     "name": "Shmel Search",
-    "description": "A-50 'Mainstay'",
+    "description": "A-50 'Mainstay' (NOT DETECTABLE BY ALR-46)",
     "hidden": false
   },
   "imported_wavs/Shmel_TRACK.wav": {

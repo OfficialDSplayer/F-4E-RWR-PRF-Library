@@ -26,7 +26,16 @@ jobs:
           rm -rf imported_wavs
           mkdir -p imported_wavs
           cp source-repo/Mods/aircraft/F-4E/Sounds/Effects/Aircrafts/RHAW/radars/*.wav imported_wavs/
-          rm -rf source-repo
+
+      - name: Copy rwr.lua and radars.lua files
+        run: |
+          rm -rf imported_luas
+          mkdir -p imported_luas
+          cp source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua imported_luas/
+          cp source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua imported_luas/
+
+      - name: Clean up source repo
+        run: rm -rf source-repo
 
       - name: Generate wav_list.json
         run: |

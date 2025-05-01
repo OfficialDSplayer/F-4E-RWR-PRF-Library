@@ -1,0 +1,81 @@
+name: Update ALR-46 Limits JSON
+
+on:
+  push:
+    paths:
+      - "imported_luas/rwr.lua"
+      - "imported_luas/radars.lua"
+      - ".github/workflows/update_alr46_limits.yml"
+  workflow_dispatch:
+
+jobs:
+  generate-alr46-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Generate alr46_limits.json
+        run: |
+          python3 <<EOF
+          import re, json
+
+          BAND_MIN = 1.5
+          BAND_MAX = 20.0
+
+          with open("imported_luas/rwr.lua", "r", encoding="utf-8") as f:
+              rwr_data = f.read()
+          with open("imported_luas/radars.lua", "r", encoding="utf-8") as f:
+              radars_data = f.read()
+
+          radar_pattern = r'CreateRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
+          rwr_radars = re.findall(radar_pattern, rwr_data)
+
+          override_pattern = r'OverrideRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
+          override_radars = re.findall(override_pattern, rwr_data)
+
+          replace_pattern = r'ReplaceUnitRadar\\("([^"]+)",\\s*"[^"]+",\\s*"([^"]+)"\\)'
+          replace_radars = re.findall(replace_pattern, rwr_data)
+
+          add_pattern = r'AddUnitRadar\\("([^"]+)",\\s*"([^"]+)"\\)'
+          add_radars = re.findall(add_pattern, rwr_data)
+
+          combined_rwr = {name: float(band) for name, band in rwr_radars + override_radars}
+
+          radars_pattern = r'\\["([^"]+)"\\]\\s*=\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
+          radars_bands = re.findall(radars_pattern, radars_data)
+          radars_dict = {name: float(band) for name, band in radars_bands}
+
+          merged_radars = radars_dict.copy()
+          merged_radars.update(combined_rwr)
+
+          results = {}
+          for name, band in merged_radars.items():
+              file_name = f"imported_wavs/{name.replace('/', '_')}.wav"
+              results[file_name] = {
+                  "undetectable": band < BAND_MIN or band > BAND_MAX
+              }
+
+          with open("alr46_limits.json", "w", encoding="utf-8") as f:
+              json.dump(results, f, indent=2)
+          EOF
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet alr46_limits.json; then
+            echo "No changes to commit."
+          else
+            git add alr46_limits.json
+            git commit -m "Auto-update alr46_limits.json"
+            git push
+          fi
