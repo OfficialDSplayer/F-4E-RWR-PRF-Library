@@ -213,7 +213,7 @@
     <hr class="solid" />
     <h2>By DSplayer</h2>
     <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-04-30 (using DCS 2.9.15.9599)</h3>
+    <h3>!!Highly WIP!! Last updated 2025-05-30 (using DCS 2.9.15.9599)</h3>
     <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
     <div class="controls">
@@ -265,10 +265,7 @@
       facing them.
     </p>
 
-    <p>
-      Only radars that are detectable by the ALR-46 are [going to be]* listed. *List needs to be
-      refined as I have to go through each radar.
-    </p>
+    <p>Only radars that are detectable by the ALR-46 are listed.</p>
 
     <div
       id="progress-container"
@@ -316,19 +313,28 @@
       async function loadWavFiles() {
         const progressBar = document.getElementById("progress-bar");
         progressBar.style.width = "0%";
+
         try {
-          const [wavListResponse, customWavListResponse, groupsMainResponse, groupsCustomResponse] =
-            await Promise.all([
-              fetch("wav_list.json?v=" + Date.now()),
-              fetch("custom_wav_list.json?v=" + Date.now()),
-              fetch("groups.json?v=" + Date.now()),
-              fetch("groups_custom.json?v=" + Date.now()),
-            ]);
+          // ✅ Fetch all metadata in parallel
+          const [
+            wavListResponse,
+            customWavListResponse,
+            groupsMainResponse,
+            groupsCustomResponse,
+            alr46LimitsResponse,
+          ] = await Promise.all([
+            fetch("wav_list.json?v=" + Date.now()),
+            fetch("custom_wav_list.json?v=" + Date.now()),
+            fetch("groups.json?v=" + Date.now()),
+            fetch("groups_custom.json?v=" + Date.now()),
+            fetch("alr46_limits.json?v=" + Date.now()),
+          ]);
 
           const wavFiles = await wavListResponse.json();
           const customWavFiles = await customWavListResponse.json();
           const groupsMain = await groupsMainResponse.json();
           const groupsCustom = await groupsCustomResponse.json();
+          const alr46Limits = await alr46LimitsResponse.json();
 
           const allFiles = [...wavFiles, ...customWavFiles];
           const allGroups = { ...groupsMain, ...groupsCustom };
@@ -364,8 +370,10 @@
                 hidden: false,
               };
 
-              // ✅ Skip hidden sounds entirely
-              if (meta.hidden) continue;
+              const isUndetectable = alr46Limits[file]?.undetectable === true;
+
+              // ✅ Skip hidden and undetectable sounds entirely
+              if (meta.hidden || isUndetectable) continue;
 
               soundMeta.push({
                 file,
@@ -374,8 +382,8 @@
                 description: meta.description,
                 hidden: false,
               });
+
               // ✅ Don't fetch or decode anything now (lazy load in startLoop)
-              // (soundBuffers[file] will be filled later on-demand)
             } catch (error) {
               console.error(`❌ Failed to process metadata for ${file}:`, error);
               continue;
@@ -392,6 +400,7 @@
           console.error("❌ Error loading sound metadata or audio files:", error);
           document.getElementById("audio-list").textContent = "❌ Failed to load sounds.";
         }
+
         setTimeout(() => {
           document.getElementById("progress-container").style.display = "none";
         }, 300); // fade out after short delay

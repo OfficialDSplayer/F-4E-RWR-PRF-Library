@@ -5,6 +5,7 @@ on:
     paths:
       - "imported_luas/rwr.lua"
       - "imported_luas/radars.lua"
+      - "wav_list.json"
       - ".github/workflows/update_alr46_limits.yml"
   workflow_dispatch:
 
@@ -18,12 +19,16 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+      - name: Clone external source repo (DCS-Datamine-Raw-Files)
+        run: |
+          git clone --depth=1 https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/OfficialDSplayer/DCS-Datamine-Raw-Files.git source-repo
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
-      - name: Generate or Update alr46_limits.json
+      - name: Generate or update alr46_limits.json
         run: |
           python3 <<EOF
           import re, json
@@ -32,47 +37,77 @@ jobs:
           BAND_MIN = 1.5
           BAND_MAX = 20.0
 
-          rwr_path = Path("imported_luas/rwr.lua")
-          radars_path = Path("imported_luas/radars.lua")
-          output_path = Path("alr46_limits.json")
+          rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
+          radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
+          wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
 
-          if not rwr_path.exists() or not radars_path.exists():
-              print("Missing Lua files. Skipping.")
-              exit(1)
+          # Step 1: Parse radars.lua using DisplayName and band
+          named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",[^}]*?band\s*=\s*([\d.]+)', radars)
+          indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",[^}]*?band\s*=\s*([\d.]+)', radars)
+          radars_dict = {display.replace("/", "_"): float(band) for (_, display, band) in named_style + indexed_style}
 
-          rwr_data = rwr_path.read_text(encoding="utf-8")
-          radars_data = radars_path.read_text(encoding="utf-8")
+          # Step 2: Start with radar.lua entries
+          radar_band_data = radars_dict.copy()
 
-          radar_pattern = r'CreateRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
-          rwr_radars = re.findall(radar_pattern, rwr_data)
+          # Step 2.5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
 
-          override_pattern = r'OverrideRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
-          override_radars = re.findall(override_pattern, rwr_data)
+          # Step 3: Add CreateRadar / CreateFrqScanRadar entries from rwr.lua
+          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in create_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
 
-          combined_rwr = {name: float(band) for name, band in rwr_radars + override_radars}
+          # Step 3.5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
 
-          radars_pattern = r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)'
-          radars_bands = re.findall(radars_pattern, radars_data)
-          radars_dict = {name: float(band) for name, band in radars_bands}
+          # Step 4: Handle CreateRadarFromBase(name, base) → inherit band
+          base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
+          for new, base in base_links:
+              new = new.replace("/", "_")
+              base = base.replace("/", "_")
+              if base in radar_band_data and new not in radar_band_data:
+                  radar_band_data[new] = radar_band_data[base]
 
-          merged_radars = radars_dict.copy()
-          merged_radars.update(combined_rwr)
+          # Step 5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
 
-          results = {}
-          for name, band in merged_radars.items():
-              file_name = f"imported_wavs/{name.replace('/', '_')}.wav"
-              results[file_name] = {
-                  "undetectable": band < BAND_MIN or band > BAND_MAX
+          # Step 6: Match wav files to radar names and calculate detectability
+          limits = {}
+          missing = []
+
+          for wav in wav_list:
+              filename = Path(wav).stem
+              base_name = re.sub(r"_(SEARCH|TRACK)$", "", filename)
+              base_name = base_name.replace("/", "_")
+
+              band = radar_band_data.get(base_name)
+              if band is None:
+                  undetectable = True
+                  missing.append(base_name)
+              else:
+                  undetectable = band < BAND_MIN or band > BAND_MAX
+
+              limits[wav] = {
+                  "band": band,
+                  "undetectable": undetectable
               }
 
-          # Only write if it changes or does not exist
-          new_content = json.dumps(results, indent=2)
-          if not output_path.exists() or output_path.read_text(encoding="utf-8") != new_content:
-              output_path.write_text(new_content, encoding="utf-8")
-              print("✅ alr46_limits.json created or updated.")
-          else:
-              print("⚠️ No changes to alr46_limits.json.")
+          if missing:
+              print(f"⚠️ {len(set(missing))} radars not found in band data:")
+              print(", ".join(sorted(set(missing))[:10]))
+
+          Path("alr46_limits.json").write_text(json.dumps(limits, indent=2), encoding="utf-8")
+          print("✅ alr46_limits.json generated.")
           EOF
+
+      - name: Clean up source repo
+        run: rm -rf source-repo
 
       - name: Commit and push changes
         run: |
