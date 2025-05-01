@@ -101,7 +101,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add imported_wavs wav_list.json groups.json
+          git add imported_wavs imported_luas wav_list.json groups.json
 
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
