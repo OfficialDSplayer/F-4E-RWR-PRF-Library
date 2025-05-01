@@ -49,6 +49,11 @@ jobs:
           # Step 2: Start with radar.lua entries
           radar_band_data = radars_dict.copy()
 
+          # Step 2.5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
+
           # Step 3: Add CreateRadar / CreateFrqScanRadar entries from rwr.lua
           create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
           for name, band in create_entries:
