@@ -1,0 +1,1634 @@
+{
+  "imported_wavs/052B SAM SR_SEARCH.wav": {
+    "band": 16.328989532151,
+    "undetectable": false
+  },
+  "imported_wavs/052B SAM SR_TRACK.wav": {
+    "band": 16.328989532151,
+    "undetectable": false
+  },
+  "imported_wavs/052B SAM TR_SEARCH.wav": {
+    "band": 13.180944242683,
+    "undetectable": false
+  },
+  "imported_wavs/052B SAM TR_TRACK.wav": {
+    "band": 13.180944242683,
+    "undetectable": false
+  },
+  "imported_wavs/052C SAM STR_SEARCH.wav": {
+    "band": 18.260689107944,
+    "undetectable": false
+  },
+  "imported_wavs/052C SAM STR_TRACK.wav": {
+    "band": 18.260689107944,
+    "undetectable": false
+  },
+  "imported_wavs/054A SAM TR_SEARCH.wav": {
+    "band": 7.6133915219581,
+    "undetectable": false
+  },
+  "imported_wavs/054A SAM TR_TRACK.wav": {
+    "band": 7.6133915219581,
+    "undetectable": false
+  },
+  "imported_wavs/1L13 EWR_SEARCH.wav": {
+    "band": 0.22,
+    "undetectable": true
+  },
+  "imported_wavs/1L13 EWR_TRACK.wav": {
+    "band": 0.22,
+    "undetectable": true
+  },
+  "imported_wavs/2S6 Tunguska_SEARCH.wav": {
+    "band": 15.667,
+    "undetectable": false
+  },
+  "imported_wavs/2S6 Tunguska_TRACK.wav": {
+    "band": 15.667,
+    "undetectable": false
+  },
+  "imported_wavs/55G6 EWR_SEARCH.wav": {
+    "band": 0.118,
+    "undetectable": true
+  },
+  "imported_wavs/55G6 EWR_TRACK.wav": {
+    "band": 0.118,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_1_SEARCH.wav": {
+    "band": 1.351,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_1_TRACK.wav": {
+    "band": 1.351,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_2_SEARCH.wav": {
+    "band": 1.311,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_2_TRACK.wav": {
+    "band": 1.311,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_3_SEARCH.wav": {
+    "band": 1.331,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_3_TRACK.wav": {
+    "band": 1.331,
+    "undetectable": true
+  },
+  "imported_wavs/AESA_KJ2000_SEARCH.wav": {
+    "band": 19.666493728446,
+    "undetectable": false
+  },
+  "imported_wavs/AESA_KJ2000_TRACK.wav": {
+    "band": 19.666493728446,
+    "undetectable": false
+  },
+  "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
+    "band": 8.39,
+    "undetectable": false
+  },
+  "imported_wavs/AIM_120_Seeker_TRACK.wav": {
+    "band": 8.39,
+    "undetectable": false
+  },
+  "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
+    "band": 9.34,
+    "undetectable": false
+  },
+  "imported_wavs/AIM_54_Seeker_TRACK.wav": {
+    "band": 9.34,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-63_SEARCH.wav": {
+    "band": 9.674,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-63_TRACK.wav": {
+    "band": 9.674,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-68_SEARCH.wav": {
+    "band": 9.825,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-68_TRACK.wav": {
+    "band": 9.825,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-71_SEARCH.wav": {
+    "band": 9.42,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-71_TRACK.wav": {
+    "band": 9.42,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-73_SEARCH.wav": {
+    "band": 9.016,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-73_TRACK.wav": {
+    "band": 9.016,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG-78_SEARCH.wav": {
+    "band": 34.934,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APG-78_TRACK.wav": {
+    "band": 34.934,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APG_70_SEARCH.wav": {
+    "band": 9.772,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APG_70_TRACK.wav": {
+    "band": 9.772,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-120_SEARCH.wav": {
+    "band": 9.47,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-120_TRACK.wav": {
+    "band": 9.47,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-153_SEARCH.wav": {
+    "band": 9.32,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-153_TRACK.wav": {
+    "band": 9.32,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-159_SEARCH.wav": {
+    "band": 9.32,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APQ-159_TRACK.wav": {
+    "band": 9.32,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-137_SEARCH.wav": {
+    "band": 2.1277748954741,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-137_TRACK.wav": {
+    "band": 2.1277748954741,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-138_2_SEARCH.wav": {
+    "band": 11.01046784875,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-138_2_TRACK.wav": {
+    "band": 11.01046784875,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-138_3_SEARCH.wav": {
+    "band": 11.01046784875,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-138_3_TRACK.wav": {
+    "band": 11.01046784875,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS-138_SEARCH.wav": {
+    "band": 0.43,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APS-138_TRACK.wav": {
+    "band": 0.43,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APS-142_SEARCH.wav": {
+    "band": 1.0246162297433,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APS-142_TRACK.wav": {
+    "band": 1.0246162297433,
+    "undetectable": true
+  },
+  "imported_wavs/AN_APS_124_SEARCH.wav": {
+    "band": 9.171,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APS_124_TRACK.wav": {
+    "band": 9.171,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APY-1_SEARCH.wav": {
+    "band": 8.7560045167394,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APY-1_TRACK.wav": {
+    "band": 8.7560045167394,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APY_1_SEARCH.wav": {
+    "band": 2.52,
+    "undetectable": false
+  },
+  "imported_wavs/AN_APY_1_TRACK.wav": {
+    "band": 2.52,
+    "undetectable": false
+  },
+  "imported_wavs/AN_MPQ_53_SEARCH.wav": {
+    "band": 7.374,
+    "undetectable": false
+  },
+  "imported_wavs/AN_MPQ_53_TRACK.wav": {
+    "band": 7.374,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPG_60_SEARCH.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPG_60_TRACK.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPG_62_SEARCH.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPG_62_TRACK.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_41_Az_SEARCH.wav": {
+    "band": 15.55,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_41_Az_TRACK.wav": {
+    "band": 15.55,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_41_El_SEARCH.wav": {
+    "band": 15.58,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_41_El_TRACK.wav": {
+    "band": 15.58,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_43C_SEARCH.wav": {
+    "band": 3.645,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPN_43C_TRACK.wav": {
+    "band": 3.645,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_1_SEARCH.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_1_TRACK.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
+    "band": 8.793,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_40_SEARCH.wav": {
+    "band": 0.374,
+    "undetectable": true
+  },
+  "imported_wavs/AN_SPS_40_TRACK.wav": {
+    "band": 0.374,
+    "undetectable": true
+  },
+  "imported_wavs/AN_SPS_48C_SEARCH.wav": {
+    "band": 3.042,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_48C_TRACK.wav": {
+    "band": 3.042,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_48E_SEARCH.wav": {
+    "band": 3.042,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_48E_TRACK.wav": {
+    "band": 3.042,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_49_SEARCH.wav": {
+    "band": 1.243,
+    "undetectable": true
+  },
+  "imported_wavs/AN_SPS_49_TRACK.wav": {
+    "band": 1.243,
+    "undetectable": true
+  },
+  "imported_wavs/AN_SPS_55_SEARCH.wav": {
+    "band": 9.73,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_55_TRACK.wav": {
+    "band": 9.73,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_64V9_SEARCH.wav": {
+    "band": 9.42,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_64V9_TRACK.wav": {
+    "band": 9.42,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_67_SEARCH.wav": {
+    "band": 5.638,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_67_TRACK.wav": {
+    "band": 5.638,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_73_SEARCH.wav": {
+    "band": 10.794,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPS_73_TRACK.wav": {
+    "band": 10.794,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_front_TRACK.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_left_TRACK.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/AN_SPY_1_right_TRACK.wav": {
+    "band": 3.367,
+    "undetectable": false
+  },
+  "imported_wavs/ARI 23274_SEARCH.wav": {
+    "band": 16.275,
+    "undetectable": false
+  },
+  "imported_wavs/ARI 23274_TRACK.wav": {
+    "band": 16.275,
+    "undetectable": false
+  },
+  "imported_wavs/B-1B SS radar_SEARCH.wav": {
+    "band": 2.3314920499283,
+    "undetectable": false
+  },
+  "imported_wavs/B-1B SS radar_TRACK.wav": {
+    "band": 2.3314920499283,
+    "undetectable": false
+  },
+  "imported_wavs/B-52H SS radar_SEARCH.wav": {
+    "band": 2.7565050202948,
+    "undetectable": false
+  },
+  "imported_wavs/B-52H SS radar_TRACK.wav": {
+    "band": 2.7565050202948,
+    "undetectable": false
+  },
+  "imported_wavs/BRLS-8B_SEARCH.wav": {
+    "band": 19.273903622547,
+    "undetectable": false
+  },
+  "imported_wavs/BRLS-8B_TRACK.wav": {
+    "band": 19.273903622547,
+    "undetectable": false
+  },
+  "imported_wavs/Band_Stand_SEARCH.wav": {
+    "band": 28.259,
+    "undetectable": true
+  },
+  "imported_wavs/Band_Stand_TRACK.wav": {
+    "band": 28.259,
+    "undetectable": true
+  },
+  "imported_wavs/Bass_Tilt_SEARCH.wav": {
+    "band": 10.777,
+    "undetectable": false
+  },
+  "imported_wavs/Bass_Tilt_TRACK.wav": {
+    "band": 10.777,
+    "undetectable": false
+  },
+  "imported_wavs/Berkut-95_SEARCH.wav": {
+    "band": 3.3520310068056,
+    "undetectable": false
+  },
+  "imported_wavs/Berkut-95_TRACK.wav": {
+    "band": 3.3520310068056,
+    "undetectable": false
+  },
+  "imported_wavs/Big_Net_SEARCH.wav": {
+    "band": 0.838,
+    "undetectable": true
+  },
+  "imported_wavs/Big_Net_TRACK.wav": {
+    "band": 0.838,
+    "undetectable": true
+  },
+  "imported_wavs/Big_bird_SEARCH.wav": {
+    "band": 2.217,
+    "undetectable": false
+  },
+  "imported_wavs/Big_bird_TRACK.wav": {
+    "band": 2.217,
+    "undetectable": false
+  },
+  "imported_wavs/BridgeMaster_E_SEARCH.wav": {
+    "band": 3.05,
+    "undetectable": false
+  },
+  "imported_wavs/BridgeMaster_E_TRACK.wav": {
+    "band": 3.05,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
+    "band": 13.341,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
+    "band": 13.341,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
+    "band": 9.2452772606586,
+    "undetectable": false
+  },
+  "imported_wavs/Castor_2_SEARCH.wav": {
+    "band": 11.399,
+    "undetectable": false
+  },
+  "imported_wavs/Castor_2_TRACK.wav": {
+    "band": 11.399,
+    "undetectable": false
+  },
+  "imported_wavs/Cross_Sword_S_SEARCH.wav": {
+    "band": 6.599,
+    "undetectable": false
+  },
+  "imported_wavs/Cross_Sword_S_TRACK.wav": {
+    "band": 6.599,
+    "undetectable": false
+  },
+  "imported_wavs/Cross_Sword_T_SEARCH.wav": {
+    "band": 26.989,
+    "undetectable": true
+  },
+  "imported_wavs/Cross_Sword_T_TRACK.wav": {
+    "band": 26.989,
+    "undetectable": true
+  },
+  "imported_wavs/DA_02_SEARCH.wav": {
+    "band": 4.245,
+    "undetectable": false
+  },
+  "imported_wavs/DA_02_TRACK.wav": {
+    "band": 4.245,
+    "undetectable": false
+  },
+  "imported_wavs/DA_08_SEARCH.wav": {
+    "band": 2.736,
+    "undetectable": false
+  },
+  "imported_wavs/DA_08_TRACK.wav": {
+    "band": 2.736,
+    "undetectable": false
+  },
+  "imported_wavs/Dog Ear radar_SEARCH.wav": {
+    "band": 2.284,
+    "undetectable": false
+  },
+  "imported_wavs/Dog Ear radar_TRACK.wav": {
+    "band": 2.284,
+    "undetectable": false
+  },
+  "imported_wavs/Don_2_SEARCH.wav": {
+    "band": 10.665,
+    "undetectable": false
+  },
+  "imported_wavs/Don_2_TRACK.wav": {
+    "band": 10.665,
+    "undetectable": false
+  },
+  "imported_wavs/FPS-117_SEARCH.wav": {
+    "band": 12.768822290719,
+    "undetectable": false
+  },
+  "imported_wavs/FPS-117_TRACK.wav": {
+    "band": 12.768822290719,
+    "undetectable": false
+  },
+  "imported_wavs/FPS_117_SEARCH.wav": {
+    "band": 1.26,
+    "undetectable": true
+  },
+  "imported_wavs/FPS_117_TRACK.wav": {
+    "band": 1.26,
+    "undetectable": true
+  },
+  "imported_wavs/Front_Dome_SEARCH.wav": {
+    "band": 11.052,
+    "undetectable": false
+  },
+  "imported_wavs/Front_Dome_TRACK.wav": {
+    "band": 11.052,
+    "undetectable": false
+  },
+  "imported_wavs/Gepard_SEARCH.wav": {
+    "band": 16.013,
+    "undetectable": false
+  },
+  "imported_wavs/Gepard_TRACK.wav": {
+    "band": 16.013,
+    "undetectable": false
+  },
+  "imported_wavs/H-6J RADAR_SEARCH.wav": {
+    "band": 3.7945249794,
+    "undetectable": false
+  },
+  "imported_wavs/H-6J RADAR_TRACK.wav": {
+    "band": 3.7945249794,
+    "undetectable": false
+  },
+  "imported_wavs/HQ-7 SR_SEARCH.wav": {
+    "band": 2.257,
+    "undetectable": false
+  },
+  "imported_wavs/HQ-7 SR_TRACK.wav": {
+    "band": 2.257,
+    "undetectable": false
+  },
+  "imported_wavs/HQ-7 TR_SEARCH.wav": {
+    "band": 17.423,
+    "undetectable": false
+  },
+  "imported_wavs/HQ-7 TR_TRACK.wav": {
+    "band": 17.423,
+    "undetectable": false
+  },
+  "imported_wavs/Hawk sr_SEARCH.wav": {
+    "band": 1.27,
+    "undetectable": true
+  },
+  "imported_wavs/Hawk sr_TRACK.wav": {
+    "band": 1.27,
+    "undetectable": true
+  },
+  "imported_wavs/Hawk tr_SEARCH.wav": {
+    "band": 10.125,
+    "undetectable": false
+  },
+  "imported_wavs/Hawk tr_TRACK.wav": {
+    "band": 10.125,
+    "undetectable": false
+  },
+  "imported_wavs/Hawk_cwar_SEARCH.wav": {
+    "band": 14.536,
+    "undetectable": false
+  },
+  "imported_wavs/Hawk_cwar_TRACK.wav": {
+    "band": 14.536,
+    "undetectable": false
+  },
+  "imported_wavs/Head_Net_1_SEARCH.wav": {
+    "band": 2.81,
+    "undetectable": false
+  },
+  "imported_wavs/Head_Net_1_TRACK.wav": {
+    "band": 2.81,
+    "undetectable": false
+  },
+  "imported_wavs/Head_Net_2_SEARCH.wav": {
+    "band": 2.78,
+    "undetectable": false
+  },
+  "imported_wavs/Head_Net_2_TRACK.wav": {
+    "band": 2.78,
+    "undetectable": false
+  },
+  "imported_wavs/Hot_Flash_T_SEARCH.wav": {
+    "band": 26.339,
+    "undetectable": true
+  },
+  "imported_wavs/Hot_Flash_T_TRACK.wav": {
+    "band": 26.339,
+    "undetectable": true
+  },
+  "imported_wavs/Hot_Shot_search_SEARCH.wav": {
+    "band": 2.273,
+    "undetectable": false
+  },
+  "imported_wavs/Hot_Shot_search_TRACK.wav": {
+    "band": 2.273,
+    "undetectable": false
+  },
+  "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
+    "band": 1.5355693227943,
+    "undetectable": false
+  },
+  "imported_wavs/KKS R-790 Tsunami-BM_TRACK.wav": {
+    "band": 1.5355693227943,
+    "undetectable": false
+  },
+  "imported_wavs/KLJ-7_SEARCH.wav": {
+    "band": 9.743,
+    "undetectable": false
+  },
+  "imported_wavs/KLJ-7_TRACK.wav": {
+    "band": 9.743,
+    "undetectable": false
+  },
+  "imported_wavs/Kite_Screech_SEARCH.wav": {
+    "band": 8.083,
+    "undetectable": false
+  },
+  "imported_wavs/Kite_Screech_TRACK.wav": {
+    "band": 8.083,
+    "undetectable": false
+  },
+  "imported_wavs/Kopyo_SEARCH.wav": {
+    "band": 13.719046601764,
+    "undetectable": false
+  },
+  "imported_wavs/Kopyo_TRACK.wav": {
+    "band": 13.719046601764,
+    "undetectable": false
+  },
+  "imported_wavs/Kub 1S91 str_SEARCH.wav": {
+    "band": 8.55,
+    "undetectable": false
+  },
+  "imported_wavs/Kub 1S91 str_TRACK.wav": {
+    "band": 8.55,
+    "undetectable": false
+  },
+  "imported_wavs/LW_01_SEARCH.wav": {
+    "band": 1.28,
+    "undetectable": true
+  },
+  "imported_wavs/LW_01_TRACK.wav": {
+    "band": 1.28,
+    "undetectable": true
+  },
+  "imported_wavs/LW_08_SEARCH.wav": {
+    "band": 2.045,
+    "undetectable": false
+  },
+  "imported_wavs/LW_08_TRACK.wav": {
+    "band": 2.045,
+    "undetectable": false
+  },
+  "imported_wavs/MPDR_12_SEARCH.wav": {
+    "band": 1.132,
+    "undetectable": true
+  },
+  "imported_wavs/MPDR_12_TRACK.wav": {
+    "band": 1.132,
+    "undetectable": true
+  },
+  "imported_wavs/MR_350_SEARCH.wav": {
+    "band": 17.309,
+    "undetectable": false
+  },
+  "imported_wavs/MR_350_TRACK.wav": {
+    "band": 17.309,
+    "undetectable": false
+  },
+  "imported_wavs/Mark_92_S_SEARCH.wav": {
+    "band": 10.641,
+    "undetectable": false
+  },
+  "imported_wavs/Mark_92_S_TRACK.wav": {
+    "band": 10.641,
+    "undetectable": false
+  },
+  "imported_wavs/Mark_92_T_SEARCH.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/Mark_92_T_TRACK.wav": {
+    "band": 11.509,
+    "undetectable": false
+  },
+  "imported_wavs/Mk_95_SEARCH.wav": {
+    "band": 10.608,
+    "undetectable": false
+  },
+  "imported_wavs/Mk_95_TRACK.wav": {
+    "band": 10.608,
+    "undetectable": false
+  },
+  "imported_wavs/Muff_Cob_SEARCH.wav": {
+    "band": 6.544,
+    "undetectable": false
+  },
+  "imported_wavs/Muff_Cob_TRACK.wav": {
+    "band": 6.544,
+    "undetectable": false
+  },
+  "imported_wavs/Mys-M1_SR_SEARCH.wav": {
+    "band": 10.611,
+    "undetectable": false
+  },
+  "imported_wavs/Mys-M1_SR_TRACK.wav": {
+    "band": 10.611,
+    "undetectable": false
+  },
+  "imported_wavs/N-001_SEARCH.wav": {
+    "band": 19.807611316263,
+    "undetectable": false
+  },
+  "imported_wavs/N-001_TRACK.wav": {
+    "band": 19.807611316263,
+    "undetectable": false
+  },
+  "imported_wavs/N-005_SEARCH.wav": {
+    "band": 10.853,
+    "undetectable": false
+  },
+  "imported_wavs/N-005_TRACK.wav": {
+    "band": 10.853,
+    "undetectable": false
+  },
+  "imported_wavs/N-008_SEARCH.wav": {
+    "band": 9.208,
+    "undetectable": false
+  },
+  "imported_wavs/N-008_TRACK.wav": {
+    "band": 9.208,
+    "undetectable": false
+  },
+  "imported_wavs/N-011M_SEARCH.wav": {
+    "band": 19.528305917539,
+    "undetectable": false
+  },
+  "imported_wavs/N-011M_TRACK.wav": {
+    "band": 19.528305917539,
+    "undetectable": false
+  },
+  "imported_wavs/N-019M_SEARCH.wav": {
+    "band": 12.533951841792,
+    "undetectable": false
+  },
+  "imported_wavs/N-019M_TRACK.wav": {
+    "band": 12.533951841792,
+    "undetectable": false
+  },
+  "imported_wavs/N-019_SEARCH.wav": {
+    "band": 10.718,
+    "undetectable": false
+  },
+  "imported_wavs/N-019_TRACK.wav": {
+    "band": 10.718,
+    "undetectable": false
+  },
+  "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
+    "band": 10.925,
+    "undetectable": false
+  },
+  "imported_wavs/NASAMS_Radar_MPQ64F1_TRACK.wav": {
+    "band": 10.925,
+    "undetectable": false
+  },
+  "imported_wavs/N_001_SEARCH.wav": {
+    "band": 7.526963103122,
+    "undetectable": false
+  },
+  "imported_wavs/N_001_TRACK.wav": {
+    "band": 7.526963103122,
+    "undetectable": false
+  },
+  "imported_wavs/Orion-A_SEARCH.wav": {
+    "band": 1.4150578325755,
+    "undetectable": true
+  },
+  "imported_wavs/Orion-A_TRACK.wav": {
+    "band": 1.4150578325755,
+    "undetectable": true
+  },
+  "imported_wavs/Osa 9A33 ln_SEARCH.wav": {
+    "band": 14.528,
+    "undetectable": false
+  },
+  "imported_wavs/Osa 9A33 ln_TRACK.wav": {
+    "band": 14.528,
+    "undetectable": false
+  },
+  "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
+    "band": 1.7001251258889,
+    "undetectable": false
+  },
+  "imported_wavs/PLAN Search Radar A_TRACK.wav": {
+    "band": 1.7001251258889,
+    "undetectable": false
+  },
+  "imported_wavs/PLAN Search Radar B_SEARCH.wav": {
+    "band": 1.3688650166326,
+    "undetectable": true
+  },
+  "imported_wavs/PLAN Search Radar B_TRACK.wav": {
+    "band": 1.3688650166326,
+    "undetectable": true
+  },
+  "imported_wavs/PNA-D Leninets_SEARCH.wav": {
+    "band": 1.002154606769,
+    "undetectable": true
+  },
+  "imported_wavs/PNA-D Leninets_TRACK.wav": {
+    "band": 1.002154606769,
+    "undetectable": true
+  },
+  "imported_wavs/PS-37A_SEARCH.wav": {
+    "band": 9.05,
+    "undetectable": false
+  },
+  "imported_wavs/PS-37A_TRACK.wav": {
+    "band": 9.05,
+    "undetectable": false
+  },
+  "imported_wavs/Palm_Frond_SEARCH.wav": {
+    "band": 9.089,
+    "undetectable": false
+  },
+  "imported_wavs/Palm_Frond_TRACK.wav": {
+    "band": 9.089,
+    "undetectable": false
+  },
+  "imported_wavs/Patriot str_SEARCH.wav": {
+    "band": 13.898739585559,
+    "undetectable": false
+  },
+  "imported_wavs/Patriot str_TRACK.wav": {
+    "band": 13.898739585559,
+    "undetectable": false
+  },
+  "imported_wavs/Peel_Pair_SEARCH.wav": {
+    "band": 10.665,
+    "undetectable": false
+  },
+  "imported_wavs/Peel_Pair_TRACK.wav": {
+    "band": 10.665,
+    "undetectable": false
+  },
+  "imported_wavs/Poisk_SEARCH.wav": {
+    "band": 3.2178472243416,
+    "undetectable": false
+  },
+  "imported_wavs/Poisk_TRACK.wav": {
+    "band": 3.2178472243416,
+    "undetectable": false
+  },
+  "imported_wavs/Pop_Group_T_SEARCH.wav": {
+    "band": 4.6816614276559,
+    "undetectable": false
+  },
+  "imported_wavs/Pop_Group_T_TRACK.wav": {
+    "band": 4.6816614276559,
+    "undetectable": false
+  },
+  "imported_wavs/R-77_Seeker_SEARCH.wav": {
+    "band": 8.29,
+    "undetectable": false
+  },
+  "imported_wavs/R-77_Seeker_TRACK.wav": {
+    "band": 8.29,
+    "undetectable": false
+  },
+  "imported_wavs/RDI_SEARCH.wav": {
+    "band": 9.796,
+    "undetectable": false
+  },
+  "imported_wavs/RDI_TRACK.wav": {
+    "band": 9.796,
+    "undetectable": false
+  },
+  "imported_wavs/RDY_SEARCH.wav": {
+    "band": 9.3,
+    "undetectable": false
+  },
+  "imported_wavs/RDY_TRACK.wav": {
+    "band": 9.3,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
+    "band": 3.15,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_2_TRACK.wav": {
+    "band": 3.15,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_3_SEARCH.wav": {
+    "band": 3.1,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_3_TRACK.wav": {
+    "band": 3.1,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_4_SEARCH.wav": {
+    "band": 3.2,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_Beam_4_TRACK.wav": {
+    "band": 3.2,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_SEARCH.wav": {
+    "band": 3.05,
+    "undetectable": false
+  },
+  "imported_wavs/RLS_19J6_TRACK.wav": {
+    "band": 3.05,
+    "undetectable": false
+  },
+  "imported_wavs/RM_1290_SEARCH.wav": {
+    "band": 9.421,
+    "undetectable": false
+  },
+  "imported_wavs/RM_1290_TRACK.wav": {
+    "band": 9.421,
+    "undetectable": false
+  },
+  "imported_wavs/RPC S-200 TR_SEARCH.wav": {
+    "band": 7.795,
+    "undetectable": false
+  },
+  "imported_wavs/RPC S-200 TR_TRACK.wav": {
+    "band": 7.795,
+    "undetectable": false
+  },
+  "imported_wavs/RP_22SMA_SEARCH.wav": {
+    "band": 13.049,
+    "undetectable": false
+  },
+  "imported_wavs/RP_22SMA_TRACK.wav": {
+    "band": 13.049,
+    "undetectable": false
+  },
+  "imported_wavs/RP_5_search_SEARCH.wav": {
+    "band": 9.33,
+    "undetectable": false
+  },
+  "imported_wavs/RP_5_search_TRACK.wav": {
+    "band": 9.33,
+    "undetectable": false
+  },
+  "imported_wavs/RP_5_track_SEARCH.wav": {
+    "band": 9.383,
+    "undetectable": false
+  },
+  "imported_wavs/RP_5_track_TRACK.wav": {
+    "band": 9.383,
+    "undetectable": false
+  },
+  "imported_wavs/RQ-1 Predator SAR_SEARCH.wav": {
+    "band": 1.5754142887661,
+    "undetectable": false
+  },
+  "imported_wavs/RQ-1 Predator SAR_TRACK.wav": {
+    "band": 1.5754142887661,
+    "undetectable": false
+  },
+  "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
+    "band": 38.694,
+    "undetectable": true
+  },
+  "imported_wavs/Rapier_Blindfire_TRACK.wav": {
+    "band": 38.694,
+    "undetectable": true
+  },
+  "imported_wavs/Rapier_Dagger_SEARCH.wav": {
+    "band": 4.063,
+    "undetectable": false
+  },
+  "imported_wavs/Rapier_Dagger_TRACK.wav": {
+    "band": 4.063,
+    "undetectable": false
+  },
+  "imported_wavs/Rice_Bowl_SEARCH.wav": {
+    "band": 11.054,
+    "undetectable": false
+  },
+  "imported_wavs/Rice_Bowl_TRACK.wav": {
+    "band": 11.054,
+    "undetectable": false
+  },
+  "imported_wavs/Roland ADS_SEARCH.wav": {
+    "band": 16.35,
+    "undetectable": false
+  },
+  "imported_wavs/Roland ADS_TRACK.wav": {
+    "band": 16.35,
+    "undetectable": false
+  },
+  "imported_wavs/Roland Radar_SEARCH.wav": {
+    "band": 2.358,
+    "undetectable": false
+  },
+  "imported_wavs/Roland Radar_TRACK.wav": {
+    "band": 2.358,
+    "undetectable": false
+  },
+  "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
+    "band": 1.132,
+    "undetectable": true
+  },
+  "imported_wavs/Roland_MPDR_16_TRACK.wav": {
+    "band": 1.132,
+    "undetectable": true
+  },
+  "imported_wavs/Rubidy MM_SEARCH.wav": {
+    "band": 2.91,
+    "undetectable": false
+  },
+  "imported_wavs/Rubidy MM_TRACK.wav": {
+    "band": 2.91,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6M tr navy_SEARCH.wav": {
+    "band": 14.927091280862,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6M tr navy_TRACK.wav": {
+    "band": 14.927091280862,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
+    "band": 14.516,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
+    "band": 14.516,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
+    "band": 10.562,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
+    "band": 10.562,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
+    "band": 15.400738547929,
+    "undetectable": false
+  },
+  "imported_wavs/S-300PS 64H6E sr_TRACK.wav": {
+    "band": 15.400738547929,
+    "undetectable": false
+  },
+  "imported_wavs/SA-11 Buk SR 9S18M1_SEARCH.wav": {
+    "band": 18.883754997406,
+    "undetectable": false
+  },
+  "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
+    "band": 18.883754997406,
+    "undetectable": false
+  },
+  "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
+    "band": 11.052,
+    "undetectable": false
+  },
+  "imported_wavs/SA-11 Buk TR_TRACK.wav": {
+    "band": 11.052,
+    "undetectable": false
+  },
+  "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
+    "band": 7.674,
+    "undetectable": false
+  },
+  "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
+    "band": 7.674,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
+    "band": 3.094,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
+    "band": 3.094,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_2_SEARCH.wav": {
+    "band": 3.144,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_2_TRACK.wav": {
+    "band": 3.144,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_3_SEARCH.wav": {
+    "band": 3.044,
+    "undetectable": false
+  },
+  "imported_wavs/Scrum_Half_Search_3_TRACK.wav": {
+    "band": 3.044,
+    "undetectable": false
+  },
+  "imported_wavs/Shmel_SEARCH.wav": {
+    "band": 0.878,
+    "undetectable": true
+  },
+  "imported_wavs/Shmel_TRACK.wav": {
+    "band": 0.878,
+    "undetectable": true
+  },
+  "imported_wavs/Strut_Curve_SEARCH.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/Strut_Curve_TRACK.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/Strut_Pair_1_SEARCH.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/Strut_Pair_1_TRACK.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/Strut_Pair_2_SEARCH.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/Strut_Pair_2_TRACK.wav": {
+    "band": 3.884,
+    "undetectable": false
+  },
+  "imported_wavs/TAS_MK_23_SEARCH.wav": {
+    "band": 1.195,
+    "undetectable": true
+  },
+  "imported_wavs/TAS_MK_23_TRACK.wav": {
+    "band": 1.195,
+    "undetectable": true
+  },
+  "imported_wavs/Tomb_Stone_SEARCH.wav": {
+    "band": 11.512,
+    "undetectable": false
+  },
+  "imported_wavs/Tomb_Stone_TRACK.wav": {
+    "band": 11.512,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Dome_SEARCH.wav": {
+    "band": 11.380108035524,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Dome_TRACK.wav": {
+    "band": 11.380108035524,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Plate_L_SEARCH.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Top_Plate_L_TRACK.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Top_Plate_S_SEARCH.wav": {
+    "band": 3.463,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Plate_S_TRACK.wav": {
+    "band": 3.463,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Sail_SEARCH.wav": {
+    "band": 1.701,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Sail_TRACK.wav": {
+    "band": 1.701,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Steer_SEARCH.wav": {
+    "band": 2.239,
+    "undetectable": false
+  },
+  "imported_wavs/Top_Steer_TRACK.wav": {
+    "band": 2.239,
+    "undetectable": false
+  },
+  "imported_wavs/Tor 9A331_SEARCH.wav": {
+    "band": 7.314,
+    "undetectable": false
+  },
+  "imported_wavs/Tor 9A331_TRACK.wav": {
+    "band": 7.314,
+    "undetectable": false
+  },
+  "imported_wavs/Tornado SS radar_SEARCH.wav": {
+    "band": 3.2447035126804,
+    "undetectable": false
+  },
+  "imported_wavs/Tornado SS radar_TRACK.wav": {
+    "band": 3.2447035126804,
+    "undetectable": false
+  },
+  "imported_wavs/Triton_S_SEARCH.wav": {
+    "band": 2.28,
+    "undetectable": false
+  },
+  "imported_wavs/Triton_S_TRACK.wav": {
+    "band": 2.28,
+    "undetectable": false
+  },
+  "imported_wavs/Type_1006_SEARCH.wav": {
+    "band": 9.445,
+    "undetectable": false
+  },
+  "imported_wavs/Type_1006_TRACK.wav": {
+    "band": 9.445,
+    "undetectable": false
+  },
+  "imported_wavs/Type_1022_SEARCH.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Type_1022_TRACK.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Type_344_SEARCH.wav": {
+    "band": 18.891,
+    "undetectable": false
+  },
+  "imported_wavs/Type_344_TRACK.wav": {
+    "band": 18.891,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Front_right_SEARCH.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Front_right_TRACK.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
+    "band": 3.245,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Track_SEARCH.wav": {
+    "band": 5.65,
+    "undetectable": false
+  },
+  "imported_wavs/Type_346_Track_TRACK.wav": {
+    "band": 5.65,
+    "undetectable": false
+  },
+  "imported_wavs/Type_360_SEARCH.wav": {
+    "band": 2.531,
+    "undetectable": false
+  },
+  "imported_wavs/Type_360_TRACK.wav": {
+    "band": 2.531,
+    "undetectable": false
+  },
+  "imported_wavs/Type_364_SEARCH.wav": {
+    "band": 2.239,
+    "undetectable": false
+  },
+  "imported_wavs/Type_364_TRACK.wav": {
+    "band": 2.239,
+    "undetectable": false
+  },
+  "imported_wavs/Type_382_Large_SEARCH.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Type_382_Large_TRACK.wav": {
+    "band": 1.218,
+    "undetectable": true
+  },
+  "imported_wavs/Type_382_Small_SEARCH.wav": {
+    "band": 3.463,
+    "undetectable": false
+  },
+  "imported_wavs/Type_382_Small_TRACK.wav": {
+    "band": 3.463,
+    "undetectable": false
+  },
+  "imported_wavs/Type_517_SEARCH.wav": {
+    "band": 0.112,
+    "undetectable": true
+  },
+  "imported_wavs/Type_517_TRACK.wav": {
+    "band": 0.112,
+    "undetectable": true
+  },
+  "imported_wavs/Type_903_SEARCH.wav": {
+    "band": 9.05,
+    "undetectable": false
+  },
+  "imported_wavs/Type_903_TRACK.wav": {
+    "band": 9.05,
+    "undetectable": false
+  },
+  "imported_wavs/Type_909_SEARCH.wav": {
+    "band": 7.314,
+    "undetectable": false
+  },
+  "imported_wavs/Type_909_TRACK.wav": {
+    "band": 7.314,
+    "undetectable": false
+  },
+  "imported_wavs/Type_965_SEARCH.wav": {
+    "band": 0.104,
+    "undetectable": true
+  },
+  "imported_wavs/Type_965_TRACK.wav": {
+    "band": 0.104,
+    "undetectable": true
+  },
+  "imported_wavs/Type_992Q_SEARCH.wav": {
+    "band": 3.298,
+    "undetectable": false
+  },
+  "imported_wavs/Type_992Q_TRACK.wav": {
+    "band": 3.298,
+    "undetectable": false
+  },
+  "imported_wavs/Type_992_SEARCH.wav": {
+    "band": 2.472,
+    "undetectable": false
+  },
+  "imported_wavs/Type_992_TRACK.wav": {
+    "band": 2.472,
+    "undetectable": false
+  },
+  "imported_wavs/VIRTUAL_AUDIO_SENSOR_SEARCH.wav": {
+    "band": 17.570726645711,
+    "undetectable": false
+  },
+  "imported_wavs/VIRTUAL_AUDIO_SENSOR_TRACK.wav": {
+    "band": 17.570726645711,
+    "undetectable": false
+  },
+  "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
+    "band": 1.1606555375835,
+    "undetectable": true
+  },
+  "imported_wavs/Winglong-1 SAR_TRACK.wav": {
+    "band": 1.1606555375835,
+    "undetectable": true
+  },
+  "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
+    "band": 16.539,
+    "undetectable": false
+  },
+  "imported_wavs/ZSU-23-4 Shilka_TRACK.wav": {
+    "band": 16.539,
+    "undetectable": false
+  },
+  "imported_wavs/ZW_01_SEARCH.wav": {
+    "band": 12.335,
+    "undetectable": false
+  },
+  "imported_wavs/ZW_01_TRACK.wav": {
+    "band": 12.335,
+    "undetectable": false
+  },
+  "imported_wavs/albatros search radar_SEARCH.wav": {
+    "band": 2.7999633777886,
+    "undetectable": false
+  },
+  "imported_wavs/albatros search radar_TRACK.wav": {
+    "band": 2.7999633777886,
+    "undetectable": false
+  },
+  "imported_wavs/amazonka_SEARCH.wav": {
+    "band": 11.488,
+    "undetectable": false
+  },
+  "imported_wavs/amazonka_TRACK.wav": {
+    "band": 11.488,
+    "undetectable": false
+  },
+  "imported_wavs/carrier search radar_SEARCH.wav": {
+    "band": 1.6581316568499,
+    "undetectable": false
+  },
+  "imported_wavs/carrier search radar_TRACK.wav": {
+    "band": 1.6581316568499,
+    "undetectable": false
+  },
+  "imported_wavs/fan_song_SEARCH.wav": {
+    "band": 4.95,
+    "undetectable": false
+  },
+  "imported_wavs/fan_song_TRACK.wav": {
+    "band": 4.95,
+    "undetectable": false
+  },
+  "imported_wavs/molniya search radar_SEARCH.wav": {
+    "band": 15.11996826075,
+    "undetectable": false
+  },
+  "imported_wavs/molniya search radar_TRACK.wav": {
+    "band": 15.11996826075,
+    "undetectable": false
+  },
+  "imported_wavs/moskva search radar_SEARCH.wav": {
+    "band": 2.8314096499527,
+    "undetectable": false
+  },
+  "imported_wavs/moskva search radar_TRACK.wav": {
+    "band": 2.8314096499527,
+    "undetectable": false
+  },
+  "imported_wavs/neustrashimy search radar_SEARCH.wav": {
+    "band": 3.3946104312265,
+    "undetectable": false
+  },
+  "imported_wavs/neustrashimy search radar_TRACK.wav": {
+    "band": 3.3946104312265,
+    "undetectable": false
+  },
+  "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
+    "band": 0.87,
+    "undetectable": true
+  },
+  "imported_wavs/p-19 s-125 sr_TRACK.wav": {
+    "band": 0.87,
+    "undetectable": true
+  },
+  "imported_wavs/p_19_beam_2_SEARCH.wav": {
+    "band": 0.86,
+    "undetectable": true
+  },
+  "imported_wavs/p_19_beam_2_TRACK.wav": {
+    "band": 0.86,
+    "undetectable": true
+  },
+  "imported_wavs/perry search radar_SEARCH.wav": {
+    "band": 2.9143223364971,
+    "undetectable": false
+  },
+  "imported_wavs/perry search radar_TRACK.wav": {
+    "band": 2.9143223364971,
+    "undetectable": false
+  },
+  "imported_wavs/piotr velikiy search radar_SEARCH.wav": {
+    "band": 2.1798272652364,
+    "undetectable": false
+  },
+  "imported_wavs/piotr velikiy search radar_TRACK.wav": {
+    "band": 2.1798272652364,
+    "undetectable": false
+  },
+  "imported_wavs/rezki search radar_SEARCH.wav": {
+    "band": 0.95850093081454,
+    "undetectable": true
+  },
+  "imported_wavs/rezki search radar_TRACK.wav": {
+    "band": 0.95850093081454,
+    "undetectable": true
+  },
+  "imported_wavs/sa_6_TR_SEARCH.wav": {
+    "band": 9.06,
+    "undetectable": false
+  },
+  "imported_wavs/sa_6_TR_TRACK.wav": {
+    "band": 9.06,
+    "undetectable": false
+  },
+  "imported_wavs/sa_8_Search_high_SEARCH.wav": {
+    "band": 6.814,
+    "undetectable": false
+  },
+  "imported_wavs/sa_8_Search_high_TRACK.wav": {
+    "band": 6.814,
+    "undetectable": false
+  },
+  "imported_wavs/sa_8_Search_low_SEARCH.wav": {
+    "band": 6.814,
+    "undetectable": false
+  },
+  "imported_wavs/sa_8_Search_low_TRACK.wav": {
+    "band": 6.814,
+    "undetectable": false
+  },
+  "imported_wavs/seasparrow tr_SEARCH.wav": {
+    "band": 13.351847895749,
+    "undetectable": false
+  },
+  "imported_wavs/seasparrow tr_TRACK.wav": {
+    "band": 13.351847895749,
+    "undetectable": false
+  },
+  "imported_wavs/snr s-125 tr_SEARCH.wav": {
+    "band": 9.25,
+    "undetectable": false
+  },
+  "imported_wavs/snr s-125 tr_TRACK.wav": {
+    "band": 9.25,
+    "undetectable": false
+  },
+  "imported_wavs/son-9 tr_SEARCH.wav": {
+    "band": 2.73,
+    "undetectable": false
+  },
+  "imported_wavs/son-9 tr_TRACK.wav": {
+    "band": 2.73,
+    "undetectable": false
+  },
+  "imported_wavs/ticonderoga search radar_SEARCH.wav": {
+    "band": 1.6048097170934,
+    "undetectable": false
+  },
+  "imported_wavs/ticonderoga search radar_TRACK.wav": {
+    "band": 1.6048097170934,
+    "undetectable": false
+  }
+}
