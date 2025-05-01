@@ -30,8 +30,8 @@ jobs:
           import re, json
           from pathlib import Path
 
-          BAND_MIN = 1.5
-          BAND_MAX = 20.0
+          BAND_MIN = 1.5  # Guess based on what's listed and tested
+          BAND_MAX = 100.0  # Placeholder
 
           # Load files
           rwr = Path("imported_luas/rwr.lua").read_text(encoding="utf-8")
