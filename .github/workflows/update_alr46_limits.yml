@@ -19,6 +19,10 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+      - name: Clone external source repo (DCS-Datamine-Raw-Files)
+        run: |
+          git clone --depth=1 https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/OfficialDSplayer/DCS-Datamine-Raw-Files.git source-repo
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -33,8 +37,8 @@ jobs:
           BAND_MIN = 1.5
           BAND_MAX = 20.0
 
-          rwr = Path("imported_luas/rwr.lua").read_text(encoding="utf-8")
-          radars = Path("imported_luas/radars.lua").read_text(encoding="utf-8")
+          rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
+          radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
           wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
 
           # Step 1: Parse radars.lua using DisplayName and band
@@ -91,6 +95,9 @@ jobs:
           Path("alr46_limits.json").write_text(json.dumps(limits, indent=2), encoding="utf-8")
           print("✅ alr46_limits.json generated.")
           EOF
+
+      - name: Clean up source repo
+        run: rm -rf source-repo
 
       - name: Commit and push changes
         run: |
