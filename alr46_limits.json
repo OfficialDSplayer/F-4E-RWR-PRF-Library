@@ -240,16 +240,16 @@
     "undetectable": true
   },
   "imported_wavs/AN_SPS_48C_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPS_48C_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPS_48E_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPS_48E_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_SPS_49_SEARCH.wav": {
     "undetectable": true
@@ -942,16 +942,16 @@
     "undetectable": true
   },
   "imported_wavs/Top_Plate_S_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Plate_S_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Sail_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Sail_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Top_Steer_SEARCH.wav": {
     "undetectable": false
