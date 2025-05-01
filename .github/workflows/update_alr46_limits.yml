@@ -42,8 +42,8 @@ jobs:
           indexed_style = re.findall(r'\["([^"]+)"\\]\\s*=\\s*{[^}]*?DisplayName\\s*=\\s*"([^"]+)",[^}]*?band\\s*=\\s*([\\d.]+)', radars)
           radars_dict = {display.replace("/", "_"): float(band) for (_, display, band) in named_style + indexed_style}
 
-          # Step 2: Parse CreateRadar and OverrideRadar from rwr.lua (these override)
-          rwr_direct = re.findall(r'(?:CreateRadar|OverrideRadar)\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)', rwr)
+          # Step 2: Parse CreateRadar and OverrideRadar and CreateFrqScanRadar from rwr.lua (these override)
+          rwr_direct = re.findall(r'(?:CreateRadar|OverrideRadar|CreateFrqScanRadar)\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)', rwr)
           rwr_dict = {k.replace("/", "_"): float(v) for k, v in rwr_direct}
 
           # Step 3: Merge radar band map with rwr overrides taking priority
