@@ -184,20 +184,20 @@
     "undetectable": false
   },
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
-    "band": 11.01046784875,
-    "undetectable": false
+    "band": 0.43,
+    "undetectable": true
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
-    "band": 11.01046784875,
-    "undetectable": false
+    "band": 0.43,
+    "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
-    "band": 11.01046784875,
-    "undetectable": false
+    "band": 0.43,
+    "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
-    "band": 11.01046784875,
-    "undetectable": false
+    "band": 0.43,
+    "undetectable": true
   },
   "imported_wavs/AN_APS-138_SEARCH.wav": {
     "band": 0.43,
@@ -496,27 +496,27 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
-    "band": 9.2452772606586,
+    "band": 13.341,
     "undetectable": false
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
@@ -856,11 +856,11 @@
     "undetectable": false
   },
   "imported_wavs/N_001_SEARCH.wav": {
-    "band": 7.526963103122,
+    "band": 10.718,
     "undetectable": false
   },
   "imported_wavs/N_001_TRACK.wav": {
-    "band": 7.526963103122,
+    "band": 10.718,
     "undetectable": false
   },
   "imported_wavs/Orion-A_SEARCH.wav": {
@@ -944,11 +944,11 @@
     "undetectable": false
   },
   "imported_wavs/Pop_Group_T_SEARCH.wav": {
-    "band": 4.6816614276559,
+    "band": 14.528,
     "undetectable": false
   },
   "imported_wavs/Pop_Group_T_TRACK.wav": {
-    "band": 4.6816614276559,
+    "band": 14.528,
     "undetectable": false
   },
   "imported_wavs/R-77_Seeker_SEARCH.wav": {
@@ -1240,11 +1240,11 @@
     "undetectable": false
   },
   "imported_wavs/Top_Dome_SEARCH.wav": {
-    "band": 11.380108035524,
+    "band": 14.516,
     "undetectable": false
   },
   "imported_wavs/Top_Dome_TRACK.wav": {
-    "band": 11.380108035524,
+    "band": 14.516,
     "undetectable": false
   },
   "imported_wavs/Top_Plate_L_SEARCH.wav": {
