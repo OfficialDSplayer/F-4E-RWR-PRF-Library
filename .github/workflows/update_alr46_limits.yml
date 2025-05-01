@@ -30,40 +30,47 @@ jobs:
           import re, json
           from pathlib import Path
 
-          BAND_MIN = 1.5  # Guess based on what's listed and tested
-          BAND_MAX = 100.0  # Placeholder
+          BAND_MIN = 1.5
+          BAND_MAX = 20.0
 
           rwr = Path("imported_luas/rwr.lua").read_text(encoding="utf-8")
           radars = Path("imported_luas/radars.lua").read_text(encoding="utf-8")
           wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
 
           # Step 1: Parse radars.lua using DisplayName and band
-          named_style = re.findall(r'([A-Za-z0-9_/-]+)\\s*=\\s*{[^}]*?DisplayName\\s*=\\s*"([^"]+)",[^}]*?band\\s*=\\s*([\\d.]+)', radars)
-          indexed_style = re.findall(r'\["([^"]+)"\\]\\s*=\\s*{[^}]*?DisplayName\\s*=\\s*"([^"]+)",[^}]*?band\\s*=\\s*([\\d.]+)', radars)
+          named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",[^}]*?band\s*=\s*([\d.]+)', radars)
+          indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",[^}]*?band\s*=\s*([\d.]+)', radars)
           radars_dict = {display.replace("/", "_"): float(band) for (_, display, band) in named_style + indexed_style}
 
-          # Step 2: Parse CreateRadar and OverrideRadar and CreateFrqScanRadar from rwr.lua (these override)
-          rwr_direct = re.findall(r'(?:CreateRadar|OverrideRadar|CreateFrqScanRadar)\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)', rwr)
-          rwr_dict = {k.replace("/", "_"): float(v) for k, v in rwr_direct}
-
-          # Step 3: Merge radar band map with rwr overrides taking priority
+          # Step 2: Start with radar.lua entries
           radar_band_data = radars_dict.copy()
-          radar_band_data.update(rwr_dict)  # ✅ rwr overrides radar.lua
 
-          # Step 4: Handle CreateRadarFromBase(new, base)
-          base_links = re.findall(r'CreateRadarFromBase\\("([^"]+)",\\s*"([^"]+)"\\)', rwr)
-          base_links = [(new.replace("/", "_"), base.replace("/", "_")) for new, base in base_links]
+          # Step 3: Add CreateRadar / CreateFrqScanRadar entries from rwr.lua
+          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in create_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
+
+          # Step 4: Handle CreateRadarFromBase(name, base) → inherit band
+          base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
+              new = new.replace("/", "_")
+              base = base.replace("/", "_")
               if base in radar_band_data and new not in radar_band_data:
                   radar_band_data[new] = radar_band_data[base]
 
-          # Step 5: Create detectability list from .wav names
+          # Step 5: OverrideRadar(name, {...}) → overwrite band
+          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr)
+          for name, band in override_entries:
+              radar_band_data[name.replace("/", "_")] = float(band)
+
+          # Step 6: Match wav files to radar names and calculate detectability
           limits = {}
           missing = []
 
           for wav in wav_list:
               filename = Path(wav).stem
               base_name = re.sub(r"_(SEARCH|TRACK)$", "", filename)
+              base_name = base_name.replace("/", "_")
 
               band = radar_band_data.get(base_name)
               if band is None:
@@ -73,6 +80,7 @@ jobs:
                   undetectable = band < BAND_MIN or band > BAND_MAX
 
               limits[wav] = {
+                  "band": band,
                   "undetectable": undetectable
               }
 
