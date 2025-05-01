@@ -23,18 +23,25 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Generate alr46_limits.json
+      - name: Generate or Update alr46_limits.json
         run: |
           python3 <<EOF
           import re, json
+          from pathlib import Path
 
           BAND_MIN = 1.5
           BAND_MAX = 20.0
 
-          with open("imported_luas/rwr.lua", "r", encoding="utf-8") as f:
-              rwr_data = f.read()
-          with open("imported_luas/radars.lua", "r", encoding="utf-8") as f:
-              radars_data = f.read()
+          rwr_path = Path("imported_luas/rwr.lua")
+          radars_path = Path("imported_luas/radars.lua")
+          output_path = Path("alr46_limits.json")
+
+          if not rwr_path.exists() or not radars_path.exists():
+              print("Missing Lua files. Skipping.")
+              exit(1)
+
+          rwr_data = rwr_path.read_text(encoding="utf-8")
+          radars_data = radars_path.read_text(encoding="utf-8")
 
           radar_pattern = r'CreateRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
           rwr_radars = re.findall(radar_pattern, rwr_data)
@@ -42,15 +49,9 @@ jobs:
           override_pattern = r'OverrideRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
           override_radars = re.findall(override_pattern, rwr_data)
 
-          replace_pattern = r'ReplaceUnitRadar\\("([^"]+)",\\s*"[^"]+",\\s*"([^"]+)"\\)'
-          replace_radars = re.findall(replace_pattern, rwr_data)
-
-          add_pattern = r'AddUnitRadar\\("([^"]+)",\\s*"([^"]+)"\\)'
-          add_radars = re.findall(add_pattern, rwr_data)
-
           combined_rwr = {name: float(band) for name, band in rwr_radars + override_radars}
 
-          radars_pattern = r'\\["([^"]+)"\\]\\s*=\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
+          radars_pattern = r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)'
           radars_bands = re.findall(radars_pattern, radars_data)
           radars_dict = {name: float(band) for name, band in radars_bands}
 
@@ -64,8 +65,13 @@ jobs:
                   "undetectable": band < BAND_MIN or band > BAND_MAX
               }
 
-          with open("alr46_limits.json", "w", encoding="utf-8") as f:
-              json.dump(results, f, indent=2)
+          # Only write if it changes or does not exist
+          new_content = json.dumps(results, indent=2)
+          if not output_path.exists() or output_path.read_text(encoding="utf-8") != new_content:
+              output_path.write_text(new_content, encoding="utf-8")
+              print("✅ alr46_limits.json created or updated.")
+          else:
+              print("⚠️ No changes to alr46_limits.json.")
           EOF
 
       - name: Commit and push changes
@@ -76,6 +82,6 @@ jobs:
             echo "No changes to commit."
           else
             git add alr46_limits.json
-            git commit -m "Auto-update alr46_limits.json"
+            git commit -m "Auto-generate or update alr46_limits.json"
             git push
           fi
