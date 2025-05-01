@@ -5,6 +5,7 @@ on:
     paths:
       - "imported_luas/rwr.lua"
       - "imported_luas/radars.lua"
+      - "wav_list.json"
       - ".github/workflows/update_alr46_limits.yml"
   workflow_dispatch:
 
@@ -34,42 +35,48 @@ jobs:
 
           rwr_path = Path("imported_luas/rwr.lua")
           radars_path = Path("imported_luas/radars.lua")
+          wav_list_path = Path("wav_list.json")
           output_path = Path("alr46_limits.json")
 
-          if not rwr_path.exists() or not radars_path.exists():
-              print("Missing Lua files. Skipping.")
+          if not rwr_path.exists() or not radars_path.exists() or not wav_list_path.exists():
+              print("❌ Required file missing.")
               exit(1)
 
           rwr_data = rwr_path.read_text(encoding="utf-8")
           radars_data = radars_path.read_text(encoding="utf-8")
+          wav_list = json.loads(wav_list_path.read_text(encoding="utf-8"))
 
-          radar_pattern = r'CreateRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
-          rwr_radars = re.findall(radar_pattern, rwr_data)
+          # Extract band values from radars.lua
+          base_radars = dict(re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)', radars_data))
+          base_radars = {k: float(v) for k, v in base_radars.items()}
 
-          override_pattern = r'OverrideRadar\\("([^"]+)",\\s*{[^}]*band\\s*=\\s*([\\d.]+)'
-          override_radars = re.findall(override_pattern, rwr_data)
+          # Extract and override with rwr.lua CreateRadar and OverrideRadar
+          radar_defs = dict(re.findall(r'(?:CreateRadar|OverrideRadar)\("([^"]+)",\s*{[^}]*band\s*=\s*([\d.]+)', rwr_data))
+          radar_defs = {k: float(v) for k, v in radar_defs.items()}
 
-          combined_rwr = {name: float(band) for name, band in rwr_radars + override_radars}
+          # Override base values with rwr.lua values
+          all_radars = base_radars.copy()
+          all_radars.update(radar_defs)
 
-          radars_pattern = r'\["([^"]+)"\]\s*=\s*{[^}]*band\s*=\s*([\d.]+)'
-          radars_bands = re.findall(radars_pattern, radars_data)
-          radars_dict = {name: float(band) for name, band in radars_bands}
+          # Create lookup: name.replace("/", "_") → band
+          normalized_bands = {
+              k.replace("/", "_"): v for k, v in all_radars.items()
+          }
 
-          merged_radars = radars_dict.copy()
-          merged_radars.update(combined_rwr)
-
-          results = {}
-          for name, band in merged_radars.items():
-              file_name = f"imported_wavs/{name.replace('/', '_')}.wav"
-              results[file_name] = {
-                  "undetectable": band < BAND_MIN or band > BAND_MAX
+          # Generate final mapping to wav names
+          limits = {}
+          for wav in wav_list:
+              name = Path(wav).stem  # includes _SEARCH, _TRACK
+              radar_name = name  # keep as-is
+              band = normalized_bands.get(radar_name)
+              limits[wav] = {
+                  "undetectable": band is None or band < BAND_MIN or band > BAND_MAX
               }
 
-          # Only write if it changes or does not exist
-          new_content = json.dumps(results, indent=2)
-          if not output_path.exists() or output_path.read_text(encoding="utf-8") != new_content:
-              output_path.write_text(new_content, encoding="utf-8")
-              print("✅ alr46_limits.json created or updated.")
+          new_json = json.dumps(limits, indent=2)
+          if not output_path.exists() or output_path.read_text(encoding="utf-8") != new_json:
+              output_path.write_text(new_json, encoding="utf-8")
+              print("✅ alr46_limits.json updated.")
           else:
               print("⚠️ No changes to alr46_limits.json.")
           EOF
