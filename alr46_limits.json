@@ -102,10 +102,10 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-78_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_APG-78_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/AN_APG_70_SEARCH.wav": {
     "undetectable": false
@@ -330,10 +330,10 @@
     "undetectable": false
   },
   "imported_wavs/Band_Stand_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Band_Stand_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Bass_Tilt_SEARCH.wav": {
     "undetectable": false
@@ -402,10 +402,10 @@
     "undetectable": false
   },
   "imported_wavs/Cross_Sword_T_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Cross_Sword_T_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/DA_02_SEARCH.wav": {
     "undetectable": false
@@ -504,10 +504,10 @@
     "undetectable": false
   },
   "imported_wavs/Hot_Flash_T_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Hot_Flash_T_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Hot_Shot_search_SEARCH.wav": {
     "undetectable": false
@@ -792,10 +792,10 @@
     "undetectable": false
   },
   "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Rapier_Blindfire_TRACK.wav": {
-    "undetectable": true
+    "undetectable": false
   },
   "imported_wavs/Rapier_Dagger_SEARCH.wav": {
     "undetectable": false
