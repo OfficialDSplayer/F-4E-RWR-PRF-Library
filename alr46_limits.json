@@ -689,11 +689,11 @@
   },
   "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
     "band": 1.5355693227943,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/KKS R-790 Tsunami-BM_TRACK.wav": {
     "band": 1.5355693227943,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/KLJ-7_SEARCH.wav": {
     "band": 9.743,
@@ -881,11 +881,11 @@
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
     "band": 1.7001251258889,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/PLAN Search Radar A_TRACK.wav": {
     "band": 1.7001251258889,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/PLAN Search Radar B_SEARCH.wav": {
     "band": 1.3688650166326,
@@ -1049,11 +1049,11 @@
   },
   "imported_wavs/RQ-1 Predator SAR_SEARCH.wav": {
     "band": 1.5754142887661,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/RQ-1 Predator SAR_TRACK.wav": {
     "band": 1.5754142887661,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
     "band": 38.694,
@@ -1265,11 +1265,11 @@
   },
   "imported_wavs/Top_Sail_SEARCH.wav": {
     "band": 1.701,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/Top_Sail_TRACK.wav": {
     "band": 1.701,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/Top_Steer_SEARCH.wav": {
     "band": 2.239,
@@ -1497,11 +1497,11 @@
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
     "band": 1.6581316568499,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/carrier search radar_TRACK.wav": {
     "band": 1.6581316568499,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/fan_song_SEARCH.wav": {
     "band": 4.95,
@@ -1625,10 +1625,10 @@
   },
   "imported_wavs/ticonderoga search radar_SEARCH.wav": {
     "band": 1.6048097170934,
-    "undetectable": false
+    "undetectable": true
   },
   "imported_wavs/ticonderoga search radar_TRACK.wav": {
     "band": 1.6048097170934,
-    "undetectable": false
+    "undetectable": true
   }
 }
