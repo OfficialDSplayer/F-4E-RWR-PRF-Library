@@ -34,7 +34,8 @@ jobs:
           import re, json
           from pathlib import Path
 
-          BAND_MIN = 1.5
+          # Officially verified limits
+          BAND_MIN = 2
           BAND_MAX = 20.0
 
           rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
