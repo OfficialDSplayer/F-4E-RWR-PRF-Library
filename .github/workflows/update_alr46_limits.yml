@@ -112,6 +112,11 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          # Give a timestamped commit message
+          COMMIT_MESSAGE="Auto-generate or update alr46_limits.json"
+          COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          FINAL_COMMIT_MSG="$COMMIT_MESSAGE (Synced on $COMMIT_TIMESTAMP)"
+          
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
@@ -120,6 +125,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
           else
-            git commit -m "Auto-generate or update alr46_limits.json"
+            git commit -m "$FINAL_COMMIT_MSG"
             git push
           fi
