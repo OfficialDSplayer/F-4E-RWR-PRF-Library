@@ -85,14 +85,14 @@ jobs:
               if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
 
           # Step 3.5: OverrideRadar(name, {...}) again → for new radars
-            override_entries_2 = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
-            for name, body in override_entries_2:
-                key = name.replace("/", "_")
-                radar_data.setdefault(key, {})
-                if m := re.search(r'band\s*=\s*([\d.]+)', body): radar_data[key]['band'] = float(m.group(1))
-                if m := re.search(r'prf_search\s*=\s*([\d.]+)', body): radar_data[key]['prf_search'] = float(m.group(1))
-                if m := re.search(r'prf_track\s*=\s*([\d.]+)', body): radar_data[key]['prf_track'] = float(m.group(1))
-                if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
+          override_entries_2 = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
+          for name, body in override_entries_2:
+              key = name.replace("/", "_")
+              radar_data.setdefault(key, {})
+              if m := re.search(r'band\s*=\s*([\d.]+)', body): radar_data[key]['band'] = float(m.group(1))
+              if m := re.search(r'prf_search\s*=\s*([\d.]+)', body): radar_data[key]['prf_search'] = float(m.group(1))
+              if m := re.search(r'prf_track\s*=\s*([\d.]+)', body): radar_data[key]['prf_track'] = float(m.group(1))
+              if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
 
           # Step 4: Handle CreateRadarFromBase(name, base) → inherit
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
@@ -103,8 +103,8 @@ jobs:
                   radar_data[new_key] = radar_data[base_key].copy()
 
           # Step 5: OverrideRadar(name, {...}) again → for derived radars
-          override_entries_2 = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
-          for name, body in override_entries_2:
+          override_entries_3 = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
+          for name, body in override_entries_3:
               key = name.replace("/", "_")
               radar_data.setdefault(key, {})
               if m := re.search(r'band\s*=\s*([\d.]+)', body): radar_data[key]['band'] = float(m.group(1))
