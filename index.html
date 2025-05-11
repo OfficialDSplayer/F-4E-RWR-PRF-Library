@@ -213,7 +213,7 @@
     <hr class="solid" />
     <h2>By DSplayer</h2>
     <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-05-30 (using DCS 2.9.15.9599)</h3>
+    <h3>!!Highly WIP!! Last updated 2025-05-11 (using DCS 2.9.15.9599)</h3>
     <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
     <div class="controls">
@@ -291,6 +291,7 @@
       let groupsData = {};
       let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
+      let alr46Limits = {};
       const cancelledLoads = new Set();
 
       // Set theme on page load (saved or auto-detect)
@@ -334,7 +335,9 @@
           const customWavFiles = await customWavListResponse.json();
           const groupsMain = await groupsMainResponse.json();
           const groupsCustom = await groupsCustomResponse.json();
-          const alr46Limits = await alr46LimitsResponse.json();
+          // const alr46Limits = await alr46LimitsResponse.json();
+          alr46Limits = await alr46LimitsResponse.json();
+          groupsData = { ...groupsMain, ...groupsCustom };
 
           const allFiles = [...wavFiles, ...customWavFiles];
           const allGroups = { ...groupsMain, ...groupsCustom };
@@ -459,6 +462,33 @@
             desc.className = "file-description";
             desc.textContent = sound.description || "";
 
+            const extraInfo = document.createElement("div");
+            extraInfo.className = "extra-info";
+            extraInfo.style.display = "none";
+            extraInfo.style.fontSize = "0.85em";
+            extraInfo.style.marginTop = "5px";
+            extraInfo.style.color = "var(--highlight)";
+
+            // Attach PRF or other data if available
+            let radarInfo = alr46Limits[sound.name];
+            // const hidden_state = groupsData[sound.name].hidden
+            if (radarInfo) {
+              if (sound.name.includes("SEARCH")) {
+                const prfText = radarInfo.prf_search ? `PRF: ${radarInfo.PRF}` : "";
+              } else if (sound.name.includes("TRACK")) {
+                const prfText = radarInfo.prf_track ? `PRF: ${radarInfo.PRF}` : "";
+              }
+              extraInfo.innerHTML = prfText || "No extra info available.";
+            } else {
+              extraInfo.textContent = "No extra info available.";
+            }
+
+            // Toggle dropdown on name click
+            name.style.cursor = "pointer";
+            name.addEventListener("click", () => {
+              extraInfo.style.display = extraInfo.style.display === "none" ? "block" : "none";
+            });
+
             const buttonGroup = document.createElement("div");
             buttonGroup.className = "button-group";
 
@@ -479,6 +509,7 @@
             card.appendChild(name);
             card.appendChild(desc);
             card.appendChild(buttonGroup);
+            card.appendChild(extraInfo);
             groupGrid.appendChild(card);
           }
 
