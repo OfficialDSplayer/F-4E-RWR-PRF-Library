@@ -469,19 +469,77 @@
             extraInfo.style.marginTop = "5px";
             extraInfo.style.color = "var(--highlight)";
 
-            // Attach PRF or other data if available
-            let radarInfo = alr46Limits[sound.name];
-            // const hidden_state = groupsData[sound.name].hidden
+            // actual extra info bits
+            const fullPath = sound.file;
+            const radarInfo = alr46Limits[fullPath];
+            // const radarHidden = groupsData[fullPath]?.hidden === true;
+            let prfText = "";
+
             if (radarInfo) {
-              if (sound.name.includes("SEARCH")) {
-                const prfText = radarInfo.prf_search ? `PRF: ${radarInfo.PRF}` : "";
-              } else if (sound.name.includes("TRACK")) {
-                const prfText = radarInfo.prf_track ? `PRF: ${radarInfo.PRF}` : "";
+              const parts = [];
+
+              // Radar Freq
+              if (radarInfo.band != null) {
+                parts.push(`Radar Frequency: ${Number(radarInfo.band).toFixed(2)}`);
               }
-              extraInfo.innerHTML = prfText || "No extra info available.";
-            } else {
-              extraInfo.textContent = "No extra info available.";
+
+              // Radar PRF
+              if (
+                fullPath.includes("SEARCH") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === false
+              ) {
+                if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+                  parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                } else {
+                  parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                }
+              } else if (
+                fullPath.includes("TRACK") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === false
+              ) {
+                if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+                  parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                } else {
+                  parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                }
+              } else if (
+                fullPath.includes("SEARCH") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === true
+              ) {
+                parts.push(`PRF: ${Number(radarInfo.prf_search).toFixed(2)}`);
+              } else if (
+                fullPath.includes("TRACK") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === true
+              ) {
+                parts.push(`PRF: ${Number(radarInfo.prf_track).toFixed(2)}`);
+              }
+
+              // Radar launch warning
+              if (
+                radarInfo.has_cd_command_guidance === true
+                // && radarInfo.has_cd_command_guidance != null
+              ) {
+                parts.push(`Launch Warning: True`);
+              } else {
+                parts.push(`Launch Warning: False`);
+              }
+
+              prfText = parts.join("<br>");
             }
+
+            extraInfo.innerHTML = prfText || "No extra info available.";
 
             // Toggle dropdown on name click
             name.style.cursor = "pointer";
