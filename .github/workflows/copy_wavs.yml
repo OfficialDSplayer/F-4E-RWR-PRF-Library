@@ -49,8 +49,8 @@ jobs:
 
       - name: Generate or Update groups.json
         run: |
-          if [ ! -f groups.json ]; then
-            echo "{}" > groups.json
+          if [ ! -f jsons/groups.json ]; then
+            echo "{}" > jsons/groups.json
           fi
 
           python3 -c "
