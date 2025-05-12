@@ -29,29 +29,29 @@
   },
   "imported_wavs/052C SAM STR_SEARCH.wav": {
     "band": 18.260689107944,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/052C SAM STR_TRACK.wav": {
     "band": 18.260689107944,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/054A SAM TR_SEARCH.wav": {
     "band": 7.6133915219581,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/054A SAM TR_TRACK.wav": {
     "band": 7.6133915219581,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -113,29 +113,29 @@
   },
   "imported_wavs/AESA_KJ2000_2_SEARCH.wav": {
     "band": 1.311,
-    "prf_search": 40000.0,
-    "prf_track": 40000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_2_TRACK.wav": {
     "band": 1.311,
-    "prf_search": 40000.0,
-    "prf_track": 40000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_3_SEARCH.wav": {
     "band": 1.331,
-    "prf_search": 40000.0,
-    "prf_track": 40000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_3_TRACK.wav": {
     "band": 1.331,
-    "prf_search": 40000.0,
-    "prf_track": 40000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
@@ -183,57 +183,57 @@
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
     "band": 9.674,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-63_TRACK.wav": {
     "band": 9.674,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-68_SEARCH.wav": {
     "band": 9.825,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-68_TRACK.wav": {
     "band": 9.825,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
     "band": 9.42,
-    "prf_search": 152.02702702703,
-    "prf_track": 202.7027027027,
+    "prf_search": 152.0,
+    "prf_track": 202.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
     "band": 9.42,
-    "prf_search": 152.02702702703,
-    "prf_track": 202.7027027027,
+    "prf_search": 152.0,
+    "prf_track": 202.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-73_SEARCH.wav": {
     "band": 9.016,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG-73_TRACK.wav": {
     "band": 9.016,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": 424.0,
+    "prf_track": 566.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -253,15 +253,15 @@
   },
   "imported_wavs/AN_APG_70_SEARCH.wav": {
     "band": 9.772,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APG_70_TRACK.wav": {
     "band": 9.772,
-    "prf_search": 424.52830188679,
-    "prf_track": 566.03773584906,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -310,42 +310,42 @@
   "imported_wavs/AN_APS-137_SEARCH.wav": {
     "band": 2.1277748954741,
     "prf_search": 250.0,
-    "prf_track": 333.33333333333,
+    "prf_track": 333.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APS-137_TRACK.wav": {
     "band": 2.1277748954741,
     "prf_search": 250.0,
-    "prf_track": 333.33333333333,
+    "prf_track": 333.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
     "band": 0.43,
     "prf_search": 420.0,
-    "prf_track": 302.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
     "band": 0.43,
     "prf_search": 420.0,
-    "prf_track": 302.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
     "band": 0.43,
     "prf_search": 760.0,
-    "prf_track": 302.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
     "band": 0.43,
     "prf_search": 760.0,
-    "prf_track": 302.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
@@ -365,14 +365,14 @@
   },
   "imported_wavs/AN_APS-142_SEARCH.wav": {
     "band": 1.0246162297433,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/AN_APS-142_TRACK.wav": {
     "band": 1.0246162297433,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": true
@@ -380,14 +380,14 @@
   "imported_wavs/AN_APS_124_SEARCH.wav": {
     "band": 9.171,
     "prf_search": 940.0,
-    "prf_track": 375.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_APS_124_TRACK.wav": {
     "band": 9.171,
     "prf_search": 940.0,
-    "prf_track": 375.0,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -449,15 +449,15 @@
   },
   "imported_wavs/AN_SPG_62_SEARCH.wav": {
     "band": 11.509,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPG_62_TRACK.wav": {
     "band": 11.509,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -519,29 +519,29 @@
   },
   "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
     "band": 8.793,
-    "prf_search": 3000.0,
-    "prf_track": 3000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
     "band": 8.793,
-    "prf_search": 3000.0,
-    "prf_track": 3000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
     "band": 8.793,
-    "prf_search": 3000.0,
-    "prf_track": 3000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
     "band": 8.793,
-    "prf_search": 3000.0,
-    "prf_track": 3000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -701,15 +701,15 @@
   },
   "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
     "band": 3.367,
-    "prf_search": 85000.0,
-    "prf_track": 85000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_right_TRACK.wav": {
     "band": 3.367,
-    "prf_search": 85000.0,
-    "prf_track": 85000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -729,42 +729,42 @@
   },
   "imported_wavs/B-1B SS radar_SEARCH.wav": {
     "band": 2.3314920499283,
-    "prf_search": 47.872340425532,
-    "prf_track": 63.829787234043,
+    "prf_search": 47.0,
+    "prf_track": 63.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/B-1B SS radar_TRACK.wav": {
     "band": 2.3314920499283,
-    "prf_search": 47.872340425532,
-    "prf_track": 63.829787234043,
+    "prf_search": 47.0,
+    "prf_track": 63.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/B-52H SS radar_SEARCH.wav": {
     "band": 2.7565050202948,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/B-52H SS radar_TRACK.wav": {
     "band": 2.7565050202948,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/BRLS-8B_SEARCH.wav": {
     "band": 19.273903622547,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/BRLS-8B_TRACK.wav": {
     "band": 19.273903622547,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -800,14 +800,14 @@
   "imported_wavs/Berkut-95_SEARCH.wav": {
     "band": 3.3520310068056,
     "prf_search": 250.0,
-    "prf_track": 333.33333333333,
+    "prf_track": 333.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Berkut-95_TRACK.wav": {
     "band": 3.3520310068056,
     "prf_search": 250.0,
-    "prf_track": 333.33333333333,
+    "prf_track": 333.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -869,43 +869,43 @@
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
     "band": 13.341,
-    "prf_search": 12000.0,
-    "prf_track": 18000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1009,15 +1009,15 @@
   },
   "imported_wavs/FPS-117_SEARCH.wav": {
     "band": 12.768822290719,
-    "prf_search": 242.98056155508,
-    "prf_track": 323.97408207343,
+    "prf_search": 242.0,
+    "prf_track": 323.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/FPS-117_TRACK.wav": {
     "band": 12.768822290719,
-    "prf_search": 242.98056155508,
-    "prf_track": 323.97408207343,
+    "prf_search": 242.0,
+    "prf_track": 323.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1038,14 +1038,14 @@
   "imported_wavs/Front_Dome_SEARCH.wav": {
     "band": 11.052,
     "prf_search": 2000.0,
-    "prf_track": null,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Front_Dome_TRACK.wav": {
     "band": 11.052,
     "prf_search": 2000.0,
-    "prf_track": null,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1065,14 +1065,14 @@
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
     "band": 3.7945249794,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/H-6J RADAR_TRACK.wav": {
     "band": 3.7945249794,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1121,29 +1121,29 @@
   },
   "imported_wavs/Hawk tr_SEARCH.wav": {
     "band": 10.125,
-    "prf_search": 1250.0,
-    "prf_track": 1666.6666666667,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
     "band": 10.125,
-    "prf_search": 1250.0,
-    "prf_track": 1666.6666666667,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_SEARCH.wav": {
     "band": 14.536,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_TRACK.wav": {
     "band": 14.536,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1163,15 +1163,15 @@
   },
   "imported_wavs/Head_Net_2_SEARCH.wav": {
     "band": 2.78,
-    "prf_search": 670.0,
-    "prf_track": 670.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Head_Net_2_TRACK.wav": {
     "band": 2.78,
-    "prf_search": 670.0,
-    "prf_track": 670.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1205,29 +1205,29 @@
   },
   "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
     "band": 1.5355693227943,
-    "prf_search": 204.54545454545,
-    "prf_track": 272.72727272727,
+    "prf_search": 204.0,
+    "prf_track": 272.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/KKS R-790 Tsunami-BM_TRACK.wav": {
     "band": 1.5355693227943,
-    "prf_search": 204.54545454545,
-    "prf_track": 272.72727272727,
+    "prf_search": 204.0,
+    "prf_track": 272.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/KLJ-7_SEARCH.wav": {
     "band": 9.743,
-    "prf_search": 642.85714285714,
-    "prf_track": 857.14285714286,
+    "prf_search": 642.0,
+    "prf_track": 857.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/KLJ-7_TRACK.wav": {
     "band": 9.743,
-    "prf_search": 642.85714285714,
-    "prf_track": 857.14285714286,
+    "prf_search": 642.0,
+    "prf_track": 857.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1345,29 +1345,29 @@
   },
   "imported_wavs/Mark_92_T_SEARCH.wav": {
     "band": 11.509,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mark_92_T_TRACK.wav": {
     "band": 11.509,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mk_95_SEARCH.wav": {
     "band": 10.608,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mk_95_TRACK.wav": {
     "band": 10.608,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1401,14 +1401,14 @@
   },
   "imported_wavs/N-001_SEARCH.wav": {
     "band": 19.807611316263,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/N-001_TRACK.wav": {
     "band": 19.807611316263,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1443,28 +1443,28 @@
   },
   "imported_wavs/N-011M_SEARCH.wav": {
     "band": 19.528305917539,
-    "prf_search": 321.42857142857,
-    "prf_track": 428.57142857143,
+    "prf_search": 321.0,
+    "prf_track": 428.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/N-011M_TRACK.wav": {
     "band": 19.528305917539,
-    "prf_search": 321.42857142857,
-    "prf_track": 428.57142857143,
+    "prf_search": 321.0,
+    "prf_track": 428.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/N-019M_SEARCH.wav": {
     "band": 12.533951841792,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/N-019M_TRACK.wav": {
     "band": 12.533951841792,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1499,15 +1499,15 @@
   },
   "imported_wavs/N_001_SEARCH.wav": {
     "band": 10.718,
-    "prf_search": 180000.0,
-    "prf_track": 22000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/N_001_TRACK.wav": {
     "band": 10.718,
-    "prf_search": 180000.0,
-    "prf_track": 22000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1541,29 +1541,29 @@
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
     "band": 1.7001251258889,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar A_TRACK.wav": {
     "band": 1.7001251258889,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar B_SEARCH.wav": {
     "band": 1.3688650166326,
-    "prf_search": 3214.2857142857,
-    "prf_track": 4285.7142857143,
+    "prf_search": 3214.0,
+    "prf_track": 4285.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar B_TRACK.wav": {
     "band": 1.3688650166326,
-    "prf_search": 3214.2857142857,
-    "prf_track": 4285.7142857143,
+    "prf_search": 3214.0,
+    "prf_track": 4285.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
@@ -1583,14 +1583,14 @@
   },
   "imported_wavs/PS-37A_SEARCH.wav": {
     "band": 9.05,
-    "prf_search": 937.5,
+    "prf_search": 937.0,
     "prf_track": 1250.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/PS-37A_TRACK.wav": {
     "band": 9.05,
-    "prf_search": 937.5,
+    "prf_search": 937.0,
     "prf_track": 1250.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1611,15 +1611,15 @@
   },
   "imported_wavs/Patriot str_SEARCH.wav": {
     "band": 13.898739585559,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Patriot str_TRACK.wav": {
     "band": 13.898739585559,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 432.0,
+    "prf_track": 576.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1639,14 +1639,14 @@
   },
   "imported_wavs/Poisk_SEARCH.wav": {
     "band": 3.2178472243416,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Poisk_TRACK.wav": {
     "band": 3.2178472243416,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1695,57 +1695,57 @@
   },
   "imported_wavs/RDY_SEARCH.wav": {
     "band": 9.3,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RDY_TRACK.wav": {
     "band": 9.3,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
     "band": 3.15,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_2_TRACK.wav": {
     "band": 3.15,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_3_SEARCH.wav": {
     "band": 3.1,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_3_TRACK.wav": {
     "band": 3.1,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_4_SEARCH.wav": {
     "band": 3.2,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_4_TRACK.wav": {
     "band": 3.2,
-    "prf_search": 750.0,
-    "prf_track": 750.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1779,15 +1779,15 @@
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
     "band": 7.795,
-    "prf_search": 281.25,
-    "prf_track": 375.0,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
     "band": 7.795,
-    "prf_search": 281.25,
-    "prf_track": 375.0,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1947,14 +1947,14 @@
   },
   "imported_wavs/S-300PS 40B6M tr navy_SEARCH.wav": {
     "band": 14.927091280862,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6M tr navy_TRACK.wav": {
     "band": 14.927091280862,
-    "prf_search": 281.25,
+    "prf_search": 281.0,
     "prf_track": 375.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -1975,28 +1975,28 @@
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
     "band": 10.562,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
     "band": 10.562,
-    "prf_search": 432.69230769231,
-    "prf_track": 576.92307692308,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
     "band": 15.400738547929,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/S-300PS 64H6E sr_TRACK.wav": {
     "band": 15.400738547929,
-    "prf_search": 562.5,
+    "prf_search": 562.0,
     "prf_track": 750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
@@ -2059,29 +2059,29 @@
   },
   "imported_wavs/Scrum_Half_Search_2_SEARCH.wav": {
     "band": 3.144,
-    "prf_search": 1400.0,
-    "prf_track": 1400.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_2_TRACK.wav": {
     "band": 3.144,
-    "prf_search": 1400.0,
-    "prf_track": 1400.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_3_SEARCH.wav": {
     "band": 3.044,
-    "prf_search": 1400.0,
-    "prf_track": 1400.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_3_TRACK.wav": {
     "band": 3.044,
-    "prf_search": 1400.0,
-    "prf_track": 1400.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2115,29 +2115,29 @@
   },
   "imported_wavs/Strut_Pair_1_SEARCH.wav": {
     "band": 3.884,
-    "prf_search": 500.0,
-    "prf_track": 500.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_1_TRACK.wav": {
     "band": 3.884,
-    "prf_search": 500.0,
-    "prf_track": 500.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_SEARCH.wav": {
     "band": 3.884,
-    "prf_search": 500.0,
-    "prf_track": 500.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_TRACK.wav": {
     "band": 3.884,
-    "prf_search": 500.0,
-    "prf_track": 500.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2157,15 +2157,15 @@
   },
   "imported_wavs/Tomb_Stone_SEARCH.wav": {
     "band": 11.512,
-    "prf_search": 100000.0,
-    "prf_track": 100000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Tomb_Stone_TRACK.wav": {
     "band": 11.512,
-    "prf_search": 100000.0,
-    "prf_track": 100000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2325,15 +2325,15 @@
   },
   "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2353,29 +2353,29 @@
   },
   "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
     "band": 3.245,
-    "prf_search": 50000.0,
-    "prf_track": 50000.0,
+    "prf_search": null,
+    "prf_track": null,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2479,15 +2479,15 @@
   },
   "imported_wavs/Type_909_SEARCH.wav": {
     "band": 7.314,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_909_TRACK.wav": {
     "band": 7.314,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 20000.0,
+    "prf_track": 20000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2591,15 +2591,15 @@
   },
   "imported_wavs/albatros search radar_SEARCH.wav": {
     "band": 2.7999633777886,
-    "prf_search": 3813.5593220339,
-    "prf_track": 5084.7457627119,
+    "prf_search": 3813.0,
+    "prf_track": 5084.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/albatros search radar_TRACK.wav": {
     "band": 2.7999633777886,
-    "prf_search": 3813.5593220339,
-    "prf_track": 5084.7457627119,
+    "prf_search": 3813.0,
+    "prf_track": 5084.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2619,15 +2619,15 @@
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
     "band": 1.6581316568499,
-    "prf_search": 2884.6153846154,
-    "prf_track": 3846.1538461538,
+    "prf_search": 2884.0,
+    "prf_track": 3846.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/carrier search radar_TRACK.wav": {
     "band": 1.6581316568499,
-    "prf_search": 2884.6153846154,
-    "prf_track": 3846.1538461538,
+    "prf_search": 2884.0,
+    "prf_track": 3846.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
@@ -2647,43 +2647,43 @@
   },
   "imported_wavs/molniya search radar_SEARCH.wav": {
     "band": 15.11996826075,
-    "prf_search": 3957.0875835385,
-    "prf_track": 5276.1167780514,
+    "prf_search": 3957.0,
+    "prf_track": 5276.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/molniya search radar_TRACK.wav": {
     "band": 15.11996826075,
-    "prf_search": 3957.0875835385,
-    "prf_track": 5276.1167780514,
+    "prf_search": 3957.0,
+    "prf_track": 5276.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/moskva search radar_SEARCH.wav": {
     "band": 2.8314096499527,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/moskva search radar_TRACK.wav": {
     "band": 2.8314096499527,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/neustrashimy search radar_SEARCH.wav": {
     "band": 3.3946104312265,
-    "prf_search": 3346.2224866151,
-    "prf_track": 4461.6299821535,
+    "prf_search": 3346.0,
+    "prf_track": 4461.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/neustrashimy search radar_TRACK.wav": {
     "band": 3.3946104312265,
-    "prf_search": 3346.2224866151,
-    "prf_track": 4461.6299821535,
+    "prf_search": 3346.0,
+    "prf_track": 4461.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2717,43 +2717,43 @@
   },
   "imported_wavs/perry search radar_SEARCH.wav": {
     "band": 2.9143223364971,
-    "prf_search": 3346.2224866151,
-    "prf_track": 4461.6299821535,
+    "prf_search": 3346.0,
+    "prf_track": 4461.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/perry search radar_TRACK.wav": {
     "band": 2.9143223364971,
-    "prf_search": 3346.2224866151,
-    "prf_track": 4461.6299821535,
+    "prf_search": 3346.0,
+    "prf_track": 4461.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/piotr velikiy search radar_SEARCH.wav": {
     "band": 2.1798272652364,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/piotr velikiy search radar_TRACK.wav": {
     "band": 2.1798272652364,
-    "prf_search": 2812.5,
+    "prf_search": 2812.0,
     "prf_track": 3750.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/rezki search radar_SEARCH.wav": {
     "band": 0.95850093081454,
-    "prf_search": 3477.5888717156,
-    "prf_track": 4636.7851622875,
+    "prf_search": 3477.0,
+    "prf_track": 4636.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/rezki search radar_TRACK.wav": {
     "band": 0.95850093081454,
-    "prf_search": 3477.5888717156,
-    "prf_track": 4636.7851622875,
+    "prf_search": 3477.0,
+    "prf_track": 4636.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
@@ -2843,15 +2843,15 @@
   },
   "imported_wavs/ticonderoga search radar_SEARCH.wav": {
     "band": 1.6048097170934,
-    "prf_search": 3214.2857142857,
-    "prf_track": 4285.7142857143,
+    "prf_search": 3214.0,
+    "prf_track": 4285.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   },
   "imported_wavs/ticonderoga search radar_TRACK.wav": {
     "band": 1.6048097170934,
-    "prf_search": 3214.2857142857,
-    "prf_track": 4285.7142857143,
+    "prf_search": 3214.0,
+    "prf_track": 4285.0,
     "has_cd_command_guidance": false,
     "undetectable": true
   }
