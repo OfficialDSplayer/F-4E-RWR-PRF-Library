@@ -34,10 +34,10 @@ jobs:
           import re, json
           from pathlib import Path
 
-          # Verified band limits
           BAND_MIN = 2
           BAND_MAX = 20.0
 
+          # Load files
           rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
           radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
           wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
@@ -45,7 +45,7 @@ jobs:
           def norm(name):
               return name.replace("/", "_")
 
-          # Parse symbolic constants (e.g. CW_PRF = 20000)
+          # Parse constants (e.g., CW_PRF = 20000)
           constants = dict(re.findall(r'(\w+)\s*=\s*([\d.]+)', rwr))
 
           def extract_prf(field, body):
@@ -55,15 +55,15 @@ jobs:
                       return float(val)
                   if val in constants:
                       return float(constants[val])
-                  print(f"⚠️ Warning: constant {val} not found in RWR file.")
+                  print(f"⚠️ Missing constant: {val}")
               return None
 
-          # Step 1: Parse radars.lua entries
-          named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
-          indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
+          # Parse radars.lua
+          named = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
+          indexed = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
 
           radars_dict = {}
-          for _, display, body in named_style + indexed_style:
+          for _, display, body in named + indexed:
               key = norm(display)
               entry = {}
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
@@ -76,10 +76,9 @@ jobs:
                   entry["has_cd_command_guidance"] = True
               radars_dict[key] = entry
 
-          # Step 2: Start with radar.lua entries
           radar_data = radars_dict.copy()
 
-          # Step 2.5: Apply overrides before base copying
+          # Step 2.5: Apply override before inheritance
           override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
           for name, body in override_entries:
               key = norm(name)
@@ -93,9 +92,30 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3: Parse full CreateRadar and CreateFrqScanRadar blocks with balanced braces
-          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*({.*?})\)', rwr, re.DOTALL)
-          for name, body in create_entries:
+          # Step 3: Brace-balanced CreateRadar parsing
+          def find_radar_blocks(text):
+              entries = []
+              lines = text.splitlines()
+              i = 0
+              while i < len(lines):
+                  if m := re.match(r'\s*(CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{', lines[i]):
+                      name = m.group(2)
+                      brace_count = 1
+                      block_lines = [lines[i]]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          line = lines[i]
+                          brace_count += line.count("{")
+                          brace_count -= line.count("}")
+                          block_lines.append(line)
+                          i += 1
+                      body = "\n".join(block_lines)
+                      entries.append((name, body))
+                  else:
+                      i += 1
+              return entries
+
+          for name, body in find_radar_blocks(rwr):
               key = norm(name)
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
@@ -107,7 +127,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3.5: Reapply overrides before base copy
+          # Step 3.5: Apply override again before inheritance
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
@@ -120,7 +140,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 4: Handle CreateRadarFromBase → copy & merge
+          # Step 4: Handle CreateRadarFromBase
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
               new_key = norm(new)
@@ -131,7 +151,7 @@ jobs:
                       base_copy.update(radar_data[new_key])
                   radar_data[new_key] = base_copy
 
-          # Step 5: Final override application
+          # Step 5: Final override pass
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
@@ -144,7 +164,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 6: Final output mapping
+          # Step 6: Output mapping
           limits = {}
           missing = []
 
