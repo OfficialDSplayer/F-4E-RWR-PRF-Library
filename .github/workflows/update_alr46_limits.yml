@@ -98,10 +98,13 @@ jobs:
           # Step 4: Handle CreateRadarFromBase(name, base) → inherit full dict
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
-              new_key = norm(new)
-              base_key = norm(base)
-              if base_key in radar_data and new_key not in radar_data:
-                  radar_data[new_key] = radar_data[base_key].copy()
+            new_key = norm(new)
+            base_key = norm(base)
+            if base_key in radar_data:
+                base_copy = radar_data[base_key].copy()
+                if new_key in radar_data:
+                    base_copy.update(radar_data[new_key])  # preserve already existing fields
+                radar_data[new_key] = base_copy
 
           # Step 5: Reapply overrides AGAIN (post-inheritance)
           for name, body in override_entries:
