@@ -478,9 +478,29 @@
             if (radarInfo) {
               const parts = [];
 
-              // Radar Freq
+              // Helper to get band designation based on frequency
+              function getBandDesignation(freqGHz) {
+                if (freqGHz >= 0.003 && freqGHz < 0.03) return "HF";
+                if (freqGHz >= 0.03 && freqGHz < 0.3) return "VHF";
+                if (freqGHz >= 0.3 && freqGHz < 1) return "UHF";
+                if (freqGHz >= 1 && freqGHz < 2) return "L";
+                if (freqGHz >= 2 && freqGHz < 4) return "S";
+                if (freqGHz >= 4 && freqGHz < 8) return "C";
+                if (freqGHz >= 8 && freqGHz < 12) return "X";
+                if (freqGHz >= 12 && freqGHz < 18) return "Ku";
+                if (freqGHz >= 18 && freqGHz < 27) return "K";
+                if (freqGHz >= 27 && freqGHz < 40) return "Ka";
+                if (freqGHz >= 40 && freqGHz < 75) return "V";
+                if (freqGHz >= 75 && freqGHz < 110) return "W";
+                if (freqGHz >= 110 && freqGHz <= 300) return "mm or G";
+                return "Unknown Band";
+              }
+
+              // Radar Frequency with band designation
               if (radarInfo.band != null) {
-                parts.push(`Radar Frequency: ${Number(radarInfo.band).toFixed(2)}`);
+                const freqGHz = Number(radarInfo.band);
+                const band = getBandDesignation(freqGHz);
+                parts.push(`Radar Frequency: ${freqGHz.toFixed(2)} GHz (${band} band)`);
               }
 
               // Radar PRF
