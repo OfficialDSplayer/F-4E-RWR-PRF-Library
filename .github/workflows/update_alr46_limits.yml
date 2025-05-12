@@ -189,7 +189,10 @@ jobs:
               print(f"⚠️ {len(set(missing))} radars not found in band data:")
               print(", ".join(sorted(set(missing))[:10]))
 
-          Path("alr46_limits.json").write_text(json.dumps(limits, indent=2), encoding="utf-8")
+          Path("alr46_limits.json").write_text(
+            json.dumps(limits, indent=2, separators=(",", ": "), ensure_ascii=False), 
+            encoding="utf-8"
+          )
           print("✅ alr46_limits.json generated.")
           EOF
 
