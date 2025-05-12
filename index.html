@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/handoff_favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/handoff_favicon.png" type="image/png" />
+    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" type="image/png" />
     <!-- Apple touch icon -->
-    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/handoff_favicon.png" />
+    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
 
     <!-- Open Graph Preview -->
     <meta property="og:title" content="F-4E RWR PRF Sound Player" />
@@ -19,7 +19,7 @@
     />
     <meta
       property="og:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/handoff_icon.jpg"
+      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
     />
     <meta property="og:url" content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/" />
     <meta property="og:type" content="website" />
@@ -32,7 +32,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/handoff_icon.jpg"
+      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
     />
 
     <style>
@@ -291,7 +291,7 @@
       let groupsData = {};
       let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
-      let alr46Limits = {};
+      let alr46Info = {};
       const cancelledLoads = new Set();
 
       // Set theme on page load (saved or auto-detect)
@@ -322,21 +322,26 @@
             customWavListResponse,
             groupsMainResponse,
             groupsCustomResponse,
-            alr46LimitsResponse,
+            alr46ThreatInfoAutoResponse,
+            alr46ThreatInfoCustomResponse,
           ] = await Promise.all([
-            fetch("wav_list.json?v=" + Date.now()),
-            fetch("custom_wav_list.json?v=" + Date.now()),
-            fetch("groups.json?v=" + Date.now()),
-            fetch("groups_custom.json?v=" + Date.now()),
-            fetch("alr46_limits.json?v=" + Date.now()),
+            fetch("jsons/wav_list.json?v=" + Date.now()),
+            fetch("jsons/custom_wav_list.json?v=" + Date.now()),
+            fetch("jsons/groups.json?v=" + Date.now()),
+            fetch("jsons/groups_custom.json?v=" + Date.now()),
+            fetch("jsons/alr_46_threat_info.json?v=" + Date.now()),
+            fetch("jsons/alr_46_threat_info_custom.json?v=" + Date.now()),
           ]);
 
           const wavFiles = await wavListResponse.json();
           const customWavFiles = await customWavListResponse.json();
           const groupsMain = await groupsMainResponse.json();
           const groupsCustom = await groupsCustomResponse.json();
-          // const alr46Limits = await alr46LimitsResponse.json();
-          alr46Limits = await alr46LimitsResponse.json();
+          // const alr46Info = await alr46InfoResponse.json();
+          const alr46ThreatInfoAuto = await alr46ThreatInfoAutoResponse.json();
+          const alr46ThreatInfoCustom = await alr46ThreatInfoCustomResponse.json();
+          // alr46Info = await alr46InfoResponse.json();
+          alr46Info = { ...alr46ThreatInfoAuto, ...alr46ThreatInfoCustom };
           groupsData = { ...groupsMain, ...groupsCustom };
 
           const allFiles = [...wavFiles, ...customWavFiles];
@@ -373,7 +378,7 @@
                 hidden: false,
               };
 
-              const isUndetectable = alr46Limits[file]?.undetectable === true;
+              const isUndetectable = alr46Info[file]?.undetectable === true;
 
               // ✅ Skip hidden and undetectable sounds entirely
               if (meta.hidden || isUndetectable) continue;
@@ -471,16 +476,36 @@
 
             // actual extra info bits
             const fullPath = sound.file;
-            const radarInfo = alr46Limits[fullPath];
+            const radarInfo = alr46Info[fullPath];
             // const radarHidden = groupsData[fullPath]?.hidden === true;
             let prfText = "";
 
             if (radarInfo) {
               const parts = [];
 
-              // Radar Freq
+              // Helper to get band designation based on frequency
+              function getBandDesignation(freqGHz) {
+                if (freqGHz >= 0.003 && freqGHz < 0.03) return "HF";
+                if (freqGHz >= 0.03 && freqGHz < 0.3) return "VHF";
+                if (freqGHz >= 0.3 && freqGHz < 1) return "UHF";
+                if (freqGHz >= 1 && freqGHz < 2) return "L";
+                if (freqGHz >= 2 && freqGHz < 4) return "S";
+                if (freqGHz >= 4 && freqGHz < 8) return "C";
+                if (freqGHz >= 8 && freqGHz < 12) return "X";
+                if (freqGHz >= 12 && freqGHz < 18) return "Ku";
+                if (freqGHz >= 18 && freqGHz < 27) return "K";
+                if (freqGHz >= 27 && freqGHz < 40) return "Ka";
+                if (freqGHz >= 40 && freqGHz < 75) return "V";
+                if (freqGHz >= 75 && freqGHz < 110) return "W";
+                if (freqGHz >= 110 && freqGHz <= 300) return "mm or G";
+                return "Unknown Band";
+              }
+
+              // Radar Frequency with band designation
               if (radarInfo.band != null) {
-                parts.push(`Radar Frequency: ${Number(radarInfo.band).toFixed(2)}`);
+                const freqGHz = Number(radarInfo.band);
+                const band = getBandDesignation(freqGHz);
+                parts.push(`Radar Frequency: ${freqGHz.toFixed(2)} GHz (${band} band)`);
               }
 
               // Radar PRF
