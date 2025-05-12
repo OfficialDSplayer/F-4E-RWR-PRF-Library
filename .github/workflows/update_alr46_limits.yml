@@ -34,7 +34,7 @@ jobs:
           import re, json
           from pathlib import Path
 
-          # Officially verified limits
+          # Verified band limits
           BAND_MIN = 2
           BAND_MAX = 20.0
 
@@ -45,7 +45,7 @@ jobs:
           def norm(name):
               return name.replace("/", "_")
 
-          # Parse symbolic constants (e.g. CW_PRF = 20000)
+          # Parse symbolic constants like CW_PRF = 20000
           constants = dict(re.findall(r'(\w+)\s*=\s*([\d.]+)', rwr))
 
           def extract_prf(field, body):
@@ -54,33 +54,38 @@ jobs:
                   return float(val) if re.match(r'^\d+(\.\d+)?$', val) else float(constants.get(val, 'nan'))
               return None
 
-          # Step 1: Parse radars.lua entries
+          # Step 1: Parse radars.lua
           named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
           indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
 
           radars_dict = {}
           for _, display, body in named_style + indexed_style:
               key = norm(display)
-              band = re.search(r'band\s*=\s*([\d.]+)', body)
-              radars_dict[key] = {
-                  "band": float(band.group(1)) if band else None,
-                  "prf_search": extract_prf("prf_search", body),
-                  "prf_track": extract_prf("prf_track", body),
-                  "has_cd_command_guidance": "has_cd_command_guidance" in body
-              }
+              entry = {}
+              if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
+                  entry["band"] = float(m.group(1))
+              if (v := extract_prf("prf_search", body)) is not None:
+                  entry["prf_search"] = v
+              if (v := extract_prf("prf_track", body)) is not None:
+                  entry["prf_track"] = v
+              if "has_cd_command_guidance" in body:
+                  entry["has_cd_command_guidance"] = True
+              radars_dict[key] = entry
 
-          # Step 2: Copy base radars
+          # Step 2: Start with radar.lua entries
           radar_data = radars_dict.copy()
 
-          # Step 2.5: OverrideRadar BEFORE base copy
+          # Step 2.5: OverrideRadar BEFORE base linking
           override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
-              radar_data[key]["prf_search"] = extract_prf("prf_search", body) or radar_data[key].get("prf_search")
-              radar_data[key]["prf_track"] = extract_prf("prf_track", body) or radar_data[key].get("prf_track")
+              if (v := extract_prf("prf_search", body)) is not None:
+                  radar_data[key]["prf_search"] = v
+              if (v := extract_prf("prf_track", body)) is not None:
+                  radar_data[key]["prf_track"] = v
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
@@ -91,8 +96,10 @@ jobs:
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
-              radar_data[key]["prf_search"] = extract_prf("prf_search", body) or radar_data[key].get("prf_search")
-              radar_data[key]["prf_track"] = extract_prf("prf_track", body) or radar_data[key].get("prf_track")
+              if (v := extract_prf("prf_search", body)) is not None:
+                  radar_data[key]["prf_search"] = v
+              if (v := extract_prf("prf_track", body)) is not None:
+                  radar_data[key]["prf_track"] = v
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
@@ -102,12 +109,14 @@ jobs:
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
-              radar_data[key]["prf_search"] = extract_prf("prf_search", body) or radar_data[key].get("prf_search")
-              radar_data[key]["prf_track"] = extract_prf("prf_track", body) or radar_data[key].get("prf_track")
+              if (v := extract_prf("prf_search", body)) is not None:
+                  radar_data[key]["prf_search"] = v
+              if (v := extract_prf("prf_track", body)) is not None:
+                  radar_data[key]["prf_track"] = v
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 4: CreateRadarFromBase — always inherit and preserve overrides
+          # Step 4: CreateRadarFromBase with full merging
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
               new_key = norm(new)
@@ -118,18 +127,20 @@ jobs:
                       base_copy.update(radar_data[new_key])
                   radar_data[new_key] = base_copy
 
-          # Step 5: Override AGAIN after base-copy
+          # Step 5: Final override after inheritance
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
-              radar_data[key]["prf_search"] = extract_prf("prf_search", body) or radar_data[key].get("prf_search")
-              radar_data[key]["prf_track"] = extract_prf("prf_track", body) or radar_data[key].get("prf_track")
+              if (v := extract_prf("prf_search", body)) is not None:
+                  radar_data[key]["prf_search"] = v
+              if (v := extract_prf("prf_track", body)) is not None:
+                  radar_data[key]["prf_track"] = v
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 6: Build alr46_limits.json
+          # Step 6: Generate final output
           limits = {}
           missing = []
 
@@ -142,7 +153,6 @@ jobs:
               undetectable = band is None or band < BAND_MIN or band > BAND_MAX
               if band is None:
                   missing.append(radar_key)
-
               limits[wav] = {
                   "band": band,
                   "prf_search": radar.get("prf_search") if radar else None,
