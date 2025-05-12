@@ -6,7 +6,7 @@ on:
       - "imported_luas/rwr.lua"
       - "imported_luas/radars.lua"
       - "jsons/wav_list.json"
-      - ".github/workflows/update_alr46_threat_info.yml"
+      - ".github/workflows/update_alr_46_threat_info.yml"
   workflow_dispatch:
 
 jobs:
@@ -210,7 +210,7 @@ jobs:
           print("📦 Final AN_APG-63:", radar_data.get("AN_APG-63"))
 
           # Final write
-          Path("jsons/alr46_threat_info.json").write_text(
+          Path("jsons/alr_46_threat_info.json").write_text(
               json.dumps(limits, indent=2, ensure_ascii=False, separators=(",", ": ")),
               encoding="utf-8"
           )
@@ -219,7 +219,7 @@ jobs:
               print(f"⚠️ {len(set(missing))} radars not found:")
               print(", ".join(sorted(set(missing))[:10]))
 
-          print("✅ alr46_threat_info.json generated.")
+          print("✅ alr_46_threat_info.json generated.")
           EOF
 
       - name: Clean up source repo
@@ -228,14 +228,14 @@ jobs:
       - name: Commit and push changes
         run: |
           # Give a timestamped commit message
-          COMMIT_MESSAGE="Auto-generate or update alr46_threat_info.json"
+          COMMIT_MESSAGE="Auto-generate or update alr_46_threat_info.json"
           COMMIT_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           FINAL_COMMIT_MSG="$COMMIT_MESSAGE (Synced on $COMMIT_TIMESTAMP)"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add jsons/alr46_threat_info.json
+          git add jsons/alr_46_threat_info.json
 
           if git diff --cached --quiet; then
             echo "⚠️ No changes detected, skipping commit."
