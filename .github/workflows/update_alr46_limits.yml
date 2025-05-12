@@ -86,7 +86,29 @@ jobs:
           radar_data = radars_dict.copy()
 
           # Step 2.5: Capture all override blocks up front
-          override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
+          def find_override_blocks(text):
+              entries = []
+              lines = text.splitlines()
+              i = 0
+              while i < len(lines):
+                  if m := re.match(r'\s*OverrideRadar\("([^"]+)",\s*{', lines[i]):
+                      name = m.group(1)
+                      brace_count = 1
+                      block_lines = [lines[i]]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          line = lines[i]
+                          brace_count += line.count("{")
+                          brace_count -= line.count("}")
+                          block_lines.append(line)
+                          i += 1
+                      body = "\n".join(block_lines)
+                      entries.append((name, body))
+                  else:
+                      i += 1
+              return entries
+          override_entries = find_override_blocks(rwr)
+
 
           # Apply overrides (first pass)
           def apply_override(name, body):
