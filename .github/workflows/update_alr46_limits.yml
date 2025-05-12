@@ -42,7 +42,7 @@ jobs:
           radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
           wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
 
-          # Step 1: Parse radars.lua using DisplayName and band
+          # Step 1: Parse radars.lua entries (named & indexed)
           named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, flags=re.DOTALL)
           indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, flags=re.DOTALL)
           
@@ -61,12 +61,10 @@ jobs:
                   "has_cd_command_guidance": cd_guidance
               }
           
-          # Step 2: Start with radar.lua entries
+          # Step 2: Parse CreateRadar and CreateFrqScanRadar
           radar_data = radars_dict.copy()
-          
-          # Step 2.5: OverrideRadar(name, {...}) → update only specified fields (before base cloning)
-          override_entries_1 = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
-          for name, body in override_entries_1:
+          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
+          for name, body in create_entries:
               key = name.replace("/", "_")
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)): radar_data[key]['band'] = float(m.group(1))
@@ -74,17 +72,9 @@ jobs:
               if (m := re.search(r'prf_track\s*=\s*([\d.]+)', body)): radar_data[key]['prf_track'] = float(m.group(1))
               if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
           
-          # Step 3: Parse CreateRadarFromBase(name, base) and build a map for later cloning
-          base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
-          base_link_map = {new.replace("/", "_"): base.replace("/", "_") for new, base in base_links}
-          
-          # Step 4: Split override entries into base and derived
+          # Step 3: Apply OverrideRadar (1st pass for base + derived both)
           override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, flags=re.DOTALL)
-          override_base = [entry for entry in override_entries if entry[0].replace("/", "_") not in base_link_map]
-          override_derived = [entry for entry in override_entries if entry[0].replace("/", "_") in base_link_map]
-          
-          # Step 5: Apply OverrideRadar for base radars
-          for name, body in override_base:
+          for name, body in override_entries:
               key = name.replace("/", "_")
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)): radar_data[key]['band'] = float(m.group(1))
@@ -92,37 +82,40 @@ jobs:
               if (m := re.search(r'prf_track\s*=\s*([\d.]+)', body)): radar_data[key]['prf_track'] = float(m.group(1))
               if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
           
-          # Step 6: Apply CreateRadarFromBase using already-overridden base radars
-          for new_key, base_key in base_link_map.items():
+          # Step 4: Handle CreateRadarFromBase → copy from base AFTER overrides
+          base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
+          for new, base in base_links:
+              new_key = new.replace("/", "_")
+              base_key = base.replace("/", "_")
               if base_key in radar_data:
                   radar_data[new_key] = radar_data[base_key].copy()
           
-          # Step 7: Apply OverrideRadar for derived radars (adds or overrides values)
-          for name, body in override_derived:
+          # Step 5: (optional) Re-apply overrides again in case CreateRadarFromBase targets were also overridden
+          for name, body in override_entries:
               key = name.replace("/", "_")
-              radar_data.setdefault(key, {})
+              if key not in radar_data: continue
               if (m := re.search(r'band\s*=\s*([\d.]+)', body)): radar_data[key]['band'] = float(m.group(1))
               if (m := re.search(r'prf_search\s*=\s*([\d.]+)', body)): radar_data[key]['prf_search'] = float(m.group(1))
               if (m := re.search(r'prf_track\s*=\s*([\d.]+)', body)): radar_data[key]['prf_track'] = float(m.group(1))
               if 'has_cd_command_guidance' in body: radar_data[key]['has_cd_command_guidance'] = True
-
-          # Step 6: Match wav files to radar names and calculate detectability
+          
+          # Step 6: Process WAV files and assign limits
           limits = {}
           missing = []
-
+          
           for wav in wav_list:
               filename = Path(wav).stem
               base_name = re.sub(r"_(SEARCH|TRACK)$", "", filename).replace("/", "_")
-
+          
               radar = radar_data.get(base_name)
               band = radar.get("band") if radar else None
-
+          
               if band is None:
                   undetectable = True
                   missing.append(base_name)
               else:
                   undetectable = band < BAND_MIN or band > BAND_MAX
-
+          
               limits[wav] = {
                   "band": band,
                   "prf_search": radar.get("prf_search") if radar else None,
@@ -130,9 +123,14 @@ jobs:
                   "has_cd_command_guidance": radar.get("has_cd_command_guidance", False) if radar else False,
                   "undetectable": undetectable
               }
-
-          # Write result
+          
+          # Step 7: Write result
           Path("alr46_limits.json").write_text(json.dumps(limits, indent=2), encoding="utf-8")
+          
+          # Summary
+          if missing:
+              print(f"⚠️ {len(set(missing))} radars not found in band data:")
+              print(", ".join(sorted(set(missing))[:10]))
           print("✅ alr46_limits.json generated.")
           EOF
 
