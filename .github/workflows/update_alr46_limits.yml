@@ -45,16 +45,20 @@ jobs:
           def norm(name):
               return name.replace("/", "_")
 
-          # Parse symbolic constants like CW_PRF = 20000
+          # Parse symbolic constants (e.g. CW_PRF = 20000)
           constants = dict(re.findall(r'(\w+)\s*=\s*([\d.]+)', rwr))
 
           def extract_prf(field, body):
               if m := re.search(rf'{field}\s*=\s*(\w+)', body):
                   val = m.group(1)
-                  return float(val) if re.match(r'^\d+(\.\d+)?$', val) else float(constants.get(val, 'nan'))
+                  if re.match(r'^\d+(\.\d+)?$', val):
+                      return float(val)
+                  if val in constants:
+                      return float(constants[val])
+                  print(f"⚠️ Warning: constant {val} not found in RWR file.")
               return None
 
-          # Step 1: Parse radars.lua
+          # Step 1: Parse radars.lua entries
           named_style = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
           indexed_style = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
 
@@ -75,7 +79,7 @@ jobs:
           # Step 2: Start with radar.lua entries
           radar_data = radars_dict.copy()
 
-          # Step 2.5: OverrideRadar BEFORE base linking
+          # Step 2.5: Apply overrides before base copying
           override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
           for name, body in override_entries:
               key = norm(name)
@@ -89,8 +93,8 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3: CreateRadar / CreateFrqScanRadar
-          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
+          # Step 3: Parse full CreateRadar and CreateFrqScanRadar blocks with balanced braces
+          create_entries = re.findall(r'(?:CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*({.*?})\)', rwr, re.DOTALL)
           for name, body in create_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
@@ -103,7 +107,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3.5: Override again BEFORE CreateRadarFromBase
+          # Step 3.5: Reapply overrides before base copy
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
@@ -116,7 +120,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 4: CreateRadarFromBase with full merging
+          # Step 4: Handle CreateRadarFromBase → copy & merge
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
               new_key = norm(new)
@@ -127,7 +131,7 @@ jobs:
                       base_copy.update(radar_data[new_key])
                   radar_data[new_key] = base_copy
 
-          # Step 5: Final override after inheritance
+          # Step 5: Final override application
           for name, body in override_entries:
               key = norm(name)
               radar_data.setdefault(key, {})
@@ -140,7 +144,7 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 6: Generate final output
+          # Step 6: Final output mapping
           limits = {}
           missing = []
 
