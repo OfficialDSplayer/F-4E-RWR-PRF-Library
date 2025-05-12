@@ -715,15 +715,15 @@
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
     "band": 16.275,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 2200.0,
+    "prf_track": 3800.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/ARI 23274_TRACK.wav": {
     "band": 16.275,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 2200.0,
+    "prf_track": 3800.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1681,15 +1681,15 @@
   },
   "imported_wavs/RDI_SEARCH.wav": {
     "band": 9.796,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 75000.0,
+    "prf_track": 22000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RDI_TRACK.wav": {
     "band": 9.796,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 75000.0,
+    "prf_track": 22000.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1793,15 +1793,15 @@
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
     "band": 13.049,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 1650.0,
+    "prf_track": 1790.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RP_22SMA_TRACK.wav": {
     "band": 13.049,
-    "prf_search": null,
-    "prf_track": null,
+    "prf_search": 1650.0,
+    "prf_track": 1790.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
