@@ -49,11 +49,16 @@ jobs:
           constants = dict(re.findall(r'(\w+)\s*=\s*([\d.]+)', rwr))
 
           def extract_prf(field, body):
-              if m := re.search(rf'{field}\s*=\s*([0-9.]+|\w+)', body):
-                  val = m.group(1)
+              # Match things like: prf_search = 220000 or prf_track = CW_PRF
+              pattern = rf'{field}\s*=\s*([0-9.]+|\w+)\s*,?'
+              match = re.search(pattern, body)
+              if match:
+                  val = match.group(1)
                   print(f"🧪 Matched {field} = {val}")
-                  if re.match(r'^[0-9.]+$', val): return float(val)
-                  if val in constants: return float(constants[val])
+                  if re.match(r'^[0-9.]+$', val):
+                      return float(val)
+                  if val in constants:
+                      return float(constants[val])
                   print(f"⚠️ Unknown constant: {val}")
               else:
                   print(f"❌ No match for {field} in:\n{body}")
