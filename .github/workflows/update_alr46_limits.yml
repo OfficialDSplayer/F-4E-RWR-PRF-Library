@@ -51,12 +51,14 @@ jobs:
           def extract_prf(field, body):
               if m := re.search(rf'{field}\s*=\s*([0-9.]+|\w+)', body):
                   val = m.group(1)
-                  if re.match(r'^[0-9.]+$', val):  # numeric literal
-                      return float(val)
-                  if val in constants:
-                      return float(constants[val])
-                  print(f"⚠️ Missing constant: {val}")
+                  print(f"🧪 Matched {field} = {val}")
+                  if re.match(r'^[0-9.]+$', val): return float(val)
+                  if val in constants: return float(constants[val])
+                  print(f"⚠️ Unknown constant: {val}")
+              else:
+                  print(f"❌ No match for {field} in:\n{body}")
               return None
+
 
           # Step 2: Parse radars.lua definitions
           named = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
