@@ -5,7 +5,7 @@ on:
     paths:
       - "imported_luas/rwr.lua"
       - "imported_luas/radars.lua"
-      - "wav_list.json"
+      - "jsons/wav_list.json"
       - ".github/workflows/update_alr46_threat_info.yml"
   workflow_dispatch:
 
@@ -40,7 +40,7 @@ jobs:
           # Load source files
           rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
           radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
-          wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
+          wav_list = json.loads(Path("jsons/wav_list.json").read_text(encoding="utf-8"))
 
           def norm(name):
               return name.replace("/", "_")
