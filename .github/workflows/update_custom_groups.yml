@@ -22,14 +22,14 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Generate groups_custom.json
+      - name: Generate jsons/groups_custom.json
         run: |
           node <<EOF
           const fs = require('fs');
           const path = require('path');
 
           const WAV_DIR = 'custom_wavs';
-          const GROUPS_FILE = 'groups_custom.json';
+          const GROUPS_FILE = 'jsons/groups_custom.json';
 
           const defaultGroup = 'Custom Sounds';
           let groups = {};
@@ -67,7 +67,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add groups_custom.json
+            git add jsons/groups_custom.json
             git commit -m "Update groups_custom.json from GitHub Action"
             git push
           else
