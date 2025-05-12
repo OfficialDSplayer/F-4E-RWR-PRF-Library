@@ -2,6 +2,8 @@ name: Sync WAV Files and Groups
 
 on:
   workflow_dispatch: # Manual trigger
+  repository_dispatch: # Triggered externally from the source repo
+    types: [dcs-datamine-raw-updated]
 
 jobs:
   sync:
