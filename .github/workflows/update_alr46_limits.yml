@@ -37,7 +37,7 @@ jobs:
           BAND_MIN = 2
           BAND_MAX = 20.0
 
-          # Load files
+          # Load source files
           rwr = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua").read_text(encoding="utf-8")
           radars = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/radars.lua").read_text(encoding="utf-8")
           wav_list = json.loads(Path("wav_list.json").read_text(encoding="utf-8"))
@@ -45,7 +45,7 @@ jobs:
           def norm(name):
               return name.replace("/", "_")
 
-          # Parse constants (e.g., CW_PRF = 20000)
+          # Step 1: Parse symbolic constants (e.g., CW_PRF = 20000)
           constants = dict(re.findall(r'(\w+)\s*=\s*([\d.]+)', rwr))
 
           def extract_prf(field, body):
@@ -58,7 +58,7 @@ jobs:
                   print(f"⚠️ Missing constant: {val}")
               return None
 
-          # Parse radars.lua
+          # Step 2: Parse radars.lua definitions
           named = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
           indexed = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
 
@@ -78,9 +78,11 @@ jobs:
 
           radar_data = radars_dict.copy()
 
-          # Step 2.5: Apply override before inheritance
+          # Step 2.5: Capture all override blocks up front
           override_entries = re.findall(r'OverrideRadar\("([^"]+)",\s*{(.*?)}\)', rwr, re.DOTALL)
-          for name, body in override_entries:
+
+          # Apply overrides (first pass)
+          def apply_override(name, body):
               key = norm(name)
               radar_data.setdefault(key, {})
               if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
@@ -92,7 +94,10 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3: Brace-balanced CreateRadar parsing
+          for name, body in override_entries:
+              apply_override(name, body)
+
+          # Step 3: Parse CreateRadar and CreateFrqScanRadar using brace-depth
           def find_radar_blocks(text):
               entries = []
               lines = text.splitlines()
@@ -127,20 +132,11 @@ jobs:
               if "has_cd_command_guidance" in body:
                   radar_data[key]["has_cd_command_guidance"] = True
 
-          # Step 3.5: Apply override again before inheritance
+          # Step 3.5: Apply overrides again after CreateRadar
           for name, body in override_entries:
-              key = norm(name)
-              radar_data.setdefault(key, {})
-              if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
-                  radar_data[key]["band"] = float(m.group(1))
-              if (v := extract_prf("prf_search", body)) is not None:
-                  radar_data[key]["prf_search"] = v
-              if (v := extract_prf("prf_track", body)) is not None:
-                  radar_data[key]["prf_track"] = v
-              if "has_cd_command_guidance" in body:
-                  radar_data[key]["has_cd_command_guidance"] = True
+              apply_override(name, body)
 
-          # Step 4: Handle CreateRadarFromBase
+          # Step 4: CreateRadarFromBase (inherit and merge)
           base_links = re.findall(r'CreateRadarFromBase\("([^"]+)",\s*"([^"]+)"\)', rwr)
           for new, base in base_links:
               new_key = norm(new)
@@ -151,20 +147,11 @@ jobs:
                       base_copy.update(radar_data[new_key])
                   radar_data[new_key] = base_copy
 
-          # Step 5: Final override pass
+          # Step 5: Final override pass (ensures total dominance)
           for name, body in override_entries:
-              key = norm(name)
-              radar_data.setdefault(key, {})
-              if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
-                  radar_data[key]["band"] = float(m.group(1))
-              if (v := extract_prf("prf_search", body)) is not None:
-                  radar_data[key]["prf_search"] = v
-              if (v := extract_prf("prf_track", body)) is not None:
-                  radar_data[key]["prf_track"] = v
-              if "has_cd_command_guidance" in body:
-                  radar_data[key]["has_cd_command_guidance"] = True
+              apply_override(name, body)
 
-          # Step 6: Output mapping
+          # Step 6: Map WAV files to radar info
           limits = {}
           missing = []
 
@@ -185,14 +172,16 @@ jobs:
                   "undetectable": undetectable
               }
 
+          # Final write
+          Path("alr46_limits.json").write_text(
+              json.dumps(limits, indent=2, ensure_ascii=False, separators=(",", ": ")),
+              encoding="utf-8"
+          )
+
           if missing:
-              print(f"⚠️ {len(set(missing))} radars not found in band data:")
+              print(f"⚠️ {len(set(missing))} radars not found:")
               print(", ".join(sorted(set(missing))[:10]))
 
-          Path("alr46_limits.json").write_text(
-            json.dumps(limits, indent=2, separators=(",", ": "), ensure_ascii=False), 
-            encoding="utf-8"
-          )
           print("✅ alr46_limits.json generated.")
           EOF
 
