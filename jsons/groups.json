@@ -375,97 +375,97 @@
     "group": "Ungrouped",
     "name": "AN/SPG_60 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPG_60_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPG_60 Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPG-60 Track",
+    "description": "Oliver Hazard Perry Track/Illumination Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPG_62_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (NATO)",
     "name": "AN/SPG_62 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPG_62_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPG_62 Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPG-62 Track",
+    "description": "Arleigh Burke, Ticonderoga CW FCR",
     "hidden": false
   },
   "imported_wavs/AN_SPN_41_Az_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPN_41_Az Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPN-41 ICLS Radar",
+    "description": "Nimitz ICLS Microwave Beam",
     "hidden": false
   },
   "imported_wavs/AN_SPN_41_Az_TRACK.wav": {
     "group": "Ungrouped",
-    "name": "AN/SPN_41_Az Track",
-    "description": "",
-    "hidden": false
+    "name": "AN/SPN-41 ICLS Radar",
+    "description": "Nimitz ICLS Radar",
+    "hidden": true
   },
   "imported_wavs/AN_SPN_41_El_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPN_41_El Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPN_41_El_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPN_41_El Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPN_43C_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPN_43C Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPN-43C Search",
+    "description": "Nimitz Air Navigation Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPN_43C_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPN_43C Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPQ_9B_1_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPQ_9B_1 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPQ-9B Search",
+    "description": "Arleigh Burke, Nimitz, Ticonderoga Surface Search/FCR",
     "hidden": false
   },
   "imported_wavs/AN_SPQ_9B_1_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPQ_9B_1 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPQ_9B_2 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPQ_9B_2 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPQ_9B_3 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPQ_9B_3 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_40_SEARCH.wav": {
     "group": "Ungrouped",
@@ -480,33 +480,33 @@
     "hidden": false
   },
   "imported_wavs/AN_SPS_48C_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_48C Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-48C Search",
+    "description": "Forrestal Air Search Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPS_48C_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_48C Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_48E_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_48E Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-48E Search",
+    "description": "Nimitz Air Search Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPS_48E_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_48E Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_49_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_49 Search",
-    "description": "",
+    "description": "NOT DETECTABLE",
     "hidden": false
   },
   "imported_wavs/AN_SPS_49_TRACK.wav": {
@@ -516,52 +516,52 @@
     "hidden": false
   },
   "imported_wavs/AN_SPS_55_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_55 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-55 Search",
+    "description": "Oliver Hazard Perry Search Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPS_55_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_55 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_64V9_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_64V9 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-64(V9) Search",
+    "description": "Tarawa Surface Search Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPS_64V9_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_64V9 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_67_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_67 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-67 Search",
+    "description": "Forrestal Surface Search/Navigation Radar",
     "hidden": false
   },
   "imported_wavs/AN_SPS_67_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_67 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPS_73_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AN/SPS_73 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "AN/SPS-73 Search",
+    "description": "Arleigh Burke, Ticonderoga Surface Search/FCR",
     "hidden": false
   },
   "imported_wavs/AN_SPS_73_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AN/SPS_73 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
@@ -720,38 +720,38 @@
     "hidden": true
   },
   "imported_wavs/BridgeMaster_E_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "BridgeMaster_E Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "BridgeMaster E Search",
+    "description": "Arleigh Burke Search Radar",
     "hidden": false
   },
   "imported_wavs/BridgeMaster_E_TRACK.wav": {
     "group": "Ungrouped",
     "name": "BridgeMaster_E Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
-    "name": "C-RAM Phalanx Search",
-    "description": "",
+    "name": "C-RAM/CIWS Phalanx Search/Acquisition",
+    "description": "Phalanx Radar (Same for both CIWS and C-RAM variants)",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
-    "name": "C-RAM Phalanx Track",
-    "description": "",
+    "name": "C-RAM/CIWS Phalanx Track",
+    "description": "Phalanx Radar (Same for both CIWS and C-RAM variants)",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
-    "name": "C_RAM_Phalanx_Track Search",
+    "name": "Phalanx CIWS Search/Acquisition",
     "description": "",
     "hidden": true
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
-    "name": "C_RAM_Phalanx_Track Track",
+    "name": "Phalanx CIWS Track",
     "description": "",
     "hidden": true
   },
@@ -1140,39 +1140,39 @@
     "hidden": false
   },
   "imported_wavs/Mark_92_S_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Mark_92_S Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Mark 92 Search",
+    "description": "Oliver Hazard Perry Fire Control Radar",
     "hidden": false
   },
   "imported_wavs/Mark_92_S_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Mark_92_S Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Mark_92_T_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "Mark_92_T Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Mark_92_T_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Mark_92_T Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Mark 92 Track",
+    "description": "Oliver Hazard Perry Fire Control Radar",
     "hidden": false
   },
   "imported_wavs/Mk_95_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Mk_95 Search",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Mk 95 Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Mk_95_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Mk_95 Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "Mk 95 Track",
+    "description": "Nimitz, Forrestal Sea Sparrow CW Illuminator",
     "hidden": false
   },
   "imported_wavs/Muff_Cob_SEARCH.wav": {
