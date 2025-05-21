@@ -1790,7 +1790,7 @@
   "imported_wavs/Shmel_SEARCH.wav": {
     "group": "Airborne Early Warning",
     "name": "Shmel Search",
-    "description": "A-50 'Mainstay' (NOT DETECTABLE BY ALR-46)",
+    "description": "A-50 'Mainstay'",
     "hidden": false
   },
   "imported_wavs/Shmel_TRACK.wav": {
