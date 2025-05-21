@@ -3,8 +3,9 @@ name: Update ALR-46 Threat Info JSON
 on:
   push:
     paths:
-      - "imported_luas/rwr.lua"
-      - "imported_luas/radars.lua"
+      #   - "imported_luas/rwr.lua"
+      #   - "imported_luas/radars.lua"
+      - "imported_wavs/**"
       - "jsons/wav_list.json"
       - ".github/workflows/update_alr_46_threat_info.yml"
   workflow_dispatch:
