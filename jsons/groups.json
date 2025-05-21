@@ -2450,25 +2450,25 @@
   "imported_wavs/AEGIS_search_radar_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "AEGIS_search_radar_SEARCH",
-    "description": "Add a description here",
-    "hidden": false
+    "description": "Add a description here REPLACED",
+    "hidden": true
   },
   "imported_wavs/AEGIS_search_radar_TRACK.wav": {
     "group": "Ungrouped",
     "name": "AEGIS_search_radar_TRACK",
-    "description": "Add a description here",
-    "hidden": false
+    "description": "Add a description here REPLACED",
+    "hidden": true
   },
   "imported_wavs/AIDA_2_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "AIDA_2_SEARCH",
-    "description": "Add a description here",
+    "group": "Air Radar (NATO)",
+    "name": "AIDA-2 Search/Track",
+    "description": "Mirage F1Ax Radar",
     "hidden": false
   },
   "imported_wavs/AIDA_2_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "AIDA_2_TRACK",
-    "description": "Add a description here",
-    "hidden": false
+    "group": "Air Radar (NATO)",
+    "name": "AIDA-2 Track",
+    "description": "Mirage F1Ax Radar",
+    "hidden": true
   }
 }

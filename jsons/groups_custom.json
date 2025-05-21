@@ -1,14 +1,1 @@
-{
-  "custom_wavs/AIDA_2_SEARCH.wav": {
-    "group": "Air Radar (NATO)",
-    "name": "AIDA-2 Search",
-    "description": "Mirage F1Ax Radar",
-    "hidden": false
-  },
-  "custom_wavs/AIDA_2_TRACK.wav": {
-    "group": "Air Radar (NATO)",
-    "name": "AIDA-2 Search",
-    "description": "Mirage F1Ax Radar",
-    "hidden": true
-  }
-}
+{}
