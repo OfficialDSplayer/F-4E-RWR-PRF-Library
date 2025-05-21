@@ -34,20 +34,19 @@ jobs:
           const defaultGroup = 'Custom Sounds';
           let groups = {};
 
+          // If directory doesn't exist or has no .wav files, write an empty object
+          if (!fs.existsSync(WAV_DIR) || fs.readdirSync(WAV_DIR).filter(f => f.endsWith('.wav')).length === 0) {
+            fs.writeFileSync(GROUPS_FILE, JSON.stringify({}, null, 2));
+            console.log('⚠️ No .wav files found or directory missing. groups_custom.json reset to empty.');
+            process.exit(0);
+          }
+
+          // Load existing group file if present
           if (fs.existsSync(GROUPS_FILE)) {
             groups = JSON.parse(fs.readFileSync(GROUPS_FILE, 'utf8'));
           }
 
-          if (!fs.existsSync(WAV_DIR)) {
-            console.log('⚠️ custom_wavs directory does not exist. Skipping update.');
-            process.exit(0);
-          }
-
           const wavFiles = fs.readdirSync(WAV_DIR).filter(f => f.endsWith('.wav'));
-          if (wavFiles.length === 0) {
-            console.log('⚠️ No .wav files found in custom_wavs. Skipping update.');
-            process.exit(0);
-          }
           let updated = false;
 
           for (const file of wavFiles) {
@@ -65,7 +64,7 @@ jobs:
 
           if (updated) {
             fs.writeFileSync(GROUPS_FILE, JSON.stringify(groups, null, 2));
-            console.log('✅ groups_custom.json updated');
+            console.log('✅ groups_custom.json updated with new entries');
           } else {
             console.log('✅ No changes to groups_custom.json');
           }
