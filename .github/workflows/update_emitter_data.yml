@@ -29,336 +29,336 @@ jobs:
       - name: Parse emitter_id_table.lua into JSON
         run: |
           python3 <<EOF
-            import re, json
-            from pathlib import Path
+          import re, json
+          from pathlib import Path
 
-            ALT_TYPE_MAP = {
-                "TYPE_NIL": 0,
-                "TYPE_AAA": 1,
-                "TYPE_SAM": 2
-            }
+          ALT_TYPE_MAP = {
+              "TYPE_NIL": 0,
+              "TYPE_AAA": 1,
+              "TYPE_SAM": 2
+          }
 
-            TRACK_ONLY = "TRACK_ONLY"
-            SEARCH_AND_TRACK = "SEARCH_AND_TRACK"
+          TRACK_ONLY = "TRACK_ONLY"
+          SEARCH_AND_TRACK = "SEARCH_AND_TRACK"
 
-            # File paths
-            emitter_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/emitter_id_table.lua")
-            rwr_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua")
+          # File paths
+          emitter_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/emitter_id_table.lua")
+          rwr_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua")
 
-            # Read files
-            emitter_text = emitter_path.read_text(encoding="utf-8")
-            rwr_text = rwr_path.read_text(encoding="utf-8")
+          # Read files
+          emitter_text = emitter_path.read_text(encoding="utf-8")
+          rwr_text = rwr_path.read_text(encoding="utf-8")
 
-            def strip_lua_comments(text):
-                lines = text.splitlines()
-                cleaned = []
-                for line in lines:
-                    line = re.sub(r'--.*$', '', line).strip()  # Remove full-line or trailing comments
-                    if line:  # Skip empty lines
-                        cleaned.append(line)
-                return "\n".join(cleaned)
+          def strip_lua_comments(text):
+              lines = text.splitlines()
+              cleaned = []
+              for line in lines:
+                  line = re.sub(r'--.*$', '', line).strip()  # Remove full-line or trailing comments
+                  if line:  # Skip empty lines
+                      cleaned.append(line)
+              return "\n".join(cleaned)
 
-            # Clean content
-            emitter_content = strip_lua_comments(emitter_text)
-            rwr_content = strip_lua_comments(rwr_text)
+          # Clean content
+          emitter_content = strip_lua_comments(emitter_text)
+          rwr_content = strip_lua_comments(rwr_text)
 
-            # Normalize radar names
-            norm = lambda s: s.replace("/", "_")
+          # Normalize radar names
+          norm = lambda s: s.replace("/", "_")
 
-            def find_radar_blocks(text):
-                """Find CreateRadar and CreateFrqScanRadar blocks using brace-depth tracking"""
-                entries = []
-                lines = text.splitlines()
-                i = 0
-                while i < len(lines):
-                    if m := re.match(r'\s*(CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{', lines[i]):
-                        name = m.group(2)
-                        brace_count = 1
-                        block_lines = [lines[i]]
-                        i += 1
-                        while i < len(lines) and brace_count > 0:
-                            line = lines[i]
-                            brace_count += line.count("{")
-                            brace_count -= line.count("}")
-                            block_lines.append(line)
-                            i += 1
-                        body = "\n".join(block_lines)
-                        entries.append((name, body))
-                    else:
-                        i += 1
-                return entries
+          def find_radar_blocks(text):
+              """Find CreateRadar and CreateFrqScanRadar blocks using brace-depth tracking"""
+              entries = []
+              lines = text.splitlines()
+              i = 0
+              while i < len(lines):
+                  if m := re.match(r'\s*(CreateRadar|CreateFrqScanRadar)\("([^"]+)",\s*{', lines[i]):
+                      name = m.group(2)
+                      brace_count = 1
+                      block_lines = [lines[i]]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          line = lines[i]
+                          brace_count += line.count("{")
+                          brace_count -= line.count("}")
+                          block_lines.append(line)
+                          i += 1
+                      body = "\n".join(block_lines)
+                      entries.append((name, body))
+                  else:
+                      i += 1
+              return entries
 
-            def find_override_blocks(text):
-                """Find OverrideRadar blocks using brace-depth tracking"""
-                entries = []
-                lines = text.splitlines()
-                i = 0
-                while i < len(lines):
-                    if m := re.match(r'\s*OverrideRadar\("([^"]+)",\s*{', lines[i]):
-                        name = m.group(1)
-                        brace_count = 1
-                        block_lines = [lines[i]]
-                        i += 1
-                        while i < len(lines) and brace_count > 0:
-                            line = lines[i]
-                            brace_count += line.count("{")
-                            brace_count -= line.count("}")
-                            block_lines.append(line)
-                            i += 1
-                        body = "\n".join(block_lines)
-                        entries.append((name, body))
-                    else:
-                        i += 1
-                return entries
+          def find_override_blocks(text):
+              """Find OverrideRadar blocks using brace-depth tracking"""
+              entries = []
+              lines = text.splitlines()
+              i = 0
+              while i < len(lines):
+                  if m := re.match(r'\s*OverrideRadar\("([^"]+)",\s*{', lines[i]):
+                      name = m.group(1)
+                      brace_count = 1
+                      block_lines = [lines[i]]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          line = lines[i]
+                          brace_count += line.count("{")
+                          brace_count -= line.count("}")
+                          block_lines.append(line)
+                          i += 1
+                      body = "\n".join(block_lines)
+                      entries.append((name, body))
+                  else:
+                      i += 1
+              return entries
 
-            def find_unit_blocks(text):
-                """Find units[...] blocks using brace-depth tracking"""
-                entries = []
-                lines = text.splitlines()
-                i = 0
-                while i < len(lines):
-                    if m := re.match(r'units\["([^"]+)"\]\s*=\s*{', lines[i]):
-                        unit_name = m.group(1)
-                        brace_count = 1
-                        block_lines = [lines[i]]
-                        i += 1
-                        while i < len(lines) and brace_count > 0:
-                            line = lines[i]
-                            brace_count += line.count("{")
-                            brace_count -= line.count("}")
-                            block_lines.append(line)
-                            i += 1
-                        body = "\n".join(block_lines)
-                        entries.append((unit_name, body))
-                    else:
-                        i += 1
-                return entries
+          def find_unit_blocks(text):
+              """Find units[...] blocks using brace-depth tracking"""
+              entries = []
+              lines = text.splitlines()
+              i = 0
+              while i < len(lines):
+                  if m := re.match(r'units\["([^"]+)"\]\s*=\s*{', lines[i]):
+                      unit_name = m.group(1)
+                      brace_count = 1
+                      block_lines = [lines[i]]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          line = lines[i]
+                          brace_count += line.count("{")
+                          brace_count -= line.count("}")
+                          block_lines.append(line)
+                          i += 1
+                      body = "\n".join(block_lines)
+                      entries.append((unit_name, body))
+                  else:
+                      i += 1
+              return entries
 
-            def parse_radar_types(rwr_content):
-                """Parse radar types from CreateRadar blocks and OverrideRadar modifications"""
-                radar_type_map = {}
-                
-                # Parse CreateRadar and CreateFrqScanRadar blocks
-                for name, body in find_radar_blocks(rwr_content):
-                    if t := re.search(r'type\s*=\s*(\w+)', body):
-                        radar_type_map[norm(name)] = t.group(1)
-                
-                # Apply OverrideRadar modifications
-                for name, body in find_override_blocks(rwr_content):
-                    if t := re.search(r'type\s*=\s*(\w+)', body):
-                        radar_type_map[norm(name)] = t.group(1)
-                
-                return radar_type_map
+          def parse_radar_types(rwr_content):
+              """Parse radar types from CreateRadar blocks and OverrideRadar modifications"""
+              radar_type_map = {}
+              
+              # Parse CreateRadar and CreateFrqScanRadar blocks
+              for name, body in find_radar_blocks(rwr_content):
+                  if t := re.search(r'type\s*=\s*(\w+)', body):
+                      radar_type_map[norm(name)] = t.group(1)
+              
+              # Apply OverrideRadar modifications
+              for name, body in find_override_blocks(rwr_content):
+                  if t := re.search(r'type\s*=\s*(\w+)', body):
+                      radar_type_map[norm(name)] = t.group(1)
+              
+              return radar_type_map
 
-            def parse_unit_radars(rwr_content, radar_type_map):
-                """Parse unit radar mappings from ReplaceUnitRadar and AddUnitRadar calls"""
-                units = {}
-                
-                print("Parsing unit radar assignments from ReplaceUnitRadar and AddUnitRadar calls...")
-                
-                # Handle AddUnitRadar calls
-                add_calls = re.findall(r'AddUnitRadar\s*\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)', rwr_content)
-                for unit, radar in add_calls:
-                    units.setdefault(unit, []).append(radar)
-                    print(f"  AddUnitRadar: {unit} += {radar}")
-                
-                # Handle ReplaceUnitRadar calls
-                replace_calls = re.findall(r'ReplaceUnitRadar\s*\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)', rwr_content)
-                for unit, old_radar, new_radar in replace_calls:
-                    lst = units.setdefault(unit, [])
-                    if old_radar in lst:
-                        lst[lst.index(old_radar)] = new_radar
-                        print(f"  ReplaceUnitRadar: {unit} replaced {old_radar} with {new_radar}")
-                    else:
-                        lst.append(new_radar)
-                        print(f"  ReplaceUnitRadar: {unit} += {new_radar} (old radar {old_radar} not found)")
-                
-                # Filter to only keep track-capable radars
-                filtered_units = {}
-                for unit, radars in units.items():
-                    track_radars = []
-                    for radar in radars:
-                        radar_key = norm(radar)
-                        radar_type = radar_type_map.get(radar_key)
-                        if radar_type in (TRACK_ONLY, SEARCH_AND_TRACK):
-                            track_radars.append(radar)
-                            print(f"  ✓ Unit {unit}: keeping radar '{radar}' (type: {radar_type})")
-                        else:
-                            print(f"  ✗ Unit {unit}: filtering out radar '{radar}' (type: {radar_type})")
-                    
-                    if track_radars:
-                        filtered_units[unit] = track_radars
-                
-                return filtered_units
+          def parse_unit_radars(rwr_content, radar_type_map):
+              """Parse unit radar mappings from ReplaceUnitRadar and AddUnitRadar calls"""
+              units = {}
+              
+              print("Parsing unit radar assignments from ReplaceUnitRadar and AddUnitRadar calls...")
+              
+              # Handle AddUnitRadar calls
+              add_calls = re.findall(r'AddUnitRadar\s*\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)', rwr_content)
+              for unit, radar in add_calls:
+                  units.setdefault(unit, []).append(radar)
+                  print(f"  AddUnitRadar: {unit} += {radar}")
+              
+              # Handle ReplaceUnitRadar calls
+              replace_calls = re.findall(r'ReplaceUnitRadar\s*\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)', rwr_content)
+              for unit, old_radar, new_radar in replace_calls:
+                  lst = units.setdefault(unit, [])
+                  if old_radar in lst:
+                      lst[lst.index(old_radar)] = new_radar
+                      print(f"  ReplaceUnitRadar: {unit} replaced {old_radar} with {new_radar}")
+                  else:
+                      lst.append(new_radar)
+                      print(f"  ReplaceUnitRadar: {unit} += {new_radar} (old radar {old_radar} not found)")
+              
+              # Filter to only keep track-capable radars
+              filtered_units = {}
+              for unit, radars in units.items():
+                  track_radars = []
+                  for radar in radars:
+                      radar_key = norm(radar)
+                      radar_type = radar_type_map.get(radar_key)
+                      if radar_type in (TRACK_ONLY, SEARCH_AND_TRACK):
+                          track_radars.append(radar)
+                          print(f"  ✓ Unit {unit}: keeping radar '{radar}' (type: {radar_type})")
+                      else:
+                          print(f"  ✗ Unit {unit}: filtering out radar '{radar}' (type: {radar_type})")
+                  
+                  if track_radars:
+                      filtered_units[unit] = track_radars
+              
+              return filtered_units
 
-            def parse_lua_table(name, content):
-                """Parse standard Lua table entries"""
-                pattern = rf"{name}\s*=\s*{{(.*?)}}\s*(?:append_entries|AppendTrackRadars|\Z)"
-                match = re.search(pattern, content, re.DOTALL)
-                if not match:
-                    print(f"❌ Table {name} not found.")
-                    return []
-                
-                body = match.group(1)
-                rows = []
-                for entry in re.findall(r'{\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*}', body):
-                    radar, sym1, sym2, priority, alt_type = entry
-                    rows.append({
-                        "radar": radar,
-                        "symbol1": sym1,
-                        "symbol2": sym2,
-                        "priority": float(priority),
-                        "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
-                        "repeat": False,
-                        "unit": None
-                    })
-                return rows
+          def parse_lua_table(name, content):
+              """Parse standard Lua table entries"""
+              pattern = rf"{name}\s*=\s*{{(.*?)}}\s*(?:append_entries|AppendTrackRadars|\Z)"
+              match = re.search(pattern, content, re.DOTALL)
+              if not match:
+                  print(f"❌ Table {name} not found.")
+                  return []
+              
+              body = match.group(1)
+              rows = []
+              for entry in re.findall(r'{\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*}', body):
+                  radar, sym1, sym2, priority, alt_type = entry
+                  rows.append({
+                      "radar": radar,
+                      "symbol1": sym1,
+                      "symbol2": sym2,
+                      "priority": float(priority),
+                      "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
+                      "repeat": False,
+                      "unit": None
+                  })
+              return rows
 
-            def parse_append_track_radars(content, units, radar_type_map):
-                """Parse AppendTrackRadars calls and generate entries"""
-                entries = {}
-                
-                # Debug: Check if AppendTrackRadars exists in content
-                if "AppendTrackRadars" in content:
-                    print("✓ Found 'AppendTrackRadars' in content")
-                    # Show first few AppendTrackRadars lines for debugging
-                    lines = content.splitlines()
-                    append_lines = [line.strip() for line in lines if "AppendTrackRadars" in line]
-                    print(f"Found {len(append_lines)} lines containing 'AppendTrackRadars'")
-                    for i, line in enumerate(append_lines[:3]):
-                        print(f"  Line {i+1}: {repr(line)}")
-                else:
-                    print("❌ 'AppendTrackRadars' not found in content")
-                    return entries
-                
-                # Try multiple regex patterns to handle different formatting
-                patterns = [
-                    # Original pattern with flexible whitespace
-                    r'AppendTrackRadars\s*\(\s*(\w+)\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*\)',
-                    # Pattern without spaces around commas
-                    r'AppendTrackRadars\((\w+),"([^"]+)","([^"]+)","([^"]+)",([0-9.]+),(TYPE_\w+)\)',
-                    # Pattern with mixed spacing
-                    r'AppendTrackRadars\((\w+),\s*"([^"]+)",\s*"([^"]+)",\s*"([^"]+)",\s*([0-9.]+),\s*(TYPE_\w+)\s*\)'
-                ]
-                
-                append_calls = []
-                for i, pattern in enumerate(patterns):
-                    matches = re.findall(pattern, content)
-                    if matches:
-                        print(f"✓ Pattern {i+1} matched {len(matches)} calls")
-                        append_calls = matches
-                        break
-                    else:
-                        print(f"✗ Pattern {i+1} matched 0 calls")
-                
-                print(f"Found {len(append_calls)} AppendTrackRadars calls")
-                
-                for target, unit, sym1, sym2, prio, alt_type in append_calls:
-                    print(f"Processing: target={target}, unit={unit}")
-                    
-                    # Get track-capable radars for this unit (already filtered)
-                    radars = units.get(unit, [])
-                    if not radars:
-                        print(f"  Warning: No track-capable radars found for unit '{unit}'")
-                        continue
-                    
-                    print(f"  Unit '{unit}' has track-capable radars: {radars}")
-                    
-                    # Process each radar for this unit (all are already confirmed track-capable)
-                    for radar in radars:
-                        entry = {
-                            "radar": radar,
-                            "symbol1": sym1,
-                            "symbol2": sym2,
-                            "priority": float(prio),
-                            "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
-                            "repeat": False,  # Will be updated later based on occurrence count
-                            "unit": unit
-                        }
-                        
-                        if target not in entries:
-                            entries[target] = []
-                        entries[target].append(entry)
-                        print(f"    ✓ Added entry to '{target}': {entry}")
-                
-                return entries
+          def parse_append_track_radars(content, units, radar_type_map):
+              """Parse AppendTrackRadars calls and generate entries"""
+              entries = {}
+              
+              # Debug: Check if AppendTrackRadars exists in content
+              if "AppendTrackRadars" in content:
+                  print("✓ Found 'AppendTrackRadars' in content")
+                  # Show first few AppendTrackRadars lines for debugging
+                  lines = content.splitlines()
+                  append_lines = [line.strip() for line in lines if "AppendTrackRadars" in line]
+                  print(f"Found {len(append_lines)} lines containing 'AppendTrackRadars'")
+                  for i, line in enumerate(append_lines[:3]):
+                      print(f"  Line {i+1}: {repr(line)}")
+              else:
+                  print("❌ 'AppendTrackRadars' not found in content")
+                  return entries
+              
+              # Try multiple regex patterns to handle different formatting
+              patterns = [
+                  # Original pattern with flexible whitespace
+                  r'AppendTrackRadars\s*\(\s*(\w+)\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*\)',
+                  # Pattern without spaces around commas
+                  r'AppendTrackRadars\((\w+),"([^"]+)","([^"]+)","([^"]+)",([0-9.]+),(TYPE_\w+)\)',
+                  # Pattern with mixed spacing
+                  r'AppendTrackRadars\((\w+),\s*"([^"]+)",\s*"([^"]+)",\s*"([^"]+)",\s*([0-9.]+),\s*(TYPE_\w+)\s*\)'
+              ]
+              
+              append_calls = []
+              for i, pattern in enumerate(patterns):
+                  matches = re.findall(pattern, content)
+                  if matches:
+                      print(f"✓ Pattern {i+1} matched {len(matches)} calls")
+                      append_calls = matches
+                      break
+                  else:
+                      print(f"✗ Pattern {i+1} matched 0 calls")
+              
+              print(f"Found {len(append_calls)} AppendTrackRadars calls")
+              
+              for target, unit, sym1, sym2, prio, alt_type in append_calls:
+                  print(f"Processing: target={target}, unit={unit}")
+                  
+                  # Get track-capable radars for this unit (already filtered)
+                  radars = units.get(unit, [])
+                  if not radars:
+                      print(f"  Warning: No track-capable radars found for unit '{unit}'")
+                      continue
+                  
+                  print(f"  Unit '{unit}' has track-capable radars: {radars}")
+                  
+                  # Process each radar for this unit (all are already confirmed track-capable)
+                  for radar in radars:
+                      entry = {
+                          "radar": radar,
+                          "symbol1": sym1,
+                          "symbol2": sym2,
+                          "priority": float(prio),
+                          "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
+                          "repeat": False,  # Will be updated later based on occurrence count
+                          "unit": unit
+                      }
+                      
+                      if target not in entries:
+                          entries[target] = []
+                      entries[target].append(entry)
+                      print(f"    ✓ Added entry to '{target}': {entry}")
+              
+              return entries
 
-            # Parse radar types and unit mappings from rwr.lua using robust block parsing
-            print("Parsing radar types from rwr.lua...")
-            radar_type_map = parse_radar_types(rwr_content)
-            print(f"Found {len(radar_type_map)} radar type definitions")
+          # Parse radar types and unit mappings from rwr.lua using robust block parsing
+          print("Parsing radar types from rwr.lua...")
+          radar_type_map = parse_radar_types(rwr_content)
+          print(f"Found {len(radar_type_map)} radar type definitions")
 
-            print("\nParsing unit radar mappings from rwr.lua...")
-            units = parse_unit_radars(rwr_content, radar_type_map)
-            print(f"Found {len(units)} units with track-capable radars")
+          print("\nParsing unit radar mappings from rwr.lua...")
+          units = parse_unit_radars(rwr_content, radar_type_map)
+          print(f"Found {len(units)} units with track-capable radars")
 
-            # Debug: Print units and their track-capable radars
-            print("\nUnits and their track-capable radars:")
-            for unit, radars in units.items():
-                print(f"  {unit}: {radars}")
+          # Debug: Print units and their track-capable radars
+          print("\nUnits and their track-capable radars:")
+          for unit, radars in units.items():
+              print(f"  {unit}: {radars}")
 
-            # Parse standard tables
-            result = {
-                "ai_file_entries": parse_lua_table("ai_file_entries", emitter_content),
-                "new_land_file": parse_lua_table("new_land_file", emitter_content),
-                "new_sea_file": parse_lua_table("new_sea_file", emitter_content)
-            }
+          # Parse standard tables
+          result = {
+              "ai_file_entries": parse_lua_table("ai_file_entries", emitter_content),
+              "new_land_file": parse_lua_table("new_land_file", emitter_content),
+              "new_sea_file": parse_lua_table("new_sea_file", emitter_content)
+          }
 
-            # Parse AppendTrackRadars and merge into result
-            print("\nProcessing AppendTrackRadars calls...")
-            append_entries = parse_append_track_radars(emitter_content, units, radar_type_map)
+          # Parse AppendTrackRadars and merge into result
+          print("\nProcessing AppendTrackRadars calls...")
+          append_entries = parse_append_track_radars(emitter_content, units, radar_type_map)
 
-            # Function to check for duplicates and mark repeats
-            def mark_repeats(target_entries, append_entries_for_target):
-                """Mark entries with repeat numbers if the same radar appears multiple times in the same target"""
-                all_entries = target_entries + append_entries_for_target
-                radar_counts = {}
-                radar_instances = {}
-                
-                # Count occurrences of each radar
-                for entry in all_entries:
-                    radar = entry["radar"]
-                    radar_counts[radar] = radar_counts.get(radar, 0) + 1
-                    if radar not in radar_instances:
-                        radar_instances[radar] = []
-                    radar_instances[radar].append(entry)
-                
-                # Assign repeat numbers
-                for radar, count in radar_counts.items():
-                    if count > 1:
-                        # Multiple instances - assign numbers 1, 2, 3, etc.
-                        for i, entry in enumerate(radar_instances[radar], 1):
-                            entry["repeat"] = i
-                    else:
-                        # Single instance - mark as false
-                        radar_instances[radar][0]["repeat"] = False
+          # Function to check for duplicates and mark repeats
+          def mark_repeats(target_entries, append_entries_for_target):
+              """Mark entries with repeat numbers if the same radar appears multiple times in the same target"""
+              all_entries = target_entries + append_entries_for_target
+              radar_counts = {}
+              radar_instances = {}
+              
+              # Count occurrences of each radar
+              for entry in all_entries:
+                  radar = entry["radar"]
+                  radar_counts[radar] = radar_counts.get(radar, 0) + 1
+                  if radar not in radar_instances:
+                      radar_instances[radar] = []
+                  radar_instances[radar].append(entry)
+              
+              # Assign repeat numbers
+              for radar, count in radar_counts.items():
+                  if count > 1:
+                      # Multiple instances - assign numbers 1, 2, 3, etc.
+                      for i, entry in enumerate(radar_instances[radar], 1):
+                          entry["repeat"] = i
+                  else:
+                      # Single instance - mark as false
+                      radar_instances[radar][0]["repeat"] = False
 
-            # Merge AppendTrackRadars entries into existing tables
-            for target, entries in append_entries.items():
-                if target in result:
-                    mark_repeats(result[target], entries)
-                    result[target].extend(entries)
-                    print(f"Extended '{target}' with {len(entries)} entries from AppendTrackRadars")
-                else:
-                    # New target, mark any internal duplicates
-                    mark_repeats([], entries)
-                    result[target] = entries
-                    print(f"Created new table '{target}' with {len(entries)} entries from AppendTrackRadars")
+          # Merge AppendTrackRadars entries into existing tables
+          for target, entries in append_entries.items():
+              if target in result:
+                  mark_repeats(result[target], entries)
+                  result[target].extend(entries)
+                  print(f"Extended '{target}' with {len(entries)} entries from AppendTrackRadars")
+              else:
+                  # New target, mark any internal duplicates
+                  mark_repeats([], entries)
+                  result[target] = entries
+                  print(f"Created new table '{target}' with {len(entries)} entries from AppendTrackRadars")
 
-            # Ensure output directory exists
-            Path("jsons").mkdir(exist_ok=True)
+          # Ensure output directory exists
+          Path("jsons").mkdir(exist_ok=True)
 
-            # Write output
-            output_path = Path("jsons/emitter_id_data.json")
-            output_path.write_text(
-                json.dumps(result, indent=2, ensure_ascii=False, separators=(",", ": ")),
-                encoding="utf-8"
-            )
+          # Write output
+          output_path = Path("jsons/emitter_id_data.json")
+          output_path.write_text(
+              json.dumps(result, indent=2, ensure_ascii=False, separators=(",", ": ")),
+              encoding="utf-8"
+          )
 
-            print(f"\n✅ emitter_id_data.json generated with {sum(len(v) for v in result.values())} total entries.")
-            print("Final table sizes:")
-            for table_name, entries in result.items():
-                print(f"  {table_name}: {len(entries)} entries")
+          print(f"\n✅ emitter_id_data.json generated with {sum(len(v) for v in result.values())} total entries.")
+          print("Final table sizes:")
+          for table_name, entries in result.items():
+              print(f"  {table_name}: {len(entries)} entries")
           EOF
 
       - name: Clean up source repo
