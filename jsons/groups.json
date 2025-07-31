@@ -20,8 +20,8 @@
   "imported_wavs/052B SAM TR_TRACK.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "052B SAM TR Track",
-    "description": "Type 093 SAM TR",
-    "hidden": false
+    "description": "Type 093 SAM TR REPLACED",
+    "hidden": true
   },
   "imported_wavs/052C SAM STR_SEARCH.wav": {
     "group": "Ungrouped",
@@ -1992,88 +1992,88 @@
     "hidden": false
   },
   "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_346_Search_Front_left Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Type 346 Search",
+    "description": "Type 052C Radar",
     "hidden": false
   },
   "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Front_left Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Front_right_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Front_right Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Front_right_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Front_right Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Rear_left Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Rear_left Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Rear_right Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_346_Search_Rear_right Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Track_SEARCH.wav": {
-    "group": "Ungrouped",
+    "group": "Naval Fire Control Radar (Chinese)",
     "name": "Type_346_Track Search",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_346_Track_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Type_346_Track Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Type 346 Track",
+    "description": "Type 052C Radar",
     "hidden": false
   },
   "imported_wavs/Type_360_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_360 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Type 360 Search",
+    "description": "Type 054A & Type 071 Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_360_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_360 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_364_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Type_364 Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Type 364 Search",
+    "description": "Type 052B & Type 052C & Type 071 Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_364_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Type_364 Track",
     "description": "",
-    "hidden": false
+    "hidden": true
   },
   "imported_wavs/Type_382_Large_SEARCH.wav": {
     "group": "Ungrouped",

@@ -213,7 +213,7 @@
     <hr class="solid" />
     <h2>By DSplayer</h2>
     <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-05-21 (using DCS 2.9.16.10523)</h3>
+    <h3>!!Highly WIP!! Last updated 2025-07-31 (using DCS 2.9.18)</h3>
     <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
     <div class="controls">
@@ -245,6 +245,8 @@
     <div class="controls">
       <button class="global-button" onclick="expandAllGroups()">Expand All Groups</button>
       <button class="global-button" onclick="collapseAllGroups()">Collapse All Groups</button>
+      <button class="global-button" onclick="showAllRadarInfo()">Show All Radar Info</button>
+      <button class="global-button" onclick="hideAllRadarInfo()">Hide All Radar Info</button>
     </div>
 
     <h4>
@@ -809,6 +811,17 @@
           title.textContent.trim()
         );
         localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
+      }
+
+      function showAllRadarInfo() {
+        document.querySelectorAll(".extra-info").forEach((info) => {
+          info.style.display = "block";
+        });
+      }
+      function hideAllRadarInfo() {
+        document.querySelectorAll(".extra-info").forEach((info) => {
+          info.style.display = "none";
+        });
       }
     </script>
   </body>
