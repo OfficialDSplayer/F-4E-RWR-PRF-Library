@@ -719,6 +719,14 @@
             } else {
               selectedSymbols.delete(symbol);
             }
+
+            // Recalculate if all are selected
+            const checkboxes = gridWrapper.querySelectorAll("input[type='checkbox']");
+            const checkedBoxes = gridWrapper.querySelectorAll("input[type='checkbox']:checked");
+
+            allSelected = checkboxes.length === checkedBoxes.length;
+            selectAllBtn.textContent = allSelected ? "Deselect All" : "Select All";
+
             const searchTerm = document.getElementById("search-input").value.trim();
             displayGroups(soundMeta, searchTerm);
           });
