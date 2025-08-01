@@ -1453,14 +1453,14 @@
   },
   "imported_wavs/RDY_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "RDY Search/Track",
-    "description": "Mirage F1Cx/F1Ex Radar (Same as Track)",
+    "name": "Cyrano IV Search/Track",
+    "description": "Mirage F1Bx/Cx/F1Ex Radar",
     "hidden": false
   },
   "imported_wavs/RDY_TRACK.wav": {
     "group": "Air Radar (NATO)",
-    "name": "RDY Track",
-    "description": "Mirage F1Cx/F1Ex Radar Track (Same as Search)",
+    "name": "Cyrano IV Track",
+    "description": "Mirage F1Bx/Cx/F1Ex Radar Track",
     "hidden": true
   },
   "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
