@@ -1300,7 +1300,7 @@
 
               warnings.forEach((warning, index) => {
                 const warningText = document.createElement("div");
-                warningText.innerHTML = `<b style="color: #ff6b35;">⚠️ WARNING:</b> ${warning}`;
+                warningText.innerHTML = `<b style="color: #ff6b35;"></b> ${warning}`;
                 warningText.style.fontSize = "0.85em";
                 warningText.style.marginTop = index > 0 ? "4px" : "0px";
                 warningText.style.color = "#ff6b35";
@@ -1323,6 +1323,11 @@
                 : [radarEntry]) {
                 const { symbol1, symbol2, source, warning, warning2 } = radarEntryVariant;
 
+                // ✅ Check if this is a manually assigned unknown symbol
+                const isManualUnknownSymbol =
+                  ["unknown_low", "unknown_medium", "unknown_high"].includes(symbol1) ||
+                  ["unknown_low", "unknown_medium", "unknown_high"].includes(symbol2);
+
                 // ✅ Create container to hold all RWR symbols for this source
                 const symbolContainer = document.createElement("div");
                 symbolContainer.style.display = "flex";
@@ -1333,14 +1338,19 @@
                 symbolContainer.style.flexWrap = "wrap";
 
                 // ✅ Render first RWR symbol (if defined)
-                const symbol1Element = createSymbolWithLabel(symbol1, 1);
+                const symbol1Element = createSymbolWithLabel(symbol1, 1, isManualUnknownSymbol);
                 if (symbol1Element) {
                   symbolContainer.appendChild(symbol1Element);
                 }
 
                 // ✅ Render second RWR symbol (only if it's different from symbol1)
                 if (symbol2 && symbol2 !== symbol1) {
-                  const symbol2Element = createSymbolWithLabel(symbol2, 2);
+                  const isSymbol2Unknown = [
+                    "unknown_low",
+                    "unknown_medium",
+                    "unknown_high",
+                  ].includes(symbol2);
+                  const symbol2Element = createSymbolWithLabel(symbol2, 2, isSymbol2Unknown);
                   if (symbol2Element) {
                     symbolContainer.appendChild(symbol2Element);
                   }
@@ -1351,17 +1361,53 @@
                   extraInfo.appendChild(symbolContainer);
                 }
 
-                // ✅ Show source table info below the symbols
-                const friendlySourceName = sourceNameMap[source] || source;
-                const sourceText = document.createElement("div");
-                sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
-                sourceText.style.fontSize = "0.85em";
-                sourceText.style.marginTop = "8px";
-                sourceText.style.color = "var(--highlight)";
-                sourceText.style.textAlign = "center";
-                extraInfo.appendChild(sourceText);
+                // ✅ Handle different display modes based on symbol type
+                if (isManualUnknownSymbol) {
+                  // For manually assigned unknown symbols, show frequency band info like auto-detected unknowns
+                  const radarInfo = alr46Info[fullPath];
+                  let frequencyBand = "Unknown";
 
-                // ✅ NEW: Display warnings if they exist
+                  if (radarInfo && radarInfo.band != null) {
+                    const freqGHz = Number(radarInfo.band);
+                    if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "Low band (2-4 GHz)";
+                    else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "Medium band (4-8 GHz)";
+                    else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "High band (8-20 GHz)";
+                  }
+
+                  // Add frequency band info
+                  const bandText = document.createElement("div");
+                  bandText.textContent = frequencyBand;
+                  bandText.style.fontSize = "0.75em";
+                  bandText.style.color = "#ff6b35";
+                  bandText.style.marginTop = "4px";
+                  bandText.style.textAlign = "center";
+                  extraInfo.appendChild(bandText);
+
+                  // Add warning for manually assigned unknown symbols
+                  // const warningText = document.createElement("div");
+                  // warningText.innerHTML = `<b style="color: #ff6b35;">⚠️ WARNING:</b> This radar uses an unknown symbol.<br>Symbol assigned based on frequency band.`;
+                  // warningText.style.fontSize = "0.85em";
+                  // warningText.style.marginTop = "8px";
+                  // warningText.style.color = "#ff6b35";
+                  // warningText.style.textAlign = "center";
+                  // warningText.style.backgroundColor = "rgba(255, 107, 53, 0.1)";
+                  // warningText.style.padding = "8px";
+                  // warningText.style.borderRadius = "4px";
+                  // warningText.style.border = "1px solid rgba(255, 107, 53, 0.3)";
+                  // extraInfo.appendChild(warningText);
+                } else {
+                  // For normal symbols, show source table info
+                  const friendlySourceName = sourceNameMap[source] || source;
+                  const sourceText = document.createElement("div");
+                  sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
+                  sourceText.style.fontSize = "0.85em";
+                  sourceText.style.marginTop = "8px";
+                  sourceText.style.color = "var(--highlight)";
+                  sourceText.style.textAlign = "center";
+                  extraInfo.appendChild(sourceText);
+                }
+
+                // ✅ Display warnings if they exist (for all symbol types)
                 const warnings = [];
                 if (warning && warning.trim()) warnings.push(warning.trim());
                 if (warning2 && warning2.trim()) warnings.push(warning2.trim());
