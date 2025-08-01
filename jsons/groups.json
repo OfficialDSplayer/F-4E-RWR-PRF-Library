@@ -469,7 +469,7 @@
   },
   "imported_wavs/AN_SPS_40_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "AN/SPS-40 Search Radar",
+    "name": "AN/SPS-40 Search",
     "description": "Tarawa Search Radar",
     "hidden": false
   },
@@ -679,13 +679,13 @@
   },
   "imported_wavs/Bass_Tilt_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Bass Tilt Track Radar",
+    "name": "Bass Tilt Track",
     "description": "Moskva (Slava-class), Molniya/Tarantul Track Radar",
     "hidden": false
   },
   "imported_wavs/Berkut-95_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "Berkut-95 Search Radar",
+    "name": "Berkut-95 Search",
     "description": "Tu-142 Search Radar",
     "hidden": false
   },
@@ -746,13 +746,13 @@
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C-RAM/CIWS Phalanx Search/Acquisition",
-    "description": "Phalanx Radar (Same for CIWS [Leandar-class, Arleigh Burke, OHP, Forrestal, Nimitz, Ticonderoga, Tarawa] and C-RAM variants)",
+    "description": "Phalanx Radar (Same for CIWS [Leandar-class, Arleigh Burke, Oliver Hazard Perry, Forrestal, Nimitz, Ticonderoga, Tarawa] and C-RAM variants)",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
     "name": "C-RAM/CIWS Phalanx Track",
-    "description": "Phalanx Radar (Same for CIWS [Leandar-class, Arleigh Burke, OHP, Forrestal, Nimitz, Ticonderoga, Tarawa] and C-RAM variants)",
+    "description": "Phalanx Radar (Same for CIWS [Leandar-class, Arleigh Burke, Oliver Hazard Perry, Forrestal, Nimitz, Ticonderoga, Tarawa] and C-RAM variants)",
     "hidden": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
@@ -781,19 +781,19 @@
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "Castor 2 Track Radar",
+    "name": "Castor 2 Track",
     "description": "",
     "hidden": false
   },
   "imported_wavs/Castor_2_TRACK.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "Castor 2 Track Radar",
+    "name": "Castor 2 Track",
     "description": "La Combattante IIa (Tiger-class) Track Radar",
     "hidden": false
   },
   "imported_wavs/Cross_Sword_S_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Cross Sword-S Search Radar",
+    "name": "Cross Sword-S Search",
     "description": "Kuznetsov, Pyotr Velikiy (Kirov-class), Neustrashimy Search Radar",
     "hidden": false
   },
@@ -811,8 +811,8 @@
   },
   "imported_wavs/Cross_Sword_T_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Cross Sword-T Track Radar",
-    "description": "Kuznetsov, Pyotr Velikiy) (Kirov-class), Molniya/Tarantul Track Radar",
+    "name": "Cross Sword-T Track",
+    "description": "Kuznetsov, Pyotr Velikiy (Kirov-class), Molniya/Tarantul Track Radar",
     "hidden": false
   },
   "imported_wavs/DA_02_SEARCH.wav": {
@@ -829,7 +829,7 @@
   },
   "imported_wavs/DA_08_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "DA-08 Search Radar",
+    "name": "DA-08 Search",
     "description": "Veinticinco de Mayo Search Radar",
     "hidden": false
   },
@@ -842,7 +842,7 @@
   "imported_wavs/Dog Ear radar_SEARCH.wav": {
     "group": "Early Warning Radar (Soviet)",
     "name": "Dog Ear EWR Search",
-    "description": "",
+    "description": "9S80 'Dog Ear' EWR used with SA-13",
     "hidden": false
   },
   "imported_wavs/Dog Ear radar_TRACK.wav": {
@@ -890,13 +890,13 @@
   "imported_wavs/Front_Dome_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Front Dome Acquisiion",
-    "description": "Type 052B & Type 054A Track Radar",
+    "description": "Type 052B, Type 054A Track Radar",
     "hidden": false
   },
   "imported_wavs/Front_Dome_TRACK.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Front Dome Track",
-    "description": "Type 052B & Type 054A Track Radar",
+    "description": "Type 052B, Type 054A Track Radar",
     "hidden": false
   },
   "imported_wavs/Gepard_SEARCH.wav": {
@@ -925,8 +925,8 @@
   },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
     "group": "SAM Radar (Chinese)",
-    "name": "HQ-7 Search Radar",
-    "description": "CH-SA-4 HQ-7",
+    "name": "HQ-7 Search",
+    "description": "CH-SA-4 HQ-7 Search Radar",
     "hidden": false
   },
   "imported_wavs/HQ-7 SR_TRACK.wav": {
@@ -943,8 +943,8 @@
   },
   "imported_wavs/HQ-7 TR_TRACK.wav": {
     "group": "SAM Radar (Chinese)",
-    "name": "HQ-7 Track Radar",
-    "description": "CH-SA-4 HQ-7",
+    "name": "HQ-7 Track",
+    "description": "CH-SA-4 HQ-7 Track Radar",
     "hidden": false
   },
   "imported_wavs/Hawk sr_SEARCH.wav": {
@@ -985,7 +985,7 @@
   },
   "imported_wavs/Head_Net_1_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Head Net Search Radar",
+    "name": "Head Net Search",
     "description": "Rezky Search Radar",
     "hidden": false
   },
@@ -1063,7 +1063,7 @@
   },
   "imported_wavs/Kite_Screech_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Kite Screech Track Radar",
+    "name": "Kite Screech Track",
     "description": "Pyotr Velikiy (Kirov-class), Rezky, Molniya/Tarantul Track Radar",
     "hidden": false
   },
@@ -1093,7 +1093,7 @@
   },
   "imported_wavs/LW_01_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "LW-01 Search Radar",
+    "name": "LW-01 Search",
     "description": "Veinticinco de Mayo Search Radar",
     "hidden": false
   },
@@ -1105,7 +1105,7 @@
   },
   "imported_wavs/LW_08_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "LW-08 Search Radar",
+    "name": "LW-08 Search",
     "description": "Veinticinco de Mayo Search Radar",
     "hidden": false
   },
@@ -1183,7 +1183,7 @@
   },
   "imported_wavs/Muff_Cob_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Muff Cob Track Radar",
+    "name": "Muff Cob Track",
     "description": "Grisha (Albatros), Ropucha Track Radar",
     "hidden": false
   },
@@ -1369,7 +1369,7 @@
   },
   "imported_wavs/Palm_Frond_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Palm Frond Search Radar",
+    "name": "Palm Frond Search",
     "description": "Moskva (Slava-class), Kuznetsov, Molniya/Tarantul Search Radar",
     "hidden": false
   },
@@ -1405,7 +1405,7 @@
   },
   "imported_wavs/Poisk_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "Poisk Search Radar",
+    "name": "Poisk Search",
     "description": "Tu-160 Search Radar",
     "hidden": false
   },
@@ -1423,7 +1423,7 @@
   },
   "imported_wavs/Pop_Group_T_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Pop Group-T Track Radar",
+    "name": "Pop Group-T Track",
     "description": "Moskva (Slava-class), Grisha (Albatros), Rezky, Molniya/Tarantul Track Radar",
     "hidden": false
   },
@@ -1513,7 +1513,7 @@
   },
   "imported_wavs/RM_1290_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
-    "name": "RM1290 Search Radar",
+    "name": "RM1290 Search",
     "description": "Type 054A Search Radar",
     "hidden": false
   },
@@ -1616,7 +1616,7 @@
   "imported_wavs/Rice_Bowl_TRACK.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Type 347G 'Rice Bowl' Track",
-    "description": "Type 052B & Type 052C Track Radar",
+    "description": "Type 052B, Type 052C Track Radar",
     "hidden": false
   },
   "imported_wavs/Roland ADS_SEARCH.wav": {
@@ -1657,7 +1657,7 @@
   },
   "imported_wavs/Rubidy MM_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "Rubidy-MM Search Radar",
+    "name": "Rubidy-MM Search",
     "description": "Tu-95MS Search Radar",
     "hidden": false
   },
@@ -1801,7 +1801,7 @@
   },
   "imported_wavs/Strut_Curve_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Strut Curve Search Radar",
+    "name": "Strut Curve Search",
     "description": "Grisha (Albatros), Ropucha Search Radar",
     "hidden": false
   },
@@ -1813,7 +1813,7 @@
   },
   "imported_wavs/Strut_Pair_1_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Strut Pair Search Radar",
+    "name": "Strut Pair Search",
     "description": "Pyotr Velikiy (Kirov-class) Search Radar",
     "hidden": false
   },
@@ -1855,7 +1855,7 @@
   },
   "imported_wavs/Tomb_Stone_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Tomb Stone Track Radar",
+    "name": "Tomb Stone Track",
     "description": "Pyotr Velikiy (Kirov-class) Track Radar",
     "hidden": false
   },
@@ -1933,7 +1933,7 @@
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "Tornado Surface Search Radar",
+    "name": "Tornado Surface Search",
     "description": "REPLACED (Used by C-101CC but that shouldn't have a radar)",
     "hidden": true
   },
@@ -1987,7 +1987,7 @@
   },
   "imported_wavs/Type_344_TRACK.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
-    "name": "Type 344 Track Radar",
+    "name": "Type 344 Track",
     "description": "Type 052B, Type 052C, Type 054A, Type 071 Track Radar",
     "hidden": false
   },
@@ -2054,7 +2054,7 @@
   "imported_wavs/Type_360_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Type 360 Search",
-    "description": "Type 054A & Type 071 Search Radar",
+    "description": "Type 054A, Type 071 Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_360_TRACK.wav": {
@@ -2066,7 +2066,7 @@
   "imported_wavs/Type_364_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Type 364 Search",
-    "description": "Type 052B & Type 052C & Type 071 Search Radar",
+    "description": "Type 052B, Type 052C, Type 071 Search Radar",
     "hidden": false
   },
   "imported_wavs/Type_364_TRACK.wav": {
@@ -2089,7 +2089,7 @@
   },
   "imported_wavs/Type_382_Small_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
-    "name": "Type 382 Small Search Radar",
+    "name": "Type 382 Small Search",
     "description": "Type 054A Search Radar",
     "hidden": false
   },
@@ -2101,7 +2101,7 @@
   },
   "imported_wavs/Type_517_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
-    "name": "Type 517 Search Radar",
+    "name": "Type 517 Search",
     "description": "Type 052C Search Radar",
     "hidden": false
   },
@@ -2119,7 +2119,7 @@
   },
   "imported_wavs/Type_903_TRACK.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "Type 903 Track Radar",
+    "name": "Type 903 Track",
     "description": "Leandar Track Radar",
     "hidden": false
   },
@@ -2197,7 +2197,7 @@
   },
   "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (Soviet)",
-    "name": "ZSU-23-4 Shilka Search Radar",
+    "name": "ZSU-23-4 Shilka Search",
     "description": "ZSU-23-4 Shilka (Gun Dish) Radar",
     "hidden": false
   },

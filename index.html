@@ -445,7 +445,6 @@
 
               // Apply radar-based skipping logic BEFORE populating soundMeta
               const radarInfo = alr46Info[file];
-
               if (radarInfo) {
                 if (
                   file.includes("SEARCH") &&
@@ -468,14 +467,6 @@
                   continue;
                 }
               }
-
-              soundMeta.push({
-                file,
-                group: meta.group,
-                name: meta.name,
-                description: meta.description,
-                hidden: false,
-              });
 
               soundMeta.push({
                 file,
