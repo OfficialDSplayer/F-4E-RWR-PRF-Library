@@ -231,7 +231,8 @@ jobs:
                       "priority": float(priority),
                       "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                       "repeat": False,
-                      "unit": None
+                      "unit": None,
+                      "note": None
                   })
               return rows
 

@@ -503,8 +503,30 @@
         if (window.radarSymbolMap) return;
 
         try {
-          const response = await fetch("jsons/emitter_id_data.json");
-          const emitterData = await response.json();
+          // Allow for custom emitter_id_data json.
+          const [mainResponse, customResponse] = await Promise.all([
+            fetch("jsons/emitter_id_data.json"),
+            fetch("jsons/emitter_id_data_custom.json"),
+          ]);
+
+          const emitterDataMain = await mainResponse.json();
+          const emitterDataCustom = await customResponse.json();
+
+          // Merge the entries for each table
+          const mergedEmitterData = {
+            ai_file_entries: [
+              ...(emitterDataMain.ai_file_entries || []),
+              ...(emitterDataCustom.ai_file_entries || []),
+            ],
+            new_land_file: [
+              ...(emitterDataMain.new_land_file || []),
+              ...(emitterDataCustom.new_land_file || []),
+            ],
+            new_sea_file: [
+              ...(emitterDataMain.new_sea_file || []),
+              ...(emitterDataCustom.new_sea_file || []),
+            ],
+          };
 
           window.radarSymbolMap = {};
 
@@ -562,9 +584,9 @@
             }
           };
 
-          addEntries(emitterData.ai_file_entries || [], "ai_file_entries");
-          addEntries(emitterData.new_land_file || [], "new_land_file");
-          addEntries(emitterData.new_sea_file || [], "new_sea_file");
+          addEntries(mergedEmitterData.ai_file_entries, "ai_file_entries");
+          addEntries(mergedEmitterData.new_land_file, "new_land_file");
+          addEntries(mergedEmitterData.new_sea_file, "new_sea_file");
 
           console.log(
             "✅ Radar symbol map built with",

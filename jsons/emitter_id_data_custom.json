@@ -1,0 +1,16 @@
+{
+  "ai_file_entries": [
+    {
+      "radar": "RP_5_search",
+      "symbol1": "ai_group_3",
+      "symbol2": "ai_group_3",
+      "priority": null,
+      "alt_type": null,
+      "repeat": false,
+      "unit": null,
+      "note": "While not defined in the emitter_id_table, the radar is so similar to the RP-5 track, it is matched."
+    }
+  ],
+  "new_land_file": [],
+  "new_sea_file": []
+}
