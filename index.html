@@ -212,7 +212,6 @@
 
       /* Default dropdown style */
       .symbol-dropdown {
-        display: none;
         position: absolute;
         top: 100%;
         right: 0;
@@ -229,9 +228,14 @@
         flex-wrap: wrap;
         gap: 8px;
         justify-content: center;
+        display: none; /* hidden by default */
       }
 
-      /* ✅ Center dropdown on narrow screens */
+      .symbol-dropdown.visible {
+        display: flex; /* shown when .visible is added */
+      }
+
+      /* Responsive behavior */
       @media (max-width: 600px) {
         .symbol-dropdown {
           left: 50% !important;
@@ -280,7 +284,7 @@
     <hr class="solid" />
     <h2>By DSplayer</h2>
     <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-07-31 (using DCS 2.9.18)</h3>
+    <h3>!!Highly WIP!! Last updated 2025-08-01 (using DCS 2.9.18)</h3>
     <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
 
     <div class="controls">
@@ -403,7 +407,6 @@
         ai_group_1: "rwr_flat_triangle_symbol",
         ai_group_2: "rwr_triangle_symbol",
         ai_group_3: "rwr_two_triangle_symbol",
-        a_bar: "rwr_a_symbol",
         two: "rwr_two_symbol",
         two_bar: "rwr_two_slashed_symbol",
         three: "rwr_three_symbol",
@@ -417,21 +420,21 @@
         eleven: "rwr_eleven_symbol",
         fifteen: "rwr_15_symbol",
         nineteen: "rwr_19_symbol",
-        h: "rwr_h_symbol",
-        r: "rwr_r_symbol",
-        p_bar: "rwr_p_slashed_symbol",
+        a_bar: "rwr_a_symbol",
         a_dot: "rwr_a_one_dot_symbol",
         a_two_dot: "rwr_a_two_dot_symbol",
         a_three_dot: "rwr_a_three_dot_symbol",
-        search: "rwr_s_symbol",
         c: "rwr_c_symbol",
         g: "rwr_g_symbol",
+        h: "rwr_h_symbol",
+        r: "rwr_r_symbol",
         l: "rwr_l_symbol",
-        uncorrelated_missile_launch: "rwr_uncorr_msl",
-        // Add unknown RWR symbols
+        p_bar: "rwr_p_slashed_symbol",
+        search: "rwr_s_symbol",
         unknown_low: "rwr_u_one_dot_symbol", // 2-4 GHz
         unknown_medium: "rwr_u_two_dot_symbol", // 4-8 GHz
         unknown_high: "rwr_u_three_dot_symbol", // 8-20 GHz
+        uncorrelated_missile_launch: "rwr_uncorr_msl",
       };
 
       const sourceNameMap = {
@@ -689,8 +692,9 @@
         innerWrapper.appendChild(gridWrapper);
         // container.appendChild(selectAllWrapper); // ⬅️ as part of grid!
 
-        const sortedSymbols = [...usedSymbols].sort();
-        sortedSymbols.forEach((symbol) => {
+        Object.keys(symbolToImageMap).forEach((symbol) => {
+          if (!usedSymbols.has(symbol)) return;
+
           const imageFile = symbolToImageMap[symbol];
           if (!imageFile) return;
 
@@ -731,7 +735,6 @@
 
           wrapper.appendChild(checkbox);
           wrapper.appendChild(img);
-          // container.appendChild(wrapper);
           gridWrapper.appendChild(wrapper);
         });
 
@@ -1617,14 +1620,15 @@
       const toggleBtn = document.getElementById("symbol-filter-toggle");
       const dropdown = document.getElementById("symbol-filter-dropdown");
 
-      toggleBtn.addEventListener("click", () => {
-        dropdown.style.display = dropdown.style.display === "none" ? "flex" : "none";
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevents outer click from immediately closing it
+        dropdown.classList.toggle("visible");
       });
 
       document.addEventListener("click", (e) => {
         const wrapper = document.getElementById("symbol-filter-wrapper");
         if (!wrapper.contains(e.target)) {
-          dropdown.style.display = "none";
+          dropdown.classList.remove("visible"); // ✅ correct way to hide it
         }
       });
     </script>
