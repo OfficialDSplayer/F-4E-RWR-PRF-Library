@@ -1,5 +1,6 @@
 {
   "imported_wavs/052B SAM SR_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 16.328989532151,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -7,6 +8,7 @@
     "undetectable": false
   },
   "imported_wavs/052B SAM SR_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 16.328989532151,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -14,6 +16,7 @@
     "undetectable": false
   },
   "imported_wavs/052B SAM TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.180944242683,
     "prf_search": 1875.0,
     "prf_track": 2500.0,
@@ -21,6 +24,7 @@
     "undetectable": false
   },
   "imported_wavs/052B SAM TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.180944242683,
     "prf_search": 1875.0,
     "prf_track": 2500.0,
@@ -28,6 +32,7 @@
     "undetectable": false
   },
   "imported_wavs/052C SAM STR_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 18.260689107944,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -35,6 +40,7 @@
     "undetectable": false
   },
   "imported_wavs/052C SAM STR_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 18.260689107944,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -42,6 +48,7 @@
     "undetectable": false
   },
   "imported_wavs/054A SAM TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.6133915219581,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -49,6 +56,7 @@
     "undetectable": false
   },
   "imported_wavs/054A SAM TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.6133915219581,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -56,6 +64,7 @@
     "undetectable": false
   },
   "imported_wavs/1L13 EWR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.22,
     "prf_search": 300.0,
     "prf_track": 300.0,
@@ -63,6 +72,7 @@
     "undetectable": true
   },
   "imported_wavs/1L13 EWR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.22,
     "prf_search": 300.0,
     "prf_track": 300.0,
@@ -70,6 +80,7 @@
     "undetectable": true
   },
   "imported_wavs/2S6 Tunguska_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 15.667,
     "prf_search": 8300.0,
     "prf_track": 8300.0,
@@ -77,6 +88,7 @@
     "undetectable": false
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 15.667,
     "prf_search": 8300.0,
     "prf_track": 8300.0,
@@ -84,6 +96,7 @@
     "undetectable": false
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.118,
     "prf_search": 200.0,
     "prf_track": 200.0,
@@ -91,6 +104,7 @@
     "undetectable": true
   },
   "imported_wavs/55G6 EWR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.118,
     "prf_search": 200.0,
     "prf_track": 200.0,
@@ -98,6 +112,7 @@
     "undetectable": true
   },
   "imported_wavs/AEGIS_search_radar_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.418652912992,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -105,6 +120,7 @@
     "undetectable": false
   },
   "imported_wavs/AEGIS_search_radar_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.418652912992,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -112,6 +128,7 @@
     "undetectable": false
   },
   "imported_wavs/AESA_KJ2000_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.351,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -119,6 +136,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.351,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -126,6 +144,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.311,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -133,6 +152,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.311,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -140,6 +160,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.331,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -147,6 +168,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.331,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -154,6 +176,7 @@
     "undetectable": true
   },
   "imported_wavs/AESA_KJ2000_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.666493728446,
     "prf_search": 225.0,
     "prf_track": 300.0,
@@ -161,6 +184,7 @@
     "undetectable": false
   },
   "imported_wavs/AESA_KJ2000_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.666493728446,
     "prf_search": 225.0,
     "prf_track": 300.0,
@@ -168,6 +192,7 @@
     "undetectable": false
   },
   "imported_wavs/AIDA_2_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.2,
     "prf_search": 1200.0,
     "prf_track": 1200.0,
@@ -175,6 +200,7 @@
     "undetectable": false
   },
   "imported_wavs/AIDA_2_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.2,
     "prf_search": 1200.0,
     "prf_track": 1200.0,
@@ -182,6 +208,7 @@
     "undetectable": false
   },
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.39,
     "prf_search": 300000.0,
     "prf_track": 300000.0,
@@ -189,6 +216,7 @@
     "undetectable": false
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.39,
     "prf_search": 300000.0,
     "prf_track": 300000.0,
@@ -196,6 +224,7 @@
     "undetectable": false
   },
   "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.34,
     "prf_search": 250000.0,
     "prf_track": 250000.0,
@@ -203,6 +232,7 @@
     "undetectable": false
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.34,
     "prf_search": 250000.0,
     "prf_track": 250000.0,
@@ -210,6 +240,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.674,
     "prf_search": 220000.0,
     "prf_track": 22500.0,
@@ -217,6 +248,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-63_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.674,
     "prf_search": 220000.0,
     "prf_track": 22500.0,
@@ -224,6 +256,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-68_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.825,
     "prf_search": 300000.0,
     "prf_track": 25000.0,
@@ -231,6 +264,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-68_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.825,
     "prf_search": 300000.0,
     "prf_track": 25000.0,
@@ -238,6 +272,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.42,
     "prf_search": 250000.0,
     "prf_track": 307000.0,
@@ -245,6 +280,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-71_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.42,
     "prf_search": 250000.0,
     "prf_track": 307000.0,
@@ -252,6 +288,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-73_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.016,
     "prf_search": 260000.0,
     "prf_track": 24000.0,
@@ -259,6 +296,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-73_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.016,
     "prf_search": 260000.0,
     "prf_track": 24000.0,
@@ -266,6 +304,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG-78_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 34.934,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -273,6 +312,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APG-78_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 34.934,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -280,6 +320,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APG_70_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.772,
     "prf_search": 220000.0,
     "prf_track": 22500.0,
@@ -287,6 +328,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APG_70_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.772,
     "prf_search": 220000.0,
     "prf_track": 22500.0,
@@ -294,6 +336,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-120_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.47,
     "prf_search": 330.0,
     "prf_track": 330.0,
@@ -301,6 +344,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-120_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.47,
     "prf_search": 330.0,
     "prf_track": 330.0,
@@ -308,6 +352,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-153_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.32,
     "prf_search": 2500.0,
     "prf_track": 2500.0,
@@ -315,6 +360,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-153_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.32,
     "prf_search": 2500.0,
     "prf_track": 2500.0,
@@ -322,6 +368,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-159_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.32,
     "prf_search": 2500.0,
     "prf_track": 2500.0,
@@ -329,6 +376,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APQ-159_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.32,
     "prf_search": 2500.0,
     "prf_track": 2500.0,
@@ -336,6 +384,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APS-137_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.1277748954741,
     "prf_search": 250.0,
     "prf_track": 333.33333333333,
@@ -343,6 +392,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APS-137_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.1277748954741,
     "prf_search": 250.0,
     "prf_track": 333.33333333333,
@@ -350,6 +400,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APS-138_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 420.0,
     "prf_track": 302.0,
@@ -357,6 +408,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 420.0,
     "prf_track": 302.0,
@@ -364,6 +416,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 760.0,
     "prf_track": 302.0,
@@ -371,6 +424,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 760.0,
     "prf_track": 302.0,
@@ -378,6 +432,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 302.0,
     "prf_track": 302.0,
@@ -385,6 +440,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-138_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.43,
     "prf_search": 302.0,
     "prf_track": 302.0,
@@ -392,6 +448,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-142_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.0246162297433,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -399,6 +456,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS-142_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.0246162297433,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -406,6 +464,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_APS_124_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.171,
     "prf_search": 940.0,
     "prf_track": 375.0,
@@ -413,6 +472,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APS_124_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.171,
     "prf_search": 940.0,
     "prf_track": 375.0,
@@ -420,6 +480,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APY-1_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 8.7560045167394,
     "prf_search": 225.0,
     "prf_track": 300.0,
@@ -427,6 +488,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APY-1_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 8.7560045167394,
     "prf_search": 225.0,
     "prf_track": 300.0,
@@ -434,6 +496,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APY_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.52,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -441,6 +504,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_APY_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.52,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -448,6 +512,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_MPQ_53_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 7.374,
     "prf_search": 60000.0,
     "prf_track": 75000.0,
@@ -455,6 +520,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_MPQ_53_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 7.374,
     "prf_search": 60000.0,
     "prf_track": 75000.0,
@@ -462,6 +528,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPG_60_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 27000.0,
     "prf_track": 27000.0,
@@ -469,6 +536,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPG_60_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 27000.0,
     "prf_track": 27000.0,
@@ -476,6 +544,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPG_62_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -483,6 +552,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPG_62_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -490,6 +560,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_41_Az_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 15.55,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -497,6 +568,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_41_Az_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 15.55,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -504,6 +576,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_41_El_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 15.58,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -511,6 +584,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_41_El_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 15.58,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -518,6 +592,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_43C_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.645,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -525,6 +600,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPN_43C_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.645,
     "prf_search": 1000.0,
     "prf_track": 1000.0,
@@ -532,6 +608,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -539,6 +616,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -546,6 +624,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -553,6 +632,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -560,6 +640,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -567,6 +648,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPQ_9B_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.793,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -574,6 +656,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_40_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.374,
     "prf_search": 257.0,
     "prf_track": 257.0,
@@ -581,6 +664,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_SPS_40_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.374,
     "prf_search": 257.0,
     "prf_track": 257.0,
@@ -588,6 +672,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_SPS_48C_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.042,
     "prf_search": 400.0,
     "prf_track": 400.0,
@@ -595,6 +680,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_48C_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.042,
     "prf_search": 400.0,
     "prf_track": 400.0,
@@ -602,6 +688,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_48E_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.042,
     "prf_search": 550.0,
     "prf_track": 550.0,
@@ -609,6 +696,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_48E_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.042,
     "prf_search": 550.0,
     "prf_track": 550.0,
@@ -616,6 +704,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_49_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.243,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -623,6 +712,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_SPS_49_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.243,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -630,6 +720,7 @@
     "undetectable": true
   },
   "imported_wavs/AN_SPS_55_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.73,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -637,6 +728,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_55_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.73,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -644,6 +736,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_64V9_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.42,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -651,6 +744,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_64V9_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.42,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -658,6 +752,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_67_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 5.638,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -665,6 +760,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_67_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 5.638,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -672,6 +768,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_73_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.794,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -679,6 +776,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPS_73_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.794,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -686,6 +784,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_front_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -693,6 +792,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_front_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -700,6 +800,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_left_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -707,6 +808,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_left_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -714,6 +816,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_rear_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -721,6 +824,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_rear_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -728,6 +832,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_right_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -735,6 +840,7 @@
     "undetectable": false
   },
   "imported_wavs/AN_SPY_1_right_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.367,
     "prf_search": 85000.0,
     "prf_track": 85000.0,
@@ -742,6 +848,7 @@
     "undetectable": false
   },
   "imported_wavs/ARI 23274_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 16.275,
     "prf_search": 2200.0,
     "prf_track": 3800.0,
@@ -749,6 +856,7 @@
     "undetectable": false
   },
   "imported_wavs/ARI 23274_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 16.275,
     "prf_search": 2200.0,
     "prf_track": 3800.0,
@@ -756,6 +864,7 @@
     "undetectable": false
   },
   "imported_wavs/B-1B SS radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.3314920499283,
     "prf_search": 47.872340425532,
     "prf_track": 63.829787234043,
@@ -763,6 +872,7 @@
     "undetectable": false
   },
   "imported_wavs/B-1B SS radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.3314920499283,
     "prf_search": 47.872340425532,
     "prf_track": 63.829787234043,
@@ -770,6 +880,7 @@
     "undetectable": false
   },
   "imported_wavs/B-52H SS radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.7565050202948,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -777,6 +888,7 @@
     "undetectable": false
   },
   "imported_wavs/B-52H SS radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.7565050202948,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -784,6 +896,7 @@
     "undetectable": false
   },
   "imported_wavs/BRLS-8B_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.273903622547,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -791,6 +904,7 @@
     "undetectable": false
   },
   "imported_wavs/BRLS-8B_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.273903622547,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -798,6 +912,7 @@
     "undetectable": false
   },
   "imported_wavs/Band_Stand_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 28.259,
     "prf_search": 80000.0,
     "prf_track": 80000.0,
@@ -805,6 +920,7 @@
     "undetectable": true
   },
   "imported_wavs/Band_Stand_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 28.259,
     "prf_search": 80000.0,
     "prf_track": 80000.0,
@@ -812,6 +928,7 @@
     "undetectable": true
   },
   "imported_wavs/Bass_Tilt_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.8,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -819,6 +936,7 @@
     "undetectable": false
   },
   "imported_wavs/Bass_Tilt_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.8,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -826,6 +944,7 @@
     "undetectable": false
   },
   "imported_wavs/Berkut-95_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.3520310068056,
     "prf_search": 250.0,
     "prf_track": 333.33333333333,
@@ -833,6 +952,7 @@
     "undetectable": false
   },
   "imported_wavs/Berkut-95_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.3520310068056,
     "prf_search": 250.0,
     "prf_track": 333.33333333333,
@@ -840,6 +960,7 @@
     "undetectable": false
   },
   "imported_wavs/Big_Net_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.838,
     "prf_search": 290.0,
     "prf_track": 290.0,
@@ -847,6 +968,7 @@
     "undetectable": true
   },
   "imported_wavs/Big_Net_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.838,
     "prf_search": 290.0,
     "prf_track": 290.0,
@@ -854,6 +976,7 @@
     "undetectable": true
   },
   "imported_wavs/Big_bird_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.0,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -861,6 +984,7 @@
     "undetectable": false
   },
   "imported_wavs/Big_bird_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.0,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -868,6 +992,7 @@
     "undetectable": false
   },
   "imported_wavs/BridgeMaster_E_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.05,
     "prf_search": 785.0,
     "prf_track": 785.0,
@@ -875,6 +1000,7 @@
     "undetectable": false
   },
   "imported_wavs/BridgeMaster_E_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.05,
     "prf_search": 785.0,
     "prf_track": 785.0,
@@ -882,6 +1008,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -889,6 +1016,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -896,6 +1024,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -903,6 +1032,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_Track_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -910,6 +1040,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -917,6 +1048,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -924,6 +1056,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -931,6 +1064,7 @@
     "undetectable": false
   },
   "imported_wavs/C_RAM_Phalanx_search_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 13.341,
     "prf_search": 12000.0,
     "prf_track": 18000.0,
@@ -938,6 +1072,7 @@
     "undetectable": false
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.399,
     "prf_search": 3600.0,
     "prf_track": 7200.0,
@@ -945,6 +1080,7 @@
     "undetectable": false
   },
   "imported_wavs/Castor_2_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.399,
     "prf_search": 3600.0,
     "prf_track": 7200.0,
@@ -952,6 +1088,7 @@
     "undetectable": false
   },
   "imported_wavs/Cross_Sword_S_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.5,
     "prf_search": 2600.0,
     "prf_track": 2600.0,
@@ -959,6 +1096,7 @@
     "undetectable": false
   },
   "imported_wavs/Cross_Sword_S_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 8.5,
     "prf_search": 2600.0,
     "prf_track": 2600.0,
@@ -966,6 +1104,7 @@
     "undetectable": false
   },
   "imported_wavs/Cross_Sword_T_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.2,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -973,6 +1112,7 @@
     "undetectable": false
   },
   "imported_wavs/Cross_Sword_T_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.2,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -980,6 +1120,7 @@
     "undetectable": false
   },
   "imported_wavs/DA_02_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.245,
     "prf_search": 1100.0,
     "prf_track": 1100.0,
@@ -987,6 +1128,7 @@
     "undetectable": false
   },
   "imported_wavs/DA_02_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.245,
     "prf_search": 1100.0,
     "prf_track": 1100.0,
@@ -994,6 +1136,7 @@
     "undetectable": false
   },
   "imported_wavs/DA_08_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.736,
     "prf_search": 600.0,
     "prf_track": 600.0,
@@ -1001,6 +1144,7 @@
     "undetectable": false
   },
   "imported_wavs/DA_08_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.736,
     "prf_search": 600.0,
     "prf_track": 600.0,
@@ -1008,6 +1152,7 @@
     "undetectable": false
   },
   "imported_wavs/Dog Ear radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.9,
     "prf_search": 1900.0,
     "prf_track": 1900.0,
@@ -1015,6 +1160,7 @@
     "undetectable": false
   },
   "imported_wavs/Dog Ear radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.9,
     "prf_search": 1900.0,
     "prf_track": 1900.0,
@@ -1022,6 +1168,7 @@
     "undetectable": false
   },
   "imported_wavs/Don_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.665,
     "prf_search": 1670.0,
     "prf_track": 1670.0,
@@ -1029,6 +1176,7 @@
     "undetectable": false
   },
   "imported_wavs/Don_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.665,
     "prf_search": 1670.0,
     "prf_track": 1670.0,
@@ -1036,6 +1184,7 @@
     "undetectable": false
   },
   "imported_wavs/FPS-117_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 12.768822290719,
     "prf_search": 242.98056155508,
     "prf_track": 323.97408207343,
@@ -1043,6 +1192,7 @@
     "undetectable": false
   },
   "imported_wavs/FPS-117_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 12.768822290719,
     "prf_search": 242.98056155508,
     "prf_track": 323.97408207343,
@@ -1050,6 +1200,7 @@
     "undetectable": false
   },
   "imported_wavs/FPS_117_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.26,
     "prf_search": 250.0,
     "prf_track": 250.0,
@@ -1057,6 +1208,7 @@
     "undetectable": true
   },
   "imported_wavs/FPS_117_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.26,
     "prf_search": 250.0,
     "prf_track": 250.0,
@@ -1064,6 +1216,7 @@
     "undetectable": true
   },
   "imported_wavs/Front_Dome_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 6.9,
     "prf_search": 2000.0,
     "prf_track": 20000.0,
@@ -1071,6 +1224,7 @@
     "undetectable": false
   },
   "imported_wavs/Front_Dome_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 6.9,
     "prf_search": 2000.0,
     "prf_track": 20000.0,
@@ -1078,6 +1232,7 @@
     "undetectable": false
   },
   "imported_wavs/Gepard_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.013,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -1085,6 +1240,7 @@
     "undetectable": false
   },
   "imported_wavs/Gepard_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.013,
     "prf_search": 10000.0,
     "prf_track": 10000.0,
@@ -1092,6 +1248,7 @@
     "undetectable": false
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.7945249794,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1099,6 +1256,7 @@
     "undetectable": false
   },
   "imported_wavs/H-6J RADAR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.7945249794,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1106,6 +1264,7 @@
     "undetectable": false
   },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.257,
     "prf_search": 1600.0,
     "prf_track": 1600.0,
@@ -1113,6 +1272,7 @@
     "undetectable": false
   },
   "imported_wavs/HQ-7 SR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.257,
     "prf_search": 1600.0,
     "prf_track": 1600.0,
@@ -1120,6 +1280,7 @@
     "undetectable": false
   },
   "imported_wavs/HQ-7 TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 17.423,
     "prf_search": 7200.0,
     "prf_track": 7200.0,
@@ -1127,6 +1288,7 @@
     "undetectable": false
   },
   "imported_wavs/HQ-7 TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 17.423,
     "prf_search": 7200.0,
     "prf_track": 7200.0,
@@ -1134,6 +1296,7 @@
     "undetectable": false
   },
   "imported_wavs/Hawk sr_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.27,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -1141,6 +1304,7 @@
     "undetectable": true
   },
   "imported_wavs/Hawk sr_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.27,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -1148,6 +1312,7 @@
     "undetectable": true
   },
   "imported_wavs/Hawk tr_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.125,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1155,6 +1320,7 @@
     "undetectable": false
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.125,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1162,6 +1328,7 @@
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 14.536,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1169,6 +1336,7 @@
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 14.536,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1176,6 +1344,7 @@
     "undetectable": false
   },
   "imported_wavs/Head_Net_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.81,
     "prf_search": 670.0,
     "prf_track": 670.0,
@@ -1183,6 +1352,7 @@
     "undetectable": false
   },
   "imported_wavs/Head_Net_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.81,
     "prf_search": 670.0,
     "prf_track": 670.0,
@@ -1190,6 +1360,7 @@
     "undetectable": false
   },
   "imported_wavs/Head_Net_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.78,
     "prf_search": 670.0,
     "prf_track": 670.0,
@@ -1197,6 +1368,7 @@
     "undetectable": false
   },
   "imported_wavs/Head_Net_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.78,
     "prf_search": 670.0,
     "prf_track": 670.0,
@@ -1204,6 +1376,7 @@
     "undetectable": false
   },
   "imported_wavs/Hot_Flash_T_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 26.339,
     "prf_search": 9100.0,
     "prf_track": 9100.0,
@@ -1211,6 +1384,7 @@
     "undetectable": true
   },
   "imported_wavs/Hot_Flash_T_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 26.339,
     "prf_search": 9100.0,
     "prf_track": 9100.0,
@@ -1218,6 +1392,7 @@
     "undetectable": true
   },
   "imported_wavs/Hot_Shot_search_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.273,
     "prf_search": 7500.0,
     "prf_track": 7500.0,
@@ -1225,6 +1400,7 @@
     "undetectable": false
   },
   "imported_wavs/Hot_Shot_search_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.273,
     "prf_search": 7500.0,
     "prf_track": 7500.0,
@@ -1232,6 +1408,7 @@
     "undetectable": false
   },
   "imported_wavs/KKS R-790 Tsunami-BM_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.5355693227943,
     "prf_search": 204.54545454545,
     "prf_track": 272.72727272727,
@@ -1239,6 +1416,7 @@
     "undetectable": true
   },
   "imported_wavs/KKS R-790 Tsunami-BM_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.5355693227943,
     "prf_search": 204.54545454545,
     "prf_track": 272.72727272727,
@@ -1246,6 +1424,7 @@
     "undetectable": true
   },
   "imported_wavs/KLJ-7_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.743,
     "prf_search": 275000.0,
     "prf_track": 28000.0,
@@ -1253,6 +1432,7 @@
     "undetectable": false
   },
   "imported_wavs/KLJ-7_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.743,
     "prf_search": 275000.0,
     "prf_track": 28000.0,
@@ -1260,6 +1440,7 @@
     "undetectable": false
   },
   "imported_wavs/Kite_Screech_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.083,
     "prf_search": 1700.0,
     "prf_track": 3150.0,
@@ -1267,6 +1448,7 @@
     "undetectable": false
   },
   "imported_wavs/Kite_Screech_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.083,
     "prf_search": 1700.0,
     "prf_track": 3150.0,
@@ -1274,6 +1456,7 @@
     "undetectable": false
   },
   "imported_wavs/Kopyo_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.719046601764,
     "prf_search": 750.0,
     "prf_track": 1000.0,
@@ -1281,6 +1464,7 @@
     "undetectable": false
   },
   "imported_wavs/Kopyo_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.719046601764,
     "prf_search": 750.0,
     "prf_track": 1000.0,
@@ -1288,6 +1472,7 @@
     "undetectable": false
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 6.6,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -1295,6 +1480,7 @@
     "undetectable": false
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 6.6,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -1302,6 +1488,7 @@
     "undetectable": false
   },
   "imported_wavs/LW_01_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.28,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -1309,6 +1496,7 @@
     "undetectable": true
   },
   "imported_wavs/LW_01_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.28,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -1316,6 +1504,7 @@
     "undetectable": true
   },
   "imported_wavs/LW_08_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.045,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -1323,6 +1512,7 @@
     "undetectable": false
   },
   "imported_wavs/LW_08_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.045,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -1330,6 +1520,7 @@
     "undetectable": false
   },
   "imported_wavs/MPDR_12_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.132,
     "prf_search": 5000.0,
     "prf_track": 5000.0,
@@ -1337,6 +1528,7 @@
     "undetectable": true
   },
   "imported_wavs/MPDR_12_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.132,
     "prf_search": 5000.0,
     "prf_track": 5000.0,
@@ -1344,6 +1536,7 @@
     "undetectable": true
   },
   "imported_wavs/MR_350_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 17.309,
     "prf_search": 1200.0,
     "prf_track": 1200.0,
@@ -1351,6 +1544,7 @@
     "undetectable": false
   },
   "imported_wavs/MR_350_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 17.309,
     "prf_search": 1200.0,
     "prf_track": 1200.0,
@@ -1358,6 +1552,7 @@
     "undetectable": false
   },
   "imported_wavs/Mark_92_S_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.641,
     "prf_search": 1800.0,
     "prf_track": 3600.0,
@@ -1365,6 +1560,7 @@
     "undetectable": false
   },
   "imported_wavs/Mark_92_S_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.641,
     "prf_search": 1800.0,
     "prf_track": 3600.0,
@@ -1372,6 +1568,7 @@
     "undetectable": false
   },
   "imported_wavs/Mark_92_T_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1379,6 +1576,7 @@
     "undetectable": false
   },
   "imported_wavs/Mark_92_T_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.509,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1386,6 +1584,7 @@
     "undetectable": false
   },
   "imported_wavs/Mk_95_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.608,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1393,6 +1592,7 @@
     "undetectable": false
   },
   "imported_wavs/Mk_95_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.608,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1400,6 +1600,7 @@
     "undetectable": false
   },
   "imported_wavs/Muff_Cob_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 6.544,
     "prf_search": 1700.0,
     "prf_track": 3150.0,
@@ -1407,6 +1608,7 @@
     "undetectable": false
   },
   "imported_wavs/Muff_Cob_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 6.544,
     "prf_search": 1700.0,
     "prf_track": 3150.0,
@@ -1414,6 +1616,7 @@
     "undetectable": false
   },
   "imported_wavs/Mys-M1_SR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.611,
     "prf_search": 600.0,
     "prf_track": 600.0,
@@ -1421,6 +1624,7 @@
     "undetectable": false
   },
   "imported_wavs/Mys-M1_SR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.611,
     "prf_search": 600.0,
     "prf_track": 600.0,
@@ -1428,6 +1632,7 @@
     "undetectable": false
   },
   "imported_wavs/N-001_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.807611316263,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -1435,6 +1640,7 @@
     "undetectable": false
   },
   "imported_wavs/N-001_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.807611316263,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -1442,6 +1648,7 @@
     "undetectable": false
   },
   "imported_wavs/N-005_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.853,
     "prf_search": 1200.0,
     "prf_track": 2300.0,
@@ -1449,6 +1656,7 @@
     "undetectable": false
   },
   "imported_wavs/N-005_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.853,
     "prf_search": 1200.0,
     "prf_track": 2300.0,
@@ -1456,6 +1664,7 @@
     "undetectable": false
   },
   "imported_wavs/N-008_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 12.3,
     "prf_search": 1000.0,
     "prf_track": 2500.0,
@@ -1463,6 +1672,7 @@
     "undetectable": false
   },
   "imported_wavs/N-008_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 12.3,
     "prf_search": 1000.0,
     "prf_track": 2500.0,
@@ -1470,6 +1680,7 @@
     "undetectable": false
   },
   "imported_wavs/N-011M_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.528305917539,
     "prf_search": 321.42857142857,
     "prf_track": 428.57142857143,
@@ -1477,6 +1688,7 @@
     "undetectable": false
   },
   "imported_wavs/N-011M_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 19.528305917539,
     "prf_search": 321.42857142857,
     "prf_track": 428.57142857143,
@@ -1484,6 +1696,7 @@
     "undetectable": false
   },
   "imported_wavs/N-019M_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 12.533951841792,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -1491,6 +1704,7 @@
     "undetectable": false
   },
   "imported_wavs/N-019M_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 12.533951841792,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -1498,6 +1712,7 @@
     "undetectable": false
   },
   "imported_wavs/N-019_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.718,
     "prf_search": 180000.0,
     "prf_track": 22000.0,
@@ -1505,6 +1720,7 @@
     "undetectable": false
   },
   "imported_wavs/N-019_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.718,
     "prf_search": 180000.0,
     "prf_track": 22000.0,
@@ -1512,6 +1728,7 @@
     "undetectable": false
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_SEARCH.wav": {
+    "type": "SCAN_PATTERN_AESA",
     "band": 10.925,
     "prf_search": 80000.0,
     "prf_track": 80000.0,
@@ -1519,6 +1736,7 @@
     "undetectable": false
   },
   "imported_wavs/NASAMS_Radar_MPQ64F1_TRACK.wav": {
+    "type": "SCAN_PATTERN_AESA",
     "band": 10.925,
     "prf_search": 80000.0,
     "prf_track": 80000.0,
@@ -1526,6 +1744,7 @@
     "undetectable": false
   },
   "imported_wavs/N_001_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.718,
     "prf_search": 180000.0,
     "prf_track": 22000.0,
@@ -1533,6 +1752,7 @@
     "undetectable": false
   },
   "imported_wavs/N_001_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 10.718,
     "prf_search": 180000.0,
     "prf_track": 22000.0,
@@ -1540,6 +1760,7 @@
     "undetectable": false
   },
   "imported_wavs/Orion-A_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.4150578325755,
     "prf_search": 750.0,
     "prf_track": 1000.0,
@@ -1547,6 +1768,7 @@
     "undetectable": true
   },
   "imported_wavs/Orion-A_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.4150578325755,
     "prf_search": 750.0,
     "prf_track": 1000.0,
@@ -1554,6 +1776,7 @@
     "undetectable": true
   },
   "imported_wavs/Osa 9A33 ln_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.75,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -1561,6 +1784,7 @@
     "undetectable": false
   },
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.75,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -1568,6 +1792,7 @@
     "undetectable": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.7001251258889,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -1575,6 +1800,7 @@
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar A_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.7001251258889,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -1582,6 +1808,7 @@
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar B_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.3688650166326,
     "prf_search": 3214.2857142857,
     "prf_track": 4285.7142857143,
@@ -1589,6 +1816,7 @@
     "undetectable": true
   },
   "imported_wavs/PLAN Search Radar B_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.3688650166326,
     "prf_search": 3214.2857142857,
     "prf_track": 4285.7142857143,
@@ -1596,6 +1824,7 @@
     "undetectable": true
   },
   "imported_wavs/PNA-D Leninets_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.002154606769,
     "prf_search": 375.0,
     "prf_track": 500.0,
@@ -1603,6 +1832,7 @@
     "undetectable": true
   },
   "imported_wavs/PNA-D Leninets_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.002154606769,
     "prf_search": 375.0,
     "prf_track": 500.0,
@@ -1610,6 +1840,7 @@
     "undetectable": true
   },
   "imported_wavs/PS-37A_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.05,
     "prf_search": 475.0,
     "prf_track": 1900.0,
@@ -1617,6 +1848,7 @@
     "undetectable": false
   },
   "imported_wavs/PS-37A_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.05,
     "prf_search": 475.0,
     "prf_track": 1900.0,
@@ -1624,6 +1856,7 @@
     "undetectable": false
   },
   "imported_wavs/Palm_Frond_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.089,
     "prf_search": 3200.0,
     "prf_track": 3200.0,
@@ -1631,6 +1864,7 @@
     "undetectable": false
   },
   "imported_wavs/Palm_Frond_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.089,
     "prf_search": 3200.0,
     "prf_track": 3200.0,
@@ -1638,6 +1872,7 @@
     "undetectable": false
   },
   "imported_wavs/Patriot str_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.898739585559,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -1645,6 +1880,7 @@
     "undetectable": false
   },
   "imported_wavs/Patriot str_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.898739585559,
     "prf_search": 432.69230769231,
     "prf_track": 576.92307692308,
@@ -1652,6 +1888,7 @@
     "undetectable": false
   },
   "imported_wavs/Peel_Pair_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.665,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -1659,6 +1896,7 @@
     "undetectable": false
   },
   "imported_wavs/Peel_Pair_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 10.665,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -1666,6 +1904,7 @@
     "undetectable": false
   },
   "imported_wavs/Poisk_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2178472243416,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1673,6 +1912,7 @@
     "undetectable": false
   },
   "imported_wavs/Poisk_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2178472243416,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1680,6 +1920,7 @@
     "undetectable": false
   },
   "imported_wavs/Pop_Group_T_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.75,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -1687,6 +1928,7 @@
     "undetectable": false
   },
   "imported_wavs/Pop_Group_T_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.75,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -1694,6 +1936,7 @@
     "undetectable": false
   },
   "imported_wavs/R-77_Seeker_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.29,
     "prf_search": 200000.0,
     "prf_track": 200000.0,
@@ -1701,6 +1944,7 @@
     "undetectable": false
   },
   "imported_wavs/R-77_Seeker_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.29,
     "prf_search": 200000.0,
     "prf_track": 200000.0,
@@ -1708,6 +1952,7 @@
     "undetectable": false
   },
   "imported_wavs/RDI_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.796,
     "prf_search": 75000.0,
     "prf_track": 22000.0,
@@ -1715,6 +1960,7 @@
     "undetectable": false
   },
   "imported_wavs/RDI_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.796,
     "prf_search": 75000.0,
     "prf_track": 22000.0,
@@ -1722,6 +1968,7 @@
     "undetectable": false
   },
   "imported_wavs/RDY_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.3,
     "prf_search": 660.0,
     "prf_track": 660.0,
@@ -1729,6 +1976,7 @@
     "undetectable": false
   },
   "imported_wavs/RDY_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.3,
     "prf_search": 660.0,
     "prf_track": 660.0,
@@ -1736,6 +1984,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.15,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1743,6 +1992,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.15,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1750,6 +2000,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.1,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1757,6 +2008,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.1,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1764,6 +2016,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_4_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1771,6 +2024,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_Beam_4_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1778,6 +2032,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.05,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1785,6 +2040,7 @@
     "undetectable": false
   },
   "imported_wavs/RLS_19J6_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.05,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -1792,6 +2048,7 @@
     "undetectable": false
   },
   "imported_wavs/RM_1290_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.421,
     "prf_search": 1300.0,
     "prf_track": 1300.0,
@@ -1799,6 +2056,7 @@
     "undetectable": false
   },
   "imported_wavs/RM_1290_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.421,
     "prf_search": 1300.0,
     "prf_track": 1300.0,
@@ -1806,6 +2064,7 @@
     "undetectable": false
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.795,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1813,6 +2072,7 @@
     "undetectable": false
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.795,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -1820,6 +2080,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.049,
     "prf_search": 1650.0,
     "prf_track": 1790.0,
@@ -1827,6 +2088,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_22SMA_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 13.049,
     "prf_search": 1650.0,
     "prf_track": 1790.0,
@@ -1834,6 +2096,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_5_search_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.33,
     "prf_search": 1990.0,
     "prf_track": 1990.0,
@@ -1841,6 +2104,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_5_search_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 9.33,
     "prf_search": 1990.0,
     "prf_track": 1990.0,
@@ -1848,6 +2112,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_5_track_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.383,
     "prf_search": 2125.0,
     "prf_track": 2125.0,
@@ -1855,6 +2120,7 @@
     "undetectable": false
   },
   "imported_wavs/RP_5_track_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.383,
     "prf_search": 2125.0,
     "prf_track": 2125.0,
@@ -1862,6 +2128,7 @@
     "undetectable": false
   },
   "imported_wavs/RQ-1 Predator SAR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.5754142887661,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -1869,6 +2136,7 @@
     "undetectable": true
   },
   "imported_wavs/RQ-1 Predator SAR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.5754142887661,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -1876,6 +2144,7 @@
     "undetectable": true
   },
   "imported_wavs/Rapier_Blindfire_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 38.694,
     "prf_search": 8000.0,
     "prf_track": 8000.0,
@@ -1883,6 +2152,7 @@
     "undetectable": true
   },
   "imported_wavs/Rapier_Blindfire_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 38.694,
     "prf_search": 8000.0,
     "prf_track": 8000.0,
@@ -1890,6 +2160,7 @@
     "undetectable": true
   },
   "imported_wavs/Rapier_Dagger_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.063,
     "prf_search": 4500.0,
     "prf_track": 4500.0,
@@ -1897,6 +2168,7 @@
     "undetectable": false
   },
   "imported_wavs/Rapier_Dagger_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 4.063,
     "prf_search": 4500.0,
     "prf_track": 4500.0,
@@ -1904,6 +2176,7 @@
     "undetectable": false
   },
   "imported_wavs/Rice_Bowl_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.054,
     "prf_search": 52000.0,
     "prf_track": 52000.0,
@@ -1911,6 +2184,7 @@
     "undetectable": false
   },
   "imported_wavs/Rice_Bowl_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.054,
     "prf_search": 52000.0,
     "prf_track": 52000.0,
@@ -1918,6 +2192,7 @@
     "undetectable": false
   },
   "imported_wavs/Roland ADS_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.35,
     "prf_search": 6500.0,
     "prf_track": 6500.0,
@@ -1925,6 +2200,7 @@
     "undetectable": false
   },
   "imported_wavs/Roland ADS_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.35,
     "prf_search": 6500.0,
     "prf_track": 6500.0,
@@ -1932,6 +2208,7 @@
     "undetectable": false
   },
   "imported_wavs/Roland Radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.358,
     "prf_search": 5000.0,
     "prf_track": 5000.0,
@@ -1939,6 +2216,7 @@
     "undetectable": false
   },
   "imported_wavs/Roland Radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.358,
     "prf_search": 5000.0,
     "prf_track": 5000.0,
@@ -1946,6 +2224,7 @@
     "undetectable": false
   },
   "imported_wavs/Roland_MPDR_16_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.132,
     "prf_search": 6500.0,
     "prf_track": 6500.0,
@@ -1953,6 +2232,7 @@
     "undetectable": true
   },
   "imported_wavs/Roland_MPDR_16_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.132,
     "prf_search": 6500.0,
     "prf_track": 6500.0,
@@ -1960,6 +2240,7 @@
     "undetectable": true
   },
   "imported_wavs/Rubidy MM_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.91,
     "prf_search": 416.0,
     "prf_track": 375.0,
@@ -1967,6 +2248,7 @@
     "undetectable": false
   },
   "imported_wavs/Rubidy MM_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.91,
     "prf_search": 416.0,
     "prf_track": 375.0,
@@ -1974,6 +2256,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6M tr navy_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.927091280862,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1981,6 +2264,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6M tr navy_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 14.927091280862,
     "prf_search": 281.25,
     "prf_track": 375.0,
@@ -1988,6 +2272,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.93,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -1995,6 +2280,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.93,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -2002,6 +2288,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.75,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -2009,6 +2296,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.75,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -2016,6 +2304,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 64H6E sr_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 15.400738547929,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -2023,6 +2312,7 @@
     "undetectable": false
   },
   "imported_wavs/S-300PS 64H6E sr_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 15.400738547929,
     "prf_search": 562.5,
     "prf_track": 750.0,
@@ -2030,6 +2320,7 @@
     "undetectable": false
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 18.883754997406,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -2037,6 +2328,7 @@
     "undetectable": false
   },
   "imported_wavs/SA-11 Buk SR 9S18M1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 18.883754997406,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -2044,6 +2336,7 @@
     "undetectable": false
   },
   "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.1,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -2051,6 +2344,7 @@
     "undetectable": false
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.1,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -2058,6 +2352,7 @@
     "undetectable": false
   },
   "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.674,
     "prf_search": 30000.0,
     "prf_track": 30000.0,
@@ -2065,6 +2360,7 @@
     "undetectable": false
   },
   "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.674,
     "prf_search": 30000.0,
     "prf_track": 30000.0,
@@ -2072,6 +2368,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.094,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2079,6 +2376,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.094,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2086,6 +2384,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.144,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2093,6 +2392,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.144,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2100,6 +2400,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_3_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.044,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2107,6 +2408,7 @@
     "undetectable": false
   },
   "imported_wavs/Scrum_Half_Search_3_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.044,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2114,6 +2416,7 @@
     "undetectable": false
   },
   "imported_wavs/Shmel_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 3.35,
     "prf_search": 270.0,
     "prf_track": 270.0,
@@ -2121,6 +2424,7 @@
     "undetectable": false
   },
   "imported_wavs/Shmel_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 3.35,
     "prf_search": 270.0,
     "prf_track": 270.0,
@@ -2128,6 +2432,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Curve_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2135,6 +2440,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Curve_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2142,6 +2448,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_1_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2149,6 +2456,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_1_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2156,6 +2464,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2163,6 +2472,7 @@
     "undetectable": false
   },
   "imported_wavs/Strut_Pair_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.884,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2170,6 +2480,7 @@
     "undetectable": false
   },
   "imported_wavs/TAS_MK_23_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.195,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -2177,6 +2488,7 @@
     "undetectable": true
   },
   "imported_wavs/TAS_MK_23_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.195,
     "prf_search": 750.0,
     "prf_track": 750.0,
@@ -2184,6 +2496,7 @@
     "undetectable": true
   },
   "imported_wavs/Tomb_Stone_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.512,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -2191,6 +2504,7 @@
     "undetectable": false
   },
   "imported_wavs/Tomb_Stone_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 11.512,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -2198,6 +2512,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Dome_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.0,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -2205,6 +2520,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Dome_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 10.0,
     "prf_search": 100000.0,
     "prf_track": 100000.0,
@@ -2212,6 +2528,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Plate_L_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2219,6 +2536,7 @@
     "undetectable": true
   },
   "imported_wavs/Top_Plate_L_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2226,6 +2544,7 @@
     "undetectable": true
   },
   "imported_wavs/Top_Plate_S_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.463,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2233,6 +2552,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Plate_S_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.463,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2240,6 +2560,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Sail_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.701,
     "prf_search": 30000.0,
     "prf_track": 30000.0,
@@ -2247,6 +2568,7 @@
     "undetectable": true
   },
   "imported_wavs/Top_Sail_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.701,
     "prf_search": 30000.0,
     "prf_track": 30000.0,
@@ -2254,6 +2576,7 @@
     "undetectable": true
   },
   "imported_wavs/Top_Steer_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.239,
     "prf_search": 2200.0,
     "prf_track": 2200.0,
@@ -2261,6 +2584,7 @@
     "undetectable": false
   },
   "imported_wavs/Top_Steer_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.239,
     "prf_search": 2200.0,
     "prf_track": 2200.0,
@@ -2268,6 +2592,7 @@
     "undetectable": false
   },
   "imported_wavs/Tor 9A331_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.314,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2275,6 +2600,7 @@
     "undetectable": false
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.314,
     "prf_search": 1400.0,
     "prf_track": 1400.0,
@@ -2282,6 +2608,7 @@
     "undetectable": false
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2447035126804,
     "prf_search": 450.0,
     "prf_track": 600.0,
@@ -2289,6 +2616,7 @@
     "undetectable": false
   },
   "imported_wavs/Tornado SS radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.2447035126804,
     "prf_search": 450.0,
     "prf_track": 600.0,
@@ -2296,6 +2624,7 @@
     "undetectable": false
   },
   "imported_wavs/Triton_S_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.28,
     "prf_search": 6000.0,
     "prf_track": 6000.0,
@@ -2303,6 +2632,7 @@
     "undetectable": false
   },
   "imported_wavs/Triton_S_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.28,
     "prf_search": 6000.0,
     "prf_track": 6000.0,
@@ -2310,6 +2640,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_1006_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.445,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -2317,6 +2648,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_1006_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 9.445,
     "prf_search": 800.0,
     "prf_track": 800.0,
@@ -2324,6 +2656,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_1022_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 360.0,
     "prf_track": 360.0,
@@ -2331,6 +2664,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_1022_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 360.0,
     "prf_track": 360.0,
@@ -2338,6 +2672,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_344_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 18.891,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -2345,6 +2680,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_344_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 18.891,
     "prf_search": 40000.0,
     "prf_track": 40000.0,
@@ -2352,6 +2688,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_left_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2359,6 +2696,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_left_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2366,6 +2704,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_right_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2373,6 +2712,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Front_right_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2380,6 +2720,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_left_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2387,6 +2728,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_left_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2394,6 +2736,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2401,6 +2744,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Search_Rear_right_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.245,
     "prf_search": 50000.0,
     "prf_track": 50000.0,
@@ -2408,6 +2752,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Track_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 5.65,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2415,6 +2760,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_346_Track_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 5.65,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2422,6 +2768,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_360_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.531,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -2429,6 +2776,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_360_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.531,
     "prf_search": 900.0,
     "prf_track": 900.0,
@@ -2436,6 +2784,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_364_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.239,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -2443,6 +2792,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_364_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.239,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -2450,6 +2800,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_382_Large_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2457,6 +2808,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_382_Large_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.218,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2464,6 +2816,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_382_Small_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.463,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2471,6 +2824,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_382_Small_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.463,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2478,6 +2832,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_517_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.112,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2485,6 +2840,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_517_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.112,
     "prf_search": 500.0,
     "prf_track": 500.0,
@@ -2492,6 +2848,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_903_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.05,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -2499,6 +2856,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_903_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.05,
     "prf_search": 3000.0,
     "prf_track": 3000.0,
@@ -2506,6 +2864,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_909_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.314,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -2513,6 +2872,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_909_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 7.314,
     "prf_search": 20000.0,
     "prf_track": 20000.0,
@@ -2520,6 +2880,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_965_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.104,
     "prf_search": 200.0,
     "prf_track": 200.0,
@@ -2527,6 +2888,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_965_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.104,
     "prf_search": 200.0,
     "prf_track": 200.0,
@@ -2534,6 +2896,7 @@
     "undetectable": true
   },
   "imported_wavs/Type_992Q_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.298,
     "prf_search": 833.0,
     "prf_track": 833.0,
@@ -2541,6 +2904,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_992Q_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.298,
     "prf_search": 833.0,
     "prf_track": 833.0,
@@ -2548,6 +2912,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_992_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.472,
     "prf_search": 833.0,
     "prf_track": 833.0,
@@ -2555,6 +2920,7 @@
     "undetectable": false
   },
   "imported_wavs/Type_992_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.472,
     "prf_search": 833.0,
     "prf_track": 833.0,
@@ -2562,6 +2928,7 @@
     "undetectable": false
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 17.570726645711,
     "prf_search": 7500.0,
     "prf_track": 10000.0,
@@ -2569,6 +2936,7 @@
     "undetectable": false
   },
   "imported_wavs/VIRTUAL_AUDIO_SENSOR_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 17.570726645711,
     "prf_search": 7500.0,
     "prf_track": 10000.0,
@@ -2576,6 +2944,7 @@
     "undetectable": false
   },
   "imported_wavs/Winglong-1 SAR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.1606555375835,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -2583,6 +2952,7 @@
     "undetectable": true
   },
   "imported_wavs/Winglong-1 SAR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.1606555375835,
     "prf_search": 1125.0,
     "prf_track": 1500.0,
@@ -2590,6 +2960,7 @@
     "undetectable": true
   },
   "imported_wavs/ZSU-23-4 Shilka_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.539,
     "prf_search": 1800.0,
     "prf_track": 3600.0,
@@ -2597,6 +2968,7 @@
     "undetectable": false
   },
   "imported_wavs/ZSU-23-4 Shilka_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 16.539,
     "prf_search": 1800.0,
     "prf_track": 3600.0,
@@ -2604,6 +2976,7 @@
     "undetectable": false
   },
   "imported_wavs/ZW_01_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 12.335,
     "prf_search": 1400.0,
     "prf_track": 140.0,
@@ -2611,6 +2984,7 @@
     "undetectable": false
   },
   "imported_wavs/ZW_01_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 12.335,
     "prf_search": 1400.0,
     "prf_track": 140.0,
@@ -2618,6 +2992,7 @@
     "undetectable": false
   },
   "imported_wavs/albatros search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.7999633777886,
     "prf_search": 3813.5593220339,
     "prf_track": 5084.7457627119,
@@ -2625,6 +3000,7 @@
     "undetectable": false
   },
   "imported_wavs/albatros search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.7999633777886,
     "prf_search": 3813.5593220339,
     "prf_track": 5084.7457627119,
@@ -2632,6 +3008,7 @@
     "undetectable": false
   },
   "imported_wavs/amazonka_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 11.488,
     "prf_search": 1500.0,
     "prf_track": 1500.0,
@@ -2639,6 +3016,7 @@
     "undetectable": false
   },
   "imported_wavs/amazonka_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 11.488,
     "prf_search": 1500.0,
     "prf_track": 1500.0,
@@ -2646,6 +3024,7 @@
     "undetectable": false
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.6581316568499,
     "prf_search": 2884.6153846154,
     "prf_track": 3846.1538461538,
@@ -2653,6 +3032,7 @@
     "undetectable": true
   },
   "imported_wavs/carrier search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.6581316568499,
     "prf_search": 2884.6153846154,
     "prf_track": 3846.1538461538,
@@ -2660,6 +3040,7 @@
     "undetectable": true
   },
   "imported_wavs/fan_song_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 4.95,
     "prf_search": 1750.0,
     "prf_track": 3575.0,
@@ -2667,6 +3048,7 @@
     "undetectable": false
   },
   "imported_wavs/fan_song_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 4.95,
     "prf_search": 1750.0,
     "prf_track": 3575.0,
@@ -2674,6 +3056,7 @@
     "undetectable": false
   },
   "imported_wavs/molniya search radar_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 15.11996826075,
     "prf_search": 3957.0875835385,
     "prf_track": 5276.1167780514,
@@ -2681,6 +3064,7 @@
     "undetectable": false
   },
   "imported_wavs/molniya search radar_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 15.11996826075,
     "prf_search": 3957.0875835385,
     "prf_track": 5276.1167780514,
@@ -2688,6 +3072,7 @@
     "undetectable": false
   },
   "imported_wavs/moskva search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.8314096499527,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -2695,6 +3080,7 @@
     "undetectable": false
   },
   "imported_wavs/moskva search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.8314096499527,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -2702,6 +3088,7 @@
     "undetectable": false
   },
   "imported_wavs/neustrashimy search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.3946104312265,
     "prf_search": 3346.2224866151,
     "prf_track": 4461.6299821535,
@@ -2709,6 +3096,7 @@
     "undetectable": false
   },
   "imported_wavs/neustrashimy search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 3.3946104312265,
     "prf_search": 3346.2224866151,
     "prf_track": 4461.6299821535,
@@ -2716,6 +3104,7 @@
     "undetectable": false
   },
   "imported_wavs/p-19 s-125 sr_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.87,
     "prf_search": 445.0,
     "prf_track": 445.0,
@@ -2723,6 +3112,7 @@
     "undetectable": true
   },
   "imported_wavs/p-19 s-125 sr_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.87,
     "prf_search": 445.0,
     "prf_track": 445.0,
@@ -2730,6 +3120,7 @@
     "undetectable": true
   },
   "imported_wavs/p_19_beam_2_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.86,
     "prf_search": 445.0,
     "prf_track": 445.0,
@@ -2737,6 +3128,7 @@
     "undetectable": true
   },
   "imported_wavs/p_19_beam_2_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.86,
     "prf_search": 445.0,
     "prf_track": 445.0,
@@ -2744,6 +3136,7 @@
     "undetectable": true
   },
   "imported_wavs/perry search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.9143223364971,
     "prf_search": 3346.2224866151,
     "prf_track": 4461.6299821535,
@@ -2751,6 +3144,7 @@
     "undetectable": false
   },
   "imported_wavs/perry search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.9143223364971,
     "prf_search": 3346.2224866151,
     "prf_track": 4461.6299821535,
@@ -2758,6 +3152,7 @@
     "undetectable": false
   },
   "imported_wavs/piotr velikiy search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.1798272652364,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -2765,6 +3160,7 @@
     "undetectable": false
   },
   "imported_wavs/piotr velikiy search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 2.1798272652364,
     "prf_search": 2812.5,
     "prf_track": 3750.0,
@@ -2772,6 +3168,7 @@
     "undetectable": false
   },
   "imported_wavs/rezki search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.95850093081454,
     "prf_search": 3477.5888717156,
     "prf_track": 4636.7851622875,
@@ -2779,6 +3176,7 @@
     "undetectable": true
   },
   "imported_wavs/rezki search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 0.95850093081454,
     "prf_search": 3477.5888717156,
     "prf_track": 4636.7851622875,
@@ -2786,6 +3184,7 @@
     "undetectable": true
   },
   "imported_wavs/sa_6_TR_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.1,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -2793,6 +3192,7 @@
     "undetectable": false
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 8.1,
     "prf_search": 2000.0,
     "prf_track": 2000.0,
@@ -2800,6 +3200,7 @@
     "undetectable": false
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.0,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -2807,6 +3208,7 @@
     "undetectable": false
   },
   "imported_wavs/sa_8_Search_high_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.0,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -2814,6 +3216,7 @@
     "undetectable": false
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.2,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -2821,6 +3224,7 @@
     "undetectable": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 7.2,
     "prf_search": 2800.0,
     "prf_track": 2800.0,
@@ -2828,6 +3232,7 @@
     "undetectable": false
   },
   "imported_wavs/seasparrow tr_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.351847895749,
     "prf_search": 3750.0,
     "prf_track": 5000.0,
@@ -2835,6 +3240,7 @@
     "undetectable": false
   },
   "imported_wavs/seasparrow tr_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 13.351847895749,
     "prf_search": 3750.0,
     "prf_track": 5000.0,
@@ -2842,6 +3248,7 @@
     "undetectable": false
   },
   "imported_wavs/snr s-125 tr_SEARCH.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.25,
     "prf_search": 1750.0,
     "prf_track": 3575.0,
@@ -2849,6 +3256,7 @@
     "undetectable": false
   },
   "imported_wavs/snr s-125 tr_TRACK.wav": {
+    "type": "TRACK_ONLY",
     "band": 9.25,
     "prf_search": 1750.0,
     "prf_track": 3575.0,
@@ -2856,6 +3264,7 @@
     "undetectable": false
   },
   "imported_wavs/son-9 tr_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 2.73,
     "prf_search": 1875.0,
     "prf_track": 1875.0,
@@ -2863,6 +3272,7 @@
     "undetectable": false
   },
   "imported_wavs/son-9 tr_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
     "band": 2.73,
     "prf_search": 1875.0,
     "prf_track": 1875.0,
@@ -2870,6 +3280,7 @@
     "undetectable": false
   },
   "imported_wavs/ticonderoga search radar_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.6048097170934,
     "prf_search": 3214.2857142857,
     "prf_track": 4285.7142857143,
@@ -2877,6 +3288,7 @@
     "undetectable": true
   },
   "imported_wavs/ticonderoga search radar_TRACK.wav": {
+    "type": "SEARCH_ONLY",
     "band": 1.6048097170934,
     "prf_search": 3214.2857142857,
     "prf_track": 4285.7142857143,
