@@ -296,7 +296,8 @@ jobs:
                           "priority": float(prio),
                           "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                           "repeat": False,  # Will be updated later based on occurrence count
-                          "unit": unit
+                          "unit": unit,
+                          "note": None
                       }
                       
                       if target not in entries:
