@@ -232,7 +232,9 @@ jobs:
                       "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                       "repeat": False,
                       "unit": None,
-                      "note": None
+                      "note": None,
+                      "warning": None,
+                      "warning2": None
                   })
               return rows
 
@@ -297,7 +299,9 @@ jobs:
                           "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                           "repeat": False,  # Will be updated later based on occurrence count
                           "unit": unit,
-                          "note": None
+                          "note": None,
+                          "warning": None,
+                          "warning2": None
                       }
                       
                       if target not in entries:
