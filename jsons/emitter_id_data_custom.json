@@ -1,6 +1,16 @@
 {
   "ai_file_entries": [
     {
+      "radar": "AN/APQ-153",
+      "symbol1": "a_bar",
+      "symbol2": "ai_group_3",
+      "priority": 26.0,
+      "alt_type": 0,
+      "repeat": false,
+      "unit": null,
+      "note": "Basically the same as the F-5E-3's APQ-159"
+    },
+    {
       "radar": "RP_5_search",
       "symbol1": "ai_group_3",
       "symbol2": "ai_group_3",

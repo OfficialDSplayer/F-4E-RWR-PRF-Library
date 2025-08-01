@@ -206,6 +206,24 @@
       .collapsed {
         display: none;
       }
+      /* #symbol-filter-dropdown {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      } */
+      #symbol-filter-dropdown label {
+        width: 64px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      #symbol-filter-dropdown img {
+        border: 1px solid white;
+        border-radius: 2px;
+        /* background: white; */
+      }
     </style>
   </head>
   <body>
@@ -226,20 +244,56 @@
       </div>
     </div>
 
-    <div class="controls">
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search sounds..."
-        style="
-          padding: 8px 14px;
-          width: 300px;
-          font-size: 14px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
-          margin-bottom: 0px;
-        "
-      />
+    <div
+      class="controls"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+      "
+    >
+      <div style="display: flex; align-items: center; gap: 10px">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search sounds..."
+          style="
+            padding: 8px 14px;
+            width: 300px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          "
+        />
+
+        <div id="symbol-filter-wrapper" style="position: relative">
+          <button id="symbol-filter-toggle" class="global-button" style="font-size: 14px">
+            Filter Symbols ⬇
+          </button>
+          <div
+            id="symbol-filter-dropdown"
+            style="
+              display: none; /* hidden by default */
+              position: absolute;
+              top: 100%;
+              right: 0;
+              background: var(--card-bg);
+              border: 1px solid #ccc;
+              max-height: 300px;
+              overflow-y: auto;
+              z-index: 1000;
+              min-width: 500px;
+              padding: 10px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+              text-align: center;
+              flex-wrap: wrap;
+              gap: 8px;
+            "
+          ></div>
+        </div>
+      </div>
     </div>
 
     <div class="controls">
@@ -301,6 +355,10 @@
       let collapsedGroups = JSON.parse(localStorage.getItem("collapsedGroups") || "[]");
       let soundMeta = [];
       let alr46Info = {};
+      let selectedSymbols = new Set();
+      // let allSelected = true;
+      // selectAllBtn.textContent = "Deselect All"; // Start as fully selected
+
       const cancelledLoads = new Set();
 
       const symbolToImageMap = {
@@ -488,7 +546,8 @@
 
           document.getElementById("audio-list").innerHTML = ""; // Clear 'Loading sounds...'
           const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
-          displayGroups(soundMeta, searchTerm);
+          // displayGroups(soundMeta, searchTerm);
+          populateSymbolFilter(soundMeta);
         } catch (error) {
           console.error("❌ Error loading sound metadata or audio files:", error);
           document.getElementById("audio-list").textContent = "❌ Failed to load sounds.";
@@ -497,6 +556,156 @@
         setTimeout(() => {
           document.getElementById("progress-container").style.display = "none";
         }, 300); // fade out after short delay
+      }
+
+      function populateSymbolFilter(sounds) {
+        const usedSymbols = new Set();
+
+        for (const sound of sounds) {
+          const fullPath = sound.file;
+          const radarInfo = alr46Info[fullPath];
+          if (!radarInfo) continue;
+
+          const normalized = normalizeRadarName(
+            fullPath.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+          );
+          const radarEntry = window.radarSymbolMap?.[normalized];
+          const radarEntries = Array.isArray(radarEntry)
+            ? radarEntry
+            : radarEntry
+            ? [radarEntry]
+            : [];
+
+          for (const entry of radarEntries) {
+            if (entry.symbol1) usedSymbols.add(entry.symbol1);
+            if (entry.symbol2) usedSymbols.add(entry.symbol2);
+          }
+
+          if (!radarEntry && radarInfo.band != null) {
+            const freq = Number(radarInfo.band);
+            const fallback =
+              freq >= 2 && freq < 4
+                ? "unknown_low"
+                : freq >= 4 && freq < 8
+                ? "unknown_medium"
+                : freq >= 8 && freq <= 20
+                ? "unknown_high"
+                : null;
+            if (fallback) usedSymbols.add(fallback);
+          }
+        }
+
+        const container = document.getElementById("symbol-filter-dropdown");
+        container.innerHTML = ""; // Clear previous
+        const innerWrapper = document.createElement("div");
+        innerWrapper.style.display = "flex";
+        innerWrapper.style.flexDirection = "column";
+        innerWrapper.style.alignItems = "center";
+        innerWrapper.style.width = "100%";
+        container.appendChild(innerWrapper);
+
+        // Create grid to hold checkboxes
+        const gridWrapper = document.createElement("div");
+        gridWrapper.style.display = "flex";
+        gridWrapper.style.flexWrap = "wrap";
+        gridWrapper.style.justifyContent = "center";
+        gridWrapper.style.gap = "8px";
+        gridWrapper.style.marginTop = "8px";
+
+        // Select All / Deselect All button
+        const selectAllWrapper = document.createElement("div");
+        selectAllWrapper.style.display = "flex";
+        selectAllWrapper.style.flexDirection = "column";
+        selectAllWrapper.style.alignItems = "center";
+        selectAllWrapper.style.justifyContent = "center";
+        selectAllWrapper.style.width = "64px";
+        selectAllWrapper.style.margin = "6px";
+
+        const selectAllBtn = document.createElement("button");
+        selectAllBtn.textContent = "Deselect All";
+        selectAllBtn.className = "global-button";
+        selectAllBtn.style.fontSize = "0.85em";
+        selectAllBtn.style.padding = "6px 12px";
+        selectAllBtn.style.margin = "4px auto 0";
+        let allSelected = true;
+
+        selectAllBtn.addEventListener("click", () => {
+          allSelected = !allSelected;
+          selectAllBtn.textContent = allSelected ? "Deselect All" : "Select All";
+
+          const checkboxes = gridWrapper.querySelectorAll("input[type='checkbox']");
+          checkboxes.forEach((cb) => {
+            cb.checked = allSelected;
+            if (allSelected) {
+              selectedSymbols.add(cb.value);
+            } else {
+              selectedSymbols.delete(cb.value);
+            }
+          });
+
+          const searchTerm = document.getElementById("search-input").value.trim();
+          displayGroups(soundMeta, searchTerm);
+        });
+
+        innerWrapper.appendChild(selectAllBtn);
+        innerWrapper.appendChild(gridWrapper);
+        // container.appendChild(selectAllWrapper); // ⬅️ as part of grid!
+
+        const sortedSymbols = [...usedSymbols].sort();
+        sortedSymbols.forEach((symbol) => {
+          const imageFile = symbolToImageMap[symbol];
+          if (!imageFile) return;
+
+          const wrapper = document.createElement("label");
+          wrapper.style.display = "inline-flex";
+          wrapper.style.flexDirection = "column";
+          wrapper.style.alignItems = "center";
+          wrapper.style.justifyContent = "flex-start";
+          wrapper.style.width = "64px";
+          wrapper.style.margin = "6px";
+          wrapper.style.gap = "4px";
+          wrapper.style.textAlign = "center";
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.value = symbol;
+          checkbox.checked = true;
+          checkbox.style.accentColor = "#2196f3";
+          checkbox.addEventListener("change", (e) => {
+            if (e.target.checked) {
+              selectedSymbols.add(symbol);
+            } else {
+              selectedSymbols.delete(symbol);
+            }
+            const searchTerm = document.getElementById("search-input").value.trim();
+            displayGroups(soundMeta, searchTerm);
+          });
+
+          const img = document.createElement("img");
+          img.src = `assets/rwr-symbols/${imageFile}.jpg`;
+          img.alt = symbol;
+          img.title = symbol;
+          img.style.height = "48px";
+          img.style.maxWidth = "100%";
+          img.style.display = "block";
+          img.style.objectFit = "contain";
+          img.style.margin = "0 auto";
+
+          wrapper.appendChild(checkbox);
+          wrapper.appendChild(img);
+          // container.appendChild(wrapper);
+          gridWrapper.appendChild(wrapper);
+        });
+
+        // ✅ Initialize selectedSymbols with all checked symbols
+        selectedSymbols.clear();
+        container.querySelectorAll("input[type='checkbox']:checked").forEach((cb) => {
+          selectedSymbols.add(cb.value);
+        });
+
+        // ✅ Trigger initial display update
+        const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
+        displayGroups(soundMeta, searchTerm);
       }
 
       async function buildRadarSymbolMap() {
@@ -622,7 +831,40 @@
           const visibleSounds = grouped[groupName].filter((sound) => {
             if (sound.hidden) return false;
             const haystack = `${sound.name} ${sound.description}`.toLowerCase();
-            return haystack.includes(searchTerm.toLowerCase());
+            const matchesText = haystack.includes(searchTerm.toLowerCase());
+
+            const radarInfo = alr46Info[sound.file];
+            if (!radarInfo) return matchesText; // allow text-only match
+
+            const normalized = normalizeRadarName(
+              sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+            );
+            const radarEntry = window.radarSymbolMap?.[normalized];
+            const radarEntries = Array.isArray(radarEntry)
+              ? radarEntry
+              : radarEntry
+              ? [radarEntry]
+              : [];
+
+            let matchesSymbol = radarEntries.some(
+              (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+            );
+
+            // Also handle unknown fallback
+            if (!matchesSymbol && radarEntries.length === 0 && radarInfo.band != null) {
+              const freq = Number(radarInfo.band);
+              const fallback =
+                freq >= 2 && freq < 4
+                  ? "unknown_low"
+                  : freq >= 4 && freq < 8
+                  ? "unknown_medium"
+                  : freq >= 8 && freq <= 20
+                  ? "unknown_high"
+                  : null;
+              matchesSymbol = fallback && selectedSymbols.has(fallback);
+            }
+
+            return matchesText && matchesSymbol;
           });
 
           // Skip group if no visible sounds
@@ -1333,6 +1575,20 @@
           info.style.display = "none";
         });
       }
+      // Dropdown toggle setup (only do this once!)
+      const toggleBtn = document.getElementById("symbol-filter-toggle");
+      const dropdown = document.getElementById("symbol-filter-dropdown");
+
+      toggleBtn.addEventListener("click", () => {
+        dropdown.style.display = dropdown.style.display === "none" ? "flex" : "none";
+      });
+
+      document.addEventListener("click", (e) => {
+        const wrapper = document.getElementById("symbol-filter-wrapper");
+        if (!wrapper.contains(e.target)) {
+          dropdown.style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>
