@@ -8,7 +8,9 @@
       "alt_type": 0,
       "repeat": false,
       "unit": null,
-      "note": "Basically the same as the F-5E-3's APQ-159"
+      "note": "Basically the same as the F-5E-3's APQ-159",
+      "warning": null,
+      "warning2": null
     },
     {
       "radar": "RP_5_search",
@@ -18,7 +20,21 @@
       "alt_type": null,
       "repeat": false,
       "unit": null,
-      "note": "While not defined in the emitter_id_table, the radar is so similar to the RP-5 track, it is matched."
+      "note": "While not defined in the emitter_id_table, the radar is so similar to the RP-5 track, it is matched.",
+      "warning": null,
+      "warning2": null
+    },
+    {
+      "radar": "RP_22SMA",
+      "symbol1": "unknown_high",
+      "symbol2": "unknown_high",
+      "priority": 25.0,
+      "alt_type": 0,
+      "repeat": false,
+      "unit": null,
+      "note": null,
+      "warning": "⚠️ WARNING: There is a bug as of writing such that this radar is not in the RWR symbol library. It would normally use a symbol similar to the Mirage F1 and MiG-19.<br> Current symbol assigned based on frequency band.",
+      "warning2": "⚠️ WARNING: Tracking tone is also NOT presented due to the same bug."
     }
   ],
   "new_land_file": [],

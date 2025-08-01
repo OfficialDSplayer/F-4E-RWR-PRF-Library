@@ -770,25 +770,10 @@
           const emitterDataMain = await mainResponse.json();
           const emitterDataCustom = await customResponse.json();
 
-          // Merge the entries for each table
-          const mergedEmitterData = {
-            ai_file_entries: [
-              ...(emitterDataMain.ai_file_entries || []),
-              ...(emitterDataCustom.ai_file_entries || []),
-            ],
-            new_land_file: [
-              ...(emitterDataMain.new_land_file || []),
-              ...(emitterDataCustom.new_land_file || []),
-            ],
-            new_sea_file: [
-              ...(emitterDataMain.new_sea_file || []),
-              ...(emitterDataCustom.new_sea_file || []),
-            ],
-          };
-
+          // ✅ NEW: Process main data first, then custom data to give custom precedence
           window.radarSymbolMap = {};
 
-          const addEntries = (entries, source) => {
+          const addEntries = (entries, source, isCustom = false) => {
             for (const entry of entries) {
               const key = normalizeRadarName(entry.radar); // Normalize radar name for consistent dictionary key
               const newEntry = {
@@ -796,6 +781,9 @@
                 symbol2: entry.symbol2,
                 source, // Source table this entry came from (e.g., ai_file_entries)
                 repeat: entry.repeat, // Repeat value used to determine priority (can be 1, a number, or false)
+                warning: entry.warning, // ✅ NEW: Capture warning field
+                warning2: entry.warning2, // ✅ NEW: Capture warning2 field
+                isCustom, // ✅ NEW: Track if this is from custom file
               };
 
               if (!window.radarSymbolMap[key]) {
@@ -816,21 +804,31 @@
                   const existingRepeat = existing.repeat;
                   const currentRepeat = newEntry.repeat;
 
-                  // Priority logic:
-                  // 1. repeat === 1 always takes precedence
-                  // 2. A numeric repeat beats `false`
-                  // 3. If both are numbers, the lower one has higher priority
+                  // ✅ UPDATED Priority logic:
+                  // 1. Custom data ALWAYS takes precedence over main data
+                  // 2. repeat === 1 always takes precedence (within same data source)
+                  // 3. A numeric repeat beats `false` (within same data source)
+                  // 4. If both are numbers, the lower one has higher priority (within same data source)
                   let shouldReplace = false;
 
-                  if (currentRepeat === 1) {
+                  if (isCustom && !existing.isCustom) {
+                    // Custom data always replaces main data
                     shouldReplace = true;
-                  } else if (existingRepeat === false && typeof currentRepeat === "number") {
-                    shouldReplace = true;
-                  } else if (
-                    typeof existingRepeat === "number" &&
-                    typeof currentRepeat === "number"
-                  ) {
-                    shouldReplace = currentRepeat < existingRepeat;
+                  } else if (!isCustom && existing.isCustom) {
+                    // Never replace custom data with main data
+                    shouldReplace = false;
+                  } else {
+                    // Same data source type, use original priority logic
+                    if (currentRepeat === 1) {
+                      shouldReplace = true;
+                    } else if (existingRepeat === false && typeof currentRepeat === "number") {
+                      shouldReplace = true;
+                    } else if (
+                      typeof existingRepeat === "number" &&
+                      typeof currentRepeat === "number"
+                    ) {
+                      shouldReplace = currentRepeat < existingRepeat;
+                    }
                   }
 
                   // Replace the existing entry for this source only if the new one has higher priority
@@ -842,21 +840,32 @@
             }
           };
 
-          addEntries(mergedEmitterData.ai_file_entries, "ai_file_entries");
-          addEntries(mergedEmitterData.new_land_file, "new_land_file");
-          addEntries(mergedEmitterData.new_sea_file, "new_sea_file");
+          // ✅ Process MAIN data first
+          addEntries(emitterDataMain.ai_file_entries || [], "ai_file_entries", false);
+          addEntries(emitterDataMain.new_land_file || [], "new_land_file", false);
+          addEntries(emitterDataMain.new_sea_file || [], "new_sea_file", false);
+
+          // ✅ Process CUSTOM data second (will override main data)
+          addEntries(emitterDataCustom.ai_file_entries || [], "ai_file_entries", true);
+          addEntries(emitterDataCustom.new_land_file || [], "new_land_file", true);
+          addEntries(emitterDataCustom.new_sea_file || [], "new_sea_file", true);
 
           console.log(
             "✅ Radar symbol map built with",
             Object.keys(window.radarSymbolMap).length,
-            "entries (prioritizing repeat=1)"
+            "entries (custom data takes precedence)"
           );
 
-          // Debug: Log some entries to verify repeat priority
+          // Debug: Log some entries to verify custom precedence
           Object.entries(window.radarSymbolMap)
             .slice(0, 5)
-            .forEach(([key, entry]) => {
-              console.log(`🔍 ${key}: repeat=${entry.repeat}, symbol1=${entry.symbol1}`);
+            .forEach(([key, entries]) => {
+              entries.forEach((entry) => {
+                const dataSource = entry.isCustom ? "CUSTOM" : "MAIN";
+                console.log(
+                  `🔍 ${key}: ${dataSource}, repeat=${entry.repeat}, symbol1=${entry.symbol1}`
+                );
+              });
             });
         } catch (e) {
           console.error("❌ Failed to load emitter_id_data.json:", e);
@@ -1216,6 +1225,18 @@
               const imageFileName = symbolToImageMap[symbolValue];
               if (!imageFileName) return null;
 
+              // ✅ NEW: Check if this is a known emitter using an unknown symbol
+              const isKnownUnknownSymbol = [
+                "unknown_low",
+                "unknown_medium",
+                "unknown_high",
+              ].includes(symbolValue);
+
+              // Debug logging
+              if (isKnownUnknownSymbol) {
+                console.log(`🔍 Known emitter using unknown symbol: ${symbolValue}`);
+              }
+
               const symbolWrapper = document.createElement("div");
               symbolWrapper.style.display = "flex";
               symbolWrapper.style.flexDirection = "column";
@@ -1224,28 +1245,42 @@
 
               // Label above image
               const label = document.createElement("div");
-              label.textContent = isUnknown ? "Unknown" : `Symbol ${symbolNumber}`;
+              if (isUnknown) {
+                label.textContent = "Unknown";
+              } else if (isKnownUnknownSymbol) {
+                label.textContent = `Unknown Symbol ${symbolNumber}`;
+              } else {
+                label.textContent = `Symbol ${symbolNumber}`;
+              }
+
               label.style.fontSize = "0.8em";
               label.style.fontWeight = "bold";
-              label.style.color = isUnknown ? "#ff6b35" : "var(--highlight)"; // Orange for unknown
+              label.style.color =
+                isUnknown || isKnownUnknownSymbol ? "#ff6b35" : "var(--highlight)"; // Orange for unknown
               label.style.textAlign = "center";
 
               // Symbol image
               const img = document.createElement("img");
               img.src = `assets/rwr-symbols/${imageFileName}.jpg`;
-              img.alt = isUnknown
-                ? `Unknown RWR Symbol: ${symbolValue}`
-                : `RWR Symbol ${symbolNumber}: ${symbolValue}`;
+              img.alt =
+                isUnknown || isKnownUnknownSymbol
+                  ? `Unknown RWR Symbol: ${symbolValue}`
+                  : `RWR Symbol ${symbolNumber}: ${symbolValue}`;
               img.className = "radar-symbol-img";
               // img.style.maxWidth = "80px";
               img.style.maxHeight = "65px";
-              img.style.border = isUnknown ? "2px solid #ff6b35" : "1px solid var(--highlight)";
+              img.style.border =
+                isUnknown || isKnownUnknownSymbol
+                  ? "2px solid #ff6b35"
+                  : "1px solid var(--highlight)";
               img.style.borderRadius = "1px";
               img.style.background = "white";
               img.style.padding = "1px";
               img.onerror = () => {
                 console.warn(
-                  `❌ Failed to load ${isUnknown ? "unknown" : "symbol" + symbolNumber} image:`,
+                  `❌ Failed to load ${
+                    isUnknown || isKnownUnknownSymbol ? "unknown" : "symbol" + symbolNumber
+                  } image:`,
                   img.src
                 );
                 symbolWrapper.style.display = "none";
@@ -1256,12 +1291,42 @@
               return symbolWrapper;
             };
 
+            // Add this helper function for warnings
+            const createWarningDisplay = (warnings) => {
+              if (!warnings || warnings.length === 0) return null;
+
+              const warningContainer = document.createElement("div");
+              warningContainer.style.marginTop = "8px";
+
+              warnings.forEach((warning, index) => {
+                const warningText = document.createElement("div");
+                warningText.innerHTML = `<b style="color: #ff6b35;"></b> ${warning}`;
+                warningText.style.fontSize = "0.85em";
+                warningText.style.marginTop = index > 0 ? "4px" : "0px";
+                warningText.style.color = "#ff6b35";
+                warningText.style.textAlign = "center";
+                warningText.style.backgroundColor = "rgba(255, 107, 53, 0.1)";
+                warningText.style.padding = "8px";
+                warningText.style.borderRadius = "4px";
+                warningText.style.border = "1px solid rgba(255, 107, 53, 0.3)";
+                warningContainer.appendChild(warningText);
+              });
+
+              return warningContainer;
+            };
+
+            // Replace the existing radar symbol display section (around line 800-950) with this updated version:
             if (radarEntry) {
               // ✅ Loop through each radarEntry (could be multiple if radar exists in multiple tables)
               for (const radarEntryVariant of Array.isArray(radarEntry)
                 ? radarEntry
                 : [radarEntry]) {
-                const { symbol1, symbol2, source } = radarEntryVariant;
+                const { symbol1, symbol2, source, warning, warning2 } = radarEntryVariant;
+
+                // ✅ Check if this is a manually assigned unknown symbol
+                const isManualUnknownSymbol =
+                  ["unknown_low", "unknown_medium", "unknown_high"].includes(symbol1) ||
+                  ["unknown_low", "unknown_medium", "unknown_high"].includes(symbol2);
 
                 // ✅ Create container to hold all RWR symbols for this source
                 const symbolContainer = document.createElement("div");
@@ -1273,14 +1338,19 @@
                 symbolContainer.style.flexWrap = "wrap";
 
                 // ✅ Render first RWR symbol (if defined)
-                const symbol1Element = createSymbolWithLabel(symbol1, 1);
+                const symbol1Element = createSymbolWithLabel(symbol1, 1, isManualUnknownSymbol);
                 if (symbol1Element) {
                   symbolContainer.appendChild(symbol1Element);
                 }
 
                 // ✅ Render second RWR symbol (only if it's different from symbol1)
                 if (symbol2 && symbol2 !== symbol1) {
-                  const symbol2Element = createSymbolWithLabel(symbol2, 2);
+                  const isSymbol2Unknown = [
+                    "unknown_low",
+                    "unknown_medium",
+                    "unknown_high",
+                  ].includes(symbol2);
+                  const symbol2Element = createSymbolWithLabel(symbol2, 2, isSymbol2Unknown);
                   if (symbol2Element) {
                     symbolContainer.appendChild(symbol2Element);
                   }
@@ -1291,15 +1361,61 @@
                   extraInfo.appendChild(symbolContainer);
                 }
 
-                // ✅ Show source table info below the symbols
-                const friendlySourceName = sourceNameMap[source] || source;
-                const sourceText = document.createElement("div");
-                sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
-                sourceText.style.fontSize = "0.85em";
-                sourceText.style.marginTop = "8px";
-                sourceText.style.color = "var(--highlight)";
-                sourceText.style.textAlign = "center";
-                extraInfo.appendChild(sourceText);
+                // ✅ Handle different display modes based on symbol type
+                if (isManualUnknownSymbol) {
+                  // For manually assigned unknown symbols, show frequency band info like auto-detected unknowns
+                  const radarInfo = alr46Info[fullPath];
+                  let frequencyBand = "Unknown";
+
+                  if (radarInfo && radarInfo.band != null) {
+                    const freqGHz = Number(radarInfo.band);
+                    if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "Low band (2-4 GHz)";
+                    else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "Medium band (4-8 GHz)";
+                    else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "High band (8-20 GHz)";
+                  }
+
+                  // Add frequency band info
+                  const bandText = document.createElement("div");
+                  bandText.textContent = frequencyBand;
+                  bandText.style.fontSize = "0.75em";
+                  bandText.style.color = "#ff6b35";
+                  bandText.style.marginTop = "4px";
+                  bandText.style.textAlign = "center";
+                  extraInfo.appendChild(bandText);
+
+                  // Add warning for manually assigned unknown symbols
+                  // const warningText = document.createElement("div");
+                  // warningText.innerHTML = `<b style="color: #ff6b35;">⚠️ WARNING:</b> This radar uses an unknown symbol.<br>Symbol assigned based on frequency band.`;
+                  // warningText.style.fontSize = "0.85em";
+                  // warningText.style.marginTop = "8px";
+                  // warningText.style.color = "#ff6b35";
+                  // warningText.style.textAlign = "center";
+                  // warningText.style.backgroundColor = "rgba(255, 107, 53, 0.1)";
+                  // warningText.style.padding = "8px";
+                  // warningText.style.borderRadius = "4px";
+                  // warningText.style.border = "1px solid rgba(255, 107, 53, 0.3)";
+                  // extraInfo.appendChild(warningText);
+                } else {
+                  // For normal symbols, show source table info
+                  const friendlySourceName = sourceNameMap[source] || source;
+                  const sourceText = document.createElement("div");
+                  sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
+                  sourceText.style.fontSize = "0.85em";
+                  sourceText.style.marginTop = "8px";
+                  sourceText.style.color = "var(--highlight)";
+                  sourceText.style.textAlign = "center";
+                  extraInfo.appendChild(sourceText);
+                }
+
+                // ✅ Display warnings if they exist (for all symbol types)
+                const warnings = [];
+                if (warning && warning.trim()) warnings.push(warning.trim());
+                if (warning2 && warning2.trim()) warnings.push(warning2.trim());
+
+                const warningDisplay = createWarningDisplay(warnings);
+                if (warningDisplay) {
+                  extraInfo.appendChild(warningDisplay);
+                }
               }
             } else {
               // Handle unknown radars - check if we have frequency data
@@ -1311,9 +1427,9 @@
                 const freqGHz = Number(radarInfo.band);
                 unknownSymbol = getUnknownSymbolFromFrequency(freqGHz);
 
-                if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "S-band (2-4 GHz)";
-                else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "C-band (4-8 GHz)";
-                else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "X-K band (8-20 GHz)";
+                if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "Low band (2-4 GHz)";
+                else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "Medium band (4-8 GHz)";
+                else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "High band (8-20 GHz)";
               }
 
               if (unknownSymbol) {
@@ -1341,7 +1457,7 @@
 
                 extraInfo.appendChild(symbolContainer);
 
-                // Warning message for unknown radar
+                // Warning message for unknown radar (existing code)
                 const warningText = document.createElement("div");
                 warningText.innerHTML = `<b style="color: #ff6b35;">⚠️ WARNING:</b> This radar is not in the RWR symbol library.<br>Symbol assigned based on frequency band.`;
                 warningText.style.fontSize = "0.85em";
