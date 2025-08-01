@@ -267,6 +267,13 @@
       facing them.
     </p>
 
+    <p>
+      Symbols are shown for the radars listed. Each radar is capable of being displayed using two
+      symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is shown.
+      If they aren't the same, both are shown. In the case of certain emitters like the C-RAM/CIWS
+      Phalanx, if they're in multiple tables (ex: land and sea), both symbols are shown.
+    </p>
+
     <p>Only radars that are detectable by the ALR-46 are listed.</p>
 
     <div
@@ -295,6 +302,56 @@
       let soundMeta = [];
       let alr46Info = {};
       const cancelledLoads = new Set();
+
+      const symbolToImageMap = {
+        ai_group_1: "rwr_flat_triangle_symbol",
+        ai_group_2: "rwr_triangle_symbol",
+        ai_group_3: "rwr_two_triangle_symbol",
+        a_bar: "rwr_a_symbol",
+        two: "rwr_two_symbol",
+        two_bar: "rwr_two_slashed_symbol",
+        three: "rwr_three_symbol",
+        four: "rwr_four_symbol",
+        five: "rwr_five_symbol",
+        six: "rwr_six_symbol",
+        seven: "rwr_seven_symbol",
+        eight: "rwr_eight_symbol",
+        nine: "rwr_nine_symbol",
+        ten: "rwr_ten_symbol",
+        eleven: "rwr_eleven_symbol",
+        fifteen: "rwr_15_symbol",
+        nineteen: "rwr_19_symbol",
+        h: "rwr_h_symbol",
+        r: "rwr_r_symbol",
+        p_bar: "rwr_p_slashed_symbol",
+        a_dot: "rwr_a_one_dot_symbol",
+        a_two_dot: "rwr_a_two_dot_symbol",
+        a_three_dot: "rwr_a_three_dot_symbol",
+        search: "rwr_s_symbol",
+        c: "rwr_c_symbol",
+        g: "rwr_g_symbol",
+        l: "rwr_l_symbol",
+        uncorrelated_missile_launch: "rwr_uncorr_msl",
+        // Add unknown RWR symbols
+        unknown_low: "rwr_u_one_dot_symbol", // 2-4 GHz
+        unknown_medium: "rwr_u_two_dot_symbol", // 4-8 GHz
+        unknown_high: "rwr_u_three_dot_symbol", // 8-20 GHz
+      };
+
+      const sourceNameMap = {
+        ai_file_entries: "Air Intercept Table",
+        new_land_file: "Land-based Radar Table",
+        new_sea_file: "Sea-based Radar Table",
+      };
+
+      function normalizeRadarName(str) {
+        return str
+          .toLowerCase()
+          .replace(/[\s\-\/\\]+/g, "_") // spaces, slashes, dashes → underscore
+          .replace(/[^a-z0-9_]/g, "") // remove remaining special chars
+          .replace(/_+/g, "_") // collapse multiple underscores
+          .trim();
+      }
 
       // Set theme on page load (saved or auto-detect)
       const savedTheme = localStorage.getItem("theme");
@@ -333,6 +390,7 @@
             fetch("jsons/groups_custom.json?v=" + Date.now()),
             fetch("jsons/alr_46_threat_info.json?v=" + Date.now()),
             fetch("jsons/alr_46_threat_info_custom.json?v=" + Date.now()),
+            buildRadarSymbolMap(),
           ]);
 
           const wavFiles = await wavListResponse.json();
@@ -385,6 +443,31 @@
               // ✅ Skip hidden and undetectable sounds entirely
               if (meta.hidden || isUndetectable) continue;
 
+              // Apply radar-based skipping logic BEFORE populating soundMeta
+              const radarInfo = alr46Info[file];
+              if (radarInfo) {
+                if (
+                  file.includes("SEARCH") &&
+                  radarInfo.type === "TRACK_ONLY" &&
+                  radarInfo.prf_search == radarInfo.prf_track
+                ) {
+                  console.log(`🔒 Skipped (SEARCH wav with TRACK_ONLY radar, same PRF): ${file}`);
+                  continue;
+                } else if (file.includes("TRACK") && radarInfo.type === "SEARCH_ONLY") {
+                  console.log(`🔒 Skipped (TRACK wav with SEARCH_ONLY radar): ${file}`);
+                  continue;
+                } else if (
+                  file.includes("TRACK") &&
+                  radarInfo.type === "SEARCH_AND_TRACK" &&
+                  radarInfo.prf_search == radarInfo.prf_track
+                ) {
+                  console.log(
+                    `🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`
+                  );
+                  continue;
+                }
+              }
+
               soundMeta.push({
                 file,
                 group: meta.group,
@@ -414,6 +497,112 @@
         setTimeout(() => {
           document.getElementById("progress-container").style.display = "none";
         }, 300); // fade out after short delay
+      }
+
+      async function buildRadarSymbolMap() {
+        if (window.radarSymbolMap) return;
+
+        try {
+          // Allow for custom emitter_id_data json.
+          const [mainResponse, customResponse] = await Promise.all([
+            fetch("jsons/emitter_id_data.json"),
+            fetch("jsons/emitter_id_data_custom.json"),
+          ]);
+
+          const emitterDataMain = await mainResponse.json();
+          const emitterDataCustom = await customResponse.json();
+
+          // Merge the entries for each table
+          const mergedEmitterData = {
+            ai_file_entries: [
+              ...(emitterDataMain.ai_file_entries || []),
+              ...(emitterDataCustom.ai_file_entries || []),
+            ],
+            new_land_file: [
+              ...(emitterDataMain.new_land_file || []),
+              ...(emitterDataCustom.new_land_file || []),
+            ],
+            new_sea_file: [
+              ...(emitterDataMain.new_sea_file || []),
+              ...(emitterDataCustom.new_sea_file || []),
+            ],
+          };
+
+          window.radarSymbolMap = {};
+
+          const addEntries = (entries, source) => {
+            for (const entry of entries) {
+              const key = normalizeRadarName(entry.radar); // Normalize radar name for consistent dictionary key
+              const newEntry = {
+                symbol1: entry.symbol1,
+                symbol2: entry.symbol2,
+                source, // Source table this entry came from (e.g., ai_file_entries)
+                repeat: entry.repeat, // Repeat value used to determine priority (can be 1, a number, or false)
+              };
+
+              if (!window.radarSymbolMap[key]) {
+                // First time encountering this radar — initialize entry list with this source
+                window.radarSymbolMap[key] = [newEntry];
+              } else {
+                const existingEntries = window.radarSymbolMap[key];
+
+                // Look for an existing entry from the same source (e.g., new_sea_file)
+                const existingIdx = existingEntries.findIndex((e) => e.source === source);
+
+                if (existingIdx === -1) {
+                  // No entry from this source yet — safe to add
+                  existingEntries.push(newEntry);
+                } else {
+                  // Existing entry from this source found — decide whether to replace based on priority
+                  const existing = existingEntries[existingIdx];
+                  const existingRepeat = existing.repeat;
+                  const currentRepeat = newEntry.repeat;
+
+                  // Priority logic:
+                  // 1. repeat === 1 always takes precedence
+                  // 2. A numeric repeat beats `false`
+                  // 3. If both are numbers, the lower one has higher priority
+                  let shouldReplace = false;
+
+                  if (currentRepeat === 1) {
+                    shouldReplace = true;
+                  } else if (existingRepeat === false && typeof currentRepeat === "number") {
+                    shouldReplace = true;
+                  } else if (
+                    typeof existingRepeat === "number" &&
+                    typeof currentRepeat === "number"
+                  ) {
+                    shouldReplace = currentRepeat < existingRepeat;
+                  }
+
+                  // Replace the existing entry for this source only if the new one has higher priority
+                  if (shouldReplace) {
+                    existingEntries[existingIdx] = newEntry;
+                  }
+                }
+              }
+            }
+          };
+
+          addEntries(mergedEmitterData.ai_file_entries, "ai_file_entries");
+          addEntries(mergedEmitterData.new_land_file, "new_land_file");
+          addEntries(mergedEmitterData.new_sea_file, "new_sea_file");
+
+          console.log(
+            "✅ Radar symbol map built with",
+            Object.keys(window.radarSymbolMap).length,
+            "entries (prioritizing repeat=1)"
+          );
+
+          // Debug: Log some entries to verify repeat priority
+          Object.entries(window.radarSymbolMap)
+            .slice(0, 5)
+            .forEach(([key, entry]) => {
+              console.log(`🔍 ${key}: repeat=${entry.repeat}, symbol1=${entry.symbol1}`);
+            });
+        } catch (e) {
+          console.error("❌ Failed to load emitter_id_data.json:", e);
+        }
       }
 
       function displayGroups(sounds, searchTerm = "") {
@@ -510,47 +699,158 @@
                 parts.push(`Radar Frequency: ${freqGHz.toFixed(2)} GHz (${band} band)`);
               }
 
+              // Auto hide DEPRECATED LOCATION as it effects "Ungrouped" still appearing
+              // if (
+              //   // If wav is SEARCH and radar type is TRACK ONLY and PRF between both modes are same then hide
+              //   fullPath.includes("SEARCH") &&
+              //   radarInfo.type == "TRACK_ONLY" &&
+              //   radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(`🔒 Hidden (SEARCH wav with TRACK_ONLY radar, same PRF): ${fullPath}`);
+              //   continue;
+              // } else if (
+              //   // If wav is TRACK and radar type is SEARCH then hide
+              //   fullPath.includes("TRACK") &&
+              //   radarInfo.type == "SEARCH_ONLY"
+              //   // radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(`🔒 Hidden (TRACK wav with SEARCH_ONLY radar): ${fullPath}`);
+              //   continue;
+              // } else if (
+              //   fullPath.includes("TRACK") &&
+              //   radarInfo.type == "SEARCH_AND_TRACK" &&
+              //   radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(
+              //     `🔒 Hidden (TRACK wav with same PRF as SEARCH wav with SEARCH_AND_TRACK): ${fullPath}`
+              //   );
+              //   continue;
+              // }
+
               // Radar PRF
+              // if (
+              //   fullPath.includes("SEARCH") &&
+              //   // radarInfo.prf_search != null &&
+              //   // radarInfo.prf_track != null &&
+              //   groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === false
+              // ) {
+              //   if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+              //     parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+              //     parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              //   } else {
+              //     parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+              //     parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              //   }
+              // } else if (
+              //   fullPath.includes("TRACK") &&
+              //   // radarInfo.prf_search != null &&
+              //   // radarInfo.prf_track != null &&
+              //   groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === false
+              // ) {
+              //   if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+              //     parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+              //     parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              //   } else {
+              //     parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+              //     parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              //   }
+              // } else if (
+              //   fullPath.includes("SEARCH") &&
+              //   // radarInfo.prf_search != null &&
+              //   // radarInfo.prf_track != null &&
+              //   groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === true
+              // ) {
+              //   parts.push(`PRF: ${Number(radarInfo.prf_search).toFixed(2)}`);
+              // } else if (
+              //   fullPath.includes("TRACK") &&
+              //   // radarInfo.prf_search != null &&
+              //   // radarInfo.prf_track != null &&
+              //   groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === true
+              // ) {
+              //   parts.push(`PRF: ${Number(radarInfo.prf_track).toFixed(2)}`);
+              // }
+
               if (
                 fullPath.includes("SEARCH") &&
                 // radarInfo.prf_search != null &&
                 // radarInfo.prf_track != null &&
-                groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === false
+                // groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === false
+                radarInfo.type == "SEARCH_ONLY"
+                // radarInfo.prf_search != radarInfo.prf_track
               ) {
-                if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
-                  parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
-                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
-                } else {
-                  parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
-                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
-                }
-              } else if (
-                fullPath.includes("TRACK") &&
-                // radarInfo.prf_search != null &&
-                // radarInfo.prf_track != null &&
-                groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === false
-              ) {
-                if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
-                  parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
-                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
-                } else {
-                  parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
-                  parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
-                }
+                // if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+                //   parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // } else {
+                //   parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // }
+                parts.push(`PRF: ${Number(radarInfo.prf_search).toFixed(2)}`);
               } else if (
                 fullPath.includes("SEARCH") &&
                 // radarInfo.prf_search != null &&
                 // radarInfo.prf_track != null &&
-                groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === true
+                // groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === false
+                radarInfo.type == "TRACK_ONLY" &&
+                radarInfo.prf_search != radarInfo.prf_track
+              ) {
+                // if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+                //   parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // } else {
+                //   parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // }
+                parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              } else if (
+                fullPath.includes("TRACK") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                // groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === false
+                radarInfo.type == "TRACK_ONLY" &&
+                radarInfo.prf_search != radarInfo.prf_track
+              ) {
+                // if (fullPath.includes("fan_song") || fullPath.includes("snr s-125 tr")) {
+                //   parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // } else {
+                //   parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                //   parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+                // }
+                parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
+              } else if (
+                fullPath.includes("SEARCH") &&
+                // radarInfo.prf_search != null &&
+                // radarInfo.prf_track != null &&
+                // groupsData[fullPath.replace("SEARCH", "TRACK")]?.hidden === true
+                radarInfo.type == "SEARCH_ONLY" &&
+                radarInfo.prf_search == radarInfo.prf_track
               ) {
                 parts.push(`PRF: ${Number(radarInfo.prf_search).toFixed(2)}`);
               } else if (
                 fullPath.includes("TRACK") &&
                 // radarInfo.prf_search != null &&
                 // radarInfo.prf_track != null &&
-                groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === true
+                // groupsData[fullPath.replace("TRACK", "SEARCH")]?.hidden === true
+                radarInfo.type == "TRACK_ONLY" &&
+                radarInfo.prf_search == radarInfo.prf_track
               ) {
                 parts.push(`PRF: ${Number(radarInfo.prf_track).toFixed(2)}`);
+              } else if (
+                (fullPath.includes("SEARCH") || fullPath.includes("TRACK")) &&
+                radarInfo.type == "SEARCH_AND_TRACK" &&
+                radarInfo.prf_search == radarInfo.prf_track
+              ) {
+                parts.push(`PRF: ${Number(radarInfo.prf_track).toFixed(2)}`);
+              } else if (
+                (fullPath.includes("SEARCH") || fullPath.includes("TRACK")) &&
+                radarInfo.type == "SEARCH_AND_TRACK" &&
+                radarInfo.prf_search != radarInfo.prf_track
+              ) {
+                parts.push(`PRF (Search): ${Number(radarInfo.prf_search).toFixed(2)}`);
+                parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
               }
 
               // Radar launch warning
@@ -563,10 +863,220 @@
                 parts.push(`Launch Warning: False`);
               }
 
+              if (radarInfo.type == "SEARCH_ONLY") {
+                parts.push(`Radar Type: Search`);
+              } else if (radarInfo.type == "TRACK_ONLY") {
+                parts.push(`Radar Type: Track`);
+              } else if (radarInfo.type == "SEARCH_AND_TRACK") {
+                parts.push(`Radar Type: Search and Track`);
+              }
+
               prfText = parts.join("<br>");
             }
 
             extraInfo.innerHTML = prfText || "No extra info available.";
+
+            // RWR image symbol display
+            const strippedFile = fullPath
+              .replace(/^imported_wavs\//i, "")
+              .replace(/_(SEARCH|TRACK)\.wav$/i, "");
+
+            // Try multiple normalization approaches
+            const normalizedOptions = [
+              normalizeRadarName(strippedFile + ".wav"),
+              normalizeRadarName(strippedFile),
+              normalizeRadarName(sound.name),
+              normalizeRadarName(sound.description),
+            ];
+
+            let radarEntry = null;
+            let matchedKey = null;
+
+            // Try each normalization option
+            for (const normalized of normalizedOptions) {
+              if (window.radarSymbolMap?.[normalized]) {
+                radarEntry = window.radarSymbolMap[normalized];
+                matchedKey = normalized;
+                break;
+              }
+            }
+
+            // Also try partial matching if exact match fails
+            if (!radarEntry && window.radarSymbolMap) {
+              for (const [key, entry] of Object.entries(window.radarSymbolMap)) {
+                if (normalizedOptions.some((opt) => key.includes(opt) || opt.includes(key))) {
+                  radarEntry = entry;
+                  matchedKey = key;
+                  break;
+                }
+              }
+            }
+
+            // Helper function to get unknown symbol based on frequency
+            const getUnknownSymbolFromFrequency = (freqGHz) => {
+              if (freqGHz >= 2 && freqGHz < 4) return "unknown_low"; // S-band
+              if (freqGHz >= 4 && freqGHz < 8) return "unknown_medium"; // C-band
+              if (freqGHz >= 8 && freqGHz <= 20) return "unknown_high"; // X-Ku band
+              return null; // Outside supported frequency range
+            };
+
+            // Helper function to create symbol with label
+            const createSymbolWithLabel = (symbolValue, symbolNumber, isUnknown = false) => {
+              const imageFileName = symbolToImageMap[symbolValue];
+              if (!imageFileName) return null;
+
+              const symbolWrapper = document.createElement("div");
+              symbolWrapper.style.display = "flex";
+              symbolWrapper.style.flexDirection = "column";
+              symbolWrapper.style.alignItems = "center";
+              symbolWrapper.style.gap = "4px";
+
+              // Label above image
+              const label = document.createElement("div");
+              label.textContent = isUnknown ? "Unknown" : `Symbol ${symbolNumber}`;
+              label.style.fontSize = "0.8em";
+              label.style.fontWeight = "bold";
+              label.style.color = isUnknown ? "#ff6b35" : "var(--highlight)"; // Orange for unknown
+              label.style.textAlign = "center";
+
+              // Symbol image
+              const img = document.createElement("img");
+              img.src = `assets/rwr-symbols/${imageFileName}.jpg`;
+              img.alt = isUnknown
+                ? `Unknown RWR Symbol: ${symbolValue}`
+                : `RWR Symbol ${symbolNumber}: ${symbolValue}`;
+              img.className = "radar-symbol-img";
+              img.style.maxWidth = "80px";
+              img.style.maxHeight = "80px";
+              img.style.border = isUnknown ? "2px solid #ff6b35" : "1px solid var(--highlight)";
+              img.style.borderRadius = "1px";
+              img.style.background = "white";
+              img.style.padding = "1px";
+              img.onerror = () => {
+                console.warn(
+                  `❌ Failed to load ${isUnknown ? "unknown" : "symbol" + symbolNumber} image:`,
+                  img.src
+                );
+                symbolWrapper.style.display = "none";
+              };
+
+              symbolWrapper.appendChild(label);
+              symbolWrapper.appendChild(img);
+              return symbolWrapper;
+            };
+
+            if (radarEntry) {
+              // ✅ Loop through each radarEntry (could be multiple if radar exists in multiple tables)
+              for (const radarEntryVariant of Array.isArray(radarEntry)
+                ? radarEntry
+                : [radarEntry]) {
+                const { symbol1, symbol2, source } = radarEntryVariant;
+
+                // ✅ Create container to hold all RWR symbols for this source
+                const symbolContainer = document.createElement("div");
+                symbolContainer.style.display = "flex";
+                symbolContainer.style.gap = "16px";
+                symbolContainer.style.justifyContent = "center";
+                symbolContainer.style.alignItems = "flex-start";
+                symbolContainer.style.marginTop = "8px";
+                symbolContainer.style.flexWrap = "wrap";
+
+                // ✅ Render first RWR symbol (if defined)
+                const symbol1Element = createSymbolWithLabel(symbol1, 1);
+                if (symbol1Element) {
+                  symbolContainer.appendChild(symbol1Element);
+                }
+
+                // ✅ Render second RWR symbol (only if it's different from symbol1)
+                if (symbol2 && symbol2 !== symbol1) {
+                  const symbol2Element = createSymbolWithLabel(symbol2, 2);
+                  if (symbol2Element) {
+                    symbolContainer.appendChild(symbol2Element);
+                  }
+                }
+
+                // ✅ Append container only if it has at least one symbol
+                if (symbolContainer.children.length > 0) {
+                  extraInfo.appendChild(symbolContainer);
+                }
+
+                // ✅ Show source table info below the symbols
+                const friendlySourceName = sourceNameMap[source] || source;
+                const sourceText = document.createElement("div");
+                sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
+                sourceText.style.fontSize = "0.85em";
+                sourceText.style.marginTop = "8px";
+                sourceText.style.color = "var(--highlight)";
+                sourceText.style.textAlign = "center";
+                extraInfo.appendChild(sourceText);
+              }
+            } else {
+              // Handle unknown radars - check if we have frequency data
+              const radarInfo = alr46Info[fullPath];
+              let unknownSymbol = null;
+              let frequencyBand = "Unknown";
+
+              if (radarInfo && radarInfo.band != null) {
+                const freqGHz = Number(radarInfo.band);
+                unknownSymbol = getUnknownSymbolFromFrequency(freqGHz);
+
+                if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "S-band (2-4 GHz)";
+                else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "C-band (4-8 GHz)";
+                else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "X-K band (8-20 GHz)";
+              }
+
+              if (unknownSymbol) {
+                // Create container for unknown symbol
+                const symbolContainer = document.createElement("div");
+                symbolContainer.style.display = "flex";
+                symbolContainer.style.flexDirection = "column";
+                symbolContainer.style.alignItems = "center";
+                symbolContainer.style.marginTop = "8px";
+
+                // Display unknown symbol
+                const unknownElement = createSymbolWithLabel(unknownSymbol, null, true);
+                if (unknownElement) {
+                  symbolContainer.appendChild(unknownElement);
+                }
+
+                // Add frequency band info
+                const bandText = document.createElement("div");
+                bandText.textContent = frequencyBand;
+                bandText.style.fontSize = "0.75em";
+                bandText.style.color = "#ff6b35";
+                bandText.style.marginTop = "4px";
+                bandText.style.textAlign = "center";
+                symbolContainer.appendChild(bandText);
+
+                extraInfo.appendChild(symbolContainer);
+
+                // Warning message for unknown radar
+                const warningText = document.createElement("div");
+                warningText.innerHTML = `<b style="color: #ff6b35;">⚠️ WARNING:</b> This radar is not in the RWR symbol library.<br>Symbol assigned based on frequency band.`;
+                warningText.style.fontSize = "0.85em";
+                warningText.style.marginTop = "8px";
+                warningText.style.color = "#ff6b35";
+                warningText.style.textAlign = "center";
+                warningText.style.backgroundColor = "rgba(255, 107, 53, 0.1)";
+                warningText.style.padding = "8px";
+                warningText.style.borderRadius = "4px";
+                warningText.style.border = "1px solid rgba(255, 107, 53, 0.3)";
+                extraInfo.appendChild(warningText);
+
+                console.log("⚠️ Unknown radar with frequency-based symbol:", {
+                  file: strippedFile,
+                  frequency: radarInfo?.band,
+                  frequencyBand,
+                  assignedSymbol: unknownSymbol,
+                });
+              } else {
+                console.warn("❌ No radar symbol found (no frequency data available):", {
+                  file: strippedFile,
+                  normalizedOptions,
+                  availableKeys: Object.keys(window.radarSymbolMap || {}).slice(0, 5),
+                });
+              }
+            }
 
             // Toggle dropdown on name click
             name.style.cursor = "pointer";

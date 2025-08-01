@@ -7,7 +7,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APS-138",
@@ -16,7 +17,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN_APY_1",
@@ -25,7 +27,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APG-71",
@@ -34,7 +37,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APG-63",
@@ -43,7 +47,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN_APG_70",
@@ -52,7 +57,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APG-68",
@@ -61,7 +67,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APG-73",
@@ -70,7 +77,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "KLJ-7",
@@ -79,7 +87,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RDI",
@@ -88,7 +97,8 @@
       "priority": 28.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "N-019",
@@ -97,7 +107,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "N_001",
@@ -106,7 +117,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "BRLS-8B",
@@ -115,7 +127,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "ARI 23274",
@@ -124,7 +137,8 @@
       "priority": 30.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AIDA_2",
@@ -133,7 +147,8 @@
       "priority": 26.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RDY",
@@ -142,7 +157,8 @@
       "priority": 26.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "PS-37A",
@@ -151,7 +167,8 @@
       "priority": 22.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APQ-120",
@@ -160,7 +177,8 @@
       "priority": 26.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RP_5_track",
@@ -169,7 +187,8 @@
       "priority": 25.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RP_22SMA",
@@ -178,7 +197,8 @@
       "priority": 25.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "N-008",
@@ -187,7 +207,8 @@
       "priority": 28.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "N-005",
@@ -196,7 +217,8 @@
       "priority": 28.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN/APQ-159",
@@ -205,7 +227,8 @@
       "priority": 26.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AIM_120_Seeker",
@@ -214,7 +237,8 @@
       "priority": 32.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AIM_54_Seeker",
@@ -223,7 +247,8 @@
       "priority": 32.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "R-77_Seeker",
@@ -232,286 +257,8 @@
       "priority": 32.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "fan_song",
-      "symbol1": "two",
-      "symbol2": "two",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "amazonka",
-      "symbol1": "two_bar",
-      "symbol2": "two_bar",
-      "priority": 22.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "snr s-125 tr",
-      "symbol1": "three",
-      "symbol2": "three",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "RPC S-200 TR",
-      "symbol1": "five",
-      "symbol2": "five",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "sa_6_TR",
-      "symbol1": "six",
-      "symbol2": "six",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "HQ-7 TR",
-      "symbol1": "seven",
-      "symbol2": "seven",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Osa 9A33 ln",
-      "symbol1": "eight",
-      "symbol2": "eight",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "S-300PS 40B6M tr",
-      "symbol1": "ten",
-      "symbol2": "ten",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "SA-11 Buk TR",
-      "symbol1": "eleven",
-      "symbol2": "eleven",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Tor 9A331",
-      "symbol1": "fifteen",
-      "symbol2": "fifteen",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "2S6 Tunguska",
-      "symbol1": "nineteen",
-      "symbol2": "nineteen",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Hawk tr",
-      "symbol1": "h",
-      "symbol2": "h",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Rapier_Blindfire",
-      "symbol1": "r",
-      "symbol2": "r",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Roland ADS",
-      "symbol1": "r",
-      "symbol2": "r",
-      "priority": 26.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "AN_MPQ_53",
-      "symbol1": "p_bar",
-      "symbol2": "p_bar",
-      "priority": 23.0,
-      "alt_type": 2,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "ZSU-23-4 Shilka",
-      "symbol1": "a_bar",
-      "symbol2": "ai_group_3",
-      "priority": 26.0,
-      "alt_type": 1,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "son-9 tr",
-      "symbol1": "a_dot",
-      "symbol2": "a_dot",
-      "priority": 26.0,
-      "alt_type": 1,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Gepard",
-      "symbol1": "a_three_dot",
-      "symbol2": "a_three_dot",
-      "priority": 26.0,
-      "alt_type": 1,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "C_RAM_Phalanx_Track",
-      "symbol1": "a_three_dot",
-      "symbol2": "a_three_dot",
-      "priority": 26.0,
-      "alt_type": 1,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Kub 1S91 str",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Roland Radar",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "C_RAM_Phalanx",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Dog Ear radar",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "HQ-7 SR",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Hawk_cwar",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "NASAMS_Radar_MPQ64F1",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "RLS_19J6",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Rapier_Dagger",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "SA_11_Snow_Drift",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "S-300PS 40B6MD sr",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
-    },
-    {
-      "radar": "Big_bird",
-      "symbol1": "search",
-      "symbol2": "search",
-      "priority": 1.0,
-      "alt_type": 0,
-      "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     }
   ],
   "new_land_file": [
@@ -522,7 +269,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "amazonka",
@@ -531,7 +279,8 @@
       "priority": 22.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "snr s-125 tr",
@@ -540,7 +289,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RPC S-200 TR",
@@ -549,7 +299,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "sa_6_TR",
@@ -558,7 +309,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "HQ-7 TR",
@@ -567,7 +319,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Osa 9A33 ln",
@@ -576,7 +329,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "S-300PS 40B6M tr",
@@ -585,7 +339,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "SA-11 Buk TR",
@@ -594,7 +349,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Tor 9A331",
@@ -603,7 +359,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "2S6 Tunguska",
@@ -612,7 +369,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Hawk tr",
@@ -621,7 +379,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Rapier_Blindfire",
@@ -630,7 +389,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Roland ADS",
@@ -639,7 +399,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "AN_MPQ_53",
@@ -648,7 +409,8 @@
       "priority": 23.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "ZSU-23-4 Shilka",
@@ -657,7 +419,8 @@
       "priority": 26.0,
       "alt_type": 1,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "son-9 tr",
@@ -666,7 +429,8 @@
       "priority": 26.0,
       "alt_type": 1,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Gepard",
@@ -675,7 +439,8 @@
       "priority": 26.0,
       "alt_type": 1,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -684,7 +449,8 @@
       "priority": 26.0,
       "alt_type": 1,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Kub 1S91 str",
@@ -693,7 +459,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Roland Radar",
@@ -702,7 +469,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx",
@@ -711,7 +479,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Dog Ear radar",
@@ -720,7 +489,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "HQ-7 SR",
@@ -729,7 +499,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Hawk_cwar",
@@ -738,7 +509,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "NASAMS_Radar_MPQ64F1",
@@ -747,7 +519,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "RLS_19J6",
@@ -756,7 +529,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Rapier_Dagger",
@@ -765,7 +539,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "SA_11_Snow_Drift",
@@ -774,7 +549,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "S-300PS 40B6MD sr",
@@ -783,7 +559,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Big_bird",
@@ -792,7 +569,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     }
   ],
   "new_sea_file": [
@@ -803,7 +581,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Head_Net_2",
@@ -812,7 +591,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Cross_Sword_S",
@@ -821,7 +601,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Type_992",
@@ -830,7 +611,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Type_1006",
@@ -839,7 +621,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Type_992Q",
@@ -848,7 +631,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Top_Steer",
@@ -857,7 +641,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Palm_Frond",
@@ -866,7 +651,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Top_Plate_S",
@@ -875,7 +661,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "MR_350",
@@ -884,7 +671,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Strut_Curve",
@@ -893,7 +681,8 @@
       "priority": 1.0,
       "alt_type": 0,
       "repeat": false,
-      "unit": null
+      "unit": null,
+      "note": null
     },
     {
       "radar": "Kite_Screech",
@@ -902,7 +691,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "REZKY"
+      "unit": "REZKY",
+      "note": null
     },
     {
       "radar": "Muff_Cob",
@@ -911,7 +701,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "ALBATROS"
+      "unit": "ALBATROS",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -920,7 +711,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Hot_Flash_T",
@@ -929,7 +721,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Kite_Screech",
@@ -938,7 +731,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Bass_Tilt",
@@ -947,7 +741,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "MOSCOW"
+      "unit": "MOSCOW",
+      "note": null
     },
     {
       "radar": "Type_346_Track",
@@ -956,7 +751,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -965,7 +761,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Rice_Bowl",
@@ -974,7 +771,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -983,7 +781,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_054A"
+      "unit": "Type_054A",
+      "note": null
     },
     {
       "radar": "Front_Dome",
@@ -992,7 +791,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_054A"
+      "unit": "Type_054A",
+      "note": null
     },
     {
       "radar": "Front_Dome",
@@ -1001,7 +801,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -1010,7 +811,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Rice_Bowl",
@@ -1019,7 +821,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -1028,7 +831,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "NEUSTRASH"
+      "unit": "NEUSTRASH",
+      "note": null
     },
     {
       "radar": "Kite_Screech",
@@ -1037,7 +841,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "NEUSTRASH"
+      "unit": "NEUSTRASH",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -1046,7 +851,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "KUZNECOW"
+      "unit": "KUZNECOW",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -1055,7 +861,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CV_1143_5"
+      "unit": "CV_1143_5",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1064,7 +871,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "CVN_71"
+      "unit": "CVN_71",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1073,7 +881,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "CVN_71"
+      "unit": "CVN_71",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1082,7 +891,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "CVN_72"
+      "unit": "CVN_72",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1091,7 +901,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "CVN_72"
+      "unit": "CVN_72",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1100,7 +911,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "CVN_73"
+      "unit": "CVN_73",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1109,7 +921,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "CVN_73"
+      "unit": "CVN_73",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1118,7 +931,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CVN_75"
+      "unit": "CVN_75",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1127,7 +941,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CVN_75"
+      "unit": "CVN_75",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1136,7 +951,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "Stennis"
+      "unit": "Stennis",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1145,7 +961,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "Stennis"
+      "unit": "Stennis",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -1154,7 +971,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 6,
-      "unit": "Forrestal"
+      "unit": "Forrestal",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1163,7 +981,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 6,
-      "unit": "Forrestal"
+      "unit": "Forrestal",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1172,7 +991,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 7,
-      "unit": "LHA_Tarawa"
+      "unit": "LHA_Tarawa",
+      "note": null
     },
     {
       "radar": "AN_SPG_60",
@@ -1181,7 +1001,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "Mark_92_T",
@@ -1190,7 +1011,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1199,7 +1021,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 8,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "Castor_2",
@@ -1208,7 +1031,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "La_Combattante_II"
+      "unit": "La_Combattante_II",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -1217,7 +1041,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "Type_071"
+      "unit": "Type_071",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1226,7 +1051,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "leander-gun-condell"
+      "unit": "leander-gun-condell",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1235,7 +1061,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 9,
-      "unit": "leander-gun-condell"
+      "unit": "leander-gun-condell",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1244,7 +1071,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "leander-gun-lynch"
+      "unit": "leander-gun-lynch",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1253,7 +1081,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 10,
-      "unit": "leander-gun-lynch"
+      "unit": "leander-gun-lynch",
+      "note": null
     },
     {
       "radar": "Muff_Cob",
@@ -1262,7 +1091,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "BDK-775"
+      "unit": "BDK-775",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1271,7 +1101,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "leander-gun-achilles"
+      "unit": "leander-gun-achilles",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1280,7 +1111,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "leander-gun-andromeda"
+      "unit": "leander-gun-andromeda",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1289,7 +1121,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "leander-gun-ariadne"
+      "unit": "leander-gun-ariadne",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1298,7 +1131,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 11,
-      "unit": "TICONDEROG"
+      "unit": "TICONDEROG",
+      "note": null
     },
     {
       "radar": "AN_SPG_62",
@@ -1307,7 +1141,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "TICONDEROG"
+      "unit": "TICONDEROG",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1316,7 +1151,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 12,
-      "unit": "USS_Arleigh_Burke_IIa"
+      "unit": "USS_Arleigh_Burke_IIa",
+      "note": null
     },
     {
       "radar": "AN_SPG_62",
@@ -1325,7 +1161,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "USS_Arleigh_Burke_IIa"
+      "unit": "USS_Arleigh_Burke_IIa",
+      "note": null
     }
   ]
 }

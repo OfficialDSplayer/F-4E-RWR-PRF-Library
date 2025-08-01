@@ -45,6 +45,7 @@ jobs:
           emitter_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/emitter_id_table.lua")
           rwr_path = Path("source-repo/Mods/aircraft/F-4E/Cockpit/Scripts/RWR/rwr.lua")
 
+
           # Read files
           emitter_text = emitter_path.read_text(encoding="utf-8")
           rwr_text = rwr_path.read_text(encoding="utf-8")
@@ -192,17 +193,37 @@ jobs:
               return filtered_units
 
           def parse_lua_table(name, content):
-              """Parse standard Lua table entries"""
-              pattern = rf"{name}\s*=\s*{{(.*?)}}\s*(?:append_entries|AppendTrackRadars|\Z)"
-              match = re.search(pattern, content, re.DOTALL)
-              if not match:
+              """Parse a named Lua table using brace tracking (avoids grabbing append_entries lines)."""
+              lines = content.splitlines()
+              table_lines = []
+              collecting = False
+              brace_depth = 0
+
+              for line in lines:
+                  stripped = line.strip()
+                  if not collecting:
+                      if re.match(rf"^(local\s+)?{re.escape(name)}\s*=\s*{{", stripped):
+                          collecting = True
+                          brace_depth = 1
+                          table_lines.append(line)
+                  else:
+                      brace_depth += line.count("{") - line.count("}")
+                      table_lines.append(line)
+                      if brace_depth == 0:
+                          break
+
+              if not table_lines:
                   print(f"❌ Table {name} not found.")
                   return []
-              
-              body = match.group(1)
+
+              body = "\n".join(table_lines)
+              entries = re.findall(
+                  r'{\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*}',
+                  body
+              )
+
               rows = []
-              for entry in re.findall(r'{\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*([0-9.]+)\s*,\s*(TYPE_\w+)\s*}', body):
-                  radar, sym1, sym2, priority, alt_type = entry
+              for radar, sym1, sym2, priority, alt_type in entries:
                   rows.append({
                       "radar": radar,
                       "symbol1": sym1,
@@ -210,9 +231,11 @@ jobs:
                       "priority": float(priority),
                       "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                       "repeat": False,
-                      "unit": None
+                      "unit": None,
+                      "note": None
                   })
               return rows
+
 
           def parse_append_track_radars(content, units, radar_type_map):
               """Parse AppendTrackRadars calls and generate entries"""
@@ -273,7 +296,8 @@ jobs:
                           "priority": float(prio),
                           "alt_type": ALT_TYPE_MAP.get(alt_type, -1),
                           "repeat": False,  # Will be updated later based on occurrence count
-                          "unit": unit
+                          "unit": unit,
+                          "note": None
                       }
                       
                       if target not in entries:
