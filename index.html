@@ -267,6 +267,13 @@
       facing them.
     </p>
 
+    <p>
+      Symbols are shown for the radars listed. Each radar is capable of being displayed using two
+      symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is shown.
+      If they aren't the same, both are shown. In the case of certain emitters like the C-RAM/CIWS
+      Phalanx, if they're in multiple tables (ex: land and sea), both symbols are shown.
+    </p>
+
     <p>Only radars that are detectable by the ALR-46 are listed.</p>
 
     <div
@@ -436,6 +443,40 @@
               // ✅ Skip hidden and undetectable sounds entirely
               if (meta.hidden || isUndetectable) continue;
 
+              // Apply radar-based skipping logic BEFORE populating soundMeta
+              const radarInfo = alr46Info[file];
+
+              if (radarInfo) {
+                if (
+                  file.includes("SEARCH") &&
+                  radarInfo.type === "TRACK_ONLY" &&
+                  radarInfo.prf_search == radarInfo.prf_track
+                ) {
+                  console.log(`🔒 Skipped (SEARCH wav with TRACK_ONLY radar, same PRF): ${file}`);
+                  continue;
+                } else if (file.includes("TRACK") && radarInfo.type === "SEARCH_ONLY") {
+                  console.log(`🔒 Skipped (TRACK wav with SEARCH_ONLY radar): ${file}`);
+                  continue;
+                } else if (
+                  file.includes("TRACK") &&
+                  radarInfo.type === "SEARCH_AND_TRACK" &&
+                  radarInfo.prf_search == radarInfo.prf_track
+                ) {
+                  console.log(
+                    `🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`
+                  );
+                  continue;
+                }
+              }
+
+              soundMeta.push({
+                file,
+                group: meta.group,
+                name: meta.name,
+                description: meta.description,
+                hidden: false,
+              });
+
               soundMeta.push({
                 file,
                 group: meta.group,
@@ -478,53 +519,54 @@
 
           const addEntries = (entries, source) => {
             for (const entry of entries) {
-              const key = normalizeRadarName(entry.radar);
+              const key = normalizeRadarName(entry.radar); // Normalize radar name for consistent dictionary key
+              const newEntry = {
+                symbol1: entry.symbol1,
+                symbol2: entry.symbol2,
+                source, // Source table this entry came from (e.g., ai_file_entries)
+                repeat: entry.repeat, // Repeat value used to determine priority (can be 1, a number, or false)
+              };
 
-              // Check if we already have an entry for this radar
-              if (window.radarSymbolMap[key]) {
-                const existing = window.radarSymbolMap[key];
-                const currentRepeat = entry.repeat;
-                const existingRepeat = existing.repeat;
-
-                // Priority logic:
-                // 1. If current entry has repeat=1, it takes priority
-                // 2. If existing has repeat=false and current has a number, current takes priority
-                // 3. If both have numbers, lower number takes priority
-                // 4. If current has repeat=false and existing has a number, existing keeps priority
-
-                let shouldReplace = false;
-
-                if (currentRepeat === 1) {
-                  // Repeat 1 always takes priority
-                  shouldReplace = true;
-                } else if (existingRepeat === false && typeof currentRepeat === "number") {
-                  // Current has a repeat number, existing doesn't
-                  shouldReplace = true;
-                } else if (
-                  typeof existingRepeat === "number" &&
-                  typeof currentRepeat === "number"
-                ) {
-                  // Both have numbers, take the lower one
-                  shouldReplace = currentRepeat < existingRepeat;
-                }
-                // If current is false and existing is a number, don't replace (shouldReplace stays false)
-
-                if (shouldReplace) {
-                  window.radarSymbolMap[key] = {
-                    symbol1: entry.symbol1,
-                    symbol2: entry.symbol2,
-                    source,
-                    repeat: entry.repeat,
-                  };
-                }
+              if (!window.radarSymbolMap[key]) {
+                // First time encountering this radar — initialize entry list with this source
+                window.radarSymbolMap[key] = [newEntry];
               } else {
-                // First entry for this radar
-                window.radarSymbolMap[key] = {
-                  symbol1: entry.symbol1,
-                  symbol2: entry.symbol2,
-                  source,
-                  repeat: entry.repeat,
-                };
+                const existingEntries = window.radarSymbolMap[key];
+
+                // Look for an existing entry from the same source (e.g., new_sea_file)
+                const existingIdx = existingEntries.findIndex((e) => e.source === source);
+
+                if (existingIdx === -1) {
+                  // No entry from this source yet — safe to add
+                  existingEntries.push(newEntry);
+                } else {
+                  // Existing entry from this source found — decide whether to replace based on priority
+                  const existing = existingEntries[existingIdx];
+                  const existingRepeat = existing.repeat;
+                  const currentRepeat = newEntry.repeat;
+
+                  // Priority logic:
+                  // 1. repeat === 1 always takes precedence
+                  // 2. A numeric repeat beats `false`
+                  // 3. If both are numbers, the lower one has higher priority
+                  let shouldReplace = false;
+
+                  if (currentRepeat === 1) {
+                    shouldReplace = true;
+                  } else if (existingRepeat === false && typeof currentRepeat === "number") {
+                    shouldReplace = true;
+                  } else if (
+                    typeof existingRepeat === "number" &&
+                    typeof currentRepeat === "number"
+                  ) {
+                    shouldReplace = currentRepeat < existingRepeat;
+                  }
+
+                  // Replace the existing entry for this source only if the new one has higher priority
+                  if (shouldReplace) {
+                    existingEntries[existingIdx] = newEntry;
+                  }
+                }
               }
             }
           };
@@ -644,33 +686,33 @@
                 parts.push(`Radar Frequency: ${freqGHz.toFixed(2)} GHz (${band} band)`);
               }
 
-              // Auto hide
-              if (
-                // If wav is SEARCH and radar type is TRACK ONLY and PRF between both modes are same then hide
-                fullPath.includes("SEARCH") &&
-                radarInfo.type == "TRACK_ONLY" &&
-                radarInfo.prf_search == radarInfo.prf_track
-              ) {
-                console.log(`🔒 Hidden (SEARCH wav with TRACK_ONLY radar, same PRF): ${fullPath}`);
-                continue;
-              } else if (
-                // If wav is TRACK and radar type is SEARCH then hide
-                fullPath.includes("TRACK") &&
-                radarInfo.type == "SEARCH_ONLY"
-                // radarInfo.prf_search == radarInfo.prf_track
-              ) {
-                console.log(`🔒 Hidden (TRACK wav with SEARCH_ONLY radar): ${fullPath}`);
-                continue;
-              } else if (
-                fullPath.includes("TRACK") &&
-                radarInfo.type == "SEARCH_AND_TRACK" &&
-                radarInfo.prf_search == radarInfo.prf_track
-              ) {
-                console.log(
-                  `🔒 Hidden (TRACK wav with same PRF as SEARCH wav with SEARCH_AND_TRACK): ${fullPath}`
-                );
-                continue;
-              }
+              // Auto hide DEPRECATED LOCATION as it effects "Ungrouped" still appearing
+              // if (
+              //   // If wav is SEARCH and radar type is TRACK ONLY and PRF between both modes are same then hide
+              //   fullPath.includes("SEARCH") &&
+              //   radarInfo.type == "TRACK_ONLY" &&
+              //   radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(`🔒 Hidden (SEARCH wav with TRACK_ONLY radar, same PRF): ${fullPath}`);
+              //   continue;
+              // } else if (
+              //   // If wav is TRACK and radar type is SEARCH then hide
+              //   fullPath.includes("TRACK") &&
+              //   radarInfo.type == "SEARCH_ONLY"
+              //   // radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(`🔒 Hidden (TRACK wav with SEARCH_ONLY radar): ${fullPath}`);
+              //   continue;
+              // } else if (
+              //   fullPath.includes("TRACK") &&
+              //   radarInfo.type == "SEARCH_AND_TRACK" &&
+              //   radarInfo.prf_search == radarInfo.prf_track
+              // ) {
+              //   console.log(
+              //     `🔒 Hidden (TRACK wav with same PRF as SEARCH wav with SEARCH_AND_TRACK): ${fullPath}`
+              //   );
+              //   continue;
+              // }
 
               // Radar PRF
               // if (
@@ -911,53 +953,50 @@
             };
 
             if (radarEntry) {
-              const { symbol1, symbol2, source } = radarEntry;
+              // ✅ Loop through each radarEntry (could be multiple if radar exists in multiple tables)
+              for (const radarEntryVariant of Array.isArray(radarEntry)
+                ? radarEntry
+                : [radarEntry]) {
+                const { symbol1, symbol2, source } = radarEntryVariant;
 
-              // Create container for both symbols
-              const symbolContainer = document.createElement("div");
-              symbolContainer.style.display = "flex";
-              symbolContainer.style.gap = "16px";
-              symbolContainer.style.justifyContent = "center";
-              symbolContainer.style.alignItems = "flex-start";
-              symbolContainer.style.marginTop = "8px";
+                // ✅ Create container to hold all RWR symbols for this source
+                const symbolContainer = document.createElement("div");
+                symbolContainer.style.display = "flex";
+                symbolContainer.style.gap = "16px";
+                symbolContainer.style.justifyContent = "center";
+                symbolContainer.style.alignItems = "flex-start";
+                symbolContainer.style.marginTop = "8px";
+                symbolContainer.style.flexWrap = "wrap";
 
-              // Display symbol1
-              const symbol1Element = createSymbolWithLabel(symbol1, 1);
-              if (symbol1Element) {
-                symbolContainer.appendChild(symbol1Element);
-              }
-
-              // Display symbol2 (if different from symbol1)
-              if (symbol2 && symbol2 !== symbol1) {
-                const symbol2Element = createSymbolWithLabel(symbol2, 2);
-                if (symbol2Element) {
-                  symbolContainer.appendChild(symbol2Element);
+                // ✅ Render first RWR symbol (if defined)
+                const symbol1Element = createSymbolWithLabel(symbol1, 1);
+                if (symbol1Element) {
+                  symbolContainer.appendChild(symbol1Element);
                 }
+
+                // ✅ Render second RWR symbol (only if it's different from symbol1)
+                if (symbol2 && symbol2 !== symbol1) {
+                  const symbol2Element = createSymbolWithLabel(symbol2, 2);
+                  if (symbol2Element) {
+                    symbolContainer.appendChild(symbol2Element);
+                  }
+                }
+
+                // ✅ Append container only if it has at least one symbol
+                if (symbolContainer.children.length > 0) {
+                  extraInfo.appendChild(symbolContainer);
+                }
+
+                // ✅ Show source table info below the symbols
+                const friendlySourceName = sourceNameMap[source] || source;
+                const sourceText = document.createElement("div");
+                sourceText.innerHTML = `<b>Source Table:</b> ${friendlySourceName}`;
+                sourceText.style.fontSize = "0.85em";
+                sourceText.style.marginTop = "8px";
+                sourceText.style.color = "var(--highlight)";
+                sourceText.style.textAlign = "center";
+                extraInfo.appendChild(sourceText);
               }
-
-              // Only add container if it has symbols
-              if (symbolContainer.children.length > 0) {
-                extraInfo.appendChild(symbolContainer);
-              }
-
-              // Show friendly data source name
-              const friendlySourceName = sourceNameMap[source] || source;
-              const sourceText = document.createElement("div");
-              sourceText.innerHTML = `<br><b>Source Table:</b> ${friendlySourceName}`;
-              sourceText.style.fontSize = "0.85em";
-              sourceText.style.marginTop = "8px";
-              sourceText.style.color = "var(--highlight)";
-              sourceText.style.textAlign = "center";
-              extraInfo.appendChild(sourceText);
-
-              console.log("✅ Radar symbols displayed:", {
-                file: strippedFile,
-                matchedKey,
-                symbol1,
-                symbol2,
-                source,
-                friendlySource: friendlySourceName,
-              });
             } else {
               // Handle unknown radars - check if we have frequency data
               const radarInfo = alr46Info[fullPath];

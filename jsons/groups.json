@@ -1525,13 +1525,13 @@
   },
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-5 Gammon TR Search",
+    "name": "SA-5 Gammon Square Pair TR Search",
     "description": "RPC S-200 TR",
     "hidden": true
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-5 Gammon TR Track",
+    "name": "SA-5 Gammon Square Pair TR Track",
     "description": "RPC S-200 TR",
     "hidden": false
   },
@@ -1616,7 +1616,7 @@
   "imported_wavs/Rice_Bowl_TRACK.wav": {
     "group": "Naval Fire Control Radar (Chinese)",
     "name": "Type 347G 'Rice Bowl' Track",
-    "description": "",
+    "description": "Type 052B & Type 052C Track Radar",
     "hidden": false
   },
   "imported_wavs/Roland ADS_SEARCH.wav": {
