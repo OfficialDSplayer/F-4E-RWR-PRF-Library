@@ -206,12 +206,51 @@
       .collapsed {
         display: none;
       }
-      /* #symbol-filter-dropdown {
+      #symbol-filter-wrapper {
+        position: relative;
+      }
+
+      /* Default dropdown style */
+      .symbol-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--card-bg);
+        border: 1px solid #ccc;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        min-width: 500px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 8px;
-      } */
+        justify-content: center;
+      }
+
+      /* ✅ Center dropdown on narrow screens */
+      @media (max-width: 600px) {
+        .symbol-dropdown {
+          left: 50% !important;
+          right: auto !important;
+          transform: translateX(-50%) !important;
+          min-width: 90vw;
+          max-width: 95vw;
+        }
+      }
+
+      @media (max-width: 600px) {
+        #symbol-filter-dropdown {
+          min-width: 90vw; /* shrink width */
+          max-width: 95vw;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
       #symbol-filter-dropdown label {
         width: 64px;
         display: inline-flex;
@@ -223,6 +262,16 @@
         border: 1px solid white;
         border-radius: 2px;
         /* background: white; */
+      }
+      @media (max-width: 600px) {
+        #search-input {
+          width: 100% !important;
+          flex: 1 1 100%;
+        }
+
+        #symbol-filter-toggle {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -254,7 +303,15 @@
         gap: 10px;
       "
     >
-      <div style="display: flex; align-items: center; gap: 10px">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 10px;
+          justify-content: center;
+        "
+      >
         <input
           type="text"
           id="search-input"
@@ -268,30 +325,11 @@
           "
         />
 
-        <div id="symbol-filter-wrapper" style="position: relative">
+        <div id="symbol-filter-wrapper">
           <button id="symbol-filter-toggle" class="global-button" style="font-size: 14px">
             Filter Symbols ⬇
           </button>
-          <div
-            id="symbol-filter-dropdown"
-            style="
-              display: none; /* hidden by default */
-              position: absolute;
-              top: 100%;
-              right: 0;
-              background: var(--card-bg);
-              border: 1px solid #ccc;
-              max-height: 300px;
-              overflow-y: auto;
-              z-index: 1000;
-              min-width: 500px;
-              padding: 10px;
-              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-              text-align: center;
-              flex-wrap: wrap;
-              gap: 8px;
-            "
-          ></div>
+          <div id="symbol-filter-dropdown" class="symbol-dropdown"></div>
         </div>
       </div>
     </div>
