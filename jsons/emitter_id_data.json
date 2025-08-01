@@ -691,7 +691,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "REZKY"
+      "unit": "REZKY",
+      "note": null
     },
     {
       "radar": "Muff_Cob",
@@ -700,7 +701,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "ALBATROS"
+      "unit": "ALBATROS",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -709,7 +711,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Hot_Flash_T",
@@ -718,7 +721,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Kite_Screech",
@@ -727,7 +731,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "PIOTR"
+      "unit": "PIOTR",
+      "note": null
     },
     {
       "radar": "Bass_Tilt",
@@ -736,7 +741,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "MOSCOW"
+      "unit": "MOSCOW",
+      "note": null
     },
     {
       "radar": "Type_346_Track",
@@ -745,7 +751,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -754,7 +761,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Rice_Bowl",
@@ -763,7 +771,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_052C"
+      "unit": "Type_052C",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -772,7 +781,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_054A"
+      "unit": "Type_054A",
+      "note": null
     },
     {
       "radar": "Front_Dome",
@@ -781,7 +791,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "Type_054A"
+      "unit": "Type_054A",
+      "note": null
     },
     {
       "radar": "Front_Dome",
@@ -790,7 +801,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -799,7 +811,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Rice_Bowl",
@@ -808,7 +821,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "Type_052B"
+      "unit": "Type_052B",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -817,7 +831,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "NEUSTRASH"
+      "unit": "NEUSTRASH",
+      "note": null
     },
     {
       "radar": "Kite_Screech",
@@ -826,7 +841,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "NEUSTRASH"
+      "unit": "NEUSTRASH",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -835,7 +851,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "KUZNECOW"
+      "unit": "KUZNECOW",
+      "note": null
     },
     {
       "radar": "Cross_Sword_T",
@@ -844,7 +861,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CV_1143_5"
+      "unit": "CV_1143_5",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -853,7 +871,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "CVN_71"
+      "unit": "CVN_71",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -862,7 +881,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "CVN_71"
+      "unit": "CVN_71",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -871,7 +891,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "CVN_72"
+      "unit": "CVN_72",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -880,7 +901,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "CVN_72"
+      "unit": "CVN_72",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -889,7 +911,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "CVN_73"
+      "unit": "CVN_73",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -898,7 +921,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "CVN_73"
+      "unit": "CVN_73",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -907,7 +931,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CVN_75"
+      "unit": "CVN_75",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -916,7 +941,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "CVN_75"
+      "unit": "CVN_75",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -925,7 +951,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "Stennis"
+      "unit": "Stennis",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -934,7 +961,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "Stennis"
+      "unit": "Stennis",
+      "note": null
     },
     {
       "radar": "Mk_95",
@@ -943,7 +971,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 6,
-      "unit": "Forrestal"
+      "unit": "Forrestal",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -952,7 +981,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 6,
-      "unit": "Forrestal"
+      "unit": "Forrestal",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -961,7 +991,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 7,
-      "unit": "LHA_Tarawa"
+      "unit": "LHA_Tarawa",
+      "note": null
     },
     {
       "radar": "AN_SPG_60",
@@ -970,7 +1001,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "Mark_92_T",
@@ -979,7 +1011,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -988,7 +1021,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 8,
-      "unit": "PERRY"
+      "unit": "PERRY",
+      "note": null
     },
     {
       "radar": "Castor_2",
@@ -997,7 +1031,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": false,
-      "unit": "La_Combattante_II"
+      "unit": "La_Combattante_II",
+      "note": null
     },
     {
       "radar": "Type_344",
@@ -1006,7 +1041,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "Type_071"
+      "unit": "Type_071",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1015,7 +1051,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "leander-gun-condell"
+      "unit": "leander-gun-condell",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1024,7 +1061,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 9,
-      "unit": "leander-gun-condell"
+      "unit": "leander-gun-condell",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1033,7 +1071,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "leander-gun-lynch"
+      "unit": "leander-gun-lynch",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1042,7 +1081,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 10,
-      "unit": "leander-gun-lynch"
+      "unit": "leander-gun-lynch",
+      "note": null
     },
     {
       "radar": "Muff_Cob",
@@ -1051,7 +1091,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "BDK-775"
+      "unit": "BDK-775",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1060,7 +1101,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 3,
-      "unit": "leander-gun-achilles"
+      "unit": "leander-gun-achilles",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1069,7 +1111,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 4,
-      "unit": "leander-gun-andromeda"
+      "unit": "leander-gun-andromeda",
+      "note": null
     },
     {
       "radar": "Type_903",
@@ -1078,7 +1121,8 @@
       "priority": 26.0,
       "alt_type": 2,
       "repeat": 5,
-      "unit": "leander-gun-ariadne"
+      "unit": "leander-gun-ariadne",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1087,7 +1131,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 11,
-      "unit": "TICONDEROG"
+      "unit": "TICONDEROG",
+      "note": null
     },
     {
       "radar": "AN_SPG_62",
@@ -1096,7 +1141,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 1,
-      "unit": "TICONDEROG"
+      "unit": "TICONDEROG",
+      "note": null
     },
     {
       "radar": "C_RAM_Phalanx_Track",
@@ -1105,7 +1151,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 12,
-      "unit": "USS_Arleigh_Burke_IIa"
+      "unit": "USS_Arleigh_Burke_IIa",
+      "note": null
     },
     {
       "radar": "AN_SPG_62",
@@ -1114,7 +1161,8 @@
       "priority": 30.0,
       "alt_type": 2,
       "repeat": 2,
-      "unit": "USS_Arleigh_Burke_IIa"
+      "unit": "USS_Arleigh_Burke_IIa",
+      "note": null
     }
   ]
 }
