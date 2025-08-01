@@ -65,15 +65,57 @@ jobs:
                   print(f"❌ No match for {field} in:\n{body}")
               return None
 
+          def extract_type(body):
+              # Match either type = TRACK_ONLY or type = "TRACK_ONLY"
+              pattern = r'\btype\s*=\s*(?:"(\w+)"|(\w+))'
+              match = re.search(pattern, body)
+              if match:
+                  return match.group(1) or match.group(2)
+              return None
 
-          # Step 2: Parse radars.lua definitions
-          named = re.findall(r'([A-Za-z0-9_/-]+)\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
-          indexed = re.findall(r'\["([^"]+)"\]\s*=\s*{[^}]*?DisplayName\s*=\s*"([^"]+)",(.*?)}', radars, re.DOTALL)
 
+          def extract_lua_radars_with_braces(full_text):
+              entries = []
+              
+              # Find start of `radars = {`
+              match = re.search(r'\bradars\s*=\s*{', full_text)
+              if not match:
+                  print("❌ 'radars = {' block not found.")
+                  return entries
+
+              lines = full_text[match.end():].splitlines()
+              i = 0
+              while i < len(lines):
+                  line = lines[i]
+                  if m := re.match(r'\s*(\["[^"]+"\]|[A-Za-z0-9_/-]+)\s*=\s*{', line):
+                      raw_key = m.group(1).strip()
+                      key = raw_key.strip('[]"')
+                      brace_count = 1
+                      block_lines = [line]
+                      i += 1
+                      while i < len(lines) and brace_count > 0:
+                          l = lines[i]
+                          brace_count += l.count("{")
+                          brace_count -= l.count("}")
+                          block_lines.append(l)
+                          i += 1
+                      full_body = "\n".join(block_lines)
+                      if (dm := re.search(r'DisplayName\s*=\s*"([^"]+)"', full_body)):
+                          display = dm.group(1)
+                          entries.append((key, display, full_body))
+                  else:
+                      i += 1
+              return entries
+
+
+          # Step 2: Parse radars.lua with balanced brace-safe logic
           radars_dict = {}
-          for _, display, body in named + indexed:
+          for name, display, body in extract_lua_radars_with_braces(radars):
               key = norm(display)
+
               entry = {}
+              if (t := extract_type(body)) is not None:
+                  entry["type"] = t
               if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
                   entry["band"] = float(m.group(1))
               if (v := extract_prf("prf_search", body)) is not None:
@@ -82,6 +124,7 @@ jobs:
                   entry["prf_track"] = v
               if "has_cd_command_guidance" in body:
                   entry["has_cd_command_guidance"] = True
+
               radars_dict[key] = entry
 
           radar_data = radars_dict.copy()
@@ -116,6 +159,8 @@ jobs:
               key = norm(name)
               print(f"📌 Applying override to: {name} → {key}")
               radar_data.setdefault(key, {})
+              if (t := extract_type(body)) is not None:
+                  radar_data[key]["type"] = t
               if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
               if (v := extract_prf("prf_search", body)) is not None:
@@ -156,6 +201,8 @@ jobs:
           for name, body in find_radar_blocks(rwr):
               key = norm(name)
               radar_data.setdefault(key, {})
+              if (t := extract_type(body)) is not None:
+                  radar_data[key]["type"] = t
               if (m := re.search(r'band\s*=\s*([0-9.]+)', body)):
                   radar_data[key]["band"] = float(m.group(1))
               if (v := extract_prf("prf_search", body)) is not None:
@@ -202,6 +249,7 @@ jobs:
               if band is None:
                   missing.append(radar_key)
               limits[wav] = {
+                  "type": radar.get("type") if radar else None,
                   "band": band,
                   "prf_search": radar.get("prf_search") if radar else None,
                   "prf_track": radar.get("prf_track") if radar else None,
