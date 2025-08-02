@@ -67,3 +67,46 @@ window.Utils = {
     return null;
   }
 };
+
+
+// === Ported theme util from inline <script> ===
+function toggleDarkMode() {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+      }
+
+      async function loadWavFiles() {
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = "0%";
+
+        try {
+          // ✅ Fetch all metadata in parallel
+          const [
+            wavListResponse,
+            customWavListResponse,
+            groupsMainResponse,
+            groupsCustomResponse,
+            alr46ThreatInfoAutoResponse,
+            alr46ThreatInfoCustomResponse,
+          ] = await Promise.all([
+            fetch("jsons/wav_list.json?v=" + Date.now()),
+            fetch("jsons/custom_wav_list.json?v=" + Date.now()),
+            fetch("jsons/groups.json?v=" + Date.now()),
+            fetch("jsons/groups_custom.json?v=" + Date.now()),
+            fetch("jsons/alr_46_threat_info.json?v=" + Date.now()),
+            fetch("jsons/alr_46_threat_info_custom.json?v=" + Date.now()),
+            buildRadarSymbolMap(),
+          ]);
+
+          const wavFiles = await wavListResponse.json();
+          const customWavFiles = await customWavListResponse.json();
+          const groupsMain = await groupsMainResponse.json();
+          const groupsCustom = await groupsCustomResponse.json();
+          // const alr46Info = await alr46InfoResponse.json();
+          const alr46ThreatInfoAuto = await alr46ThreatInfoAutoResponse.json();
+          const alr46ThreatInfoCustom = await alr46ThreatInfoCustomResponse.json();
+          // alr46Info = await alr46InfoResponse.json();
+          alr46Info = { ...alr46ThreatInfoAuto, ...alr46ThreatInfoCustom }
+window.toggleDarkMode = toggleDarkMode;

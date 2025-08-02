@@ -1,102 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>F-4E RWR PRF Sound Player</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+// Remainder of inline script (auto-migrated)
 
-    <!-- Favicon -->
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/themes.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/components.css" />
-  </head>
-  <body>
-    <!-- Original HTML structure preserved from index.html -->
-    <body>
-<h1>F-4E RWR PRF Sound Player</h1>
-<hr class="solid"/>
-<h2>By DSplayer</h2>
-<h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-<h3>!!Highly WIP!! Last updated 2025-08-01 (using DCS 2.9.18)</h3>
-<h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
-<div class="controls">
-<button class="global-button" onclick="playAll()">Play All</button>
-<button class="global-button" onclick="stopAll()">Stop All</button>
-<button class="global-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-<div class="volume-control">
-<label for="volume-slider">Volume:</label>
-<input id="volume-slider" max="100" min="0" type="range" value="100"/>
-</div>
-</div>
-<div class="controls" style="
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 10px;
-      ">
-<div style="
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 10px;
-          justify-content: center;
-        ">
-<input id="search-input" placeholder="Search sounds..." style="
-            padding: 8px 14px;
-            width: 300px;
-            font-size: 14px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-          " type="text"/>
-<div id="symbol-filter-wrapper">
-<button class="global-button" id="symbol-filter-toggle" style="font-size: 14px">
-            Filter Symbols ⬇
-          </button>
-<div class="symbol-dropdown" id="symbol-filter-dropdown"></div>
-</div>
-</div>
-</div>
-<div class="controls">
-<button class="global-button" onclick="expandAllGroups()">Expand All Groups</button>
-<button class="global-button" onclick="collapseAllGroups()">Collapse All Groups</button>
-<button class="global-button" onclick="showAllRadarInfo()">Show All Radar Info</button>
-<button class="global-button" onclick="hideAllRadarInfo()">Hide All Radar Info</button>
-</div>
-<h4>
-      This site is intended to help users learn and memorize what the PRF tones for radars for the
-      ALR-46's Handoff mode. If you have any suggestions, please post them in the
-      <a href="https://github.com/OfficialDSplayer/F-4E-RWR-PRF-Library/issues">GitHub Issues page</a>.
-    </h4>
-<p>
-      There are 3 types of radar modes listed: Search, Acquisition (search for track radars), Track.
-    </p>
-<p>
-      Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase PRF
-      prior to full on target track. Depending on your range and aspect, they might skip the
-      acquisition phase entirely and immediately go to the tracking phase so be mindful of that when
-      facing them.
-    </p>
-<p>
-      Symbols are shown for the radars listed. Each radar is capable of being displayed using two
-      symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is shown.
-      If they aren't the same, both are shown. In the case of certain emitters like the C-RAM/CIWS
-      Phalanx, if they're in multiple tables (ex: land and sea), both symbols are shown.
-    </p>
-<p>Only radars that are detectable by the ALR-46 are listed.</p>
-<div id="progress-container" style="height: 6px; background: #ddd; width: 100%; margin-top: 10px">
-<div id="progress-bar" style="height: 100%; width: 0%; background-color: #2196f3; transition: width 0.3s"></div>
-</div>
-<div id="audio-list">Loading sounds...</div>
-<!-- <div id="audio-list">
-      <div style="text-align: center; font-size: 1.1rem">Loading sounds...</div>
-    </div> -->
-<script>
       let playingSources = [];
       let audioContext;
       let gainNode;
@@ -112,39 +15,7 @@
 
       const cancelledLoads = new Set();
 
-      const symbolToImageMap = {
-        ai_group_1: "rwr_flat_triangle_symbol",
-        ai_group_2: "rwr_triangle_symbol",
-        ai_group_3: "rwr_two_triangle_symbol",
-        two: "rwr_two_symbol",
-        two_bar: "rwr_two_slashed_symbol",
-        three: "rwr_three_symbol",
-        four: "rwr_four_symbol",
-        five: "rwr_five_symbol",
-        six: "rwr_six_symbol",
-        seven: "rwr_seven_symbol",
-        eight: "rwr_eight_symbol",
-        nine: "rwr_nine_symbol",
-        ten: "rwr_ten_symbol",
-        eleven: "rwr_eleven_symbol",
-        fifteen: "rwr_15_symbol",
-        nineteen: "rwr_19_symbol",
-        a_bar: "rwr_a_symbol",
-        a_dot: "rwr_a_one_dot_symbol",
-        a_two_dot: "rwr_a_two_dot_symbol",
-        a_three_dot: "rwr_a_three_dot_symbol",
-        c: "rwr_c_symbol",
-        g: "rwr_g_symbol",
-        h: "rwr_h_symbol",
-        l: "rwr_l_symbol",
-        p_bar: "rwr_p_slashed_symbol",
-        r: "rwr_r_symbol",
-        search: "rwr_s_symbol",
-        unknown_low: "rwr_u_one_dot_symbol", // 2-4 GHz
-        unknown_medium: "rwr_u_two_dot_symbol", // 4-8 GHz
-        unknown_high: "rwr_u_three_dot_symbol", // 8-20 GHz
-        uncorrelated_missile_launch: "rwr_uncorr_msl",
-      };
+      // moved: symbolToImageMap; see config.js
 
       const sourceNameMap = {
         ai_file_entries: "Air Intercept Table",
@@ -171,45 +42,7 @@
         document.documentElement.setAttribute("data-theme", "light");
       }
 
-      function toggleDarkMode() {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-      }
-
-      async function loadWavFiles() {
-        const progressBar = document.getElementById("progress-bar");
-        progressBar.style.width = "0%";
-
-        try {
-          // ✅ Fetch all metadata in parallel
-          const [
-            wavListResponse,
-            customWavListResponse,
-            groupsMainResponse,
-            groupsCustomResponse,
-            alr46ThreatInfoAutoResponse,
-            alr46ThreatInfoCustomResponse,
-          ] = await Promise.all([
-            fetch("jsons/wav_list.json?v=" + Date.now()),
-            fetch("jsons/custom_wav_list.json?v=" + Date.now()),
-            fetch("jsons/groups.json?v=" + Date.now()),
-            fetch("jsons/groups_custom.json?v=" + Date.now()),
-            fetch("jsons/alr_46_threat_info.json?v=" + Date.now()),
-            fetch("jsons/alr_46_threat_info_custom.json?v=" + Date.now()),
-            buildRadarSymbolMap(),
-          ]);
-
-          const wavFiles = await wavListResponse.json();
-          const customWavFiles = await customWavListResponse.json();
-          const groupsMain = await groupsMainResponse.json();
-          const groupsCustom = await groupsCustomResponse.json();
-          // const alr46Info = await alr46InfoResponse.json();
-          const alr46ThreatInfoAuto = await alr46ThreatInfoAutoResponse.json();
-          const alr46ThreatInfoCustom = await alr46ThreatInfoCustomResponse.json();
-          // alr46Info = await alr46InfoResponse.json();
-          alr46Info = { ...alr46ThreatInfoAuto, ...alr46ThreatInfoCustom };
+      // moved: theme util; see utils.js;
           groupsData = { ...groupsMain, ...groupsCustom };
 
           const allFiles = [...wavFiles, ...customWavFiles];
@@ -581,11 +414,7 @@
         }
       }
 
-      function displayGroups(sounds, searchTerm = "") {
-        const audioList = document.getElementById("audio-list");
-        audioList.innerHTML = "";
-
-        const grouped = {};
+      // moved: displayGroups(); see sound-display.js;
         for (const sound of sounds) {
           if (!grouped[sound.group]) {
             grouped[sound.group] = [];
@@ -1312,14 +1141,7 @@
         });
       }
 
-      function stopAll() {
-        currentPlayAllSession++;
-
-        playingSources.forEach((src) => {
-          try {
-            src.node.stop();
-            src.node.disconnect();
-          } catch (e) {
+      // moved: function stopAll (...)catch (e) {
             console.error(e);
           }
         });
@@ -1337,20 +1159,7 @@
         });
       }
 
-      async function playAll() {
-        stopAll(); // Clear running sounds
-        cancelledLoads.clear(); // ✅ Reset the cancellation list
-
-        currentPlayAllSession++;
-        const thisSession = currentPlayAllSession;
-
-        const playAllBtn = document.querySelector('button[onclick="playAll()"]');
-        if (playAllBtn) {
-          playAllBtn.classList.add("loading");
-          playAllBtn.disabled = true;
-        }
-
-        // Step 1: Preload all sounds (but don't play yet)
+      // moved: async function playAll (...)// Step 1: Preload all sounds (but don't play yet)
         try {
           await Promise.all(
             soundMeta.map(async (sound) => {
@@ -1464,19 +1273,4 @@
           dropdown.classList.remove("visible"); // ✅ correct way to hide it
         }
       });
-    </script>
-</body>
-
-    <!-- JS modules (order matters) -->
-    <script defer src="./js/config.js"></script>
-    <script defer src="./js/utils.js"></script>
-    <script defer src="./js/storage-service.js"></script>
-    <script defer src="./js/ui-components.js"></script>
-    <script defer src="./js/audio-manager.js"></script>
-    <script defer src="./js/data-loader.js"></script>
-    <script defer src="./js/symbol-filter.js"></script>
-    <script defer src="./js/sound-display.js"></script>
-    <script defer src="./js/main.js"></script>
-    <script defer src="./js/main-inline.js"></script>
-  </body>
-</html>
+    
