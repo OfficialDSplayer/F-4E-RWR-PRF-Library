@@ -1,100 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Handoff Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/themes.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components.css" />
-</head>
-<body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand">F-4E RWR PRF Library</a>
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="sounds.html" class="nav-link">Sound Player</a></li>
-        <li class="nav-item"><a href="quiz.html" class="nav-link active">Handoff Quiz</a></li>
-      </ul>
-    </div>
-  </nav>
-  <main class="main-content">
-    <div class="quiz-container">
-      <div class="quiz-header">
-        <h1>RWR Handoff Quiz</h1>
-        <p>Test your knowledge of radar warning receiver sounds. Listen and identify the radar system.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Handoff Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-brand">
+          <img
+            src="assets/handoff_icon.jpg"
+            alt="Logo"
+            style="height: 32px; vertical-align: middle; margin-right: 10px"
+          />
+          F-4E RWR PRF Library
+        </a>
+        <button class="nav-toggle" onclick="toggleMobileMenu()">☰</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="sounds.html" class="nav-link">Sound Player</a></li>
+          <li class="nav-item"><a href="quiz.html" class="nav-link">Handoff Quiz</a></li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
       </div>
+    </nav>
+    <main class="main-content">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <h1>RWR Handoff Quiz</h1>
+          <p>
+            Test your knowledge of radar warning receiver sounds. Listen and identify the radar
+            system.
+          </p>
+        </div>
 
-      <div id="quiz-setup" class="quiz-card">
-        <h3>Quiz Settings</h3>
-        <div style="margin: 20px 0;">
-          <label for="quiz-mode">Quiz Mode:</label>
-          <select id="quiz-mode">
-            <option value="all">All Radars</option>
-            <option value="search">Search Mode Only</option>
-            <option value="track">Track Mode Only</option>
-            <option value="sam">SAM Systems</option>
-            <option value="aaa">AAA Systems</option>
-          </select>
+        <div id="quiz-setup" class="quiz-card">
+          <h3>Quiz Settings</h3>
+          <div style="margin: 20px 0">
+            <label for="quiz-mode">Quiz Mode:</label>
+            <select id="quiz-mode">
+              <option value="all">All Radars</option>
+              <option value="search">Search Mode Only</option>
+              <option value="track">Track Mode Only</option>
+              <option value="sam">SAM Systems</option>
+              <option value="aaa">AAA Systems</option>
+            </select>
+          </div>
+          <div style="margin: 20px 0">
+            <label for="question-count">Number of Questions:</label>
+            <select id="question-count">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
         </div>
-        <div style="margin: 20px 0;">
-          <label for="question-count">Number of Questions:</label>
-          <select id="question-count">
-            <option value="5">5</option>
-            <option value="10" selected>10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select>
+
+        <div id="quiz-content" style="display: none">
+          <div class="quiz-card">
+            <div class="quiz-question">
+              <h3 id="question-number">Question 1 of 10</h3>
+              <p>Listen to the audio clip and identify the radar system:</p>
+            </div>
+
+            <div class="quiz-audio">
+              <button class="btn btn-primary" id="play-question-audio">🔊 Play Audio</button>
+              <audio id="question-audio" preload="none"></audio>
+            </div>
+
+            <div class="quiz-options" id="quiz-options"></div>
+
+            <div style="text-align: center; margin-top: 20px">
+              <button class="btn btn-secondary" onclick="nextQuestion()" id="next-btn" disabled>
+                Next Question
+              </button>
+            </div>
+          </div>
+
+          <div class="quiz-card">
+            <div style="display: flex; justify-content: space-between">
+              <span>Progress: <span id="progress-text">0/10</span></span>
+              <span
+                >Score: <span id="current-score">0</span>/<span id="total-questions">10</span></span
+              >
+            </div>
+            <div style="width: 100%; height: 8px; background: #ddd; margin-top: 10px">
+              <div
+                id="quiz-progress"
+                style="
+                  height: 100%;
+                  background: var(--primary-color);
+                  width: 0%;
+                  transition: width 0.3s;
+                "
+              ></div>
+            </div>
+          </div>
         </div>
-        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+
+        <div id="quiz-results" style="display: none">
+          <div class="quiz-results">
+            <h2>Quiz Complete!</h2>
+            <div class="quiz-score" id="final-score">0/10</div>
+            <p id="score-message"></p>
+            <div style="margin-top: 20px">
+              <button class="btn btn-primary" onclick="resetQuiz()">Take Another Quiz</button>
+              <a class="btn btn-secondary" href="sounds.html">Study More Sounds</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </main>
 
-      <div id="quiz-content" style="display: none;">
-        <div class="quiz-card">
-          <div class="quiz-question">
-            <h3 id="question-number">Question 1 of 10</h3>
-            <p>Listen to the audio clip and identify the radar system:</p>
-          </div>
-
-          <div class="quiz-audio">
-            <button class="btn btn-primary" id="play-question-audio">🔊 Play Audio</button>
-            <audio id="question-audio" preload="none"></audio>
-          </div>
-
-          <div class="quiz-options" id="quiz-options"></div>
-
-          <div style="text-align: center; margin-top: 20px;">
-            <button class="btn btn-secondary" onclick="nextQuestion()" id="next-btn" disabled>Next Question</button>
-          </div>
-        </div>
-
-        <div class="quiz-card">
-          <div style="display: flex; justify-content: space-between;">
-            <span>Progress: <span id="progress-text">0/10</span></span>
-            <span>Score: <span id="current-score">0</span>/<span id="total-questions">10</span></span>
-          </div>
-          <div style="width: 100%; height: 8px; background: #ddd; margin-top: 10px;">
-            <div id="quiz-progress" style="height: 100%; background: var(--primary-color); width: 0%; transition: width 0.3s;"></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="quiz-results" style="display: none;">
-        <div class="quiz-results">
-          <h2>Quiz Complete!</h2>
-          <div class="quiz-score" id="final-score">0/10</div>
-          <p id="score-message"></p>
-          <div style="margin-top: 20px;">
-            <button class="btn btn-primary" onclick="resetQuiz()">Take Another Quiz</button>
-            <a class="btn btn-secondary" href="sounds.html">Study More Sounds</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script src="js/utils.js"></script>
-  <script src="js/quiz.js"></script>
-</body>
+    <script src="js/utils.js"></script>
+    <script src="js/quiz.js"></script>
+  </body>
 </html>

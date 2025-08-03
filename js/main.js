@@ -35,7 +35,6 @@ class App {
       this.symbolFilter.populateSymbolFilter(soundMeta);
 
       console.log("✅ Application initialized successfully");
-
     } catch (error) {
       console.error("❌ Error initializing application:", error);
       document.getElementById("audio-list").textContent = "❌ Failed to load application.";
@@ -81,7 +80,18 @@ class App {
 }
 
 // Initialize the application when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split("/").pop();
+  const navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach((link) => {
+    const linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+
   const app = new App();
   app.initialize();
 });
