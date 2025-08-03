@@ -21,11 +21,11 @@ class UIComponents {
   static initializeVolumeControl(audioManager) {
     const volumeSlider = document.getElementById("volume-slider");
     const savedVolume = StorageService.getVolumeLevel();
-    
+
     volumeSlider.value = savedVolume;
     audioManager.setVolume(savedVolume / 100);
 
-    volumeSlider.addEventListener("input", function() {
+    volumeSlider.addEventListener("input", function () {
       const volume = parseInt(this.value) / 100;
       audioManager.setVolume(volume);
       StorageService.setVolumeLevel(this.value);
@@ -36,11 +36,9 @@ class UIComponents {
     const imageFileName = Config.SYMBOL_TO_IMAGE_MAP[symbolValue];
     if (!imageFileName) return null;
 
-    const isKnownUnknownSymbol = [
-      "unknown_low",
-      "unknown_medium", 
-      "unknown_high",
-    ].includes(symbolValue);
+    const isKnownUnknownSymbol = ["unknown_low", "unknown_medium", "unknown_high"].includes(
+      symbolValue
+    );
 
     const symbolWrapper = document.createElement("div");
     symbolWrapper.style.display = "flex";
@@ -64,18 +62,18 @@ class UIComponents {
 
     const img = document.createElement("img");
     img.src = `assets/rwr-symbols/${imageFileName}.jpg`;
-    img.alt = isUnknown || isKnownUnknownSymbol 
-      ? `Unknown RWR Symbol: ${symbolValue}` 
-      : `RWR Symbol ${symbolNumber}: ${symbolValue}`;
+    img.alt =
+      isUnknown || isKnownUnknownSymbol
+        ? `Unknown RWR Symbol: ${symbolValue}`
+        : `RWR Symbol ${symbolNumber}: ${symbolValue}`;
     img.className = "radar-symbol-img";
     img.style.maxHeight = "65px";
-    img.style.border = isUnknown || isKnownUnknownSymbol 
-      ? "2px solid #ff6b35" 
-      : "1px solid var(--highlight)";
+    img.style.border =
+      isUnknown || isKnownUnknownSymbol ? "2px solid #ff6b35" : "1px solid var(--highlight)";
     img.style.borderRadius = "1px";
     img.style.background = "white";
     img.style.padding = "1px";
-    
+
     img.onerror = () => {
       console.warn(`❌ Failed to load symbol image:`, img.src);
       symbolWrapper.style.display = "none";
@@ -109,6 +107,31 @@ class UIComponents {
     return warningContainer;
   }
 
+  static updateAllGroupHeights() {
+    // Helper function to update all group heights after bulk operations
+    document.querySelectorAll(".audio-grid:not(.collapsed)").forEach((grid) => {
+      UIComponents.updateGroupHeight(grid);
+    });
+  }
+
+  static updateGroupHeight(groupGrid) {
+    if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
+
+    // Remove any existing height constraints temporarily
+    const originalHeight = groupGrid.style.height;
+    const originalMaxHeight = groupGrid.style.maxHeight;
+
+    groupGrid.style.height = "auto";
+    groupGrid.style.maxHeight = "none";
+
+    // Get the natural height
+    const naturalHeight = groupGrid.scrollHeight;
+
+    // Restore constraints but set appropriate max-height
+    groupGrid.style.height = originalHeight;
+    groupGrid.style.maxHeight = Math.max(naturalHeight + 100, 500) + "px"; // Add buffer for animations
+  }
+
   static expandAllGroups() {
     document.querySelectorAll(".audio-grid").forEach((grid) => {
       grid.classList.remove("collapsed");
@@ -117,6 +140,10 @@ class UIComponents {
       requestAnimationFrame(() => {
         grid.style.transform = "scaleY(1)";
         grid.style.opacity = "1";
+        // Update height after expansion
+        setTimeout(() => {
+          UIComponents.updateGroupHeight(grid);
+        }, 50);
       });
     });
     StorageService.setCollapsedGroups([]);
@@ -130,21 +157,32 @@ class UIComponents {
         grid.classList.add("collapsed");
       }, 400);
     });
-    
-    const collapsedGroups = Array.from(document.querySelectorAll(".group-title"))
-      .map((title) => title.textContent.trim());
+
+    const collapsedGroups = Array.from(document.querySelectorAll(".group-title")).map((title) =>
+      title.textContent.trim()
+    );
     StorageService.setCollapsedGroups(collapsedGroups);
   }
 
   static showAllRadarInfo() {
     document.querySelectorAll(".extra-info").forEach((info) => {
-      info.style.display = "block";
+      info.classList.add("visible");
     });
+
+    // Update all group heights after showing radar info
+    setTimeout(() => {
+      UIComponents.updateAllGroupHeights();
+    }, 300); // Wait for CSS transitions to complete
   }
 
   static hideAllRadarInfo() {
     document.querySelectorAll(".extra-info").forEach((info) => {
-      info.style.display = "none";
+      info.classList.remove("visible");
     });
+
+    // Update all group heights after hiding radar info
+    setTimeout(() => {
+      UIComponents.updateAllGroupHeights();
+    }, 300); // Wait for CSS transitions to complete
   }
 }

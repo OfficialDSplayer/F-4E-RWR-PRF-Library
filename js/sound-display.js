@@ -101,10 +101,6 @@ class SoundDisplay {
 
     const extraInfo = document.createElement("div");
     extraInfo.className = "extra-info";
-    extraInfo.style.display = "none";
-    extraInfo.style.fontSize = "0.85em";
-    extraInfo.style.marginTop = "5px";
-    extraInfo.style.color = "var(--highlight)";
 
     // Build extra info content
     this.buildExtraInfo(sound, extraInfo);
@@ -112,7 +108,13 @@ class SoundDisplay {
     // Toggle dropdown on name click
     name.style.cursor = "pointer";
     name.addEventListener("click", () => {
-      extraInfo.style.display = extraInfo.style.display === "none" ? "block" : "none";
+      const wasVisible = extraInfo.classList.contains("visible");
+      extraInfo.classList.toggle("visible");
+
+      // Update group height after animation completes
+      setTimeout(() => {
+        this.updateGroupHeight(card.closest(".audio-grid"));
+      }, 300); // Match the CSS transition duration
     });
 
     const buttonGroup = document.createElement("div");
@@ -138,6 +140,24 @@ class SoundDisplay {
     card.appendChild(extraInfo);
 
     return card;
+  }
+
+  updateGroupHeight(groupGrid) {
+    if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
+
+    // Remove any existing height constraints temporarily
+    const originalHeight = groupGrid.style.height;
+    const originalMaxHeight = groupGrid.style.maxHeight;
+
+    groupGrid.style.height = "auto";
+    groupGrid.style.maxHeight = "none";
+
+    // Get the natural height
+    const naturalHeight = groupGrid.scrollHeight;
+
+    // Restore constraints but set appropriate max-height
+    groupGrid.style.height = originalHeight;
+    groupGrid.style.maxHeight = Math.max(naturalHeight + 100, 500) + "px"; // Add buffer for animations
   }
 
   buildExtraInfo(sound, extraInfo) {
@@ -184,10 +204,7 @@ class SoundDisplay {
   }
 
   addPRFInfo(parts, fullPath, radarInfo) {
-    if (
-      fullPath.includes("SEARCH") &&
-      radarInfo.type == "SEARCH_ONLY"
-    ) {
+    if (fullPath.includes("SEARCH") && radarInfo.type == "SEARCH_ONLY") {
       parts.push(`PRF: ${Number(radarInfo.prf_search).toFixed(2)}`);
     } else if (
       fullPath.includes("SEARCH") &&
@@ -301,7 +318,9 @@ class SoundDisplay {
 
       // Render second RWR symbol (only if different from symbol1)
       if (symbol2 && symbol2 !== symbol1) {
-        const isSymbol2Unknown = ["unknown_low", "unknown_medium", "unknown_high"].includes(symbol2);
+        const isSymbol2Unknown = ["unknown_low", "unknown_medium", "unknown_high"].includes(
+          symbol2
+        );
         const symbol2Element = UIComponents.createSymbolWithLabel(symbol2, 2, isSymbol2Unknown);
         if (symbol2Element) {
           symbolContainer.appendChild(symbol2Element);
@@ -443,6 +462,10 @@ class SoundDisplay {
       requestAnimationFrame(() => {
         groupGrid.style.transform = "scaleY(1)";
         groupGrid.style.opacity = "1";
+        // Update height after expansion
+        setTimeout(() => {
+          this.updateGroupHeight(groupGrid);
+        }, 50);
       });
       this.collapsedGroups = this.collapsedGroups.filter((name) => name !== groupName);
       StorageService.setCollapsedGroups(this.collapsedGroups);

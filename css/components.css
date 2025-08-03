@@ -5,43 +5,19 @@
   gap: 20px;
   margin-bottom: 20px;
   opacity: 1;
-  max-height: 2000px;
   overflow: hidden;
   transform: scaleY(1);
   transform-origin: top;
-  transition: transform 0.4s ease 0s, max-height 0.25s ease 0s, opacity 0.4s ease 0s;
+  transition: transform 0.4s ease 0s, opacity 0.4s ease 0s;
 }
 
 .audio-grid.collapsed {
-  max-height: 0;
   opacity: 0;
   transform: scaleY(0);
   pointer-events: none;
   margin: 0;
   padding: 0;
 }
-/* .audio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 20px;
-  opacity: 1;
-  max-height: 2000px;
-  overflow: hidden;
-  transform: scaleY(1);
-  transform-origin: top;
-  will-change: transform, max-height, opacity;
-  transition: transform 0.4s ease, max-height 0.4s ease, opacity 0.4s ease;
-}
-
-.audio-grid.collapsed {
-  max-height: 0;
-  opacity: 0;
-  transform: scaleY(0.6);
-  pointer-events: none;
-  margin: 0;
-  padding: 0;
-} */
 
 /* Audio Cards */
 .audio-card {
@@ -84,7 +60,18 @@
   font-size: 0.85em;
   margin-top: 5px;
   color: var(--highlight);
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal),
+    transform var(--transition-normal), margin-top var(--transition-normal);
+}
+
+.extra-info.visible {
+  max-height: 2000px; /* Generous max-height for individual extra-info */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Buttons */
@@ -121,10 +108,6 @@ button:hover {
   color: white;
   margin: 5px;
 }
-
-/* .global-button:hover {
-  transform: translate(0px, -1px);
-} */
 
 /* Button States */
 .play-button:active {
@@ -186,22 +169,29 @@ button:hover {
   right: 0;
   background: var(--card-bg);
   border: 1px solid #ccc;
-  max-height: 300px;
-  overflow-y: auto;
+  max-height: 0;
+  overflow: hidden;
   z-index: 1000;
   min-width: 500px;
-  padding: 10px;
+  padding: 0 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal),
+    transform var(--transition-normal), padding var(--transition-normal);
 }
 
 .symbol-dropdown.visible {
-  display: flex;
+  max-height: 300px;
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 10px;
 }
 
 .symbol-dropdown label {
