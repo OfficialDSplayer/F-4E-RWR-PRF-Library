@@ -92,7 +92,11 @@ input[type="range"] {
 }
 
 .collapsed {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+  max-height: 0 !important;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 /* Mobile Responsiveness */

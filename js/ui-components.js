@@ -117,33 +117,22 @@ class UIComponents {
   static updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Remove any existing height constraints temporarily
-    const originalHeight = groupGrid.style.height;
-    const originalMaxHeight = groupGrid.style.maxHeight;
-
-    groupGrid.style.height = "auto";
+    // Temporarily remove max-height to measure natural height
     groupGrid.style.maxHeight = "none";
 
     // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Restore constraints but set appropriate max-height
-    groupGrid.style.height = originalHeight;
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 100, 500) + "px"; // Add buffer for animations
+    // Set appropriate max-height with buffer for smooth animations and content changes
+    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
   }
 
   static expandAllGroups() {
     document.querySelectorAll(".audio-grid").forEach((grid) => {
       grid.classList.remove("collapsed");
-      grid.style.transform = "scaleY(0)";
-      grid.style.opacity = "0";
+      // Update height immediately after removing collapsed class
       requestAnimationFrame(() => {
-        grid.style.transform = "scaleY(1)";
-        grid.style.opacity = "1";
-        // Update height after expansion
-        setTimeout(() => {
-          UIComponents.updateGroupHeight(grid);
-        }, 50);
+        UIComponents.updateGroupHeight(grid);
       });
     });
     StorageService.setCollapsedGroups([]);
@@ -151,11 +140,17 @@ class UIComponents {
 
   static collapseAllGroups() {
     document.querySelectorAll(".audio-grid").forEach((grid) => {
-      grid.style.transform = "scaleY(0)";
-      grid.style.opacity = "0";
-      setTimeout(() => {
+      // First set current height to enable smooth transition
+      const currentHeight = grid.scrollHeight;
+      grid.style.maxHeight = currentHeight + "px";
+
+      // Force reflow
+      grid.offsetHeight;
+
+      // Then collapse
+      requestAnimationFrame(() => {
         grid.classList.add("collapsed");
-      }, 400);
+      });
     });
 
     const collapsedGroups = Array.from(document.querySelectorAll(".group-title")).map((title) =>

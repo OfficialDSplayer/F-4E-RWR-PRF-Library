@@ -69,8 +69,6 @@ class SoundDisplay {
 
       if (this.collapsedGroups.includes(groupName)) {
         groupGrid.classList.add("collapsed");
-        groupGrid.style.transform = "scaleY(0)";
-        groupGrid.style.opacity = "0";
       }
 
       for (const sound of sortedSounds) {
@@ -79,7 +77,15 @@ class SoundDisplay {
       }
 
       groupTitle.addEventListener("click", () => {
-        this.toggleGroup(groupName, groupGrid);
+        groupGrid.classList.toggle("collapsed");
+
+        if (groupGrid.classList.contains("collapsed")) {
+          collapsedGroups.push(groupName);
+        } else {
+          collapsedGroups = collapsedGroups.filter((g) => g !== groupName);
+        }
+
+        localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
       });
 
       audioList.appendChild(groupTitle);
@@ -145,19 +151,15 @@ class SoundDisplay {
   updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Remove any existing height constraints temporarily
-    const originalHeight = groupGrid.style.height;
+    // Temporarily remove max-height to measure natural height
     const originalMaxHeight = groupGrid.style.maxHeight;
-
-    groupGrid.style.height = "auto";
     groupGrid.style.maxHeight = "none";
 
     // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Restore constraints but set appropriate max-height
-    groupGrid.style.height = originalHeight;
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 100, 500) + "px"; // Add buffer for animations
+    // Set appropriate max-height with buffer for smooth animations and content changes
+    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
   }
 
   buildExtraInfo(sound, extraInfo) {
@@ -446,27 +448,21 @@ class SoundDisplay {
     const isCollapsed = groupGrid.classList.contains("collapsed");
 
     if (!isCollapsed) {
-      groupGrid.style.transform = "scaleY(0)";
-      groupGrid.style.opacity = "0";
-      setTimeout(() => {
-        groupGrid.classList.add("collapsed");
-        if (!this.collapsedGroups.includes(groupName)) {
-          this.collapsedGroups.push(groupName);
-        }
-        StorageService.setCollapsedGroups(this.collapsedGroups);
-      }, 400);
+      // Collapsing: Add collapsed class immediately
+      groupGrid.classList.add("collapsed");
+      if (!this.collapsedGroups.includes(groupName)) {
+        this.collapsedGroups.push(groupName);
+      }
+      StorageService.setCollapsedGroups(this.collapsedGroups);
     } else {
+      // Expanding: Remove collapsed class and let CSS handle the transition
       groupGrid.classList.remove("collapsed");
-      groupGrid.style.transform = "scaleY(0)";
-      groupGrid.style.opacity = "0";
-      requestAnimationFrame(() => {
-        groupGrid.style.transform = "scaleY(1)";
-        groupGrid.style.opacity = "1";
-        // Update height after expansion
-        setTimeout(() => {
-          this.updateGroupHeight(groupGrid);
-        }, 50);
-      });
+
+      // Update height after expansion animation
+      setTimeout(() => {
+        this.updateGroupHeight(groupGrid);
+      }, 450); // Slightly longer than CSS transition
+
       this.collapsedGroups = this.collapsedGroups.filter((name) => name !== groupName);
       StorageService.setCollapsedGroups(this.collapsedGroups);
     }
