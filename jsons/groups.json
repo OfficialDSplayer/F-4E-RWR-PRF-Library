@@ -1057,8 +1057,8 @@
   },
   "imported_wavs/Kite_Screech_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Kite_Screech Search",
-    "description": "",
+    "name": "Kite Screech Acquisition",
+    "description": "Pyotr Velikiy (Kirov-class), Rezky, Molniya/Tarantul Track Radar",
     "hidden": false
   },
   "imported_wavs/Kite_Screech_TRACK.wav": {
@@ -1177,8 +1177,8 @@
   },
   "imported_wavs/Muff_Cob_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Muff_Cob Search",
-    "description": "",
+    "name": "Muff Cob Acquisition",
+    "description": "Grisha (Albatros), Ropucha Track Radar",
     "hidden": false
   },
   "imported_wavs/Muff_Cob_TRACK.wav": {
@@ -1188,16 +1188,16 @@
     "hidden": false
   },
   "imported_wavs/Mys-M1_SR_SEARCH.wav": {
-    "group": "SAM Radar (Soviet)",
-    "name": "Mys-M1_SR Search",
-    "description": "Tor-M1 SR **Not Used**",
-    "hidden": true
+    "group": "Miscellaneous",
+    "name": "Mys-M1 SR Search",
+    "description": "HY-2 (CSSC-3 Seersucker) 'Silkworm' AShM Search Radar",
+    "hidden": false
   },
   "imported_wavs/Mys-M1_SR_TRACK.wav": {
-    "group": "SAM Radar (Soviet)",
-    "name": "Mys-M1_SR Track",
-    "description": "Tor-M1 SR **Not Used**",
-    "hidden": true
+    "group": "miscellaneous",
+    "name": "HY-2 Silkworm Track",
+    "description": "HY-2 (CSSC-3 Seersucker) 'Silkworm' AShM Search Radar",
+    "hidden": false
   },
   "imported_wavs/N-001_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
@@ -1316,7 +1316,7 @@
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 Osa Track",
-    "description": "SA-8 Osa 9A33 'Gecko'",
+    "description": "SA-8 Osa 9A33 'Gecko' (Same PRF as Search)",
     "hidden": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
@@ -1867,31 +1867,31 @@
   },
   "imported_wavs/Top_Dome_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top_Dome Track",
+    "name": "Top Dome Track",
     "description": "Moskva, Pyotr Velikiy (Kirov-class) Track Radar",
     "hidden": false
   },
   "imported_wavs/Top_Plate_L_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top Plate L Search",
+    "name": "Top Plate-L Search",
     "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR",
     "hidden": false
   },
   "imported_wavs/Top_Plate_L_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top Plate L Track",
+    "name": "Top Plate-L Track",
     "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR CONFUSED???",
     "hidden": false
   },
   "imported_wavs/Top_Plate_S_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top_Plate_S Search",
+    "name": "Top Plate-S Search",
     "description": "Kuznetsov, Piotr Velikiy, Neustrashimy, Type 052B SR",
     "hidden": false
   },
   "imported_wavs/Top_Plate_S_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top Plate S Track",
+    "name": "Top Plate-S Track",
     "description": "Kuznetsov SR, Piotr Velikiy SR, Neustrashimy SR, Type 052B TR",
     "hidden": false
   },
@@ -2149,7 +2149,7 @@
   },
   "imported_wavs/Type_992Q_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "Type_992Q Search",
+    "name": "Type 992Q Search",
     "description": "Leandar-class Search Radar",
     "hidden": false
   },
@@ -2233,8 +2233,8 @@
   },
   "imported_wavs/amazonka_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 RD-75 Amazonka Search",
-    "description": "SA-2 Rangefinding Radar Search",
+    "name": "SA-2 RD-75 Amazonka Search/Track",
+    "description": "SA-2 Rangefinding Radar",
     "hidden": false
   },
   "imported_wavs/amazonka_TRACK.wav": {
@@ -2390,7 +2390,7 @@
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 Osa Search",
-    "description": "SA-8 Osa 9A33 'Gecko'",
+    "description": "SA-8 Osa 9A33 'Gecko' (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
