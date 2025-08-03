@@ -1,130 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>F-4E RWR PRF Sound Player</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <title>F-4E RWR PRF Library - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <style>
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+      color: white;
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      font-weight: 500;
+    }
+    .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--box-shadow-lg);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--box-shadow);
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    .feature-card h3 {
+      margin-bottom: 15px;
+      color: var(--card-text);
+    }
+    .feature-card p {
+      color: var(--highlight);
+      line-height: 1.6;
+    }
+    .quiz-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--border-radius-lg);
+      margin: 40px auto;
+      max-width: 800px;
+      box-shadow: var(--box-shadow);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">F-4E RWR PRF Library</a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="sounds.html" class="nav-link">Sound Player</a></li>
+        <li class="nav-item"><a href="quiz.html" class="nav-link">Handoff Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Favicon -->
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" type="image/png" />
-    <!-- Apple touch icon -->
-    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
-
-    <!-- Open Graph Preview -->
-    <meta property="og:title" content="F-4E RWR PRF Sound Player" />
-    <meta
-      property="og:description"
-      content="Listen and learn the RWR PRF tones from the DCS Heatblur F-4E Phantom module."
-    />
-    <meta
-      property="og:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
-    />
-    <meta property="og:url" content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/" />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="F-4E RWR PRF Sound Player" />
-    <meta
-      name="twitter:description"
-      content="Listen and learn the RWR PRF tones from the DCS Heatblur F-4E Phantom module."
-    />
-    <meta
-      name="twitter:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
-    />
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/themes.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/components.css" />
-  </head>
-  <body>
-    <h1>F-4E RWR PRF Sound Player</h1>
-    <hr class="solid" />
-    <h2>By DSplayer</h2>
-    <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-08-01 (using DCS 2.9.18)</h3>
-    <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
-
-    <div class="controls">
-      <button class="global-button" id="play-all-btn">Play All</button>
-      <button class="global-button" id="stop-all-btn">Stop All</button>
-      <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button>
-      <div class="volume-control">
-        <label for="volume-slider">Volume:</label>
-        <input type="range" id="volume-slider" min="0" max="100" value="100" />
+  <main class="main-content">
+    <div class="hero">
+      <h1>F-4E RWR PRF Library</h1>
+      <p>Master the radar warning receiver sounds from the DCS Heatblur F-4E Phantom II</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="sounds.html">🎵 Browse Sounds</a>
+        <a class="btn btn-secondary" href="quiz.html">🧠 Take Quiz</a>
       </div>
     </div>
 
-    <div class="controls search-controls">
-      <div class="search-wrapper">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search sounds..."
-          class="search-input"
-        />
-
-        <div id="symbol-filter-wrapper">
-          <button id="symbol-filter-toggle" class="global-button symbol-filter-toggle">
-            Filter Symbols ⬇
-          </button>
-          <div id="symbol-filter-dropdown" class="symbol-dropdown"></div>
-        </div>
-      </div>
+    <div class="features">
+      <div class="feature-card"><div class="feature-icon">🎧</div><h3>Audio Library</h3><p>Listen to authentic RWR PRF tones from different radar systems. Learn search, acquisition, and tracking modes.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎯</div><h3>Interactive Quiz</h3><p>Test your recognition with randomized sound quizzes and sharpen your threat ID skills.</p></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><h3>Track Progress</h3><p>Measure your learning and revisit radar sounds you struggle with.</p></div>
     </div>
 
-    <div class="controls">
-      <button class="global-button" id="expand-all-btn">Expand All Groups</button>
-      <button class="global-button" id="collapse-all-btn">Collapse All Groups</button>
-      <button class="global-button" id="show-all-radar-btn">Show All Radar Info</button>
-      <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
+    <div class="quiz-card">
+      <h2>About This Library</h2>
+      <p>This site is designed to help DCS F-4E Phantom II pilots learn and memorize the PRF (Pulse Repetition Frequency) tones for the ALR-46's Handoff mode. The audio files are extracted directly from the DCS Heatblur F-4E module to ensure authenticity.</p>
+      <h3>Radar Modes You’ll Hear</h3>
+      <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <li><strong>Search:</strong> Radar is scanning for targets</li>
+        <li><strong>Acquisition:</strong> Radar is attempting to lock on</li>
+        <li><strong>Track:</strong> Radar is actively tracking you</li>
+      </ul>
+      <p>Certain systems like the SA-2 Fan Song and SA-3 Low Blow may skip the acquisition phase depending on range and aspect. Only radars detectable by the ALR-46 are included.</p>
     </div>
-
-    <h4>
-      This site is intended to help users learn and memorize what the PRF tones for radars for the
-      ALR-46's Handoff mode. If you have any suggestions, please post them in the
-      <a href="https://github.com/OfficialDSplayer/F-4E-RWR-PRF-Library/issues"
-        >GitHub Issues page</a
-      >.
-    </h4>
-
-    <p>
-      There are 3 types of radar modes listed: Search, Acquisition (search for track radars), Track.
-    </p>
-    <p>
-      Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase PRF
-      prior to full on target track. Depending on your range and aspect, they might skip the
-      acquisition phase entirely and immediately go to the tracking phase so be mindful of that when
-      facing them.
-    </p>
-
-    <p>
-      Symbols are shown for the radars listed. Each radar is capable of being displayed using two
-      symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is shown.
-      If they aren't the same, both are shown. In the case of certain emitters like the C-RAM/CIWS
-      Phalanx, if they're in multiple tables (ex: land and sea), both symbols are shown.
-    </p>
-
-    <p>Only radars that are detectable by the ALR-46 are listed.</p>
-
-    <div id="progress-container" class="progress-container">
-      <div id="progress-bar" class="progress-bar"></div>
-    </div>
-
-    <div id="audio-list">Loading sounds...</div>
-
-    <!-- JavaScript Files -->
-    <script src="js/utils.js"></script>
-    <script src="js/storage-service.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/ui-components.js"></script>
-    <script src="js/data-loader.js"></script>
-    <script src="js/audio-manager.js"></script>
-    <script src="js/sound-display.js"></script>
-    <script src="js/symbol-filter.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+  </main>
+</body>
 </html>
