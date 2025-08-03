@@ -266,12 +266,14 @@ class SoundDisplay {
 
     let radarEntry = null;
     let matchedKey = null;
+    let matchType = null;
 
-    // Try each normalization option
+    // Try each normalization option (exact match)
     for (const normalized of normalizedOptions) {
       if (window.radarSymbolMap?.[normalized]) {
         radarEntry = window.radarSymbolMap[normalized];
         matchedKey = normalized;
+        matchType = "exact";
         break;
       }
     }
@@ -282,19 +284,26 @@ class SoundDisplay {
         if (normalizedOptions.some((opt) => key.includes(opt) || opt.includes(key))) {
           radarEntry = entry;
           matchedKey = key;
+          matchType = "partial";
           break;
         }
       }
     }
 
     if (radarEntry) {
-      this.displayKnownRadarSymbols(radarEntry, extraInfo);
+      console.log("✅ RWR symbol match:", {
+        file: fullPath,
+        matchedKey,
+        matchType,
+        normalizedOptions,
+      });
+      this.displayKnownRadarSymbols(radarEntry, extraInfo, sound);
     } else {
       this.displayUnknownRadarSymbol(sound, extraInfo);
     }
   }
 
-  displayKnownRadarSymbols(radarEntry, extraInfo) {
+  displayKnownRadarSymbols(radarEntry, extraInfo, sound) {
     // Loop through each radarEntry
     for (const radarEntryVariant of Array.isArray(radarEntry) ? radarEntry : [radarEntry]) {
       const { symbol1, symbol2, source, warning, warning2 } = radarEntryVariant;
@@ -336,7 +345,7 @@ class SoundDisplay {
 
       // Display source info or frequency band info
       if (isManualUnknownSymbol) {
-        this.addFrequencyBandInfo(extraInfo);
+        this.addFrequencyBandInfo(extraInfo, sound);
       } else {
         this.addSourceTableInfo(source, extraInfo);
       }
@@ -414,16 +423,27 @@ class SoundDisplay {
     } else {
       console.warn("❌ No radar symbol found (no frequency data available):", {
         file: sound.file,
+        normalizedOptions,
         availableKeys: Object.keys(window.radarSymbolMap || {}).slice(0, 5),
       });
     }
   }
 
-  addFrequencyBandInfo(extraInfo) {
-    const radarInfo = this.dataLoader.getAlr46Info();
+  addFrequencyBandInfo(extraInfo, sound) {
+    const radarInfo = this.dataLoader.getAlr46Info()[sound.file];
     let frequencyBand = "Unknown";
 
-    // Add frequency band info for manually assigned unknown symbols
+    if (radarInfo && radarInfo.band != null) {
+      const freqGHz = Number(radarInfo.band);
+      if (freqGHz >= 2 && freqGHz < 4) {
+        frequencyBand = "Low band (2-4 GHz)";
+      } else if (freqGHz >= 4 && freqGHz < 8) {
+        frequencyBand = "Medium band (4-8 GHz)";
+      } else if (freqGHz >= 8 && freqGHz <= 20) {
+        frequencyBand = "High band (8-20 GHz)";
+      }
+    }
+
     const bandText = document.createElement("div");
     bandText.textContent = frequencyBand;
     bandText.style.fontSize = "0.75em";
