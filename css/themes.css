@@ -1,0 +1,72 @@
+/* CSS Custom Properties for theming */
+:root {
+  /* Light theme colors */
+  --bg-color: #f5f5f5;
+  --text-color: #000;
+  --card-bg: #fff;
+  --card-text: #000;
+  --highlight: #666;
+
+  /* Brand colors */
+  --primary-color: #2196f3;
+  --success-color: #4caf50;
+  --danger-color: #f44336;
+  --warning-color: #ff6b35;
+  --active-color: #ffca28;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Borders and shadows */
+  --border-radius: 5px;
+  --border-radius-lg: 10px;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg: #1e1e1e;
+  --card-text: #f0f0f0;
+  --highlight: #aaa;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme transition for smooth switching */
+* {
+  transition: background-color var(--transition-normal), color var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+/* Ensure images and media don't transition */
+img,
+video,
+canvas,
+svg {
+  transition: none !important;
+}
+
+/* Input styling for dark theme */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="range"] {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-color: var(--highlight);
+}
+
+[data-theme="dark"] input[type="text"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}

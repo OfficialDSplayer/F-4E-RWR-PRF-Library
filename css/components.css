@@ -1,0 +1,221 @@
+/* Audio Grid */
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  /* Transition settings */
+  transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  transform-origin: top;
+  opacity: 1;
+  max-height: 2000px; /* Big enough to fit most groups */
+  transform: scaleY(1);
+}
+
+.audio-grid.collapsed {
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0.7); /* Smooth upward compression */
+  pointer-events: none;
+}
+
+/* Audio Cards */
+.audio-card {
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.audio-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.file-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--card-text);
+  cursor: pointer;
+}
+
+.file-name:hover {
+  color: var(--primary-color);
+}
+
+.file-description {
+  font-size: 0.9em;
+  text-align: center;
+  color: var(--highlight);
+  margin-bottom: 8px;
+}
+
+.extra-info {
+  font-size: 0.85em;
+  margin-top: 5px;
+  color: var(--highlight);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal),
+    transform var(--transition-normal), margin-top var(--transition-normal);
+}
+
+.extra-info.visible {
+  max-height: 2000px; /* Generous max-height for individual extra-info */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons */
+button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.play-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.stop-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.global-button {
+  background-color: #2196f3;
+  color: white;
+  margin: 5px;
+}
+
+/* Button States */
+.play-button:active {
+  background-color: #388e3c;
+}
+
+.play-button.loading {
+  background-color: #81c784;
+  color: black;
+  animation: pulse 1.2s infinite;
+}
+
+.stop-button:active {
+  background-color: #c62828;
+}
+
+.global-button:active {
+  background-color: #1976d2;
+}
+
+.global-button.loading {
+  background-color: #81c784;
+  color: black;
+  animation: pulse 1.2s infinite;
+}
+
+.play-button.active {
+  background-color: #ffca28;
+  color: black;
+  animation: pulse 1.2s infinite;
+}
+
+.global-button.active {
+  background-color: #ffca28;
+  color: black;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 202, 40, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(255, 202, 40, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 202, 40, 0.4);
+  }
+}
+
+/* Symbol Filter Dropdown */
+#symbol-filter-wrapper {
+  position: relative;
+}
+
+.symbol-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid #ccc;
+  max-height: 0;
+  overflow: hidden;
+  z-index: 1000;
+  min-width: 500px;
+  padding: 0 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height var(--transition-normal), opacity var(--transition-normal),
+    transform var(--transition-normal), padding var(--transition-normal);
+}
+
+.symbol-dropdown.visible {
+  max-height: 300px;
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 10px;
+}
+
+.symbol-dropdown label {
+  width: 64px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.symbol-dropdown img {
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+/* Symbol Filter Mobile */
+@media (max-width: 600px) {
+  .symbol-dropdown {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    min-width: 90vw;
+    max-width: 95vw;
+  }
+}
