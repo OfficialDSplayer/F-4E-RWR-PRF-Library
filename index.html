@@ -2,99 +2,222 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>F-4E RWR PRF Library - Home</title>
+    <title>F-4E RWR PRF Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="assets/handoff_favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="assets/handoff_favicon.png" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-brand">
-          <img
-            src="assets/handoff_icon.jpg"
-            alt="Logo"
-            style="height: 32px; vertical-align: middle; margin-right: 10px"
-          />
-          F-4E RWR PRF Library
-        </a>
-        <button class="nav-toggle" onclick="toggleMobileMenu()">☰</button>
-        <ul class="nav-menu" id="nav-menu">
-          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="sounds.html" class="nav-link">Sound Player</a></li>
-          <li class="nav-item"><a href="quiz.html" class="nav-link">Handoff Quiz</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-      </div>
-    </nav>
-    <main class="main-content">
-      <section class="hero">
-        <h1>F-4E RWR PRF Library</h1>
-        <p>Master the radar warning receiver sounds from the DCS Heatblur F-4E Phantom II</p>
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="sounds.html">🎵 Browse Sounds</a>
-          <a class="btn btn-secondary" href="quiz.html">🧠 Take Quiz</a>
-        </div>
-      </section>
-      <section class="features">
-        <div class="feature-card">
-          <div class="feature-icon">🎧</div>
-          <h3>Audio Library</h3>
-          <p>
-            Listen to authentic RWR PRF tones from different radar systems. Learn search,
-            acquisition, and tracking modes.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>Interactive Quiz</h3>
-          <p>
-            Test your recognition with randomized sound quizzes and sharpen your threat ID skills.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Track Progress</h3>
-          <p>Measure your learning and revisit radar sounds you struggle with.</p>
-        </div>
-      </section>
-      <section class="quiz-card">
-        <h2>About This Library</h2>
-        <p>
-          This site helps DCS F-4E Phantom II pilots memorize PRF tones for the ALR-46's Handoff
-          mode. Audio is taken from the DCS Heatblur module.
-        </p>
-        <h3>Radar Modes You’ll Hear</h3>
-        <ul>
-          <li><strong>Search:</strong> Radar is scanning for targets</li>
-          <li><strong>Acquisition:</strong> Radar is attempting to lock on</li>
-          <li><strong>Track:</strong> Radar is actively tracking you</li>
-        </ul>
-        <p>
-          Certain systems like the SA-2 Fan Song and SA-3 Low Blow may skip acquisition depending on
-          range/aspect. Only radars detectable by the ALR-46 are included.
-        </p>
-      </section>
-    </main>
-    <script>
-      function toggleTheme() {
-        const body = document.body;
-        const toggle = document.querySelector(".theme-toggle");
-        const isDark = body.getAttribute("data-theme") === "dark";
-        if (isDark) {
-          body.removeAttribute("data-theme");
-          toggle.textContent = "🌙 Dark Mode";
-          localStorage.setItem("theme", "light");
-        } else {
-          body.setAttribute("data-theme", "dark");
-          toggle.textContent = "☀️ Light Mode";
-          localStorage.setItem("theme", "dark");
+    <style>
+      :root {
+        --bg: #0d0d0d;
+        --fg: #f2f2f2;
+        --accent: #00ffe7;
+        --muted: #aaa;
+        --spacing: 8vw;
+        --maxw: 1400px;
+        --font-main: "Inter", sans-serif;
+        --nav-bg: rgba(0, 0, 0, 0);
+        --nav-bg-solid: rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        font-family: var(--font-main);
+        background: var(--bg);
+        color: var(--fg);
+        scroll-behavior: smooth;
+        line-height: 1.6;
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem var(--spacing);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: var(--nav-bg);
+        backdrop-filter: blur(0px);
+        transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+      }
+
+      nav.scrolled {
+        background: var(--nav-bg-solid);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--fg);
+      }
+
+      .nav-links a {
+        color: var(--fg);
+        text-decoration: none;
+        margin-left: 2rem;
+        font-size: 0.95rem;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero */
+      .hero {
+        height: 100vh;
+        background: url("https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
+          no-repeat center center / cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: var(--spacing);
+        color: white;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .hero a {
+        display: inline-block;
+        background: var(--accent);
+        color: #000;
+        padding: 14px 28px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .hero a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 255, 231, 0.4);
+      }
+
+      /* Content below hero to show scroll effect */
+      .content {
+        padding: 6rem var(--spacing);
+        max-width: var(--maxw);
+        margin: auto;
+      }
+
+      .content h2 {
+        margin-bottom: 1rem;
+      }
+
+      .content p {
+        color: var(--muted);
+        max-width: 700px;
+      }
+
+      footer {
+        padding: 4rem var(--spacing);
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1.5rem var(--spacing);
+        }
+
+        .nav-links {
+          margin-top: 1rem;
+        }
+
+        .nav-links a {
+          margin: 0 0 1rem 0;
         }
       }
-      function toggleMobileMenu() {
-        document.getElementById("nav-menu").classList.toggle("active");
-      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="logo">F-4E RWR PRF Library</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Sounds</a>
+        <a href="#">Quiz</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Recognize Threats by Sound</h1>
+        <p>
+          Master radar warning tones from the ALR-46 on the F-4E Phantom II — directly from DCS
+          Heatblur.
+        </p>
+        <a href="sounds.html">🎵 Start Listening</a>
+      </div>
+    </section>
+
+    <div class="content">
+      <h2>Train Like a Phantom Pilot</h2>
+      <p>
+        This library helps you memorize PRF tones associated with real radar threats. From search to
+        tracking, you’ll build recognition instinct critical for air combat survival.
+      </p>
+    </div>
+
+    <footer>&copy; 2025 F-4E RWR PRF Library · Built for DCS Pilots</footer>
+
+    <script>
+      const nav = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 80) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
     </script>
   </body>
 </html>
