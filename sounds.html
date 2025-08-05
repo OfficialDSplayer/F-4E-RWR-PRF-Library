@@ -17,14 +17,14 @@
         <a href="index.html">Home</a>
         <a href="sounds.html">Sounds</a>
         <a href="#">Quiz</a>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+        <button class="theme-toggle" id="toggle-dark-mode-btn">Toggle Theme</button>
       </div>
     </nav>
     <main class="main-content">
       <!-- <h1>F-4E RWR PRF Sound Player</h1> -->
       <!-- <hr class="solid" /> -->
       <section style="text-align: center">
-        <h1><br /><br />F-4E RWR PRF Sound Player</h1>
+        <h1>F-4E RWR PRF Sound Player</h1>
         <h3>Using sounds from the DCS Heatblur F-4E Module</h3>
         <h4 style="color: var(--danger-color)">
           <b>** DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW **</b>
@@ -33,7 +33,7 @@
       <div class="controls">
         <button class="global-button" id="play-all-btn">Play All</button>
         <button class="global-button" id="stop-all-btn">Stop All</button>
-        <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button>
+        <!-- <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button> -->
         <div class="volume-control">
           <label for="volume-slider">Volume:</label>
           <input id="volume-slider" max="100" min="0" type="range" value="100" />
@@ -91,17 +91,6 @@
       </div>
       <div id="audio-list">Loading sounds...</div>
     </main>
-    <script>
-      const nav = document.getElementById("navbar");
-
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 80) {
-          nav.classList.add("scrolled");
-        } else {
-          nav.classList.remove("scrolled");
-        }
-      });
-    </script>
     <!-- JavaScript Files -->
     <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>
@@ -112,5 +101,6 @@
     <script src="js/sound-display.js"></script>
     <script src="js/symbol-filter.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/main-sound.js"></script>
   </body>
 </html>

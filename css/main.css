@@ -158,3 +158,42 @@ footer {
     margin-top: 1rem;
   }
 }
+
+/* Main content spacing to account for fixed nav */
+.main-content {
+  padding-top: 75px; /* Adjust this value based on your nav height */
+  /* min-height: calc(100vh - 75px); */
+}
+
+/* Alternative approach - you can use this instead of the above */
+body {
+  /* font-family: "HornetDisplay", sans-serif; */
+  /* padding: 0; Remove the general padding */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* margin: 0; */
+  /* padding-top: 75px; Add top padding to account for fixed nav */
+}
+
+/* Adjust the nav height calculation for mobile */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 75px; /* More space needed for mobile nav */
+  }
+
+  /* Or if using the body approach */
+  body {
+    /* padding-top: 160px; */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 2px;
+  }
+
+  /* Or if using the body approach */
+  body {
+    padding-top: 180px;
+  }
+}

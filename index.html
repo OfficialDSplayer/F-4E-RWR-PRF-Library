@@ -19,7 +19,7 @@
         <a href="index.html">Home</a>
         <a href="sounds.html">Sounds</a>
         <a href="#">Quiz</a>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
     </nav>
     <section class="hero">
@@ -40,32 +40,12 @@
       </p>
     </div>
     <footer>© 2025 F-4E RWR PRF Library · Built for DCS Pilots</footer>
+    <script src="js/ui-components.js"></script>
+    <script src="js/main.js"></script>
     <script>
-      const nav = document.getElementById("navbar");
-
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 80) {
-          nav.classList.add("scrolled");
-        } else {
-          nav.classList.remove("scrolled");
-        }
-      });
-
-      // THEME TOGGLE
-      const toggleTheme = () => {
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("theme", next);
-      };
-
-      // INIT THEME
-      (function () {
-        const saved = localStorage.getItem("theme");
-        if (saved === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      })();
+      // window.addEventListener("popstate", () => {
+      //   UIComponents.setActiveNavLink();
+      // });
     </script>
   </body>
 </html>
