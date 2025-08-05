@@ -1,226 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <title>F-4E RWR PRF Library</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      @font-face {
-        font-family: "HornetDisplay";
-        src: url("assets/HornetDisplay-Regular.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-      :root {
-        --font-main: "HornetDisplay", sans-serif;
-
-        /* Light theme default */
-        --bg: #f5f5f5;
-        --fg: #111;
-        --accent: #007aff;
-        --muted: #666;
-        --nav-bg: rgba(255, 255, 255, 0);
-        --nav-bg-solid: rgba(255, 255, 255, 0.85);
-      }
-
-      [data-theme="dark"] {
-        --bg: #0d0d0d;
-        --fg: #f2f2f2;
-        --accent: #00ffe7;
-        --muted: #aaa;
-        --nav-bg: rgba(0, 0, 0, 0);
-        --nav-bg-solid: rgba(0, 0, 0, 0.5);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        font-family: var(--font-main);
-        background: var(--bg);
-        color: var(--fg);
-        scroll-behavior: smooth;
-        line-height: 1.6;
-        transition: background 0.3s ease, color 0.3s ease;
-      }
-
-      /* Navbar */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 2rem 8vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 100;
-        background: var(--nav-bg);
-        backdrop-filter: blur(0px);
-        transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-      }
-
-      nav.scrolled {
-        background: var(--nav-bg-solid);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .logo {
-        font-size: 1.1rem;
-        font-weight: bold;
-      }
-
-      .nav-links a {
-        color: var(--fg);
-        text-decoration: none;
-        margin-left: 2rem;
-        font-size: 0.95rem;
-        position: relative;
-        transition: color 0.3s ease;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        height: 2px;
-        width: 0;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .theme-toggle {
-        background: none;
-        border: 1px solid var(--fg);
-        color: var(--fg);
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        cursor: pointer;
-        margin-left: 2rem;
-      }
-
-      /* Hero */
-      .hero {
-        height: 100vh;
-        background: url("https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80")
-          no-repeat center center / cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 8vw;
-        color: white;
-        position: relative;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
-        z-index: 0;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 700px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.5rem, 6vw, 5rem);
-        margin-bottom: 1rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-      }
-
-      .hero a {
-        display: inline-block;
-        background: var(--accent);
-        color: #000;
-        padding: 14px 28px;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-
-      .hero a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(0, 255, 231, 0.4);
-      }
-
-      .content {
-        padding: 6rem 8vw;
-        max-width: 1400px;
-        margin: auto;
-      }
-
-      .content p {
-        color: var(--muted);
-        max-width: 700px;
-      }
-
-      footer {
-        padding: 4rem 8vw;
-        text-align: center;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .nav-links {
-          margin-top: 1rem;
-        }
-
-        .nav-links a {
-          margin: 0 0 1rem 0;
-        }
-
-        .theme-toggle {
-          margin-top: 1rem;
-        }
-      }
-    </style>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/themes.css" />
   </head>
   <body>
     <nav id="navbar">
       <div class="logo">
-        <img
-          src="assets/handoff_icon.jpg"
-          alt="Logo"
-          style="height: 32px; vertical-align: middle; margin-right: 10px"
-        />
+        <img alt="Logo" src="assets/handoff_icon.jpg" />
         F-4E RWR PRF Library
       </div>
       <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Sounds</a>
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
         <a href="#">Quiz</a>
         <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
       </div>
     </nav>
-
     <section class="hero">
       <div class="hero-content">
         <h1>Recognize Threats by Sound</h1>
@@ -231,7 +32,6 @@
         <a href="sounds.html">🎵 Start Listening</a>
       </div>
     </section>
-
     <div class="content">
       <h2>Train Like a Phantom Pilot</h2>
       <p>
@@ -239,9 +39,7 @@
         tracking, you’ll build recognition instinct critical for air combat survival.
       </p>
     </div>
-
-    <footer>&copy; 2025 F-4E RWR PRF Library · Built for DCS Pilots</footer>
-
+    <footer>© 2025 F-4E RWR PRF Library · Built for DCS Pilots</footer>
     <script>
       const nav = document.getElementById("navbar");
 

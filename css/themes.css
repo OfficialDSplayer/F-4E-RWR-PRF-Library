@@ -70,3 +70,27 @@ svg {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
+
+@font-face {
+  font-family: "HornetDisplay";
+  src: url("../assets/HornetDisplay-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-main: "HornetDisplay", sans-serif;
+  --fg: #111;
+  --accent: #007aff;
+  --muted: #666;
+  --nav-bg: rgba(255, 255, 255, 0);
+  --nav-bg-solid: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] {
+  --fg: #f2f2f2;
+  --accent: #00ffe7;
+  --muted: #aaa;
+  --nav-bg: rgba(0, 0, 0, 0);
+  --nav-bg-solid: rgba(0, 0, 0, 0.5);
+}
