@@ -77,6 +77,10 @@
   transform: translateY(0);
 }
 
+.sound-player {
+  padding: 20px;
+}
+
 /* ===================== BUTTONS ===================== */
 
 button {
@@ -212,7 +216,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 4vw;
+  padding: 1rem 4vw;
   display: flex;
   justify-content: space-between;
   align-items: center;

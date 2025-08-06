@@ -57,80 +57,82 @@
       </div>
     </nav>
     <main class="main-content">
-      <!-- <h1>F-4E RWR PRF Sound Player</h1> -->
-      <!-- <hr class="solid" /> -->
-      <section style="text-align: center">
-        <h1>ALR-46 Sound Player</h1>
-        <h3>Using sounds from the DCS Heatblur F-4E Module</h3>
-        <h4 style="color: var(--warning-color)">
-          <b
-            >This project is HIGHLY work-in-progress. Be mindful of any sudden changes and
-            inaccuracies!</b
-          >
-        </h4>
-        <h4 style="color: var(--success-color)">
-          <b>Last Updated: August 2025 - 2.9.18</b>
-        </h4>
-        <h4 style="color: var(--danger-color)">
-          <b>** DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW **</b>
-        </h4>
-      </section>
-      <div class="controls">
-        <button class="global-button" id="play-all-btn">Play All</button>
-        <button class="global-button" id="stop-all-btn">Stop All</button>
-        <!-- <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button> -->
-        <div class="volume-control">
-          <label for="volume-slider">Volume:</label>
-          <input id="volume-slider" max="100" min="0" type="range" value="100" />
-        </div>
-      </div>
-      <div class="controls search-controls">
-        <div class="search-wrapper">
-          <input
-            class="search-input"
-            id="search-input"
-            placeholder="Search sounds..."
-            type="text"
-          />
-          <div id="symbol-filter-wrapper">
-            <button class="global-button symbol-filter-toggle" id="symbol-filter-toggle">
-              Filter By Symbols
-            </button>
-            <div class="symbol-dropdown" id="symbol-filter-dropdown"></div>
+      <div class="sound-player">
+        <!-- <h1>F-4E RWR PRF Sound Player</h1> -->
+        <!-- <hr class="solid" /> -->
+        <section style="text-align: center">
+          <h1>ALR-46 Sound Player</h1>
+          <h3>Using sounds from the DCS Heatblur F-4E Module</h3>
+          <h4 style="color: var(--warning-color)">
+            <b
+              >This project is HIGHLY work-in-progress. Be mindful of any sudden changes and
+              inaccuracies!</b
+            >
+          </h4>
+          <h4 style="color: var(--success-color)">
+            <b>Last Updated: August 2025 - 2.9.18</b>
+          </h4>
+          <h4 style="color: var(--danger-color)">
+            <b>** DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW **</b>
+          </h4>
+        </section>
+        <div class="controls">
+          <button class="global-button" id="play-all-btn">Play All</button>
+          <button class="global-button" id="stop-all-btn">Stop All</button>
+          <!-- <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button> -->
+          <div class="volume-control">
+            <label for="volume-slider">Volume:</label>
+            <input id="volume-slider" max="100" min="0" type="range" value="100" />
           </div>
         </div>
+        <div class="controls search-controls">
+          <div class="search-wrapper">
+            <input
+              class="search-input"
+              id="search-input"
+              placeholder="Search sounds..."
+              type="text"
+            />
+            <div id="symbol-filter-wrapper">
+              <button class="global-button symbol-filter-toggle" id="symbol-filter-toggle">
+                Filter By Symbols
+              </button>
+              <div class="symbol-dropdown" id="symbol-filter-dropdown"></div>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="global-button" id="expand-all-btn">Expand All Groups</button>
+          <button class="global-button" id="collapse-all-btn">Collapse All Groups</button>
+          <button class="global-button" id="show-all-radar-btn">Show All Radar Info</button>
+          <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
+        </div>
+        <p>
+          There are 3 types of radar modes listed: <span style="color: #49cc15">Search</span>,
+          <span style="color: #f1e845">Acquisition</span> (search for track radars),
+          <span style="color: #ed2a2a">Track</span>.
+        </p>
+        <p>
+          Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase
+          PRF prior to full on target track. Depending on your range and aspect, they might skip the
+          acquisition phase entirely and immediately go to the tracking phase so be mindful of that
+          when facing them.
+        </p>
+        <p>
+          Symbols are shown for the radars listed. Each radar is capable of being displayed using
+          two symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is
+          shown. If they aren't the same, both are shown. In the case of certain emitters like the
+          C-RAM/CIWS Phalanx, if they're in multiple tables (ex: land and sea), both symbols are
+          shown.
+        </p>
+        <p style="color: var(--danger-color)">
+          Only radars that are detectable by the ALR-46 are listed.
+        </p>
+        <div class="progress-container" id="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div id="audio-list">Loading sounds...</div>
       </div>
-      <div class="controls">
-        <button class="global-button" id="expand-all-btn">Expand All Groups</button>
-        <button class="global-button" id="collapse-all-btn">Collapse All Groups</button>
-        <button class="global-button" id="show-all-radar-btn">Show All Radar Info</button>
-        <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
-      </div>
-      <p>
-        There are 3 types of radar modes listed: <span style="color: #49cc15">Search</span>,
-        <span style="color: #f1e845">Acquisition</span> (search for track radars),
-        <span style="color: #ed2a2a">Track</span>.
-      </p>
-      <p>
-        Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase PRF
-        prior to full on target track. Depending on your range and aspect, they might skip the
-        acquisition phase entirely and immediately go to the tracking phase so be mindful of that
-        when facing them.
-      </p>
-      <p>
-        Symbols are shown for the radars listed. Each radar is capable of being displayed using two
-        symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is
-        shown. If they aren't the same, both are shown. In the case of certain emitters like the
-        C-RAM/CIWS Phalanx, if they're in multiple tables (ex: land and sea), both symbols are
-        shown.
-      </p>
-      <p style="color: var(--danger-color)">
-        Only radars that are detectable by the ALR-46 are listed.
-      </p>
-      <div class="progress-container" id="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-      </div>
-      <div id="audio-list">Loading sounds...</div>
     </main>
     <div id="footer"></div>
     <script>
