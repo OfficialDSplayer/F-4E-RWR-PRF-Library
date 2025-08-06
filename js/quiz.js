@@ -235,8 +235,6 @@ class Quiz {
     this.score = 0;
     this.results = [];
 
-    // document.getElementById("quiz-setup").style.display = "none";
-    // document.getElementById("quiz-game").style.display = "block";
     const setupEl = document.getElementById("quiz-setup");
     const gameEl = document.getElementById("quiz-game");
 
@@ -285,27 +283,142 @@ class Quiz {
     });
   }
 
+  // Helper function to check if two radars have matching symbols and PRF
+  radarsHaveMatchingSymbolAndPRF(sound1, sound2) {
+    if (!sound1 || !sound2) return false;
+
+    const alr46Info = this.dataLoader.getAlr46Info();
+    const radarInfo1 = alr46Info[sound1.file];
+    const radarInfo2 = alr46Info[sound2.file];
+
+    if (!radarInfo1 || !radarInfo2) return false;
+
+    // Get symbols for both sounds
+    const symbols1 = this.getSoundSymbols(sound1);
+    const symbols2 = this.getSoundSymbols(sound2);
+
+    // Check if symbols match exactly (all symbols must be the same)
+    if (symbols1.length !== symbols2.length) return false;
+
+    // Sort both arrays and compare them element by element
+    const sortedSymbols1 = [...symbols1].sort();
+    const sortedSymbols2 = [...symbols2].sort();
+
+    // Check if they share any symbols
+    // const hasSharedSymbol = symbols1.some((symbol) => symbols2.includes(symbol));
+    const symbolsMatch = sortedSymbols1.every((symbol, index) => symbol === sortedSymbols2[index]);
+    if (!symbolsMatch) return false;
+
+    // Compare PRF values using the same logic as sound-display.js
+    const prf1 = this.extractRelevantPRF(sound1, radarInfo1);
+    const prf2 = this.extractRelevantPRF(sound2, radarInfo2);
+
+    if (prf1 === null || prf2 === null) return false;
+
+    // Consider PRFs matching if they're within a small tolerance (0.01)
+    // to account for floating point precision issues
+    const prfMatches = Math.abs(prf1 - prf2) < 0.01;
+
+    return prfMatches;
+  }
+
+  // Extract the relevant PRF value based on file type and radar capabilities
+  // Uses the same logic as addPRFInfo in sound-display.js
+  extractRelevantPRF(sound, radarInfo) {
+    const fullPath = sound.file;
+
+    if (fullPath.includes("SEARCH") && radarInfo.type == "SEARCH_ONLY") {
+      return Number(radarInfo.prf_search);
+    } else if (
+      fullPath.includes("SEARCH") &&
+      radarInfo.type == "TRACK_ONLY" &&
+      radarInfo.prf_search != radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_search);
+    } else if (
+      fullPath.includes("TRACK") &&
+      radarInfo.type == "TRACK_ONLY" &&
+      radarInfo.prf_search != radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_track);
+    } else if (
+      fullPath.includes("SEARCH") &&
+      radarInfo.type == "SEARCH_ONLY" &&
+      radarInfo.prf_search == radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_search);
+    } else if (
+      fullPath.includes("TRACK") &&
+      radarInfo.type == "TRACK_ONLY" &&
+      radarInfo.prf_search == radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_track);
+    } else if (
+      (fullPath.includes("SEARCH") || fullPath.includes("TRACK")) &&
+      radarInfo.type == "SEARCH_AND_TRACK" &&
+      radarInfo.prf_search == radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_track);
+    } else if (
+      fullPath.includes("SEARCH") &&
+      radarInfo.type == "SEARCH_AND_TRACK" &&
+      radarInfo.prf_search != radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_search);
+    } else if (
+      fullPath.includes("TRACK") &&
+      radarInfo.type == "SEARCH_AND_TRACK" &&
+      radarInfo.prf_search != radarInfo.prf_track
+    ) {
+      return Number(radarInfo.prf_track);
+    }
+
+    // Fallback - return null if we can't determine the appropriate PRF
+    return null;
+  }
+
+  // Find all radars that should be considered correct answers
+  findAlternativeCorrectAnswers(primarySound, availableSounds) {
+    const alternatives = [];
+
+    for (const sound of availableSounds) {
+      if (sound.name === primarySound.name) continue; // Skip the primary answer
+
+      if (this.radarsHaveMatchingSymbolAndPRF(primarySound, sound)) {
+        alternatives.push(sound.name);
+      }
+    }
+
+    return alternatives;
+  }
+
   generateQuestions(availableSounds, questionCount) {
     // Shuffle and select sounds for questions
     const shuffled = [...availableSounds].sort(() => Math.random() - 0.5);
     const selectedSounds = shuffled.slice(0, questionCount);
 
     this.questions = selectedSounds.map((sound) => {
-      const correctAnswer = sound.name;
+      const primaryCorrectAnswer = sound.name;
 
-      // Generate wrong answers from other sounds
+      // Find alternative correct answers (radars with same symbol and PRF)
+      const alternativeCorrectAnswers = this.findAlternativeCorrectAnswers(sound, availableSounds);
+
+      // Generate wrong answers from other sounds (excluding all correct answers)
+      const allCorrectAnswers = [primaryCorrectAnswer, ...alternativeCorrectAnswers];
       const wrongAnswers = availableSounds
-        .filter((s) => s.name !== correctAnswer)
+        .filter((s) => !allCorrectAnswers.includes(s.name))
         .map((s) => s.name)
         .sort(() => Math.random() - 0.5)
-        .slice(0, 3);
+        .slice(0, 4 - allCorrectAnswers.length); // Adjust number of wrong answers based on correct ones
 
       // Shuffle all answers
-      const answers = [correctAnswer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+      const answers = [...allCorrectAnswers, ...wrongAnswers].sort(() => Math.random() - 0.5);
 
       return {
         sound,
-        correctAnswer,
+        primaryCorrectAnswer,
+        alternativeCorrectAnswers,
+        allCorrectAnswers,
         answers,
         symbols: this.getSoundSymbols(sound),
         tableSources: this.getTableSources(sound),
@@ -429,9 +542,10 @@ class Quiz {
 
   selectAnswer(selectedAnswer, buttonElement) {
     const question = this.questions[this.currentQuestionIndex];
-    const isCorrect = selectedAnswer === question.correctAnswer;
+    const isCorrect = question.allCorrectAnswers.includes(selectedAnswer);
+    const isPrimary = selectedAnswer === question.primaryCorrectAnswer;
 
-    // Update score
+    // Update score - any correct answer counts as correct
     if (isCorrect) {
       this.score++;
     }
@@ -441,6 +555,7 @@ class Quiz {
       question: question,
       selectedAnswer: selectedAnswer,
       isCorrect: isCorrect,
+      isPrimary: isPrimary,
     });
 
     // Update UI
@@ -449,16 +564,30 @@ class Quiz {
 
     choices.forEach((choice) => {
       choice.classList.add("disabled");
-      if (choice.textContent === question.correctAnswer) {
+      const choiceText = choice.textContent;
+
+      if (choiceText === question.primaryCorrectAnswer) {
         choice.classList.add("correct");
+        choice.classList.add("primary-correct");
+      } else if (question.alternativeCorrectAnswers.includes(choiceText)) {
+        choice.classList.add("correct");
+        choice.classList.add("secondary-correct");
       } else if (choice === buttonElement && !isCorrect) {
         choice.classList.add("incorrect");
       }
     });
 
+    // Update button text based on whether this is the last question
+    const nextButton = document.getElementById("next-question-btn");
+    if (this.currentQuestionIndex === this.questions.length - 1) {
+      nextButton.textContent = "Submit Quiz";
+    } else {
+      nextButton.textContent = "Next Question";
+    }
+
     // Show next button
     setTimeout(() => {
-      document.getElementById("next-question-btn").classList.add("visible");
+      nextButton.classList.add("visible");
     }, 500);
   }
 
@@ -474,8 +603,6 @@ class Quiz {
   }
 
   showResults(earlyExit = false) {
-    // document.getElementById("quiz-game").style.display = "none";
-    // document.getElementById("quiz-results").style.display = "block";
     const gameEl = document.getElementById("quiz-game");
     const resultsEl = document.getElementById("quiz-results");
 
@@ -524,11 +651,24 @@ class Quiz {
       });
 
       const details = document.createElement("div");
+
+      // Show all correct answers with different styling
+      let correctAnswersDisplay = result.question.primaryCorrectAnswer;
+      if (result.question.alternativeCorrectAnswers.length > 0) {
+        correctAnswersDisplay += ` (or ${result.question.alternativeCorrectAnswers.join(", ")})`;
+      }
+
+      let answerStatus = "";
+      if (result.isCorrect) {
+        answerStatus = result.isPrimary ? " ✓ (Primary)" : " ✓ (Alternative)";
+      } else {
+        answerStatus = " ❌";
+      }
+
       details.innerHTML = `
-      <strong>${result.question.correctAnswer}</strong><br>
-      Your answer: ${result.selectedAnswer}
-      ${result.isCorrect ? "" : " ❌"}
-    `;
+        <strong>${correctAnswersDisplay}</strong><br>
+        Your answer: ${result.selectedAnswer}${answerStatus}
+      `;
 
       item.appendChild(questionNum);
       item.appendChild(symbolsDiv);
@@ -539,8 +679,6 @@ class Quiz {
 
   restartQuiz() {
     this.audioManager.stopAll();
-    // document.getElementById("quiz-results").style.display = "none";
-    // document.getElementById("quiz-setup").style.display = "block";
     const resultsEl = document.getElementById("quiz-results");
     const setupEl = document.getElementById("quiz-setup");
 
