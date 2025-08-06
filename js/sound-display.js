@@ -80,12 +80,12 @@ class SoundDisplay {
         groupGrid.classList.toggle("collapsed");
 
         if (groupGrid.classList.contains("collapsed")) {
-          collapsedGroups.push(groupName);
+          this.collapsedGroups.push(groupName);
         } else {
-          collapsedGroups = collapsedGroups.filter((g) => g !== groupName);
+          this.collapsedGroups = this.collapsedGroups.filter((g) => g !== groupName);
         }
 
-        localStorage.setItem("collapsedGroups", JSON.stringify(collapsedGroups));
+        localStorage.setItem("collapsedGroups", JSON.stringify(this.collapsedGroups));
       });
 
       audioList.appendChild(groupTitle);
@@ -260,8 +260,10 @@ class SoundDisplay {
     const normalizedOptions = [
       Utils.normalizeRadarName(strippedFile + ".wav"),
       Utils.normalizeRadarName(strippedFile),
-      Utils.normalizeRadarName(sound.name),
-      Utils.normalizeRadarName(sound.description),
+
+      // Disabled because causes issues unintentionally matching things it shouldn't
+      // Utils.normalizeRadarName(sound.name),
+      // Utils.normalizeRadarName(sound.description),
     ];
 
     let radarEntry = null;

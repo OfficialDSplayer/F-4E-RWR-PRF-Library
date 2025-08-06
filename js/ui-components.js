@@ -1,22 +1,22 @@
 // UI Components and theme management
 class UIComponents {
-  static initializeTheme() {
-    const savedTheme = StorageService.getTheme();
-    if (savedTheme) {
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
-  }
+  // static initializeTheme() {
+  //   const savedTheme = StorageService.getTheme();
+  //   if (savedTheme) {
+  //     document.documentElement.setAttribute("data-theme", savedTheme);
+  //   } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  //     document.documentElement.setAttribute("data-theme", "dark");
+  //   } else {
+  //     document.documentElement.setAttribute("data-theme", "light");
+  //   }
+  // }
 
-  static toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    StorageService.setTheme(newTheme);
-  }
+  // static toggleTheme() {
+  //   const currentTheme = document.documentElement.getAttribute("data-theme");
+  //   const newTheme = currentTheme === "dark" ? "light" : "dark";
+  //   document.documentElement.setAttribute("data-theme", newTheme);
+  //   StorageService.setTheme(newTheme);
+  // }
 
   static initializeVolumeControl(audioManager) {
     const volumeSlider = document.getElementById("volume-slider");
@@ -180,4 +180,120 @@ class UIComponents {
       UIComponents.updateAllGroupHeights();
     }, 300); // Wait for CSS transitions to complete
   }
+  static initNavbarScrollEffect() {
+    const nav = document.getElementById("navbar");
+    if (!nav) return;
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 80);
+    });
+  }
+
+  static updateThemeToggleButton(currentTheme = null) {
+    const toggleBtn = document.querySelector(".theme-toggle");
+    if (!toggleBtn) return;
+
+    const theme = currentTheme || document.documentElement.getAttribute("data-theme");
+    toggleBtn.textContent = theme === "dark" ? "Dark Mode" : "Light Mode";
+  }
+
+  static toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    UIComponents.updateThemeToggleButton(next);
+  }
+
+  // static initTheme() {
+  static initializeTheme() {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+    UIComponents.updateThemeToggleButton();
+  }
+
+  static setActiveNavLink() {
+    const currentFile = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach((link) => {
+      const linkHref = link.getAttribute("href");
+      link.classList.toggle(
+        "active",
+        linkHref === currentFile ||
+          (currentFile === "" && linkHref === "index.html") ||
+          (currentFile === "index.html" && linkHref === "index.html") ||
+          (currentFile === "sounds.html" && linkHref === "sounds.html")
+      );
+    });
+  }
 }
+
+// Attach to window for access across other files/pages if needed
+window.UIComponents = UIComponents;
+
+// Create a global namespace if not exists
+// window.UIComponents = window.UIComponents || {};
+
+// /**
+//  * Adds or removes the 'scrolled' class on the navbar based on scroll position.
+//  */
+// UIComponents.initNavbarScrollEffect = function () {
+//   const nav = document.getElementById("navbar");
+//   if (!nav) return;
+
+//   window.addEventListener("scroll", () => {
+//     if (window.scrollY > 80) {
+//       nav.classList.add("scrolled");
+//     } else {
+//       nav.classList.remove("scrolled");
+//     }
+//   });
+// };
+
+// /**
+//  * Toggles the site theme between light and dark.
+//  */
+// UIComponents.toggleTheme = function () {
+//   const current = document.documentElement.getAttribute("data-theme");
+//   const next = current === "dark" ? "light" : "dark";
+//   document.documentElement.setAttribute("data-theme", next);
+//   localStorage.setItem("theme", next);
+// };
+
+// /**
+//  * Initializes the theme on page load from localStorage.
+//  */
+// UIComponents.initTheme = function () {
+//   const saved = localStorage.getItem("theme");
+//   if (saved === "dark") {
+//     document.documentElement.setAttribute("data-theme", "dark");
+//   }
+// };
+
+// /**
+//  * Sets active state on current navigation link.
+//  */
+// UIComponents.setActiveNavLink = function () {
+//   const currentPage = window.location.pathname;
+//   const currentFile = currentPage.split("/").pop() || "index.html";
+
+//   const navLinks = document.querySelectorAll(".nav-links a");
+//   navLinks.forEach((link) => {
+//     link.classList.remove("active");
+//   });
+
+//   navLinks.forEach((link) => {
+//     const linkHref = link.getAttribute("href");
+//     if (
+//       linkHref === currentFile ||
+//       (currentFile === "" && linkHref === "index.html") ||
+//       (currentFile === "index.html" && linkHref === "index.html") ||
+//       (currentFile === "sounds.html" && linkHref === "sounds.html")
+//     ) {
+//       link.classList.add("active");
+//     }
+//   });
+// };

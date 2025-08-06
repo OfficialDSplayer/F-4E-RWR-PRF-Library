@@ -1,130 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>F-4E RWR PRF Sound Player</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>F-4E RWR PRF Library</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" type="image/png" />
-    <!-- Apple touch icon -->
-    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
-
-    <!-- Open Graph Preview -->
-    <meta property="og:title" content="F-4E RWR PRF Sound Player" />
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta property="og:title" content="Home - F-4E RWR PRF Library" />
     <meta
       property="og:description"
-      content="Listen and learn the RWR PRF tones from the DCS Heatblur F-4E Phantom module."
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
     />
-    <meta
-      property="og:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
-    />
-    <meta property="og:url" content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+    <!-- Replace with actual image URL -->
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="F-4E RWR PRF Sound Player" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta name="twitter:title" content="Home - F-4E RWR PRF Library" />
     <meta
       name="twitter:description"
-      content="Listen and learn the RWR PRF tones from the DCS Heatblur F-4E Phantom module."
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
     />
-    <meta
-      name="twitter:image"
-      content="https://officialdsplayer.github.io/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg"
-    />
+    <meta name="twitter:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/themes.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <style>
+      html,
+      body {
+        padding: 0;
+      }
+      .hero {
+        /* text-align: center; */
+        /* padding: 80px 20px; */
+        /* background: linear-gradient(135deg, var(--primary-color), var(--success-color)); */
+        /* color: white;
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 40px; */
+      }
+      .hero h1 {
+        text-align: left;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+      }
+      .hero-content {
+        max-width: 75%;
+      }
+
+      /* Custom light-text navbar class for index.html because of the video */
+      /* Transition + initial light mode for top of page */
+      body.light-home #navbar .nav-links a,
+      body.light-home #navbar .logo,
+      body.light-home #navbar .theme-toggle,
+      body.light-home #navbar .hamburger {
+        color: white;
+        transition: color 0.3s ease, border-color 0.3s ease;
+        border-color: white;
+      }
+
+      body.light-home.nav-scrolled #navbar .nav-links a,
+      body.light-home.nav-scrolled #navbar .logo,
+      body.light-home.nav-scrolled #navbar .theme-toggle,
+      body.light-home.nav-scrolled #navbar .hamburger {
+        color: black;
+        border-color: black;
+      }
+
+      /* Override: When menu is open (mobile), nav links stay black */
+      body.light-home #navbar .nav-links.menu-open a,
+      body.light-home #navbar .nav-links.menu-open .theme-toggle,
+      body.light-home #navbar .nav-links.menu-open .hamburger {
+        color: black !important;
+        border-color: black !important;
+      }
+    </style>
   </head>
   <body>
-    <h1>F-4E RWR PRF Sound Player</h1>
-    <hr class="solid" />
-    <h2>By DSplayer</h2>
-    <h2>Using sounds from the DCS Heatblur F-4E Module</h2>
-    <h3>!!Highly WIP!! Last updated 2025-08-01 (using DCS 2.9.18)</h3>
-    <h4><b>**DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW**</b></h4>
-
-    <div class="controls">
-      <button class="global-button" id="play-all-btn">Play All</button>
-      <button class="global-button" id="stop-all-btn">Stop All</button>
-      <button class="global-button" id="toggle-dark-mode-btn">Toggle Dark Mode</button>
-      <div class="volume-control">
-        <label for="volume-slider">Volume:</label>
-        <input type="range" id="volume-slider" min="0" max="100" value="100" />
+    <nav id="navbar">
+      <div class="nav-header">
+        <a href="index.html" class="logo" style="text-decoration: none">
+          <img alt="Logo" src="assets/handoff_icon.jpg" />
+          F-4E RWR PRF Library
+        </a>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
-    </div>
-
-    <div class="controls search-controls">
-      <div class="search-wrapper">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search sounds..."
-          class="search-input"
-        />
-
-        <div id="symbol-filter-wrapper">
-          <button id="symbol-filter-toggle" class="global-button symbol-filter-toggle">
-            Filter Symbols ⬇
-          </button>
-          <div id="symbol-filter-dropdown" class="symbol-dropdown"></div>
-        </div>
+      <div class="nav-links" id="navMenu">
+        <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
+    </nav>
+    <section class="hero">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="assets/hero-background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h1>Learn the ALR-46</h1>
+        <p>Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II</p>
+        <a href="sounds.html">🎵 Start Listening</a>
+      </div>
+    </section>
+    <div class="content">
+      <h2>Solve your skill issues</h2>
+      <p>
+        This website helps you memorize PRF tones associated with radar threats that you'll
+        encounter in the DCS F-4E. From SAM radars to fighter radars, you'll build recognition
+        skills to enhance your situational awareness.
+      </p>
+      <p>
+        If you have any suggestions, please post them in the
+        <a href="https://github.com/OfficialDSplayer/F-4E-RWR-PRF-Library/issues"
+          >GitHub Issues page</a
+        >. I'll try to improve this site as much as I can.
+      </p>
+      <p>
+        <br />
+        <span style="color: var(--active-color)">Note:</span> This site/repository will most likely
+        change when the early F-14A and F-100 come out as I will most likely update this site for
+        the RWRs on those aircraft.
+      </p>
+      <hr />
+      <p>
+        Feel free to check out my online
+        <a href="https://officialdsplayer.github.io/DCS-DTC-Web-Editor/">DCS DTC editor</a> that I
+        also made.
+      </p>
+      <hr />
+      <p>
+        Thanks to Heatblur for making a great module
+        <br />
+        Font: <a href="https://github.com/0x408/hornet-display">Hornet Display</a>
+      </p>
     </div>
-
-    <div class="controls">
-      <button class="global-button" id="expand-all-btn">Expand All Groups</button>
-      <button class="global-button" id="collapse-all-btn">Collapse All Groups</button>
-      <button class="global-button" id="show-all-radar-btn">Show All Radar Info</button>
-      <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
-    </div>
-
-    <h4>
-      This site is intended to help users learn and memorize what the PRF tones for radars for the
-      ALR-46's Handoff mode. If you have any suggestions, please post them in the
-      <a href="https://github.com/OfficialDSplayer/F-4E-RWR-PRF-Library/issues"
-        >GitHub Issues page</a
-      >.
-    </h4>
-
-    <p>
-      There are 3 types of radar modes listed: Search, Acquisition (search for track radars), Track.
-    </p>
-    <p>
-      Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase PRF
-      prior to full on target track. Depending on your range and aspect, they might skip the
-      acquisition phase entirely and immediately go to the tracking phase so be mindful of that when
-      facing them.
-    </p>
-
-    <p>
-      Symbols are shown for the radars listed. Each radar is capable of being displayed using two
-      symbols per table (air, land, sea). If Symbol 1 and Symbol 2 are the same, symbol 1 is shown.
-      If they aren't the same, both are shown. In the case of certain emitters like the C-RAM/CIWS
-      Phalanx, if they're in multiple tables (ex: land and sea), both symbols are shown.
-    </p>
-
-    <p>Only radars that are detectable by the ALR-46 are listed.</p>
-
-    <div id="progress-container" class="progress-container">
-      <div id="progress-bar" class="progress-bar"></div>
-    </div>
-
-    <div id="audio-list">Loading sounds...</div>
-
-    <!-- JavaScript Files -->
-    <script src="js/utils.js"></script>
-    <script src="js/storage-service.js"></script>
-    <script src="js/config.js"></script>
+    <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
+    </script>
     <script src="js/ui-components.js"></script>
-    <script src="js/data-loader.js"></script>
-    <script src="js/audio-manager.js"></script>
-    <script src="js/sound-display.js"></script>
-    <script src="js/symbol-filter.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      // Custom navbar dark mode to account for the video color
+      function updateNavbarTextColor() {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const scrolled = window.scrollY > 80;
+        const body = document.body;
+
+        if (!isDark) {
+          body.classList.add("light-home");
+
+          if (scrolled) {
+            body.classList.add("nav-scrolled");
+          } else {
+            body.classList.remove("nav-scrolled");
+          }
+        } else {
+          body.classList.remove("light-home", "nav-scrolled");
+        }
+      }
+
+      function observeThemeChange() {
+        const observer = new MutationObserver(updateNavbarTextColor);
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+      }
+
+      function initIndexNavbarStyle() {
+        window.addEventListener("scroll", updateNavbarTextColor);
+        updateNavbarTextColor();
+        observeThemeChange();
+      }
+
+      document.addEventListener("DOMContentLoaded", initIndexNavbarStyle);
+    </script>
+    <script>
+      // window.addEventListener("popstate", () => {
+      //   UIComponents.setActiveNavLink();
+      // });
+    </script>
   </body>
 </html>

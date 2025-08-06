@@ -1,11 +1,26 @@
-/* Main Layout */
+/* ===================== GLOBAL LAYOUT ===================== */
+
+html,
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  font-family: var(--font-main);
+  background: var(--bg-color);
+  color: var(--fg);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  transition: background var(--transition-normal), color var(--transition-normal);
   margin: 0;
+  /* padding: 20px; */
 }
+
+/* Optional overrides */
+body {
+  /* font-family: "HornetDisplay", sans-serif; */
+  /* padding: 0; Remove the general padding */
+  /* margin: 0; */
+  /* padding-top: 75px; Add top padding to account for fixed nav */
+}
+
+/* ===================== TYPOGRAPHY ===================== */
 
 h1,
 h2,
@@ -20,7 +35,36 @@ p {
   margin-bottom: 0px;
 }
 
-/* Controls */
+/* ===================== MAIN CONTENT ===================== */
+
+.content {
+  padding: 6rem 8vw;
+  margin: auto;
+  /* max-width: 1400px; */
+}
+
+.content p {
+  color: var(--muted);
+  /* max-width: 700px; */
+}
+
+#footer,
+footer {
+  padding: 1.1rem 8vw;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  /* background-color: red; */
+}
+
+.main-content {
+  padding: 20px;
+  padding-top: 3%;
+  /* min-height: calc(100vh - 75px); */
+}
+
+/* ===================== CONTROLS ===================== */
+
 .controls {
   text-align: center;
   margin: 20px 0;
@@ -43,6 +87,7 @@ p {
 }
 
 .search-input {
+  font-family: "HornetDisplay", sans-serif;
   padding: 8px 14px;
   width: 300px;
   font-size: 14px;
@@ -78,7 +123,8 @@ input[type="range"] {
   transition: width 0.3s;
 }
 
-/* Group Titles */
+/* ===================== GROUPING ===================== */
+
 .group-title {
   font-size: 1.5em;
   margin: 30px 0 10px;
@@ -96,10 +142,38 @@ input[type="range"] {
   opacity: 0;
   max-height: 0 !important;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  transition: max-height var(--transition-slow), opacity var(--transition-slow);
 }
 
-/* Mobile Responsiveness */
+/* ===================== RESPONSIVENESS ===================== */
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    margin-top: 1rem;
+  }
+
+  .nav-links a {
+    margin: 0 0 1rem 0;
+  }
+
+  .theme-toggle {
+    margin-top: 1rem;
+  }
+
+  .main-content {
+    padding-top: 5%;
+  }
+
+  /* body {
+    padding-top: 160px;
+  } */
+}
+
 @media (max-width: 600px) {
   .search-input {
     width: 100% !important;
@@ -108,5 +182,15 @@ input[type="range"] {
 
   .symbol-filter-toggle {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 2px;
+  }
+
+  body {
+    padding-top: 2rem;
   }
 }

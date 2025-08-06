@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>F-4E RWR PRF Quiz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta property="og:title" content="ALR-46 Symbol and PRF Quiz - F-4E RWR PRF Library" />
+    <meta
+      property="og:description"
+      content="Quiz yourself on the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta property="og:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+    <!-- Replace with actual image URL -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta name="twitter:title" content="ALR-46 Symbol and PRF Quiz - F-4E RWR PRF Library" />
+    <meta
+      name="twitter:description"
+      content="Quiz yourself on the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta name="twitter:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="nav-header">
+        <a href="index.html" class="logo" style="text-decoration: none">
+          <img alt="Logo" src="assets/handoff_icon.jpg" />
+          F-4E RWR PRF Library
+        </a>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+      <div class="nav-links" id="navMenu">
+        <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="quiz-container">
+        <h1>ALR-46 Symbol and PRF Quiz</h1>
+
+        <!-- Quiz Setup -->
+        <div class="quiz-setup" id="quiz-setup">
+          <h3>Quiz Configuration</h3>
+
+          <div class="setup-group">
+            <label>Select RWR Symbols to Include:</label>
+            <div class="controls" style="margin-bottom: 10px">
+              <button class="global-button" id="select-all-symbols">Select All</button>
+              <button class="global-button" id="deselect-all-symbols">Deselect All</button>
+            </div>
+            <div class="checkbox-group" id="symbol-selection">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="setup-group">
+            <label>Select Groups to Include:</label>
+            <div class="controls" style="margin-bottom: 10px">
+              <button class="global-button" id="select-all-groups">Select All</button>
+              <button class="global-button" id="deselect-all-groups">Deselect All</button>
+            </div>
+            <div class="checkbox-group" id="group-selection">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="setup-group">
+            <label for="question-count">Number of Questions:</label>
+            <input
+              type="number"
+              id="question-count"
+              class="number-input"
+              value="10"
+              min="1"
+              max="50"
+            />
+          </div>
+
+          <div class="setup-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="show-table-hint" checked />
+              <label
+                for="show-table-hint"
+                style="cursor: pointer"
+                title="Shows what RWR table (ex: Air Intercept Table, Land Table, Sea Table) the entry is from."
+              >
+                Show source table hints during quiz</label
+              >
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="global-button" id="start-quiz-btn">Start Quiz</button>
+          </div>
+        </div>
+
+        <!-- Quiz Game -->
+        <div class="quiz-game" id="quiz-game">
+          <div class="question-counter" id="question-counter">Question 1 of 10</div>
+
+          <h3>What radar system has this RWR symbol and PRF tone?</h3>
+
+          <div class="symbol-display" id="symbol-display">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div
+            class="table-hint"
+            id="table-hint"
+            style="margin: 15px 0; font-size: 0.9em; color: var(--highlight); display: none"
+          >
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div class="audio-controls">
+            <button class="play-button" id="quiz-play-btn">▶ Play Sound</button>
+            <button class="stop-button" id="quiz-stop-btn">⏹ Stop Sound</button>
+            <div class="volume-control">
+              <label for="quiz-volume-slider">Volume:</label>
+              <input id="quiz-volume-slider" max="100" min="0" type="range" value="50" />
+            </div>
+          </div>
+
+          <div class="answer-choices" id="answer-choices">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div class="controls">
+            <button
+              class="global-button"
+              id="exit-quiz-btn"
+              style="background-color: var(--danger-color)"
+            >
+              Exit Quiz
+            </button>
+            <button class="next-question-btn" id="next-question-btn">Next Question</button>
+          </div>
+        </div>
+
+        <!-- Quiz Results -->
+        <div class="quiz-results" id="quiz-results">
+          <h2>Quiz Complete!</h2>
+          <div class="score-display" id="score-display">8/10 (80%)</div>
+
+          <div class="results-breakdown" id="results-breakdown">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div class="controls">
+            <button class="global-button" id="restart-quiz-btn">Take Another Quiz</button>
+          </div>
+        </div>
+
+        <div class="progress-container" id="progress-container" style="display: none">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
+    </script>
+
+    <!-- JavaScript Files -->
+    <script src="js/utils.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/ui-components.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,87 +1,72 @@
 // Main application initialization
-class App {
+class Site {
   constructor() {
-    this.dataLoader = new DataLoader();
-    this.audioManager = new AudioManager();
-    this.soundDisplay = null;
-    this.symbolFilter = null;
+    // this.dataLoader = new DataLoader();
+    // this.audioManager = new AudioManager();
+    // this.soundDisplay = null;
+    // this.symbolFilter = null;
   }
 
   async initialize() {
     try {
       // Initialize theme
       UIComponents.initializeTheme();
+      // UIComponents.initTheme();
 
-      // Initialize audio context
-      await this.audioManager.initialize();
+      // Initialize Navbar Scroll Effect
+      UIComponents.initNavbarScrollEffect();
 
-      // Initialize UI components
-      this.soundDisplay = new SoundDisplay(this.dataLoader, this.audioManager);
-      this.symbolFilter = new SymbolFilter(this.soundDisplay);
+      // Initialize set active Navbar Link
+      UIComponents.setActiveNavLink();
 
-      // Set up event listeners
-      this.setupEventListeners();
-
-      // Initialize volume control
-      UIComponents.initializeVolumeControl(this.audioManager);
-
-      // Load all data
-      const soundMeta = await this.dataLoader.loadAllData();
-
-      // Clear loading message
-      document.getElementById("audio-list").innerHTML = "";
-
-      // Populate symbol filter and display sounds
-      this.symbolFilter.populateSymbolFilter(soundMeta);
+      // Bind toggleTheme button click
+      const toggleBtn = document.querySelector(".theme-toggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", UIComponents.toggleTheme);
+      }
 
       console.log("✅ Application initialized successfully");
-
     } catch (error) {
       console.error("❌ Error initializing application:", error);
-      document.getElementById("audio-list").textContent = "❌ Failed to load application.";
+      // document.getElementById("audio-list").textContent = "❌ Failed to load application.";
     }
   }
 
   setupEventListeners() {
     // Global buttons
-    document.getElementById("play-all-btn").addEventListener("click", () => {
-      const soundMeta = this.dataLoader.getSoundMeta();
-      this.audioManager.playAll(soundMeta);
-    });
-
-    document.getElementById("stop-all-btn").addEventListener("click", () => {
-      this.audioManager.stopAll();
-    });
-
-    document.getElementById("toggle-dark-mode-btn").addEventListener("click", () => {
-      UIComponents.toggleTheme();
-    });
-
-    document.getElementById("expand-all-btn").addEventListener("click", () => {
-      UIComponents.expandAllGroups();
-    });
-
-    document.getElementById("collapse-all-btn").addEventListener("click", () => {
-      UIComponents.collapseAllGroups();
-    });
-
-    document.getElementById("show-all-radar-btn").addEventListener("click", () => {
-      UIComponents.showAllRadarInfo();
-    });
-
-    document.getElementById("hide-all-radar-btn").addEventListener("click", () => {
-      UIComponents.hideAllRadarInfo();
-    });
-
-    // Search input
-    document.getElementById("search-input").addEventListener("input", () => {
-      this.symbolFilter.updateDisplay();
-    });
   }
 }
 
+document.addEventListener("popstate", () => {
+  UIComponents.setActiveNavLink();
+});
+
 // Initialize the application when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new App();
-  app.initialize();
+document.addEventListener("DOMContentLoaded", () => {
+  // UIComponents.initNavbarScrollEffect();
+  // UIComponents.initializeTheme();
+  // UIComponents.setActiveNavLink();
+
+  // Bind toggleTheme button click
+  // const toggleBtn = document.querySelector(".theme-toggle");
+  // if (toggleBtn) {
+  //   toggleBtn.addEventListener("click", UIComponents.toggleTheme);
+  // }
+
+  const site = new Site();
+  site.initialize();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.add("menu-open");
+  });
+
+  menuClose.addEventListener("click", () => {
+    navMenu.classList.remove("menu-open");
+  });
 });
