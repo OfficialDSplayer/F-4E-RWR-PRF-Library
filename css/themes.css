@@ -73,6 +73,10 @@
   --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
+[data-theme="dark"] a:visited:not(.nav-links a):not(.nav-header a):not(.hero-content a) {
+  color: #a871d6;
+}
+
 /* ===================== GLOBAL STYLES ===================== */
 
 /* Smooth theme switching */

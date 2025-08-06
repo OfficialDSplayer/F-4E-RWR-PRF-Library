@@ -7,9 +7,9 @@ body {
   color: var(--fg);
   scroll-behavior: smooth;
   line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition-normal), color var(--transition-normal);
   margin: 0;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Optional overrides */
@@ -48,14 +48,17 @@ p {
   /* max-width: 700px; */
 }
 
+#footer,
 footer {
-  padding: 4rem 8vw;
+  padding: 1.1rem 8vw;
   text-align: center;
   font-size: 0.9rem;
   color: var(--muted);
+  /* background-color: red; */
 }
 
 .main-content {
+  padding: 20px;
   padding-top: 3%;
   /* min-height: calc(100vh - 75px); */
 }
@@ -139,7 +142,7 @@ input[type="range"] {
   opacity: 0;
   max-height: 0 !important;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  transition: max-height var(--transition-slow), opacity var(--transition-slow);
 }
 
 /* ===================== RESPONSIVENESS ===================== */

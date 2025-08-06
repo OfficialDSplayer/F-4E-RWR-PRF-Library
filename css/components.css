@@ -6,8 +6,9 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-bottom: 20px;
-  overflow: visible;
-  transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  /* overflow: visible; Breaks margins with the footer */
+  transition: max-height var(--transition-slow), opacity var(--transition-slow),
+    transform var(--transition-slow);
   transform-origin: top;
   opacity: 1;
   max-height: 2000px;
@@ -30,7 +31,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
 }
 
 .audio-card:hover {
@@ -85,7 +86,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 button:hover {
@@ -285,6 +286,12 @@ nav.scrolled {
   width: 100%;
 }
 
+.nav-header a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--fg);
@@ -413,14 +420,15 @@ nav.scrolled {
     width: 100vw;
     height: 100vh;
     background: var(--nav-bg-solid);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: top 0.3s ease;
+    /* MODIFIED: Added 'background' to the transition for smooth theme changes */
+    transition: top 0.3s ease, background 0.3s ease;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -467,7 +475,7 @@ nav.scrolled {
   }
 
   .nav-links a {
-    font-size: 0.9rem;
+    /* font-size: 1rem; */
   }
 
   .theme-toggle {

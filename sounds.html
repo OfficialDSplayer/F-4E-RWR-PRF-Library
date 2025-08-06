@@ -31,14 +31,21 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/themes.css" />
+    <style>
+      html,
+      body {
+        padding-bottom: 0%;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <nav id="navbar">
       <div class="nav-header">
-        <div class="logo">
+        <a href="index.html" class="logo" style="text-decoration: none">
           <img alt="Logo" src="assets/handoff_icon.jpg" />
           F-4E RWR PRF Library
-        </div>
+        </a>
         <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
       <div class="nav-links" id="navMenu">
@@ -87,7 +94,7 @@
           />
           <div id="symbol-filter-wrapper">
             <button class="global-button symbol-filter-toggle" id="symbol-filter-toggle">
-              Filter Symbols ⬇
+              Filter By Symbols
             </button>
             <div class="symbol-dropdown" id="symbol-filter-dropdown"></div>
           </div>

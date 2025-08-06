@@ -124,7 +124,7 @@
   background: var(--card-bg);
   color: var(--card-text);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   font-family: "HornetDisplay", sans-serif;
   font-size: 1em;
 }
@@ -209,7 +209,7 @@
   font-size: 1em;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
   margin-right: 10px;
 }
 
@@ -255,7 +255,7 @@
 .quiz-results {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .fade-out {
