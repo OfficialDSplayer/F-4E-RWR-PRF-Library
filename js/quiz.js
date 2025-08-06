@@ -240,6 +240,8 @@ class Quiz {
     const setupEl = document.getElementById("quiz-setup");
     const gameEl = document.getElementById("quiz-game");
 
+    gameEl.classList.remove("fade-out");
+
     setupEl.classList.add("fade-out");
 
     setTimeout(() => {
@@ -477,6 +479,7 @@ class Quiz {
     const gameEl = document.getElementById("quiz-game");
     const resultsEl = document.getElementById("quiz-results");
 
+    resultsEl.classList.remove("fade-out");
     gameEl.classList.add("fade-out");
 
     setTimeout(() => {
