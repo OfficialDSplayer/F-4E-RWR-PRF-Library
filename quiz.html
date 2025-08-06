@@ -28,6 +28,38 @@
         color: var(--primary-color);
       }
 
+      .quiz-setup,
+      .quiz-game,
+      .quiz-results {
+        opacity: 0;
+        transform: scale(0.98);
+        transition: opacity 0.4s ease;
+        /* pointer-events: none; */
+        /* position: relative; */
+      }
+      .quiz-setup.active,
+      .quiz-game.active,
+      .quiz-results.active {
+        opacity: 1;
+        /* transform: scale(1); */
+        display: block;
+        /* pointer-events: auto; */
+      }
+
+      .quiz-pages-wrapper {
+        /* position: absolute; */
+        /* min-height: 600px; or height: 100%; if you want fullscreen-style */
+      }
+
+      .quiz-setup,
+      .quiz-game,
+      .quiz-results {
+        position: absolute;
+        /* top: 0;
+        left: 0;
+        min-width: 100%; */
+      }
+
       .setup-group {
         margin-bottom: 20px;
       }
@@ -63,7 +95,7 @@
       }
 
       .checkbox-item img {
-        height: 24px;
+        height: 50px;
         border: 1px solid #ccc;
         border-radius: 2px;
         background: white;
@@ -85,7 +117,7 @@
         border-radius: 10px;
         box-shadow: var(--box-shadow);
         text-align: center;
-        display: none;
+        /* display: none; */
       }
 
       .question-counter {
@@ -168,7 +200,7 @@
         border-radius: 10px;
         box-shadow: var(--box-shadow);
         text-align: center;
-        display: none;
+        /* display: none; */
       }
 
       .score-display {
@@ -220,6 +252,7 @@
         cursor: pointer;
         opacity: 0;
         transition: opacity 0.3s ease;
+        margin-right: 10px;
       }
 
       .next-question-btn.visible {
@@ -228,6 +261,20 @@
 
       .next-question-btn:hover {
         background: #1976d2;
+      }
+
+      .table-hint {
+        background: rgba(33, 150, 243, 0.1);
+        border: 1px solid rgba(33, 150, 243, 0.3);
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        font-style: italic;
+      }
+
+      [data-theme="dark"] .table-hint {
+        background: rgba(0, 255, 231, 0.1);
+        border-color: rgba(0, 255, 231, 0.3);
       }
 
       @media (max-width: 600px) {
@@ -261,92 +308,123 @@
     </nav>
 
     <main class="main-content">
-      <div class="quiz-container">
-        <h1>F-4E RWR PRF Quiz</h1>
+      <div class="quiz-pages-wrapper">
+        <div class="quiz-container">
+          <h1>F-4E RWR PRF Quiz</h1>
 
-        <!-- Quiz Setup -->
-        <div class="quiz-setup" id="quiz-setup">
-          <h3>Quiz Configuration</h3>
+          <!-- Quiz Setup -->
+          <div class="quiz-setup" id="quiz-setup">
+            <h3>Quiz Configuration</h3>
 
-          <div class="setup-group">
-            <label>Select RWR Symbols to Include:</label>
-            <div class="controls" style="margin-bottom: 10px">
-              <button class="global-button" id="select-all-symbols">Select All</button>
-              <button class="global-button" id="deselect-all-symbols">Deselect All</button>
+            <div class="setup-group">
+              <label>Select RWR Symbols to Include:</label>
+              <div class="controls" style="margin-bottom: 10px">
+                <button class="global-button" id="select-all-symbols">Select All</button>
+                <button class="global-button" id="deselect-all-symbols">Deselect All</button>
+              </div>
+              <div class="checkbox-group" id="symbol-selection">
+                <!-- Populated by JavaScript -->
+              </div>
             </div>
-            <div class="checkbox-group" id="symbol-selection">
+
+            <div class="setup-group">
+              <label>Select Groups to Include:</label>
+              <div class="controls" style="margin-bottom: 10px">
+                <button class="global-button" id="select-all-groups">Select All</button>
+                <button class="global-button" id="deselect-all-groups">Deselect All</button>
+              </div>
+              <div class="checkbox-group" id="group-selection">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="setup-group">
+              <label for="question-count">Number of Questions:</label>
+              <input
+                type="number"
+                id="question-count"
+                class="number-input"
+                value="10"
+                min="1"
+                max="50"
+              />
+            </div>
+
+            <div class="setup-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="show-table-hint" checked />
+                <label
+                  for="show-table-hint"
+                  style="cursor: pointer"
+                  title="Shows what RWR table (ex: Air Intercept Table, Land Table, Sea Table) the entry is from."
+                >
+                  Show source table hints during quiz</label
+                >
+              </div>
+            </div>
+
+            <div class="controls">
+              <button class="global-button" id="start-quiz-btn">Start Quiz</button>
+            </div>
+          </div>
+
+          <!-- Quiz Game -->
+          <div class="quiz-game" id="quiz-game">
+            <div class="question-counter" id="question-counter">Question 1 of 10</div>
+
+            <h3>What radar system produces this RWR symbol and tone?</h3>
+
+            <div class="symbol-display" id="symbol-display">
               <!-- Populated by JavaScript -->
             </div>
-          </div>
 
-          <div class="setup-group">
-            <label>Select Groups to Include:</label>
-            <div class="controls" style="margin-bottom: 10px">
-              <button class="global-button" id="select-all-groups">Select All</button>
-              <button class="global-button" id="deselect-all-groups">Deselect All</button>
-            </div>
-            <div class="checkbox-group" id="group-selection">
+            <div
+              class="table-hint"
+              id="table-hint"
+              style="margin: 15px 0; font-size: 0.9em; color: var(--highlight); display: none"
+            >
               <!-- Populated by JavaScript -->
             </div>
-          </div>
 
-          <div class="setup-group">
-            <label for="question-count">Number of Questions:</label>
-            <input
-              type="number"
-              id="question-count"
-              class="number-input"
-              value="10"
-              min="1"
-              max="50"
-            />
-          </div>
+            <div class="audio-controls">
+              <button class="play-button" id="quiz-play-btn">▶ Play Sound</button>
+              <button class="stop-button" id="quiz-stop-btn">⏹ Stop Sound</button>
+              <div class="volume-control">
+                <label for="quiz-volume-slider">Volume:</label>
+                <input id="quiz-volume-slider" max="100" min="0" type="range" value="50" />
+              </div>
+            </div>
 
-          <div class="controls">
-            <button class="global-button" id="start-quiz-btn">Start Quiz</button>
-          </div>
-        </div>
+            <div class="answer-choices" id="answer-choices">
+              <!-- Populated by JavaScript -->
+            </div>
 
-        <!-- Quiz Game -->
-        <div class="quiz-game" id="quiz-game">
-          <div class="question-counter" id="question-counter">Question 1 of 10</div>
-
-          <h3>What radar system produces this RWR symbol and tone?</h3>
-
-          <div class="symbol-display" id="symbol-display">
-            <!-- Populated by JavaScript -->
-          </div>
-
-          <div class="audio-controls">
-            <button class="play-button" id="quiz-play-btn">▶ Play Sound</button>
-            <button class="stop-button" id="quiz-stop-btn">⏹ Stop Sound</button>
-            <div class="volume-control">
-              <label for="quiz-volume-slider">Volume:</label>
-              <input id="quiz-volume-slider" max="100" min="0" type="range" value="50" />
+            <div class="controls">
+              <button
+                class="global-button"
+                id="exit-quiz-btn"
+                style="background-color: var(--danger-color)"
+              >
+                Exit Quiz
+              </button>
+              <button class="next-question-btn" id="next-question-btn">Next Question</button>
             </div>
           </div>
 
-          <div class="answer-choices" id="answer-choices">
-            <!-- Populated by JavaScript -->
-          </div>
+          <!-- Quiz Results -->
+          <div class="quiz-results" id="quiz-results">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display" id="score-display">8/10 (80%)</div>
 
-          <button class="next-question-btn" id="next-question-btn">Next Question</button>
-        </div>
+            <div class="results-breakdown" id="results-breakdown">
+              <!-- Populated by JavaScript -->
+            </div>
 
-        <!-- Quiz Results -->
-        <div class="quiz-results" id="quiz-results">
-          <h2>Quiz Complete!</h2>
-          <div class="score-display" id="score-display">8/10 (80%)</div>
-
-          <div class="results-breakdown" id="results-breakdown">
-            <!-- Populated by JavaScript -->
-          </div>
-
-          <div class="controls">
-            <button class="global-button" id="restart-quiz-btn">Take Another Quiz</button>
+            <div class="controls">
+              <button class="global-button" id="restart-quiz-btn">Take Another Quiz</button>
+            </div>
           </div>
         </div>
-
         <div class="progress-container" id="progress-container" style="display: none">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
@@ -374,6 +452,7 @@
           this.score = 0;
           this.results = [];
           this.currentSound = null;
+          this.showTableHints = true;
         }
 
         async initialize() {
@@ -430,6 +509,10 @@
 
           document.getElementById("restart-quiz-btn").addEventListener("click", () => {
             this.restartQuiz();
+          });
+
+          document.getElementById("exit-quiz-btn").addEventListener("click", () => {
+            this.exitQuiz();
           });
         }
 
@@ -510,15 +593,16 @@
             const img = document.createElement("img");
             img.src = `assets/rwr-symbols/${imageFile}.jpg`;
             img.alt = symbol;
+            img.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
 
-            const label = document.createElement("label");
-            label.textContent = symbol;
-            label.style.cursor = "pointer";
-            label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
+            // const label = document.createElement("label");
+            // label.textContent = symbol;
+            // label.style.cursor = "pointer";
+            // label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
 
             item.appendChild(checkbox);
             item.appendChild(img);
-            item.appendChild(label);
+            // item.appendChild(label);
             container.appendChild(item);
           });
         }
@@ -571,6 +655,7 @@
             });
 
           const questionCount = parseInt(document.getElementById("question-count").value);
+          this.showTableHints = document.getElementById("show-table-hint").checked;
 
           if (selectedSymbols.size === 0 || selectedGroups.size === 0) {
             alert("Please select at least one symbol and one group.");
@@ -603,10 +688,21 @@
           this.score = 0;
           this.results = [];
 
-          document.getElementById("quiz-setup").style.display = "none";
-          document.getElementById("quiz-game").style.display = "block";
+          // document.getElementById("quiz-setup").style.display = "none";
+          // document.getElementById("quiz-game").style.display = "block";
+          this.setPageView("quiz-game");
 
           this.displayQuestion();
+        }
+
+        setPageView(targetId) {
+          const pages = ["quiz-setup", "quiz-game", "quiz-results"];
+          pages.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.classList.toggle("active", id === targetId);
+            }
+          });
         }
 
         filterSounds(selectedSymbols, selectedGroups) {
@@ -669,6 +765,7 @@
               correctAnswer,
               answers,
               symbols: this.getSoundSymbols(sound),
+              tableSources: this.getTableSources(sound),
             };
           });
         }
@@ -715,6 +812,33 @@
           return symbols;
         }
 
+        getTableSources(sound) {
+          const alr46Info = this.dataLoader.getAlr46Info();
+          const radarInfo = alr46Info[sound.file];
+          const sources = new Set();
+
+          if (radarInfo) {
+            const normalized = Utils.normalizeRadarName(
+              sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+            );
+            const radarEntry = window.radarSymbolMap?.[normalized];
+            const radarEntries = Array.isArray(radarEntry)
+              ? radarEntry
+              : radarEntry
+              ? [radarEntry]
+              : [];
+
+            for (const entry of radarEntries) {
+              if (entry.source) {
+                const friendlyName = Config.SOURCE_NAME_MAP[entry.source] || entry.source;
+                sources.add(friendlyName);
+              }
+            }
+          }
+
+          return Array.from(sources);
+        }
+
         displayQuestion() {
           const question = this.questions[this.currentQuestionIndex];
           this.currentSound = question.sound;
@@ -737,6 +861,17 @@
               symbolDisplay.appendChild(img);
             }
           });
+
+          // Display table hint if enabled
+          const tableHint = document.getElementById("table-hint");
+          if (this.showTableHints && question.tableSources.length > 0) {
+            tableHint.style.display = "block";
+            tableHint.innerHTML = `<strong>Hint - </strong> This symbol appears in: ${question.tableSources.join(
+              ", "
+            )}`;
+          } else {
+            tableHint.style.display = "none";
+          }
 
           // Display answer choices
           const choicesContainer = document.getElementById("answer-choices");
@@ -803,17 +938,21 @@
           }
         }
 
-        showResults() {
-          document.getElementById("quiz-game").style.display = "none";
-          document.getElementById("quiz-results").style.display = "block";
+        showResults(earlyExit = false) {
+          // document.getElementById("quiz-game").style.display = "none";
+          // document.getElementById("quiz-results").style.display = "block";
+          this.setPageView("quiz-results");
 
-          // Display score
-          const percentage = Math.round((this.score / this.questions.length) * 100);
+          const percentage =
+            this.results.length > 0 ? Math.round((this.score / this.results.length) * 100) : 0;
+
+          const message = earlyExit ? "Quiz Ended Early" : "Quiz Complete!";
+          document.querySelector("#quiz-results h2").textContent = message;
+
           document.getElementById(
             "score-display"
-          ).textContent = `${this.score}/${this.questions.length} (${percentage}%)`;
+          ).textContent = `${this.score}/${this.results.length} (${percentage}%)`;
 
-          // Display breakdown
           const breakdown = document.getElementById("results-breakdown");
           breakdown.innerHTML = "";
 
@@ -842,10 +981,10 @@
 
             const details = document.createElement("div");
             details.innerHTML = `
-              <strong>${result.question.correctAnswer}</strong><br>
-              Your answer: ${result.selectedAnswer}
-              ${result.isCorrect ? "" : " ❌"}
-            `;
+      <strong>${result.question.correctAnswer}</strong><br>
+      Your answer: ${result.selectedAnswer}
+      ${result.isCorrect ? "" : " ❌"}
+    `;
 
             item.appendChild(questionNum);
             item.appendChild(symbolsDiv);
@@ -856,8 +995,17 @@
 
         restartQuiz() {
           this.audioManager.stopAll();
-          document.getElementById("quiz-results").style.display = "none";
-          document.getElementById("quiz-setup").style.display = "block";
+          // document.getElementById("quiz-results").style.display = "none";
+          // document.getElementById("quiz-setup").style.display = "block";
+          this.setPageView("quiz-setup");
+        }
+
+        exitQuiz() {
+          if (confirm("Are you sure you want to end the quiz now and see your results so far?")) {
+            this.audioManager.stopAll();
+            // this.setPageView("quiz-setup");
+            this.showResults(true); // Pass a flag to indicate early exit
+          }
         }
       }
 
@@ -865,6 +1013,8 @@
       document.addEventListener("DOMContentLoaded", () => {
         const quiz = new Quiz();
         quiz.initialize();
+
+        document.getElementById("quiz-setup").classList.add("active");
       });
     </script>
   </body>
