@@ -901,14 +901,14 @@
   },
   "imported_wavs/Gepard_SEARCH.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
-    "name": "Gepard Search",
-    "description": "",
+    "name": "MPDR 12 Search",
+    "description": "Flakpanzer Gepard Search Radar",
     "hidden": false
   },
   "imported_wavs/Gepard_TRACK.wav": {
     "group": "Anti-Aircraft Artillery (NATO)",
     "name": "Gepard Track",
-    "description": "",
+    "description": "Flakpanzer Gepard Track Radar",
     "hidden": false
   },
   "imported_wavs/H-6J RADAR_SEARCH.wav": {
