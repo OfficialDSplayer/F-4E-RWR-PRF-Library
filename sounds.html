@@ -61,13 +61,6 @@
         <button class="global-button" id="show-all-radar-btn">Show All Radar Info</button>
         <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
       </div>
-      <h4>
-        This site is intended to help users learn and memorize what the PRF tones for radars for the
-        ALR-46's Handoff mode. If you have any suggestions, please post them in the
-        <a href="https://github.com/OfficialDSplayer/F-4E-RWR-PRF-Library/issues"
-          >GitHub Issues page</a
-        >.
-      </h4>
       <p>
         There are 3 types of radar modes listed: Search, Acquisition (search for track radars),
         Track.
@@ -85,13 +78,15 @@
         C-RAM/CIWS Phalanx, if they're in multiple tables (ex: land and sea), both symbols are
         shown.
       </p>
-      <p>Only radars that are detectable by the ALR-46 are listed.</p>
+      <p style="color: var(--danger-color)">
+        Only radars that are detectable by the ALR-46 are listed.
+      </p>
       <div class="progress-container" id="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
       </div>
       <div id="audio-list">Loading sounds...</div>
     </main>
-    <footer>© 2025 F-4E RWR PRF Library · By DSplayer</footer>
+    <footer>Last Updated: August 2025 · By DSplayer</footer>
     <!-- JavaScript Files -->
     <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>

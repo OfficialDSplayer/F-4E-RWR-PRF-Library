@@ -1,125 +1,871 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Handoff Quiz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/themes.css" />
+    <meta charset="utf-8" />
+    <title>F-4E RWR PRF Quiz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <style>
+      .quiz-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .quiz-setup {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        margin-bottom: 20px;
+      }
+
+      .quiz-setup h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+      }
+
+      .setup-group {
+        margin-bottom: 20px;
+      }
+
+      .setup-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        background: var(--bg-color);
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        accent-color: var(--primary-color);
+      }
+
+      .checkbox-item img {
+        height: 24px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        background: white;
+      }
+
+      .number-input {
+        font-family: "HornetDisplay", sans-serif;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: var(--card-bg);
+        color: var(--card-text);
+        width: 100px;
+      }
+
+      .quiz-game {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        display: none;
+      }
+
+      .question-counter {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        color: var(--highlight);
+      }
+
+      .symbol-display {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .symbol-display img {
+        height: 80px;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+        background: white;
+        padding: 4px;
+      }
+
+      .audio-controls {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .answer-choices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 20px 0;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .answer-choice {
+        padding: 12px 16px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        background: var(--card-bg);
+        color: var(--card-text);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: "HornetDisplay", sans-serif;
+        font-size: 1em;
+      }
+
+      .answer-choice:hover {
+        border-color: var(--primary-color);
+        background: rgba(33, 150, 243, 0.1);
+      }
+
+      .answer-choice.correct {
+        border-color: var(--success-color);
+        background: rgba(76, 175, 80, 0.2);
+        color: var(--success-color);
+        font-weight: bold;
+      }
+
+      .answer-choice.incorrect {
+        border-color: var(--danger-color);
+        background: rgba(244, 67, 54, 0.2);
+        color: var(--danger-color);
+      }
+
+      .answer-choice.disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .quiz-results {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        display: none;
+      }
+
+      .score-display {
+        font-size: 2em;
+        margin: 20px 0;
+        color: var(--primary-color);
+      }
+
+      .results-breakdown {
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .result-item {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .result-item.correct {
+        background: rgba(76, 175, 80, 0.1);
+        border-left: 4px solid var(--success-color);
+      }
+
+      .result-item.incorrect {
+        background: rgba(244, 67, 54, 0.1);
+        border-left: 4px solid var(--danger-color);
+      }
+
+      .result-item img {
+        height: 32px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
+
+      .next-question-btn {
+        margin-top: 20px;
+        padding: 12px 24px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-family: "HornetDisplay", sans-serif;
+        font-size: 1em;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .next-question-btn.visible {
+        opacity: 1;
+      }
+
+      .next-question-btn:hover {
+        background: #1976d2;
+      }
+
+      @media (max-width: 600px) {
+        .answer-choices {
+          grid-template-columns: 1fr;
+        }
+
+        .checkbox-group {
+          grid-template-columns: 1fr;
+        }
+
+        .audio-controls {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-brand">
-          <img
-            src="assets/handoff_icon.jpg"
-            alt="Logo"
-            style="height: 32px; vertical-align: middle; margin-right: 10px"
-          />
-          F-4E RWR PRF Library
-        </a>
-        <button class="nav-toggle" onclick="toggleMobileMenu()">☰</button>
-        <ul class="nav-menu" id="nav-menu">
-          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="sounds.html" class="nav-link">Sound Player</a></li>
-          <li class="nav-item"><a href="quiz.html" class="nav-link">Handoff Quiz</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <nav id="navbar">
+      <div class="logo">
+        <img alt="Logo" src="assets/handoff_icon.jpg" />
+        F-4E RWR PRF Library
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
     </nav>
+
     <main class="main-content">
       <div class="quiz-container">
-        <div class="quiz-header">
-          <h1>RWR Handoff Quiz</h1>
-          <p>
-            Test your knowledge of radar warning receiver sounds. Listen and identify the radar
-            system.
-          </p>
-        </div>
+        <h1>F-4E RWR PRF Quiz</h1>
 
-        <div id="quiz-setup" class="quiz-card">
-          <h3>Quiz Settings</h3>
-          <div style="margin: 20px 0">
-            <label for="quiz-mode">Quiz Mode:</label>
-            <select id="quiz-mode">
-              <option value="all">All Radars</option>
-              <option value="search">Search Mode Only</option>
-              <option value="track">Track Mode Only</option>
-              <option value="sam">SAM Systems</option>
-              <option value="aaa">AAA Systems</option>
-            </select>
+        <!-- Quiz Setup -->
+        <div class="quiz-setup" id="quiz-setup">
+          <h3>Quiz Configuration</h3>
+
+          <div class="setup-group">
+            <label>Select RWR Symbols to Include:</label>
+            <div class="controls" style="margin-bottom: 10px">
+              <button class="global-button" id="select-all-symbols">Select All</button>
+              <button class="global-button" id="deselect-all-symbols">Deselect All</button>
+            </div>
+            <div class="checkbox-group" id="symbol-selection">
+              <!-- Populated by JavaScript -->
+            </div>
           </div>
-          <div style="margin: 20px 0">
+
+          <div class="setup-group">
+            <label>Select Groups to Include:</label>
+            <div class="controls" style="margin-bottom: 10px">
+              <button class="global-button" id="select-all-groups">Select All</button>
+              <button class="global-button" id="deselect-all-groups">Deselect All</button>
+            </div>
+            <div class="checkbox-group" id="group-selection">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="setup-group">
             <label for="question-count">Number of Questions:</label>
-            <select id="question-count">
-              <option value="5">5</option>
-              <option value="10" selected>10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
-        </div>
-
-        <div id="quiz-content" style="display: none">
-          <div class="quiz-card">
-            <div class="quiz-question">
-              <h3 id="question-number">Question 1 of 10</h3>
-              <p>Listen to the audio clip and identify the radar system:</p>
-            </div>
-
-            <div class="quiz-audio">
-              <button class="btn btn-primary" id="play-question-audio">🔊 Play Audio</button>
-              <audio id="question-audio" preload="none"></audio>
-            </div>
-
-            <div class="quiz-options" id="quiz-options"></div>
-
-            <div style="text-align: center; margin-top: 20px">
-              <button class="btn btn-secondary" onclick="nextQuestion()" id="next-btn" disabled>
-                Next Question
-              </button>
-            </div>
+            <input
+              type="number"
+              id="question-count"
+              class="number-input"
+              value="10"
+              min="1"
+              max="50"
+            />
           </div>
 
-          <div class="quiz-card">
-            <div style="display: flex; justify-content: space-between">
-              <span>Progress: <span id="progress-text">0/10</span></span>
-              <span
-                >Score: <span id="current-score">0</span>/<span id="total-questions">10</span></span
-              >
-            </div>
-            <div style="width: 100%; height: 8px; background: #ddd; margin-top: 10px">
-              <div
-                id="quiz-progress"
-                style="
-                  height: 100%;
-                  background: var(--primary-color);
-                  width: 0%;
-                  transition: width 0.3s;
-                "
-              ></div>
-            </div>
+          <div class="controls">
+            <button class="global-button" id="start-quiz-btn">Start Quiz</button>
           </div>
         </div>
 
-        <div id="quiz-results" style="display: none">
-          <div class="quiz-results">
-            <h2>Quiz Complete!</h2>
-            <div class="quiz-score" id="final-score">0/10</div>
-            <p id="score-message"></p>
-            <div style="margin-top: 20px">
-              <button class="btn btn-primary" onclick="resetQuiz()">Take Another Quiz</button>
-              <a class="btn btn-secondary" href="sounds.html">Study More Sounds</a>
+        <!-- Quiz Game -->
+        <div class="quiz-game" id="quiz-game">
+          <div class="question-counter" id="question-counter">Question 1 of 10</div>
+
+          <h3>What radar system produces this RWR symbol and tone?</h3>
+
+          <div class="symbol-display" id="symbol-display">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div class="audio-controls">
+            <button class="play-button" id="quiz-play-btn">▶ Play Sound</button>
+            <button class="stop-button" id="quiz-stop-btn">⏹ Stop Sound</button>
+            <div class="volume-control">
+              <label for="quiz-volume-slider">Volume:</label>
+              <input id="quiz-volume-slider" max="100" min="0" type="range" value="50" />
             </div>
           </div>
+
+          <div class="answer-choices" id="answer-choices">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <button class="next-question-btn" id="next-question-btn">Next Question</button>
+        </div>
+
+        <!-- Quiz Results -->
+        <div class="quiz-results" id="quiz-results">
+          <h2>Quiz Complete!</h2>
+          <div class="score-display" id="score-display">8/10 (80%)</div>
+
+          <div class="results-breakdown" id="results-breakdown">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <div class="controls">
+            <button class="global-button" id="restart-quiz-btn">Take Another Quiz</button>
+          </div>
+        </div>
+
+        <div class="progress-container" id="progress-container" style="display: none">
+          <div class="progress-bar" id="progress-bar"></div>
         </div>
       </div>
     </main>
 
+    <footer>Last Updated: August 2025 · By DSplayer</footer>
+
+    <!-- JavaScript Files -->
     <script src="js/utils.js"></script>
-    <script src="js/quiz.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/ui-components.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      class Quiz {
+        constructor() {
+          this.dataLoader = new DataLoader();
+          this.audioManager = new AudioManager();
+          this.questions = [];
+          this.currentQuestionIndex = 0;
+          this.score = 0;
+          this.results = [];
+          this.currentSound = null;
+        }
+
+        async initialize() {
+          try {
+            await this.audioManager.initialize();
+            await this.dataLoader.loadAllData();
+
+            this.setupEventListeners();
+            this.populateSetupOptions();
+            this.initializeVolumeControl();
+
+            console.log("✅ Quiz initialized successfully");
+          } catch (error) {
+            console.error("❌ Error initializing quiz:", error);
+          }
+        }
+
+        setupEventListeners() {
+          // Setup buttons
+          document.getElementById("select-all-symbols").addEventListener("click", () => {
+            this.toggleAllCheckboxes("#symbol-selection", true);
+          });
+
+          document.getElementById("deselect-all-symbols").addEventListener("click", () => {
+            this.toggleAllCheckboxes("#symbol-selection", false);
+          });
+
+          document.getElementById("select-all-groups").addEventListener("click", () => {
+            this.toggleAllCheckboxes("#group-selection", true);
+          });
+
+          document.getElementById("deselect-all-groups").addEventListener("click", () => {
+            this.toggleAllCheckboxes("#group-selection", false);
+          });
+
+          document.getElementById("start-quiz-btn").addEventListener("click", () => {
+            this.startQuiz();
+          });
+
+          // Quiz game buttons
+          document.getElementById("quiz-play-btn").addEventListener("click", () => {
+            if (this.currentSound) {
+              this.audioManager.startLoop(this.currentSound.file);
+            }
+          });
+
+          document.getElementById("quiz-stop-btn").addEventListener("click", () => {
+            this.audioManager.stopAll();
+          });
+
+          document.getElementById("next-question-btn").addEventListener("click", () => {
+            this.nextQuestion();
+          });
+
+          document.getElementById("restart-quiz-btn").addEventListener("click", () => {
+            this.restartQuiz();
+          });
+        }
+
+        initializeVolumeControl() {
+          const volumeSlider = document.getElementById("quiz-volume-slider");
+          const savedVolume = StorageService.getVolumeLevel();
+
+          volumeSlider.value = savedVolume;
+          this.audioManager.setVolume(savedVolume / 100);
+
+          volumeSlider.addEventListener("input", () => {
+            const volume = parseInt(volumeSlider.value) / 100;
+            this.audioManager.setVolume(volume);
+            StorageService.setVolumeLevel(volumeSlider.value);
+          });
+        }
+
+        toggleAllCheckboxes(selector, checked) {
+          document.querySelectorAll(`${selector} input[type="checkbox"]`).forEach((cb) => {
+            cb.checked = checked;
+          });
+        }
+
+        populateSetupOptions() {
+          this.populateSymbolSelection();
+          this.populateGroupSelection();
+        }
+
+        populateSymbolSelection() {
+          const container = document.getElementById("symbol-selection");
+          const sounds = this.dataLoader.getSoundMeta();
+          const alr46Info = this.dataLoader.getAlr46Info();
+          const usedSymbols = new Set();
+
+          // Collect all used symbols
+          for (const sound of sounds) {
+            const radarInfo = alr46Info[sound.file];
+            if (!radarInfo) continue;
+
+            const normalized = Utils.normalizeRadarName(
+              sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+            );
+            const radarEntry = window.radarSymbolMap?.[normalized];
+            const radarEntries = Array.isArray(radarEntry)
+              ? radarEntry
+              : radarEntry
+              ? [radarEntry]
+              : [];
+
+            for (const entry of radarEntries) {
+              if (entry.symbol1) usedSymbols.add(entry.symbol1);
+              if (entry.symbol2) usedSymbols.add(entry.symbol2);
+            }
+
+            // Add unknown symbols based on frequency
+            if (!radarEntry && radarInfo.band != null) {
+              const freq = Number(radarInfo.band);
+              const fallback = Utils.getUnknownSymbolFromFrequency(freq);
+              if (fallback) usedSymbols.add(fallback);
+            }
+          }
+
+          // Create checkboxes for each symbol
+          Object.keys(Config.SYMBOL_TO_IMAGE_MAP).forEach((symbol) => {
+            if (!usedSymbols.has(symbol)) return;
+
+            const imageFile = Config.SYMBOL_TO_IMAGE_MAP[symbol];
+            if (!imageFile) return;
+
+            const item = document.createElement("div");
+            item.className = "checkbox-item";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = symbol;
+            checkbox.checked = true;
+
+            const img = document.createElement("img");
+            img.src = `assets/rwr-symbols/${imageFile}.jpg`;
+            img.alt = symbol;
+
+            const label = document.createElement("label");
+            label.textContent = symbol;
+            label.style.cursor = "pointer";
+            label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
+
+            item.appendChild(checkbox);
+            item.appendChild(img);
+            item.appendChild(label);
+            container.appendChild(item);
+          });
+        }
+
+        populateGroupSelection() {
+          const container = document.getElementById("group-selection");
+          const sounds = this.dataLoader.getSoundMeta();
+          const groups = new Set();
+
+          sounds.forEach((sound) => groups.add(sound.group));
+
+          Array.from(groups)
+            .sort()
+            .forEach((groupName) => {
+              const item = document.createElement("div");
+              item.className = "checkbox-item";
+
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.value = groupName;
+              checkbox.checked = true;
+
+              const label = document.createElement("label");
+              label.textContent = groupName;
+              label.style.cursor = "pointer";
+              label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
+
+              item.appendChild(checkbox);
+              item.appendChild(label);
+              container.appendChild(item);
+            });
+        }
+
+        startQuiz() {
+          const selectedSymbols = new Set();
+          const selectedGroups = new Set();
+
+          // Get selected symbols
+          document
+            .querySelectorAll('#symbol-selection input[type="checkbox"]:checked')
+            .forEach((cb) => {
+              selectedSymbols.add(cb.value);
+            });
+
+          // Get selected groups
+          document
+            .querySelectorAll('#group-selection input[type="checkbox"]:checked')
+            .forEach((cb) => {
+              selectedGroups.add(cb.value);
+            });
+
+          const questionCount = parseInt(document.getElementById("question-count").value);
+
+          if (selectedSymbols.size === 0 || selectedGroups.size === 0) {
+            alert("Please select at least one symbol and one group.");
+            return;
+          }
+
+          // Filter sounds based on selections
+          const availableSounds = this.filterSounds(selectedSymbols, selectedGroups);
+
+          if (availableSounds.length === 0) {
+            alert("No sounds match your selection criteria.");
+            return;
+          }
+
+          if (availableSounds.length < questionCount) {
+            if (
+              !confirm(
+                `Only ${availableSounds.length} sounds match your criteria. Continue with ${availableSounds.length} questions?`
+              )
+            ) {
+              return;
+            }
+          }
+
+          // Generate questions
+          this.generateQuestions(availableSounds, Math.min(questionCount, availableSounds.length));
+
+          // Start the quiz
+          this.currentQuestionIndex = 0;
+          this.score = 0;
+          this.results = [];
+
+          document.getElementById("quiz-setup").style.display = "none";
+          document.getElementById("quiz-game").style.display = "block";
+
+          this.displayQuestion();
+        }
+
+        filterSounds(selectedSymbols, selectedGroups) {
+          const sounds = this.dataLoader.getSoundMeta();
+          const alr46Info = this.dataLoader.getAlr46Info();
+
+          return sounds.filter((sound) => {
+            // Check group
+            if (!selectedGroups.has(sound.group)) return false;
+
+            // Check symbol
+            const radarInfo = alr46Info[sound.file];
+            if (!radarInfo) return false;
+
+            const normalized = Utils.normalizeRadarName(
+              sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+            );
+            const radarEntry = window.radarSymbolMap?.[normalized];
+            const radarEntries = Array.isArray(radarEntry)
+              ? radarEntry
+              : radarEntry
+              ? [radarEntry]
+              : [];
+
+            let hasSelectedSymbol = radarEntries.some(
+              (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+            );
+
+            // Check unknown symbols
+            if (!hasSelectedSymbol && radarEntries.length === 0 && radarInfo.band != null) {
+              const freq = Number(radarInfo.band);
+              const fallback = Utils.getUnknownSymbolFromFrequency(freq);
+              hasSelectedSymbol = fallback && selectedSymbols.has(fallback);
+            }
+
+            return hasSelectedSymbol;
+          });
+        }
+
+        generateQuestions(availableSounds, questionCount) {
+          // Shuffle and select sounds for questions
+          const shuffled = [...availableSounds].sort(() => Math.random() - 0.5);
+          const selectedSounds = shuffled.slice(0, questionCount);
+
+          this.questions = selectedSounds.map((sound) => {
+            const correctAnswer = sound.name;
+
+            // Generate wrong answers from other sounds
+            const wrongAnswers = availableSounds
+              .filter((s) => s.name !== correctAnswer)
+              .map((s) => s.name)
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 3);
+
+            // Shuffle all answers
+            const answers = [correctAnswer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+
+            return {
+              sound,
+              correctAnswer,
+              answers,
+              symbols: this.getSoundSymbols(sound),
+            };
+          });
+        }
+
+        getSoundSymbols(sound) {
+          const alr46Info = this.dataLoader.getAlr46Info();
+          const radarInfo = alr46Info[sound.file];
+          const symbols = [];
+
+          if (radarInfo) {
+            const normalized = Utils.normalizeRadarName(
+              sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+            );
+            const radarEntry = window.radarSymbolMap?.[normalized];
+            const radarEntries = Array.isArray(radarEntry)
+              ? radarEntry
+              : radarEntry
+              ? [radarEntry]
+              : [];
+
+            for (const entry of radarEntries) {
+              if (entry.symbol1 && Config.SYMBOL_TO_IMAGE_MAP[entry.symbol1]) {
+                symbols.push(entry.symbol1);
+              }
+              if (
+                entry.symbol2 &&
+                entry.symbol2 !== entry.symbol1 &&
+                Config.SYMBOL_TO_IMAGE_MAP[entry.symbol2]
+              ) {
+                symbols.push(entry.symbol2);
+              }
+            }
+
+            // Add unknown symbol if no known symbols
+            if (symbols.length === 0 && radarInfo.band != null) {
+              const freq = Number(radarInfo.band);
+              const fallback = Utils.getUnknownSymbolFromFrequency(freq);
+              if (fallback && Config.SYMBOL_TO_IMAGE_MAP[fallback]) {
+                symbols.push(fallback);
+              }
+            }
+          }
+
+          return symbols;
+        }
+
+        displayQuestion() {
+          const question = this.questions[this.currentQuestionIndex];
+          this.currentSound = question.sound;
+
+          // Update question counter
+          document.getElementById("question-counter").textContent = `Question ${
+            this.currentQuestionIndex + 1
+          } of ${this.questions.length}`;
+
+          // Display symbols
+          const symbolDisplay = document.getElementById("symbol-display");
+          symbolDisplay.innerHTML = "";
+
+          question.symbols.forEach((symbol) => {
+            const imageFile = Config.SYMBOL_TO_IMAGE_MAP[symbol];
+            if (imageFile) {
+              const img = document.createElement("img");
+              img.src = `assets/rwr-symbols/${imageFile}.jpg`;
+              img.alt = symbol;
+              symbolDisplay.appendChild(img);
+            }
+          });
+
+          // Display answer choices
+          const choicesContainer = document.getElementById("answer-choices");
+          choicesContainer.innerHTML = "";
+
+          question.answers.forEach((answer) => {
+            const button = document.createElement("button");
+            button.className = "answer-choice";
+            button.textContent = answer;
+            button.addEventListener("click", () => this.selectAnswer(answer, button));
+            choicesContainer.appendChild(button);
+          });
+
+          // Hide next button
+          document.getElementById("next-question-btn").classList.remove("visible");
+
+          // Stop any playing audio
+          this.audioManager.stopAll();
+        }
+
+        selectAnswer(selectedAnswer, buttonElement) {
+          const question = this.questions[this.currentQuestionIndex];
+          const isCorrect = selectedAnswer === question.correctAnswer;
+
+          // Update score
+          if (isCorrect) {
+            this.score++;
+          }
+
+          // Record result
+          this.results.push({
+            question: question,
+            selectedAnswer: selectedAnswer,
+            isCorrect: isCorrect,
+          });
+
+          // Update UI
+          const choicesContainer = document.getElementById("answer-choices");
+          const choices = choicesContainer.querySelectorAll(".answer-choice");
+
+          choices.forEach((choice) => {
+            choice.classList.add("disabled");
+            if (choice.textContent === question.correctAnswer) {
+              choice.classList.add("correct");
+            } else if (choice === buttonElement && !isCorrect) {
+              choice.classList.add("incorrect");
+            }
+          });
+
+          // Show next button
+          setTimeout(() => {
+            document.getElementById("next-question-btn").classList.add("visible");
+          }, 500);
+        }
+
+        nextQuestion() {
+          this.audioManager.stopAll();
+          this.currentQuestionIndex++;
+
+          if (this.currentQuestionIndex < this.questions.length) {
+            this.displayQuestion();
+          } else {
+            this.showResults();
+          }
+        }
+
+        showResults() {
+          document.getElementById("quiz-game").style.display = "none";
+          document.getElementById("quiz-results").style.display = "block";
+
+          // Display score
+          const percentage = Math.round((this.score / this.questions.length) * 100);
+          document.getElementById(
+            "score-display"
+          ).textContent = `${this.score}/${this.questions.length} (${percentage}%)`;
+
+          // Display breakdown
+          const breakdown = document.getElementById("results-breakdown");
+          breakdown.innerHTML = "";
+
+          this.results.forEach((result, index) => {
+            const item = document.createElement("div");
+            item.className = `result-item ${result.isCorrect ? "correct" : "incorrect"}`;
+
+            const questionNum = document.createElement("span");
+            questionNum.textContent = `Q${index + 1}:`;
+            questionNum.style.fontWeight = "bold";
+            questionNum.style.minWidth = "35px";
+
+            const symbolsDiv = document.createElement("div");
+            symbolsDiv.style.display = "flex";
+            symbolsDiv.style.gap = "5px";
+
+            result.question.symbols.forEach((symbol) => {
+              const imageFile = Config.SYMBOL_TO_IMAGE_MAP[symbol];
+              if (imageFile) {
+                const img = document.createElement("img");
+                img.src = `assets/rwr-symbols/${imageFile}.jpg`;
+                img.alt = symbol;
+                symbolsDiv.appendChild(img);
+              }
+            });
+
+            const details = document.createElement("div");
+            details.innerHTML = `
+              <strong>${result.question.correctAnswer}</strong><br>
+              Your answer: ${result.selectedAnswer}
+              ${result.isCorrect ? "" : " ❌"}
+            `;
+
+            item.appendChild(questionNum);
+            item.appendChild(symbolsDiv);
+            item.appendChild(details);
+            breakdown.appendChild(item);
+          });
+        }
+
+        restartQuiz() {
+          this.audioManager.stopAll();
+          document.getElementById("quiz-results").style.display = "none";
+          document.getElementById("quiz-setup").style.display = "block";
+        }
+      }
+
+      // Initialize the quiz when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        const quiz = new Quiz();
+        quiz.initialize();
+      });
+    </script>
   </body>
 </html>

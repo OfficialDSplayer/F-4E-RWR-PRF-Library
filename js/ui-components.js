@@ -194,7 +194,7 @@ class UIComponents {
     if (!toggleBtn) return;
 
     const theme = currentTheme || document.documentElement.getAttribute("data-theme");
-    toggleBtn.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
+    toggleBtn.textContent = theme === "dark" ? "Dark Mode" : "Light Mode";
   }
 
   static toggleTheme() {

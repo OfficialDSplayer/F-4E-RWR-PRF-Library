@@ -73,7 +73,7 @@ svg {
 
 @font-face {
   font-family: "HornetDisplay";
-  src: url("../assets/HornetDisplay-Regular.woff") format("woff");
+  src: url("../assets/HornetDisplay-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
