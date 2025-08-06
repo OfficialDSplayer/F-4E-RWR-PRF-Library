@@ -629,7 +629,17 @@ class Quiz {
 
     this.results.forEach((result, index) => {
       const item = document.createElement("div");
-      item.className = `result-item ${result.isCorrect ? "correct" : "incorrect"}`;
+
+      // Apply different classes based on answer type
+      if (result.isCorrect) {
+        if (result.isPrimary) {
+          item.className = "result-item correct primary-correct";
+        } else {
+          item.className = "result-item correct secondary-correct";
+        }
+      } else {
+        item.className = "result-item incorrect";
+      }
 
       const questionNum = document.createElement("span");
       questionNum.textContent = `Q${index + 1}:`;
@@ -659,16 +669,30 @@ class Quiz {
       }
 
       let answerStatus = "";
+      let tooltipText = "";
+
       if (result.isCorrect) {
-        answerStatus = result.isPrimary ? " ✓ (Primary)" : " ✓ (Alternative)";
+        if (result.isPrimary) {
+          answerStatus = " ✓ (Primary)";
+        } else {
+          answerStatus = " ✓ (Alternative)";
+          tooltipText =
+            "Alternative answers are radar systems that have the same RWR symbols and PRF tone as the primary answer.";
+        }
       } else {
         answerStatus = " ❌";
       }
 
+      // Create the answer status span with tooltip if it's an alternative answer
+      let answerStatusHTML = answerStatus;
+      if (result.isCorrect && !result.isPrimary) {
+        answerStatusHTML = `<span class="alternative-answer-tooltip" data-tooltip="${tooltipText}">${answerStatus}</span>`;
+      }
+
       details.innerHTML = `
-        <strong>${correctAnswersDisplay}</strong><br>
-        Your answer: ${result.selectedAnswer}${answerStatus}
-      `;
+      <strong>${correctAnswersDisplay}</strong><br>
+      Your answer: ${result.selectedAnswer}${answerStatusHTML}
+    `;
 
       item.appendChild(questionNum);
       item.appendChild(symbolsDiv);
