@@ -41,7 +41,7 @@
 
       .checkbox-group {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 10px;
         max-height: 200px;
         overflow-y: auto;
@@ -54,6 +54,7 @@
       .checkbox-item {
         display: flex;
         align-items: center;
+        /* justify-content: center; */
         gap: 8px;
         padding: 4px;
       }
@@ -251,13 +252,27 @@
         }
 
         .checkbox-group {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         }
 
         .audio-controls {
           flex-direction: column;
           align-items: center;
         }
+      }
+
+      .quiz-setup,
+      .quiz-game,
+      .quiz-results {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      .fade-out {
+        opacity: 0 !important;
+        transform: translateY(20px) !important;
+        pointer-events: none;
       }
     </style>
   </head>
@@ -655,8 +670,17 @@
           this.score = 0;
           this.results = [];
 
-          document.getElementById("quiz-setup").style.display = "none";
-          document.getElementById("quiz-game").style.display = "block";
+          // document.getElementById("quiz-setup").style.display = "none";
+          // document.getElementById("quiz-game").style.display = "block";
+          const setupEl = document.getElementById("quiz-setup");
+          const gameEl = document.getElementById("quiz-game");
+
+          setupEl.classList.add("fade-out");
+
+          setTimeout(() => {
+            setupEl.style.display = "none";
+            gameEl.style.display = "block";
+          }, 400);
 
           this.displayQuestion();
         }
@@ -895,8 +919,17 @@
         }
 
         showResults(earlyExit = false) {
-          document.getElementById("quiz-game").style.display = "none";
-          document.getElementById("quiz-results").style.display = "block";
+          // document.getElementById("quiz-game").style.display = "none";
+          // document.getElementById("quiz-results").style.display = "block";
+          const gameEl = document.getElementById("quiz-game");
+          const resultsEl = document.getElementById("quiz-results");
+
+          gameEl.classList.add("fade-out");
+
+          setTimeout(() => {
+            gameEl.style.display = "none";
+            resultsEl.style.display = "block";
+          }, 400);
 
           const percentage =
             this.results.length > 0 ? Math.round((this.score / this.results.length) * 100) : 0;
@@ -950,8 +983,18 @@
 
         restartQuiz() {
           this.audioManager.stopAll();
-          document.getElementById("quiz-results").style.display = "none";
-          document.getElementById("quiz-setup").style.display = "block";
+          // document.getElementById("quiz-results").style.display = "none";
+          // document.getElementById("quiz-setup").style.display = "block";
+          const resultsEl = document.getElementById("quiz-results");
+          const setupEl = document.getElementById("quiz-setup");
+
+          resultsEl.classList.add("fade-out");
+
+          setTimeout(() => {
+            resultsEl.style.display = "none";
+            setupEl.style.display = "block";
+            setupEl.classList.remove("fade-out");
+          }, 400);
         }
 
         exitQuiz() {

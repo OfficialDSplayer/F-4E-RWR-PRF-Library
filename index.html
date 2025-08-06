@@ -33,17 +33,23 @@
   </head>
   <body>
     <nav id="navbar">
-      <div class="logo">
-        <img alt="Logo" src="assets/handoff_icon.jpg" />
-        F-4E RWR PRF Library
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="sounds.html">Sounds</a>
-        <a href="#">Quiz</a>
-        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      <div class="nav-header">
+        <div class="logo">
+          <img alt="Logo" src="assets/handoff_icon.jpg" />
+          F-4E RWR PRF Library
+        </div>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
     </nav>
+
+    <!-- Move this OUTSIDE of <nav> -->
+    <div class="nav-links" id="navMenu">
+      <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+      <a href="index.html">Home</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="#">Quiz</a>
+      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
     <section class="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="assets/hero-background.mp4" type="video/mp4" />

@@ -56,3 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const site = new Site();
   site.initialize();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.add("menu-open");
+  });
+
+  menuClose.addEventListener("click", () => {
+    navMenu.classList.remove("menu-open");
+  });
+});

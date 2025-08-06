@@ -161,7 +161,7 @@ footer {
 
 /* Main content spacing to account for fixed nav */
 .main-content {
-  padding-top: 75px; /* Adjust this value based on your nav height */
+  padding-top: 3%; /* Adjust this value based on your nav height */
   /* min-height: calc(100vh - 75px); */
 }
 
@@ -178,7 +178,7 @@ body {
 /* Adjust the nav height calculation for mobile */
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 75px; /* More space needed for mobile nav */
+    padding-top: 3%; /* More space needed for mobile nav */
   }
 
   /* Or if using the body approach */
