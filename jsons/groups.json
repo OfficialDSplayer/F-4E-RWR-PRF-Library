@@ -134,25 +134,25 @@
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "group": "Missiles",
     "name": "AIM-120 Seeker Search",
-    "description": "AIM-120B/C Search (Same as Track)",
+    "description": "AIM-120B/C AMRAAM Radar",
     "hidden": false
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "AIM-120 Seeker Track",
-    "description": "AIM-120B/C Track (Same as Search)",
+    "description": "AIM-120B/C AMRAAM Radar",
     "hidden": false
   },
   "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
     "group": "Missiles",
     "name": "AIM-54 Seeker Search",
-    "description": "AIM-54A/C Search (Same as Track)",
+    "description": "AIM-54A/C Phoenix Radar",
     "hidden": false
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "AIM-54 Seeker Track",
-    "description": "AIM-54A/C Track (Same as Search)",
+    "description": "AIM-54A/C Phoenix Radar",
     "hidden": false
   },
   "imported_wavs/AN_APG-63_SEARCH.wav": {
@@ -1436,7 +1436,7 @@
   "imported_wavs/R-77_Seeker_TRACK.wav": {
     "group": "Missiles",
     "name": "R-77 Seeker Track",
-    "description": "R-77 (AA-12 Adder) Track (Same as Search)",
+    "description": "R-77 (AA-12 Adder) Radar",
     "hidden": false
   },
   "imported_wavs/RDI_SEARCH.wav": {
