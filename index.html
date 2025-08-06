@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>F-4E RWR PRF Library</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta property="og:title" content="Home - F-4E RWR PRF Library" />
+    <meta
+      property="og:description"
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta property="og:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+    <!-- Replace with actual image URL -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta name="twitter:title" content="Home - F-4E RWR PRF Library" />
+    <meta
+      name="twitter:description"
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta name="twitter:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/themes.css" />
+    <!-- To get rid of the white flash when loading the page -->
     <style>
+      html,
+      body {
+        background-color: #121212; /* Dark theme background */
+        color: #f2f2f2; /* Dark theme text color */
+      }
+    </style>
+    <style>
+      html,
       body {
         padding: 0;
       }
@@ -17,8 +47,8 @@
         /* padding: 80px 20px; */
         /* background: linear-gradient(135deg, var(--primary-color), var(--success-color)); */
         /* color: white;
-        border-radius: var(--border-radius-lg);
-        margin-bottom: 40px; */
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 40px; */
       }
       .hero h1 {
         text-align: left;
@@ -28,6 +58,33 @@
       }
       .hero-content {
         max-width: 75%;
+      }
+
+      /* Custom light-text navbar class for index.html because of the video */
+      /* Transition + initial light mode for top of page */
+      body.light-home #navbar .nav-links a,
+      body.light-home #navbar .logo,
+      body.light-home #navbar .theme-toggle,
+      body.light-home #navbar .hamburger {
+        color: white;
+        transition: color 0.3s ease, border-color 0.3s ease;
+        border-color: white;
+      }
+
+      body.light-home.nav-scrolled #navbar .nav-links a,
+      body.light-home.nav-scrolled #navbar .logo,
+      body.light-home.nav-scrolled #navbar .theme-toggle,
+      body.light-home.nav-scrolled #navbar .hamburger {
+        color: black;
+        border-color: black;
+      }
+
+      /* Override: When menu is open (mobile), nav links stay black */
+      body.light-home #navbar .nav-links.menu-open a,
+      body.light-home #navbar .nav-links.menu-open .theme-toggle,
+      body.light-home #navbar .nav-links.menu-open .hamburger {
+        color: black !important;
+        border-color: black !important;
       }
     </style>
   </head>
@@ -40,16 +97,14 @@
         </div>
         <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
+      <div class="nav-links" id="navMenu">
+        <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      </div>
     </nav>
-
-    <!-- Move this OUTSIDE of <nav> -->
-    <div class="nav-links" id="navMenu">
-      <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
-      <a href="index.html">Home</a>
-      <a href="sounds.html">Sounds</a>
-      <a href="#">Quiz</a>
-      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-    </div>
     <section class="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="assets/hero-background.mp4" type="video/mp4" />
@@ -74,10 +129,65 @@
           >GitHub Issues page</a
         >. I'll try to improve this site as much as I can.
       </p>
+      <p>
+        <br />
+        <span style="color: var(--active-color)">Note:</span> This site/repository will most likely
+        change when the early F-14A and F-100 come out as I will most likely update this site for
+        the RWRs on those aircraft.
+      </p>
+      <hr />
+      <p>
+        Thanks to Heatblur for making a great module
+        <br />
+        - Font: <a href="https://github.com/0x408/hornet-display">Hornet Display</a>
+      </p>
     </div>
-    <footer>Last Updated: August 2025 · By DSplayer</footer>
+    <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
+    </script>
     <script src="js/ui-components.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      // Custom navbar dark mode to account for the video color
+      function updateNavbarTextColor() {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const scrolled = window.scrollY > 80;
+        const body = document.body;
+
+        if (!isDark) {
+          body.classList.add("light-home");
+
+          if (scrolled) {
+            body.classList.add("nav-scrolled");
+          } else {
+            body.classList.remove("nav-scrolled");
+          }
+        } else {
+          body.classList.remove("light-home", "nav-scrolled");
+        }
+      }
+
+      function observeThemeChange() {
+        const observer = new MutationObserver(updateNavbarTextColor);
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+      }
+
+      function initIndexNavbarStyle() {
+        window.addEventListener("scroll", updateNavbarTextColor);
+        updateNavbarTextColor();
+        observeThemeChange();
+      }
+
+      document.addEventListener("DOMContentLoaded", initIndexNavbarStyle);
+    </script>
     <script>
       // window.addEventListener("popstate", () => {
       //   UIComponents.setActiveNavLink();

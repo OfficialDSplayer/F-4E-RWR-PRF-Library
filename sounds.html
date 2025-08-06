@@ -2,30 +2,76 @@
 
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <title>F-4E RWR PRF Library</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta property="og:title" content="ALR-46 Sound Player - F-4E RWR PRF Library" />
+    <meta
+      property="og:description"
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta property="og:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+    <!-- Replace with actual image URL -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta name="twitter:title" content="ALR-46 Sound Player - F-4E RWR PRF Library" />
+    <meta
+      name="twitter:description"
+      content="Master the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta name="twitter:image" content="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+
     <!-- CSS Files -->
-    <link href="css/themes.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/components.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <!-- To get rid of the white flash when loading the page -->
+    <style>
+      html,
+      body {
+        background-color: #121212; /* Dark theme background */
+        color: #f2f2f2; /* Dark theme text color */
+      }
+    </style>
   </head>
   <body>
     <nav id="navbar">
-      <div class="logo">
-        <img alt="Logo" src="assets/handoff_icon.jpg" />
-        F-4E RWR PRF Library
+      <div class="nav-header">
+        <div class="logo">
+          <img alt="Logo" src="assets/handoff_icon.jpg" />
+          F-4E RWR PRF Library
+        </div>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
-      <div class="nav-links">
+      <div class="nav-links" id="navMenu">
+        <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
         <a href="index.html">Home</a>
         <a href="sounds.html">Sounds</a>
-        <a href="#">Quiz</a>
-        <button class="theme-toggle" id="toggle-dark-mode-btn">Toggle Theme</button>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
     </nav>
     <main class="main-content">
       <!-- <h1>F-4E RWR PRF Sound Player</h1> -->
       <!-- <hr class="solid" /> -->
       <section style="text-align: center">
-        <h1>F-4E RWR PRF Sound Player</h1>
+        <h1>ALR-46 Sound Player</h1>
         <h3>Using sounds from the DCS Heatblur F-4E Module</h3>
+        <h4 style="color: var(--warning-color)">
+          <b
+            >This project is HIGHLY work-in-progress. Be mindful of any sudden changes and
+            inaccuracies!</b
+          >
+        </h4>
+        <h4 style="color: var(--success-color)">
+          <b>Last Updated: August 2025 - 2.9.18</b>
+        </h4>
         <h4 style="color: var(--danger-color)">
           <b>** DO NOT PRESS PLAY ALL UNLESS YOUR VOLUME IS VERY LOW **</b>
         </h4>
@@ -62,8 +108,9 @@
         <button class="global-button" id="hide-all-radar-btn">Hide All Radar Info</button>
       </div>
       <p>
-        There are 3 types of radar modes listed: Search, Acquisition (search for track radars),
-        Track.
+        There are 3 types of radar modes listed: <span style="color: #49cc15">Search</span>,
+        <span style="color: #f1e845">Acquisition</span> (search for track radars),
+        <span style="color: #ed2a2a">Track</span>.
       </p>
       <p>
         Certain radars (ex: SA-2 Fan Song, SA-3 Low Blow) will have a distinct acquisition phase PRF
@@ -86,7 +133,14 @@
       </div>
       <div id="audio-list">Loading sounds...</div>
     </main>
-    <footer>Last Updated: August 2025 · By DSplayer</footer>
+    <div id="footer"></div>
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
+    </script>
     <!-- JavaScript Files -->
     <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>

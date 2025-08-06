@@ -1,11 +1,26 @@
-/* Main Layout */
+/* ===================== GLOBAL LAYOUT ===================== */
+
+html,
 body {
-  font-family: "HornetDisplay", sans-serif;
-  padding: 20px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  font-family: var(--font-main);
+  background: var(--bg-color);
+  color: var(--fg);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
   margin: 0;
+  padding: 20px;
 }
+
+/* Optional overrides */
+body {
+  /* font-family: "HornetDisplay", sans-serif; */
+  /* padding: 0; Remove the general padding */
+  /* margin: 0; */
+  /* padding-top: 75px; Add top padding to account for fixed nav */
+}
+
+/* ===================== TYPOGRAPHY ===================== */
 
 h1,
 h2,
@@ -20,7 +35,33 @@ p {
   margin-bottom: 0px;
 }
 
-/* Controls */
+/* ===================== MAIN CONTENT ===================== */
+
+.content {
+  padding: 6rem 8vw;
+  margin: auto;
+  /* max-width: 1400px; */
+}
+
+.content p {
+  color: var(--muted);
+  /* max-width: 700px; */
+}
+
+footer {
+  padding: 4rem 8vw;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.main-content {
+  padding-top: 3%;
+  /* min-height: calc(100vh - 75px); */
+}
+
+/* ===================== CONTROLS ===================== */
+
 .controls {
   text-align: center;
   margin: 20px 0;
@@ -79,7 +120,8 @@ input[type="range"] {
   transition: width 0.3s;
 }
 
-/* Group Titles */
+/* ===================== GROUPING ===================== */
+
 .group-title {
   font-size: 1.5em;
   margin: 30px 0 10px;
@@ -100,45 +142,7 @@ input[type="range"] {
   transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-  .search-input {
-    width: 100% !important;
-    flex: 1 1 100%;
-  }
-
-  .symbol-filter-toggle {
-    width: 100%;
-  }
-}
-
-html,
-body {
-  font-family: var(--font-main);
-  background: var(--bg-color);
-  color: var(--fg);
-  scroll-behavior: smooth;
-  line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.content {
-  padding: 6rem 8vw;
-  /* max-width: 1400px; */
-  margin: auto;
-}
-
-.content p {
-  color: var(--muted);
-  /* max-width: 700px; */
-}
-
-footer {
-  padding: 4rem 8vw;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
+/* ===================== RESPONSIVENESS ===================== */
 
 @media (max-width: 768px) {
   nav {
@@ -157,33 +161,24 @@ footer {
   .theme-toggle {
     margin-top: 1rem;
   }
-}
 
-/* Main content spacing to account for fixed nav */
-.main-content {
-  padding-top: 3%; /* Adjust this value based on your nav height */
-  /* min-height: calc(100vh - 75px); */
-}
-
-/* Alternative approach - you can use this instead of the above */
-body {
-  /* font-family: "HornetDisplay", sans-serif; */
-  /* padding: 0; Remove the general padding */
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  /* margin: 0; */
-  /* padding-top: 75px; Add top padding to account for fixed nav */
-}
-
-/* Adjust the nav height calculation for mobile */
-@media (max-width: 768px) {
   .main-content {
-    padding-top: 3%; /* More space needed for mobile nav */
+    padding-top: 5%;
   }
 
-  /* Or if using the body approach */
-  body {
-    /* padding-top: 160px; */
+  /* body {
+    padding-top: 160px;
+  } */
+}
+
+@media (max-width: 600px) {
+  .search-input {
+    width: 100% !important;
+    flex: 1 1 100%;
+  }
+
+  .symbol-filter-toggle {
+    width: 100%;
   }
 }
 
@@ -192,7 +187,6 @@ body {
     padding-top: 2px;
   }
 
-  /* Or if using the body approach */
   body {
     padding-top: 180px;
   }

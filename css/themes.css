@@ -1,18 +1,44 @@
-/* CSS Custom Properties for theming */
+/* ===================== FONT ===================== */
+
+@font-face {
+  font-family: "HornetDisplay";
+  src: url("../assets/HornetDisplay-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===================== GLOBAL THEME VARIABLES ===================== */
+
 :root {
-  /* Light theme colors */
-  --bg-color: #f5f5f5;
+  /* Fonts */
+  --font-main: "HornetDisplay", sans-serif;
+
+  /* Text Colors */
+  --fg: #111;
   --text-color: #000;
-  --card-bg: #fff;
   --card-text: #000;
   --highlight: #666;
+  --muted: #666;
 
-  /* Brand colors */
+  /* Backgrounds */
+  --bg-color: #f5f5f5;
+  --card-bg: #fff;
+  --nav-bg: rgba(255, 255, 255, 0);
+  --nav-bg-solid: rgba(255, 255, 255, 0.85);
+
+  /* Accent & Brand Colors */
+  --accent: #007aff;
   --primary-color: #2196f3;
   --success-color: #4caf50;
   --danger-color: #f44336;
   --warning-color: #ff6b35;
   --active-color: #ffca28;
+
+  /* Shadows & Borders */
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --border-radius: 5px;
+  --border-radius-lg: 10px;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -25,32 +51,37 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.4s ease;
-
-  /* Borders and shadows */
-  --border-radius: 5px;
-  --border-radius-lg: 10px;
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark theme */
+/* ===================== DARK THEME ===================== */
+
 [data-theme="dark"] {
-  --bg-color: #121212;
+  --fg: #f2f2f2;
   --text-color: #f0f0f0;
-  --card-bg: #1e1e1e;
   --card-text: #f0f0f0;
   --highlight: #aaa;
+  --muted: #aaa;
+
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --nav-bg: rgba(0, 0, 0, 0);
+  --nav-bg-solid: rgba(0, 0, 0, 0.5);
+
+  --accent: #00ffe7;
+
   --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Theme transition for smooth switching */
+/* ===================== GLOBAL STYLES ===================== */
+
+/* Smooth theme switching */
 * {
   transition: background-color var(--transition-normal), color var(--transition-normal),
     border-color var(--transition-normal);
 }
 
-/* Ensure images and media don't transition */
+/* Prevent transition on media */
 img,
 video,
 canvas,
@@ -58,7 +89,7 @@ svg {
   transition: none !important;
 }
 
-/* Input styling for dark theme */
+/* Dark mode input styling */
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] input[type="range"] {
   background-color: var(--card-bg);
@@ -69,28 +100,4 @@ svg {
 [data-theme="dark"] input[type="text"]:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-}
-
-@font-face {
-  font-family: "HornetDisplay";
-  src: url("../assets/HornetDisplay-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-:root {
-  --font-main: "HornetDisplay", sans-serif;
-  --fg: #111;
-  --accent: #007aff;
-  --muted: #666;
-  --nav-bg: rgba(255, 255, 255, 0);
-  --nav-bg-solid: rgba(255, 255, 255, 0.85);
-}
-
-[data-theme="dark"] {
-  --fg: #f2f2f2;
-  --accent: #00ffe7;
-  --muted: #aaa;
-  --nav-bg: rgba(0, 0, 0, 0);
-  --nav-bg-solid: rgba(0, 0, 0, 0.5);
 }
