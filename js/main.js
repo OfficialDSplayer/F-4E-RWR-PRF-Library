@@ -43,6 +43,23 @@ document.addEventListener("popstate", () => {
 
 // Initialize the application when the DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  const video = document.querySelector(".hero-video");
+  if (video) {
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Autoplay started
+        })
+        .catch((error) => {
+          console.warn("Autoplay failed:", error);
+        });
+    }
+  }
   // UIComponents.initNavbarScrollEffect();
   // UIComponents.initializeTheme();
   // UIComponents.setActiveNavLink();
