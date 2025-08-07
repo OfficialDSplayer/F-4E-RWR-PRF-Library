@@ -145,6 +145,12 @@ button:hover {
   background-color: #ffca28;
 }
 
+.global-button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ===================== ANIMATIONS ===================== */
 
 @keyframes pulse {
