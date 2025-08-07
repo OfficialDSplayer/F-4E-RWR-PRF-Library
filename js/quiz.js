@@ -8,6 +8,20 @@ class Quiz {
     this.results = [];
     this.currentSound = null;
     this.showTableHints = true;
+    this.startTime = 0;
+    this.endTime = 0;
+    this.params = new URLSearchParams(window.location.search);
+    if (this.params.has("result")) {
+      const data = JSON.parse(localStorage.getItem("shared_result_" + this.params.get("result")));
+      if (data) {
+        this.showResultsFromSharedData(data);
+      }
+    }
+    this.lastSharedResultId = null;
+    this.lastResultData = null;
+
+    const shareSection = document.getElementById("share-section");
+    if (shareSection) shareSection.remove();
   }
 
   async initialize() {
@@ -23,6 +37,15 @@ class Quiz {
     } catch (error) {
       console.error("❌ Error initializing quiz:", error);
     }
+  }
+
+  startQuizTimer() {
+    this.startTime = new Date();
+  }
+
+  endQuizTimer() {
+    this.endTime = new Date();
+    return Math.floor((this.endTime - this.startTime) / 1000); // seconds
   }
 
   setupEventListeners() {
@@ -68,6 +91,25 @@ class Quiz {
 
     document.getElementById("exit-quiz-btn").addEventListener("click", () => {
       this.exitQuiz();
+    });
+
+    document.getElementById("submit-score-btn").addEventListener("click", () => {
+      const username = document.getElementById("username").value;
+      if (!username) return alert("Please enter your name.");
+      const duration = this.endQuizTimer(); // ✅ must use `this.endQuizTimer()`
+
+      const quizSettings = {
+        questionCount: this.questions.length,
+        showTableHints: this.showTableHints,
+      };
+
+      this.submitToLeaderboard(
+        username,
+        `${this.score}/${this.results.length}`,
+        quizSettings,
+        duration,
+        this.results
+      );
     });
   }
 
@@ -248,6 +290,11 @@ class Quiz {
     }, 400);
 
     this.displayQuestion();
+
+    if (window.history.replaceState) {
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
   }
 
   filterSounds(selectedSymbols, selectedGroups) {
@@ -699,12 +746,78 @@ class Quiz {
       item.appendChild(details);
       breakdown.appendChild(item);
     });
+
+    const quizSettings = {
+      questionCount: this.questions.length,
+      showTableHints: this.showTableHints,
+      // Optional: you can include symbol/group selections here too
+    };
+
+    const duration = this.endQuizTimer();
+
+    const enteredUsername = document.getElementById("username")?.value?.trim();
+
+    this.lastResultData = {
+      username: enteredUsername || "Anonymous",
+      score: `${this.score}/${this.results.length}`,
+      settings: quizSettings,
+      duration,
+      results: this.results,
+      earlyExit: earlyExit,
+    };
+
+    const shareLink = this.generateShareableLink(this.lastResultData);
+
+    const shareSection = document.createElement("div");
+    shareSection.id = "share-section";
+
+    const linkEl = document.createElement("p");
+    linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">${shareLink}</a>`;
+
+    const nameUpdateBtn = document.createElement("button");
+    nameUpdateBtn.textContent = "Save Name To Results";
+    nameUpdateBtn.className = "global-button";
+    nameUpdateBtn.style.marginTop = "8px";
+
+    nameUpdateBtn.addEventListener("click", () => {
+      const newName = document.getElementById("username")?.value?.trim();
+      if (!newName || newName.toLowerCase() === "anonymous") {
+        alert("Please enter a valid name different from Anonymous.");
+        return;
+      }
+
+      // Delete the old anonymous result
+      if (this.lastSharedResultId) {
+        localStorage.removeItem("shared_result_" + this.lastSharedResultId);
+      }
+
+      // Update and regenerate link
+      this.lastResultData.username = newName;
+      const newLink = this.generateShareableLink(this.lastResultData);
+      const linkDisplay = document.getElementById("share-link");
+      linkDisplay.href = newLink;
+      linkDisplay.textContent = newLink;
+
+      alert("Name updated and new link generated!");
+    });
+
+    shareSection.appendChild(linkEl);
+    shareSection.appendChild(nameUpdateBtn);
+    document.getElementById("quiz-results").appendChild(shareSection);
   }
 
   restartQuiz() {
     this.audioManager.stopAll();
     const resultsEl = document.getElementById("quiz-results");
     const setupEl = document.getElementById("quiz-setup");
+
+    // Remove previous share link, if it exists
+    const existingShareLinks = resultsEl.querySelectorAll("p");
+    existingShareLinks.forEach((el) => {
+      if (el.textContent.includes("Share your results:")) {
+        el.remove();
+      }
+    });
 
     resultsEl.classList.add("fade-out");
 
@@ -713,6 +826,11 @@ class Quiz {
       setupEl.style.display = "block";
       setupEl.classList.remove("fade-out");
     }, 400);
+
+    if (window.history.replaceState) {
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
   }
 
   exitQuiz() {
@@ -720,6 +838,181 @@ class Quiz {
       this.audioManager.stopAll();
       this.showResults(true); // Pass a flag to indicate early exit
     }
+  }
+
+  loadLeaderboard() {
+    const list = document.getElementById("leaderboard-list");
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+    list.innerHTML = leaderboard
+      .slice(-10)
+      .reverse()
+      .map(
+        (entry) => `
+    <li>
+      <strong>${entry.username}</strong> - ${entry.score} - ${entry.duration}s
+      <br />
+      <small>Settings: ${JSON.stringify(entry.settings)}</small>
+    </li>
+  `
+      )
+      .join("");
+  }
+
+  submitToLeaderboard(username, score, settings, duration, results) {
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+    leaderboard.push({
+      username,
+      score,
+      settings,
+      duration,
+      results,
+      timestamp: new Date().toISOString(),
+    });
+
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+    loadLeaderboard();
+  }
+
+  generateShareableLink(resultsData) {
+    const id = crypto.randomUUID();
+    localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
+    this.lastSharedResultId = id;
+    localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
+    return `${window.location.href.split("?")[0]}?result=${id}`;
+  }
+
+  // showResultsFromSharedData(data) {
+  //   // Display similar to normal results
+  //   document.getElementById("quiz-setup").style.display = "none";
+  //   document.getElementById("quiz-results").style.display = "block";
+  //   document.getElementById("score-display").innerText = `${data.score}`;
+  //   // Populate data.results and data.settings visually
+  // }
+
+  showResultsFromSharedData(data) {
+    const resultsEl = document.getElementById("quiz-results");
+    const breakdown = document.getElementById("results-breakdown");
+
+    document.getElementById("quiz-setup").style.display = "none";
+    document.getElementById("quiz-game").style.display = "none";
+    resultsEl.style.display = "block";
+    document.querySelector("#quiz-results h2").textContent = "Quiz Results";
+
+    const [scoreNum, totalNum] = data.score.split("/").map(Number);
+    const percentage =
+      this.results.length > 0 ? Math.round((this.score / this.results.length) * 100) : 0;
+    const username = data.username || "Anonymous";
+
+    document.getElementById(
+      "score-display"
+    ).innerHTML = `<strong>${username}</strong><br>${data.score} (${percentage}%)`;
+
+    if (data.earlyExit) {
+      const earlyMsg = document.createElement("div");
+      earlyMsg.style.color = "orange";
+      earlyMsg.style.marginTop = "10px";
+      earlyMsg.textContent = "⚠️ This quiz was ended early.";
+      document.getElementById("score-display").appendChild(earlyMsg);
+    }
+
+    // Show quiz settings
+    const settingsDisplay = document.createElement("div");
+    settingsDisplay.style.margin = "10px 0";
+
+    const settings = data.settings || {};
+    const settingLines = [];
+
+    if (settings.questionCount) {
+      settingLines.push(`Questions: ${settings.questionCount}`);
+    }
+    if (settings.showTableHints !== undefined) {
+      settingLines.push(`Table hints: ${settings.showTableHints ? "On" : "Off"}`);
+    }
+
+    // You can add more settingLines here if needed
+
+    settingsDisplay.innerHTML = `<em><strong>Quiz Settings:</strong> ${settingLines.join(
+      ", "
+    )}</em>`;
+    document.getElementById("results-breakdown").prepend(settingsDisplay);
+
+    breakdown.innerHTML = "";
+
+    data.results.forEach((result, index) => {
+      const isCorrect = result.isCorrect;
+      const isPrimary = result.isPrimary;
+      const q = result.question;
+
+      const item = document.createElement("div");
+      item.className = isCorrect
+        ? isPrimary
+          ? "result-item correct primary-correct"
+          : "result-item correct secondary-correct"
+        : "result-item incorrect";
+
+      const questionNum = document.createElement("span");
+      questionNum.textContent = `Q${index + 1}:`;
+      questionNum.style.fontWeight = "bold";
+
+      const symbolsDiv = document.createElement("div");
+      symbolsDiv.style.display = "flex";
+      symbolsDiv.style.gap = "5px";
+
+      q.symbols?.forEach((symbol) => {
+        const imageFile = Config.SYMBOL_TO_IMAGE_MAP[symbol];
+        if (imageFile) {
+          const img = document.createElement("img");
+          img.src = `assets/rwr-symbols/${imageFile}.jpg`;
+          img.alt = symbol;
+          symbolsDiv.appendChild(img);
+        }
+      });
+
+      const details = document.createElement("div");
+      let correctAnswersDisplay = q.primaryCorrectAnswer;
+      if (q.alternativeCorrectAnswers?.length > 0) {
+        correctAnswersDisplay += ` (or ${q.alternativeCorrectAnswers.join(", ")})`;
+      }
+
+      let answerStatus = "";
+      let tooltipText = "";
+
+      if (isCorrect) {
+        if (isPrimary) {
+          answerStatus = " ✓ (Primary)";
+        } else {
+          answerStatus = " ✓ (Alternative)";
+          tooltipText =
+            "Alternative answers are radar systems that have the same RWR symbols and PRF tone as the primary answer.";
+        }
+      } else {
+        answerStatus = " ❌";
+      }
+
+      let answerStatusHTML = answerStatus;
+      if (isCorrect && !isPrimary) {
+        answerStatusHTML = `<span class="alternative-answer-tooltip" data-tooltip="${tooltipText}">${answerStatus}</span>`;
+      }
+
+      details.innerHTML = `
+      <strong>${correctAnswersDisplay}</strong><br>
+      Your answer: ${result.selectedAnswer}${answerStatusHTML}
+    `;
+
+      item.appendChild(questionNum);
+      item.appendChild(symbolsDiv);
+      item.appendChild(details);
+      breakdown.appendChild(item);
+    });
+
+    // Hide leaderboard input
+    document.querySelector(".leaderboard-submit").style.display = "none";
+    document.getElementById("leaderboard").style.display = "none";
+
+    // Rename button
+    document.getElementById("restart-quiz-btn").innerText = "Take a quiz";
   }
 }
 

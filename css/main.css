@@ -35,6 +35,17 @@ p {
   margin-bottom: 0px;
 }
 
+a {
+  color: var(--primary-color);
+  /* text-decoration: none; */
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent);
+  /* text-decoration: underline; */
+}
+
 /* ===================== MAIN CONTENT ===================== */
 
 .content {
