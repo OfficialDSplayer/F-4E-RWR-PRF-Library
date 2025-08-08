@@ -294,7 +294,6 @@ class Quiz {
     document.querySelectorAll('#group-selection input[type="checkbox"]:checked').forEach((cb) => {
       selectedGroups.add(cb.value);
     });
-
     const questionCount = parseInt(document.getElementById("question-count").value);
     this.showTableHints = document.getElementById("show-table-hint").checked;
     this.showDescriptionHints = document.getElementById("show-description-hint").checked;
@@ -307,8 +306,8 @@ class Quiz {
       (cb) => cb.value
     );
 
-    const selectedSymbols = new Set();
-    const selectedGroups = new Set();
+    // const selectedSymbols = new Set();
+    // const selectedGroups = new Set();
 
     document.querySelectorAll('#symbol-selection input[type="checkbox"]:checked').forEach((cb) => {
       selectedSymbols.add(cb.value);
@@ -870,10 +869,22 @@ class Quiz {
 
     const enteredUsername = document.getElementById("username")?.value?.trim();
 
+    //  this.lastResultData = {
+    //     username: enteredUsername || "Anonymous",
+    //     score: `${this.score}/${this.results.length}`,
+    //     settings: quizSettings,
+    //     duration,
+    //     results: this.results,
+    //     earlyExit: earlyExit,
+    //   };
+
     this.lastResultData = {
       username: enteredUsername || "Anonymous",
       score: `${this.score}/${this.results.length}`,
-      settings: quizSettings,
+      settings: {
+        ...quizSettings,
+        ...this.lastSelectedOptions, // Add selected/unselected groups and symbols
+      },
       duration,
       results: this.results,
       earlyExit: earlyExit,
@@ -1173,9 +1184,98 @@ class Quiz {
       settingLines.push(`Duration: ${data.duration}s`);
     }
 
-    settingsDisplay.innerHTML = `<em><strong>Quiz Settings:</strong> ${settingLines.join(
-      ", "
-    )}</em>`;
+    if (settings.selectedSymbols || settings.unselectedSymbols) {
+      const selected = settings.selectedSymbols?.join(", ") || "None";
+      const unselected = settings.unselectedSymbols?.join(", ") || "None";
+      settingLines.push(`Symbols: [✔️ ${selected}] [❌ ${unselected}]`);
+    }
+
+    if (settings.selectedGroups || settings.unselectedGroups) {
+      const selected = settings.selectedGroups?.join(", ") || "None";
+      const unselected = settings.unselectedGroups?.join(", ") || "None";
+      settingLines.push(`Groups: [✔️ ${selected}] [❌ ${unselected}]`);
+    }
+
+    settingsDisplay.innerHTML = `
+      <details class="quiz-settings-container" closed style="
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 0;
+        background: var(--card-bg, #f9f9f9);
+        box-shadow: var(--box-shadow, 0 2px 6px rgba(0, 0, 0, 0.1));
+        margin-bottom: 20px;
+      ">
+        <summary style="
+          padding: 12px 16px;
+          cursor: pointer;
+          font-size: 1.1em;
+          font-weight: bold;
+          user-select: none;
+        ">
+          📋 Quiz Settings
+        </summary>
+        <div style="padding: 16px;">
+          <ul style="padding-left: 20px; margin: 0;">
+            <li><strong>Questions:</strong> ${settings.questionCount ?? "?"}</li>
+            <li><strong>Table Hints:</strong> ${settings.showTableHints ? "✅ On" : "❌ Off"}</li>
+            <li><strong>Description Hints:</strong> ${
+              settings.showDescriptionHints ? "✅ On" : "❌ Off"
+            }</li>
+            <li><strong>Duration:</strong> ${data.duration ?? "?"} seconds</li>
+            <li>
+              <strong>Symbols:</strong><br>
+              <div style="margin-left: 10px;">
+                <div style="margin-bottom: 6px;">
+                  <span style="color: green;">✔️ Selected:</span><br>
+                  <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
+                    ${
+                      (settings.selectedSymbols || [])
+                        .map((s) => {
+                          const img = Config.SYMBOL_TO_IMAGE_MAP?.[s];
+                          return img
+                            ? `<img src="assets/rwr-symbols/${img}.jpg" alt="${s}" title="${s}" style="height: 32px; border: 1px solid white; border-radius: 4px;">`
+                            : `<span>${s}</span>`;
+                        })
+                        .join("") || "None"
+                    }
+                  </div>
+                </div>
+                <div>
+                  <span style="color: red;">❌ Unselected:</span><br>
+                  <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
+                    ${
+                      (settings.unselectedSymbols || [])
+                        .map((s) => {
+                          const img = Config.SYMBOL_TO_IMAGE_MAP?.[s];
+                          return img
+                            ? `<img src="assets/rwr-symbols/${img}.jpg" alt="${s}" title="${s}" style="height: 32px; border: 1px solid white; border-radius: 4px;">`
+                            : `<span>${s}</span>`;
+                        })
+                        .join("") || "None"
+                    }
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <strong>Groups:</strong><br>
+              <div style="margin-left: 10px;">
+                <div style="margin-bottom: 6px;">
+                  <span style="color: green;">✔️ Selected:</span> ${
+                    settings.selectedGroups?.join(", ") || "None"
+                  }
+                </div>
+                <div>
+                  <span style="color: red;">❌ Unselected:</span> ${
+                    settings.unselectedGroups?.join(", ") || "None"
+                  }
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </details>
+    `;
 
     breakdown.innerHTML = "";
     breakdown.appendChild(settingsDisplay);
