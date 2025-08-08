@@ -58,11 +58,32 @@
         </a>
         <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
+
       <div class="nav-links" id="navMenu">
         <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+
         <a href="index.html">Home</a>
-        <a href="sounds.html">Sounds</a>
-        <a href="quiz.html">Quiz</a>
+
+        <!-- Dropdown parent -->
+        <div class="dropdown">
+          <a class="dropbtn nav-tab">F-4E</a>
+          <div class="dropdown-content">
+            <a href="sounds.html">Sounds</a>
+            <a href="quiz.html">Quiz</a>
+            <!-- Add more dropdown links as needed -->
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="dropbtn nav-tab">F-14A Early</a>
+          <div class="dropdown-content">
+            <a href="#">Sounds</a>
+            <a href="#">Quiz</a>
+            <!-- Add more dropdown links as needed -->
+          </div>
+        </div>
+
+        <a href="#">F-100D</a>
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
     </nav>

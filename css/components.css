@@ -222,7 +222,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 4vw;
+  padding: 1rem 7vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -313,6 +313,156 @@ nav.scrolled {
   margin-left: 1.5rem;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* ===================== NAV DROPDOWN ===================== */
+
+/* Container for dropdown */
+.dropdown {
+  position: relative;
+  /* display: inline-block; */
+  color: var(--fg);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  /* position: relative; */
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Animated dropdown content */
+
+/* Show dropdown on hover with animation */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown links style */
+/* Outer box with background */
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background-color: var(--nav-bg-solid, #fff);
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, padding-top 0.3s ease;
+  padding-top: 0.75rem; /* default full padding space above */
+  padding-bottom: 0.75rem;
+}
+
+/* Inner container holds text and is unaffected */
+.dropdown-inner {
+  padding: 0.5rem 0;
+  pointer-events: none; /* allow background interaction, but optional */
+}
+
+.dropdown-content a {
+  position: relative;
+  display: block;
+  padding: 10px 10px 10px 12px; /* top, right, bottom, left */
+  text-decoration: none;
+  color: var(--fg);
+  transition: color 0.3s ease;
+}
+
+.dropdown-content a::after {
+  content: "";
+  position: absolute;
+  bottom: 6px; /* or adjust to 5px or 4px for closer underline */
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.dropdown-content a::after {
+  right: 0;
+  left: 0;
+}
+
+.dropdown-content a:hover::after {
+  width: 100%;
+}
+
+/* Reveal dropdown on hover */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* When navbar is revealed (scrolled), shrink just the top of the dropdown */
+body.nav-scrolled .dropdown-content {
+  padding-top: 0.25rem; /* shrink the background box top padding */
+}
+
+.dropdown-content a:hover {
+  /* background-color: black; */
+}
+
+body.nav-scrolled .dropdown-content {
+  max-height: 200px; /* adjust to taste */
+  margin-top: 1.27rem; /* push it down further to avoid overlapping */
+}
+
+/* Style dropbtn to look like links */
+/* .dropbtn {
+        cursor: default;
+        color: inherit;
+        padding: 0.5rem 0;
+        border: none;
+        background: none;
+        font: inherit;
+        text-decoration: none;
+        position: relative;
+      } */
+
+/* Always underline when hovering on the label or dropdown */
+/* .dropdown:hover .dropbtn {
+        text-decoration: underline;
+      } */
+
+/* Match styling of nav links */
+.nav-tab {
+  color: var(--fg);
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+  cursor: default;
+  text-decoration: none;
+  line-height: 1.4; /* match link spacing */
+  display: inline-block;
+}
+
+/* Animated underline to match link tabs */
+.nav-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; /* Match exactly with .nav-links a::after */
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+/* Activate underline on hover or when dropdown is hovered */
+.nav-tab:hover::after,
+.dropdown:hover .nav-tab::after {
+  width: 100%;
 }
 
 /* ===================== HERO SECTION ===================== */

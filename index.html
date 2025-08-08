@@ -89,6 +89,21 @@
         color: black !important;
         border-color: black !important;
       }
+
+      /* When at top (navbar transparent): dropdown text always black */
+      body.light-home:not(.nav-scrolled) .dropdown-content a {
+        color: black !important;
+      }
+
+      /* When navbar is scrolled: dropdown text matches nav links (white or dark depending on theme) */
+      body.light-home.nav-scrolled .dropdown-content a {
+        color: var(--fg); /* inherits from theme */
+      }
+
+      /* Dark theme (optional, ensures dropdown adapts) */
+      [data-theme="dark"] .dropdown-content a {
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -100,14 +115,36 @@
         </a>
         <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
       </div>
+
       <div class="nav-links" id="navMenu">
         <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+
         <a href="index.html">Home</a>
-        <a href="sounds.html">Sounds</a>
-        <a href="quiz.html">Quiz</a>
+
+        <!-- Dropdown parent -->
+        <div class="dropdown">
+          <a class="dropbtn nav-tab">F-4E</a>
+          <div class="dropdown-content">
+            <a href="sounds.html">Sounds</a>
+            <a href="quiz.html">Quiz</a>
+            <!-- Add more dropdown links as needed -->
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="dropbtn nav-tab">F-14A Early</a>
+          <div class="dropdown-content">
+            <a href="#">Sounds</a>
+            <a href="#">Quiz</a>
+            <!-- Add more dropdown links as needed -->
+          </div>
+        </div>
+
+        <a href="#">F-100D</a>
         <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
       </div>
     </nav>
+
     <section class="hero">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="assets/hero-background.mp4" type="video/mp4" />
