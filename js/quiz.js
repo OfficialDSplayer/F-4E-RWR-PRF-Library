@@ -16,10 +16,14 @@ class Quiz {
     this.lastResultData = null;
     this.quizSubmitted = false; // Track if current quiz has been submitted
 
-    if (this.params.has("result")) {
-      const data = JSON.parse(localStorage.getItem("shared_result_" + this.params.get("result")));
-      if (data) {
-        this.showResultsFromSharedData(data);
+    if (this.params.has("data")) {
+      try {
+        const decoded = JSON.parse(atob(decodeURIComponent(this.params.get("data"))));
+        const fullData = this.expandResultData(decoded);
+        this.showResultsFromSharedData(fullData);
+      } catch (err) {
+        console.error("Invalid shared data format:", err);
+        alert("Failed to load shared quiz results.");
       }
     }
 
@@ -1132,11 +1136,20 @@ class Quiz {
     }
   }
 
+  // generateShareableLink(resultsData) {
+  //   const id = crypto.randomUUID();
+  //   localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
+  //   this.lastSharedResultId = id;
+  //   return `${window.location.href.split("?")[0]}?result=${id}`;
+  // }
+
+  // New method for online usage
   generateShareableLink(resultsData) {
-    const id = crypto.randomUUID();
-    localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
-    this.lastSharedResultId = id;
-    return `${window.location.href.split("?")[0]}?result=${id}`;
+    const compactData = this.minifyResultData(resultsData);
+    const encoded = btoa(JSON.stringify(compactData));
+    return `${window.location.origin}${window.location.pathname}?data=${encodeURIComponent(
+      encoded
+    )}`;
   }
 
   showResultsFromSharedData(data) {
@@ -1395,6 +1408,52 @@ class Quiz {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins} mins ${secs} secs`;
+  }
+
+  minifyResultData(data) {
+    return {
+      u: data.username,
+      s: data.score,
+      d: data.duration,
+      e: data.earlyExit,
+      t: data.settings?.showTableHints ? 1 : 0,
+      h: data.settings?.showDescriptionHints ? 1 : 0,
+      q: data.settings?.questionCount,
+      g: data.settings?.selectedGroups,
+      z: data.results.map((r) => ({
+        s: r.selectedAnswer,
+        c: r.isCorrect ? 1 : 0,
+        p: r.isPrimary ? 1 : 0,
+        a: r.question.primaryCorrectAnswer,
+        x: r.question.alternativeCorrectAnswers,
+        y: r.question.symbols,
+      })),
+    };
+  }
+
+  expandResultData(data) {
+    return {
+      username: data.u || "Anonymous",
+      score: data.s,
+      duration: data.d,
+      earlyExit: data.e || false,
+      settings: {
+        questionCount: data.q,
+        showTableHints: !!data.t,
+        showDescriptionHints: !!data.h,
+        selectedGroups: data.g,
+      },
+      results: data.z.map((r) => ({
+        selectedAnswer: r.s,
+        isCorrect: !!r.c,
+        isPrimary: !!r.p,
+        question: {
+          primaryCorrectAnswer: r.a,
+          alternativeCorrectAnswers: r.x || [],
+          symbols: r.y || [],
+        },
+      })),
+    };
   }
 }
 
