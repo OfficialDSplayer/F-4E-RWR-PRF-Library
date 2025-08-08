@@ -919,8 +919,11 @@ class Quiz {
       shareSection.style.marginTop = "24px"; // optional spacing
 
       const linkEl = document.createElement("p");
-      linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">Link</a>
-      <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link
+      // linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">Link</a>
+      // <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link
+      // </button>`;
+      linkEl.innerHTML = `Share your results:<a id="share-link" href="${shareLink}"></a>
+      <button id="copy-share-link-btn" class="global-button" style="margin-left: 4px;">Copy Shortened Link
       </button>`;
 
       const usernameInput = document.createElement("input");
@@ -1002,7 +1005,7 @@ class Quiz {
 
           copyBtn.textContent = "Copied!";
           setTimeout(() => {
-            copyBtn.textContent = "Copy Link";
+            copyBtn.textContent = "Copy Shortened Link";
           }, 2000);
         } catch (err) {
           console.error("Error shortening or copying:", err);
@@ -1370,7 +1373,7 @@ class Quiz {
 
         copySharedLinkBtn.textContent = "Copied!";
         setTimeout(() => {
-          copySharedLinkBtn.textContent = "Copy Shortened Link";
+          copySharedLinkBtn.textContent = "Copy Shortened Link To Quiz Results";
         }, 2000);
       } catch (err) {
         console.error("Error shortening/copying link:", err);
