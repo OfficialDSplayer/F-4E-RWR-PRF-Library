@@ -14,16 +14,28 @@ class Quiz {
     this.params = new URLSearchParams(window.location.search);
     this.lastSharedResultId = null;
     this.lastResultData = null;
-    this.quizSubmitted = false; // Track if current quiz has been submitted
+    // this.quizSubmitted = false; // Track if current quiz has been submitted
+
+    // if (this.params.has("data")) {
+    //   try {
+    //     const decoded = JSON.parse(atob(decodeURIComponent(this.params.get("data"))));
+    //     const fullData = this.expandResultData(decoded);
+    //     this.showResultsFromSharedData(fullData);
+    //   } catch (err) {
+    //     console.error("Invalid shared data format:", err);
+    //     alert("Failed to load shared quiz results.");
+    //   }
+    // }
 
     if (this.params.has("data")) {
       try {
-        const decoded = JSON.parse(atob(decodeURIComponent(this.params.get("data"))));
-        const fullData = this.expandResultData(decoded);
+        const compressed = this.params.get("data");
+        const json = JSON.parse(LZString.decompressFromEncodedURIComponent(compressed));
+        const fullData = this.expandResultData(json);
         this.showResultsFromSharedData(fullData);
       } catch (err) {
-        console.error("Invalid shared data format:", err);
-        alert("Failed to load shared quiz results.");
+        console.error("❌ Failed to load shared quiz data:", err);
+        alert("Invalid shared result link.");
       }
     }
 
@@ -41,7 +53,7 @@ class Quiz {
       this.initializeVolumeControl();
       this.setupDescriptionHintEvents(); // New method for description hint events
 
-      this.loadLeaderboard();
+      // this.loadLeaderboard();
 
       console.log("✅ Quiz initialized successfully");
     } catch (error) {
@@ -130,50 +142,50 @@ class Quiz {
     // });
   }
 
-  handleScoreSubmission() {
-    const button = document.getElementById("submit-score-btn");
+  // handleScoreSubmission() {
+  //   const button = document.getElementById("submit-score-btn");
 
-    // Prevent multiple submissions for the same quiz
-    if (this.quizSubmitted || button.disabled) {
-      return;
-    }
+  //   // Prevent multiple submissions for the same quiz
+  //   if (this.quizSubmitted || button.disabled) {
+  //     return;
+  //   }
 
-    const username = document.getElementById("username").value.trim();
-    if (!username) {
-      alert("Please enter your name before submitting.");
-      return;
-    }
+  //   const username = document.getElementById("username").value.trim();
+  //   if (!username) {
+  //     alert("Please enter your name before submitting.");
+  //     return;
+  //   }
 
-    // Submit to leaderboard
-    this.submitToLeaderboard(
-      username,
-      `${this.score}/${this.results.length}`,
-      {
-        questionCount: this.questions.length,
-        showTableHints: this.showTableHints,
-        showDescriptionHints: this.showDescriptionHints, // Include in settings
-      },
-      this.endQuizTimer(),
-      this.results
-    );
+  //   // Submit to leaderboard
+  //   this.submitToLeaderboard(
+  //     username,
+  //     `${this.score}/${this.results.length}`,
+  //     {
+  //       questionCount: this.questions.length,
+  //       showTableHints: this.showTableHints,
+  //       showDescriptionHints: this.showDescriptionHints, // Include in settings
+  //     },
+  //     this.endQuizTimer(),
+  //     this.results
+  //   );
 
-    // Mark as submitted and disable button
-    this.quizSubmitted = true;
-    button.disabled = true;
-    button.classList.add("disabled");
-    button.textContent = "Score Submitted ✓";
+  //   // Mark as submitted and disable button
+  //   this.quizSubmitted = true;
+  //   button.disabled = true;
+  //   button.classList.add("disabled");
+  //   button.textContent = "Score Submitted ✓";
 
-    // Show success message
-    const successMsg = document.createElement("div");
-    successMsg.style.color = "var(--success-color, #4CAF50)";
-    successMsg.style.marginTop = "10px";
-    successMsg.style.fontWeight = "bold";
-    successMsg.textContent = "Score successfully submitted to leaderboard!";
-    button.parentNode.appendChild(successMsg);
+  //   // Show success message
+  //   const successMsg = document.createElement("div");
+  //   successMsg.style.color = "var(--success-color, #4CAF50)";
+  //   successMsg.style.marginTop = "10px";
+  //   successMsg.style.fontWeight = "bold";
+  //   successMsg.textContent = "Score successfully submitted to leaderboard!";
+  //   button.parentNode.appendChild(successMsg);
 
-    // Update leaderboard display
-    this.loadLeaderboard();
-  }
+  //   // Update leaderboard display
+  //   this.loadLeaderboard();
+  // }
 
   initializeVolumeControl() {
     const volumeSlider = document.getElementById("quiz-volume-slider");
@@ -357,7 +369,7 @@ class Quiz {
     this.currentQuestionIndex = 0;
     this.score = 0;
     this.results = [];
-    this.quizSubmitted = false; // Reset submission status for new quiz
+    // this.quizSubmitted = false; // Reset submission status for new quiz
     this.startQuizTimer(); // Start timing the quiz
 
     const setupEl = document.getElementById("quiz-setup");
@@ -908,8 +920,8 @@ class Quiz {
 
       const linkEl = document.createElement("p");
       linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">Link</a>
-    <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Link
-    </button>`;
+      <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link
+      </button>`;
 
       const usernameInput = document.createElement("input");
       usernameInput.type = "text";
@@ -969,39 +981,51 @@ class Quiz {
       const copyBtn = document.getElementById("copy-share-link-btn");
       const shareLinkEl = document.getElementById("share-link");
 
-      if (copyBtn && shareLinkEl) {
-        copyBtn.addEventListener("click", () => {
-          const url = shareLinkEl.href;
+      copyBtn.addEventListener("click", async () => {
+        const longUrl = shareLinkEl.href;
 
-          navigator.clipboard.writeText(url).then(
-            () => {
-              copyBtn.textContent = "Copied!";
-              setTimeout(() => {
-                copyBtn.textContent = "Copy Link";
-              }, 2000);
-            },
-            (err) => {
-              console.error("Failed to copy link:", err);
-              alert("Failed to copy link. Please copy manually.");
-            }
+        try {
+          // Shorten using TinyURL API
+          const response = await fetch(
+            `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
           );
-        });
-      }
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          // const shortUrl = result.data.tiny_url;
+          const shortUrl = await response.text();
+
+          // Copy shortened URL to clipboard
+          await navigator.clipboard.writeText(shortUrl);
+
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => {
+            copyBtn.textContent = "Copy Link";
+          }, 2000);
+        } catch (err) {
+          console.error("Error shortening or copying:", err);
+          alert("Failed to shorten and copy the link.");
+        }
+      });
     }
+
+    // DISABLED FOR LEADERBOARD
     // Initialize submit button state
-    const submitButton = document.getElementById("submit-score-btn");
-    submitButton.disabled = false;
-    submitButton.classList.remove("disabled");
-    submitButton.textContent = "Submit Score";
+    // const submitButton = document.getElementById("submit-score-btn");
+    // submitButton.disabled = false;
+    // submitButton.classList.remove("disabled");
+    // submitButton.textContent = "Submit Score";
 
     // Remove any existing success messages
-    const existingSuccess = submitButton.parentNode.querySelector(
-      '[style*="color: var(--success-color"]'
-    );
-    if (existingSuccess) {
-      existingSuccess.remove();
-    }
-    this.loadLeaderboard();
+    // const existingSuccess = submitButton.parentNode.querySelector(
+    //   '[style*="color: var(--success-color"]'
+    // );
+    // if (existingSuccess) {
+    //   existingSuccess.remove();
+    // }
+    // this.loadLeaderboard();
   }
 
   restartQuiz() {
@@ -1024,7 +1048,7 @@ class Quiz {
     }, 400);
 
     // Reset quiz state for new quiz
-    this.quizSubmitted = false;
+    // this.quizSubmitted = false;
     this.currentQuestionIndex = 0;
     this.score = 0;
     this.results = [];
@@ -1043,98 +1067,98 @@ class Quiz {
     }
   }
 
-  submitToLeaderboard(username, score, settings, duration, results) {
-    try {
-      const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+  // submitToLeaderboard(username, score, settings, duration, results) {
+  //   try {
+  //     const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
 
-      const entry = {
-        username,
-        score,
-        settings,
-        duration,
-        results,
-        timestamp: new Date().toISOString(),
-      };
+  //     const entry = {
+  //       username,
+  //       score,
+  //       settings,
+  //       duration,
+  //       results,
+  //       timestamp: new Date().toISOString(),
+  //     };
 
-      leaderboard.push(entry);
-      localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+  //     leaderboard.push(entry);
+  //     localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
 
-      console.log("Score submitted to leaderboard:", entry);
-      return true;
-    } catch (error) {
-      console.error("Error submitting to leaderboard:", error);
-      alert("Error submitting score to leaderboard. Please try again.");
-      return false;
-    }
-  }
+  //     console.log("Score submitted to leaderboard:", entry);
+  //     return true;
+  //   } catch (error) {
+  //     console.error("Error submitting to leaderboard:", error);
+  //     alert("Error submitting score to leaderboard. Please try again.");
+  //     return false;
+  //   }
+  // }
 
-  loadLeaderboard() {
-    const list = document.getElementById("leaderboard-list");
-    if (!list) return; // Element might not exist on quiz page
+  // loadLeaderboard() {
+  //   const list = document.getElementById("leaderboard-list");
+  //   if (!list) return; // Element might not exist on quiz page
 
-    try {
-      const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+  //   try {
+  //     const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
 
-      // Sort by percentage (descending), then by duration (ascending) for ties
-      leaderboard.sort((a, b) => {
-        const [scoreA, totalA] = a.score.split("/").map(Number);
-        const [scoreB, totalB] = b.score.split("/").map(Number);
+  //     // Sort by percentage (descending), then by duration (ascending) for ties
+  //     leaderboard.sort((a, b) => {
+  //       const [scoreA, totalA] = a.score.split("/").map(Number);
+  //       const [scoreB, totalB] = b.score.split("/").map(Number);
 
-        const percentA = scoreA / totalA;
-        const percentB = scoreB / totalB;
+  //       const percentA = scoreA / totalA;
+  //       const percentB = scoreB / totalB;
 
-        return percentB - percentA || a.duration - b.duration;
-      });
+  //       return percentB - percentA || a.duration - b.duration;
+  //     });
 
-      list.innerHTML = ""; // Clear existing entries
+  //     list.innerHTML = ""; // Clear existing entries
 
-      leaderboard.slice(0, 10).forEach((entry, index) => {
-        const li = document.createElement("li");
-        li.style.marginBottom = "16px";
-        li.style.padding = "12px";
-        li.style.border = "1px solid #ccc";
-        li.style.borderRadius = "8px";
-        li.style.background = "var(--card-bg)";
-        li.style.boxShadow = "var(--box-shadow)";
+  //     leaderboard.slice(0, 10).forEach((entry, index) => {
+  //       const li = document.createElement("li");
+  //       li.style.marginBottom = "16px";
+  //       li.style.padding = "12px";
+  //       li.style.border = "1px solid #ccc";
+  //       li.style.borderRadius = "8px";
+  //       li.style.background = "var(--card-bg)";
+  //       li.style.boxShadow = "var(--box-shadow)";
 
-        const resultId = `local_result_${Date.now()}_${index}`;
-        localStorage.setItem("shared_result_" + resultId, JSON.stringify(entry));
+  //       const resultId = `local_result_${Date.now()}_${index}`;
+  //       localStorage.setItem("shared_result_" + resultId, JSON.stringify(entry));
 
-        const [score, total] = entry.score.split("/").map(Number);
-        const percentage = Math.round((score / total) * 100);
+  //       const [score, total] = entry.score.split("/").map(Number);
+  //       const percentage = Math.round((score / total) * 100);
 
-        // Build settings display with description hints
-        const settingsParts = [];
-        if (entry.settings.questionCount) {
-          settingsParts.push(`Questions: ${entry.settings.questionCount}`);
-        }
-        if (entry.settings.showTableHints !== undefined) {
-          settingsParts.push(`Table hints: ${entry.settings.showTableHints ? "On" : "Off"}`);
-        }
-        if (entry.settings.showDescriptionHints !== undefined) {
-          settingsParts.push(
-            `Description hints: ${entry.settings.showDescriptionHints ? "On" : "Off"}`
-          );
-        }
+  //       // Build settings display with description hints
+  //       const settingsParts = [];
+  //       if (entry.settings.questionCount) {
+  //         settingsParts.push(`Questions: ${entry.settings.questionCount}`);
+  //       }
+  //       if (entry.settings.showTableHints !== undefined) {
+  //         settingsParts.push(`Table hints: ${entry.settings.showTableHints ? "On" : "Off"}`);
+  //       }
+  //       if (entry.settings.showDescriptionHints !== undefined) {
+  //         settingsParts.push(
+  //           `Description hints: ${entry.settings.showDescriptionHints ? "On" : "Off"}`
+  //         );
+  //       }
 
-        li.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <div>
-              <strong>${entry.username}</strong><br/>
-              Score: ${entry.score} (${percentage}%)<br/>
-              Time: ${this.formatDuration(entry.duration)}<br/>
-              <small>${settingsParts.join(", ")}</small>
-            </div>
-            <a href="?result=${resultId}" class="global-button">View Details</a>
-          </div>
-        `;
+  //       li.innerHTML = `
+  //         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+  //           <div>
+  //             <strong>${entry.username}</strong><br/>
+  //             Score: ${entry.score} (${percentage}%)<br/>
+  //             Time: ${this.formatDuration(entry.duration)}<br/>
+  //             <small>${settingsParts.join(", ")}</small>
+  //           </div>
+  //           <a href="?result=${resultId}" class="global-button">View Details</a>
+  //         </div>
+  //       `;
 
-        list.appendChild(li);
-      });
-    } catch (error) {
-      console.error("Error loading leaderboard:", error);
-    }
-  }
+  //       list.appendChild(li);
+  //     });
+  //   } catch (error) {
+  //     console.error("Error loading leaderboard:", error);
+  //   }
+  // }
 
   // generateShareableLink(resultsData) {
   //   const id = crypto.randomUUID();
@@ -1144,12 +1168,17 @@ class Quiz {
   // }
 
   // New method for online usage
+  // generateShareableLink(resultsData) {
+  //   const compactData = this.minifyResultData(resultsData);
+  //   const encoded = btoa(JSON.stringify(compactData));
+  //   return `${window.location.origin}${window.location.pathname}?data=${encodeURIComponent(
+  //     encoded
+  //   )}`;
+  // }
   generateShareableLink(resultsData) {
     const compactData = this.minifyResultData(resultsData);
-    const encoded = btoa(JSON.stringify(compactData));
-    return `${window.location.origin}${window.location.pathname}?data=${encodeURIComponent(
-      encoded
-    )}`;
+    const compressed = LZString.compressToEncodedURIComponent(JSON.stringify(compactData));
+    return `${window.location.origin}${window.location.pathname}?data=${compressed}`;
   }
 
   showResultsFromSharedData(data) {
@@ -1312,7 +1341,47 @@ class Quiz {
     }, 0);
 
     breakdown.innerHTML = "";
+
+    const shareControls = document.createElement("div");
+    shareControls.style.display = "flex";
+    shareControls.style.justifyContent = "center";
+    shareControls.style.alignItems = "center";
+    shareControls.style.gap = "10px";
+    shareControls.style.marginBottom = "20px";
+
+    // Create a copy button
+    const copySharedLinkBtn = document.createElement("button");
+    copySharedLinkBtn.id = "copy-shared-result-btn";
+    copySharedLinkBtn.textContent = "Copy Shortened Link To Quiz Results";
+    copySharedLinkBtn.className = "global-button";
+
+    copySharedLinkBtn.addEventListener("click", async () => {
+      const longUrl = window.location.href;
+
+      try {
+        const response = await fetch(
+          `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
+        );
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const shortUrl = await response.text();
+        await navigator.clipboard.writeText(shortUrl);
+
+        copySharedLinkBtn.textContent = "Copied!";
+        setTimeout(() => {
+          copySharedLinkBtn.textContent = "Copy Shortened Link";
+        }, 2000);
+      } catch (err) {
+        console.error("Error shortening/copying link:", err);
+        alert("Failed to shorten or copy the link.");
+      }
+    });
+
+    shareControls.appendChild(copySharedLinkBtn);
+
     breakdown.appendChild(settingsDisplay);
+    breakdown.appendChild(shareControls);
 
     data.results.forEach((result, index) => {
       const isCorrect = result.isCorrect;
@@ -1383,16 +1452,16 @@ class Quiz {
     });
 
     // Hide leaderboard submission section for shared results
-    const leaderboardSubmit = document.querySelector(".leaderboard-submit");
-    if (leaderboardSubmit) {
-      leaderboardSubmit.style.display = "none";
-    }
+    // const leaderboardSubmit = document.querySelector(".leaderboard-submit");
+    // if (leaderboardSubmit) {
+    //   leaderboardSubmit.style.display = "none";
+    // }
 
-    // Hide leaderboard display for shared results
-    const leaderboard = document.getElementById("leaderboard");
-    if (leaderboard) {
-      leaderboard.style.display = "none";
-    }
+    // // Hide leaderboard display for shared results
+    // const leaderboard = document.getElementById("leaderboard");
+    // if (leaderboard) {
+    //   leaderboard.style.display = "none";
+    // }
 
     // Change restart button text
     const restartBtn = document.getElementById("restart-quiz-btn");
@@ -1420,6 +1489,7 @@ class Quiz {
       h: data.settings?.showDescriptionHints ? 1 : 0,
       q: data.settings?.questionCount,
       g: data.settings?.selectedGroups,
+      r: data.settings?.selectedSymbols,
       z: data.results.map((r) => ({
         s: r.selectedAnswer,
         c: r.isCorrect ? 1 : 0,
@@ -1442,6 +1512,7 @@ class Quiz {
         showTableHints: !!data.t,
         showDescriptionHints: !!data.h,
         selectedGroups: data.g,
+        selectedSymbols: data.r,
       },
       results: data.z.map((r) => ({
         selectedAnswer: r.s,
