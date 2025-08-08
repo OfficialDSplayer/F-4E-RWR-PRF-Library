@@ -777,7 +777,7 @@ class Quiz {
     }
   }
 
-  showResults(earlyExit = false) {
+  async showResults(earlyExit = false) {
     const duration = this.endQuizTimer();
     const gameEl = document.getElementById("quiz-game");
     const resultsEl = document.getElementById("quiz-results");
@@ -925,12 +925,18 @@ class Quiz {
       shareSection.style.textAlign = "center";
       shareSection.style.marginTop = "24px"; // optional spacing
 
+      let shortUrl = "";
+      shortUrl = await this.linkShortener(shareLink);
+
       const linkEl = document.createElement("p");
       // linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">Link</a>
       // <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link
       // </button>`;
-      linkEl.innerHTML = `Share your results:<a id="share-link" href="${shareLink}"></a>
-      <button id="copy-share-link-btn" class="global-button" style="margin-left: 4px;">Copy Shortened Link
+      // linkEl.innerHTML = `Share your results:<a id="share-link" href="${shareLink}"></a>
+      // <button id="copy-share-link-btn" class="global-button" style="margin-left: 4px;">Copy Shortened Link
+      // </button>`;
+      linkEl.innerHTML = `Share your results (shortened link): <a id="share-link" href="${shortUrl}">Link</a>
+      <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link
       </button>`;
 
       const usernameInput = document.createElement("input");
@@ -944,7 +950,7 @@ class Quiz {
       nameUpdateBtn.className = "global-button";
       nameUpdateBtn.style.marginTop = "8px";
 
-      nameUpdateBtn.addEventListener("click", () => {
+      nameUpdateBtn.addEventListener("click", async () => {
         const newName = document.getElementById("username")?.value?.trim();
         if (!newName || newName.toLowerCase() === "anonymous") {
           alert("Please enter a valid name.");
@@ -960,7 +966,7 @@ class Quiz {
         this.lastResultData.username = newName;
         const newLink = this.generateShareableLink(this.lastResultData);
         const linkDisplay = document.getElementById("share-link");
-        linkDisplay.href = newLink;
+        linkDisplay.href = await this.linkShortener(newLink);
         // linkDisplay.textContent = newLink;
 
         alert("Name updated and new link generated!");
@@ -992,24 +998,24 @@ class Quiz {
       const shareLinkEl = document.getElementById("share-link");
 
       copyBtn.addEventListener("click", async () => {
-        const longUrl = shareLinkEl.href;
+        // const longUrl = shareLinkEl.href;
 
         try {
           // Shorten using TinyURL API
-          const response = await fetch(
-            `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
-          );
+          // const response = await fetch(
+          //   `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
+          // );
 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+          // if (!response.ok) {
+          //   throw new Error(`HTTP error! status: ${response.status}`);
+          // }
 
           // const shortUrl = result.data.tiny_url;
-          const shortUrl = await response.text();
+          // const shortUrl = await response.text();
 
           // Copy shortened URL to clipboard
-          // await navigator.clipboard.writeText(shortUrl);
-          await this.copyToClipboard(shortUrl);
+          await navigator.clipboard.writeText(shareLinkEl);
+          // await this.copyToClipboard(shortUrl);
 
           copyBtn.textContent = "Copied!";
           setTimeout(() => {
@@ -1037,43 +1043,6 @@ class Quiz {
     //   existingSuccess.remove();
     // }
     // this.loadLeaderboard();
-  }
-
-  copyToClipboard(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text);
-    } else {
-      return new Promise((resolve, reject) => {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-
-        // Prevent zoom on iOS
-        textArea.style.fontSize = "16px";
-
-        // Position off-screen
-        textArea.style.position = "fixed";
-        textArea.style.top = "-1000px";
-        textArea.style.left = "-1000px";
-
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        try {
-          const successful = document.execCommand("copy");
-          document.body.removeChild(textArea);
-
-          if (successful) {
-            resolve();
-          } else {
-            reject(new Error("Copy command was unsuccessful"));
-          }
-        } catch (err) {
-          document.body.removeChild(textArea);
-          reject(err);
-        }
-      });
-    }
   }
 
   restartQuiz() {
@@ -1229,7 +1198,7 @@ class Quiz {
     return `${window.location.origin}${window.location.pathname}?data=${compressed}`;
   }
 
-  showResultsFromSharedData(data) {
+  async showResultsFromSharedData(data) {
     const resultsEl = document.getElementById("quiz-results");
     const breakdown = document.getElementById("results-breakdown");
 
@@ -1397,25 +1366,39 @@ class Quiz {
     shareControls.style.gap = "10px";
     shareControls.style.marginBottom = "20px";
 
+    const longUrl = window.location.href;
+    let shortUrl = "";
+    shortUrl = await this.linkShortener(longUrl);
+
+    const linkEl = document.createElement("p");
+    linkEl.innerHTML = `Share your results (shortened link): <a id="share-link" href="${shortUrl}">Link</a>
+      <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Shortened Link To Quiz Results
+      </button>`;
+
+    shareControls.appendChild(linkEl);
+    breakdown.appendChild(settingsDisplay);
+    breakdown.appendChild(shareControls);
+
     // Create a copy button
-    const copySharedLinkBtn = document.createElement("button");
-    copySharedLinkBtn.id = "copy-shared-result-btn";
-    copySharedLinkBtn.textContent = "Copy Shortened Link To Quiz Results";
-    copySharedLinkBtn.className = "global-button";
+    // const copySharedLinkBtn = document.createElement("button");
+    const copySharedLinkBtn = document.getElementById("copy-share-link-btn");
+    // copySharedLinkBtn.id = "copy-shared-result-btn";
+    // copySharedLinkBtn.textContent = "Copy Shortened Link To Quiz Results";
+    // copySharedLinkBtn.className = "global-button";
 
     copySharedLinkBtn.addEventListener("click", async () => {
-      const longUrl = window.location.href;
+      // const longUrl = window.location.href;
 
       try {
-        const response = await fetch(
-          `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
-        );
+        // const response = await fetch(
+        //   `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
+        // );
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-        const shortUrl = await response.text();
-        // await navigator.clipboard.writeText(shortUrl);
-        await this.copyToClipboard(shortUrl);
+        // const shortUrl = await response.text();
+        await navigator.clipboard.writeText(shortUrl);
+        // await this.copyToClipboard(shortUrl);
 
         copySharedLinkBtn.textContent = "Copied!";
         setTimeout(() => {
@@ -1426,11 +1409,6 @@ class Quiz {
         alert("Failed to shorten or copy the link.");
       }
     });
-
-    shareControls.appendChild(copySharedLinkBtn);
-
-    breakdown.appendChild(settingsDisplay);
-    breakdown.appendChild(shareControls);
 
     data.results.forEach((result, index) => {
       const isCorrect = result.isCorrect;
@@ -1574,6 +1552,26 @@ class Quiz {
         },
       })),
     };
+  }
+
+  async linkShortener(longUrl) {
+    let shortUrl = "";
+    try {
+      // Shorten using TinyURL API
+      const response = await fetch(
+        `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      shortUrl = await response.text();
+    } catch (err) {
+      console.error("Error shortening:", err);
+      shortUrl = longUrl;
+    }
+    return shortUrl;
   }
 }
 

@@ -41,10 +41,10 @@ a {
   transition: color var(--transition-fast);
 }
 
-a:hover {
+/* a:hover {
   color: var(--accent);
-  /* text-decoration: underline; */
-}
+  text-decoration: underline;
+} */
 
 /* ===================== MAIN CONTENT ===================== */
 
