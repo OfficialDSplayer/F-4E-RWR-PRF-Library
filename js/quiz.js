@@ -778,6 +778,7 @@ class Quiz {
   }
 
   showResults(earlyExit = false) {
+    const duration = this.endQuizTimer();
     const gameEl = document.getElementById("quiz-game");
     const resultsEl = document.getElementById("quiz-results");
 
@@ -798,6 +799,12 @@ class Quiz {
     document.getElementById(
       "score-display"
     ).textContent = `${this.score}/${this.results.length} (${percentage}%)`;
+
+    const durationEl = document.createElement("div");
+    durationEl.style.color = "green";
+    durationEl.style.fontSize = "0.85em";
+    durationEl.textContent = `Time Taken: ${this.formatDuration(duration)}`;
+    document.getElementById("score-display").appendChild(durationEl);
 
     const breakdown = document.getElementById("results-breakdown");
     breakdown.innerHTML = "";
@@ -881,7 +888,7 @@ class Quiz {
       showDescriptionHints: this.showDescriptionHints, // Include description hints in settings
     };
 
-    const duration = this.endQuizTimer();
+    // const duration = this.endQuizTimer();
 
     const enteredUsername = document.getElementById("username")?.value?.trim();
 
