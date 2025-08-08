@@ -8,6 +8,7 @@ class Quiz {
     this.results = [];
     this.currentSound = null;
     this.showTableHints = true;
+    this.showDescriptionHints = false; // New property for description hints
     this.startTime = 0;
     this.endTime = 0;
     this.params = new URLSearchParams(window.location.search);
@@ -34,6 +35,7 @@ class Quiz {
       this.setupEventListeners();
       this.populateSetupOptions();
       this.initializeVolumeControl();
+      this.setupDescriptionHintEvents(); // New method for description hint events
 
       this.loadLeaderboard();
 
@@ -50,6 +52,27 @@ class Quiz {
   endQuizTimer() {
     this.endTime = new Date();
     return Math.floor((this.endTime - this.startTime) / 1000); // seconds
+  }
+
+  setupDescriptionHintEvents() {
+    const hintButton = document.getElementById("description-hint-button");
+    const hintContainer = document.getElementById("description-hint-container");
+
+    if (hintButton && hintContainer) {
+      // Handle click for mobile devices
+      hintButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hintContainer.classList.toggle("active");
+      });
+
+      // Close tooltip when clicking elsewhere
+      document.addEventListener("click", (e) => {
+        if (!hintContainer.contains(e.target)) {
+          hintContainer.classList.remove("active");
+        }
+      });
+    }
   }
 
   setupEventListeners() {
@@ -98,9 +121,9 @@ class Quiz {
     });
 
     // Fixed submit score button event listener
-    document.getElementById("submit-score-btn").addEventListener("click", () => {
-      this.handleScoreSubmission();
-    });
+    // document.getElementById("submit-score-btn").addEventListener("click", () => {
+    //   this.handleScoreSubmission();
+    // });
   }
 
   handleScoreSubmission() {
@@ -124,6 +147,7 @@ class Quiz {
       {
         questionCount: this.questions.length,
         showTableHints: this.showTableHints,
+        showDescriptionHints: this.showDescriptionHints, // Include in settings
       },
       this.endQuizTimer(),
       this.results
@@ -273,6 +297,32 @@ class Quiz {
 
     const questionCount = parseInt(document.getElementById("question-count").value);
     this.showTableHints = document.getElementById("show-table-hint").checked;
+    this.showDescriptionHints = document.getElementById("show-description-hint").checked;
+
+    // Get full list of all symbols and groups
+    const allSymbols = [
+      ...document.querySelectorAll('#symbol-selection input[type="checkbox"]'),
+    ].map((cb) => cb.value);
+    const allGroups = [...document.querySelectorAll('#group-selection input[type="checkbox"]')].map(
+      (cb) => cb.value
+    );
+
+    const selectedSymbols = new Set();
+    const selectedGroups = new Set();
+
+    document.querySelectorAll('#symbol-selection input[type="checkbox"]:checked').forEach((cb) => {
+      selectedSymbols.add(cb.value);
+    });
+    document.querySelectorAll('#group-selection input[type="checkbox"]:checked').forEach((cb) => {
+      selectedGroups.add(cb.value);
+    });
+
+    this.lastSelectedOptions = {
+      selectedSymbols: [...selectedSymbols],
+      unselectedSymbols: allSymbols.filter((s) => !selectedSymbols.has(s)),
+      selectedGroups: [...selectedGroups],
+      unselectedGroups: allGroups.filter((g) => !selectedGroups.has(g)),
+    };
 
     if (selectedSymbols.size === 0 || selectedGroups.size === 0) {
       alert("Please select at least one symbol and one group.");
@@ -358,6 +408,23 @@ class Quiz {
 
       return hasSelectedSymbol;
     });
+  }
+
+  // Get radar description from groups data
+  getRadarDescription(sound) {
+    const groupsData = this.dataLoader.getGroupsData();
+    const soundMeta = groupsData[sound.file];
+
+    if (soundMeta && soundMeta.description && soundMeta.description.trim()) {
+      return soundMeta.description.trim();
+    }
+
+    // Fallback: try to get description from sound metadata
+    if (sound.description && sound.description.trim()) {
+      return sound.description.trim();
+    }
+
+    return null;
   }
 
   // Helper function to check if two radars have matching symbols and PRF
@@ -497,6 +564,7 @@ class Quiz {
         answers,
         symbols: this.getSoundSymbols(sound),
         tableSources: this.getTableSources(sound),
+        description: this.getRadarDescription(sound), // Add description to question data
       };
     });
   }
@@ -596,6 +664,10 @@ class Quiz {
       tableHint.style.display = "none";
     }
 
+    // Hide description hint from question area since we're showing it for answers
+    const descriptionHintContainer = document.getElementById("description-hint-container");
+    descriptionHintContainer.style.display = "none";
+
     // Display answer choices
     const choicesContainer = document.getElementById("answer-choices");
     choicesContainer.innerHTML = "";
@@ -603,8 +675,25 @@ class Quiz {
     question.answers.forEach((answer) => {
       const button = document.createElement("button");
       button.className = "answer-choice";
+      // button.dataset.answer = answer;
       button.textContent = answer;
+      button.setAttribute("data-answer", answer);
       button.addEventListener("click", () => this.selectAnswer(answer, button));
+
+      // Add description tooltip to answer button if enabled
+      if (this.showDescriptionHints) {
+        // Find the sound that matches this answer
+        const answerSound = this.dataLoader.getSoundMeta().find((sound) => sound.name === answer);
+        const answerDescription = answerSound ? this.getRadarDescription(answerSound) : null;
+
+        if (answerDescription) {
+          const tooltip = document.createElement("div");
+          tooltip.className = "answer-choice-tooltip";
+          tooltip.innerHTML = `${answerDescription}`;
+          button.appendChild(tooltip);
+        }
+      }
+
       choicesContainer.appendChild(button);
     });
 
@@ -616,16 +705,19 @@ class Quiz {
   }
 
   selectAnswer(selectedAnswer, buttonElement) {
+    // Prevent multiple selections
+    const choicesContainer = document.getElementById("answer-choices");
+    const choices = choicesContainer.querySelectorAll(".answer-choice");
+    if ([...choices].some((choice) => choice.dataset.answered === "true")) return;
+
     const question = this.questions[this.currentQuestionIndex];
     const isCorrect = question.allCorrectAnswers.includes(selectedAnswer);
     const isPrimary = selectedAnswer === question.primaryCorrectAnswer;
 
-    // Update score - any correct answer counts as correct
     if (isCorrect) {
       this.score++;
     }
 
-    // Record result
     this.results.push({
       question: question,
       selectedAnswer: selectedAnswer,
@@ -633,34 +725,27 @@ class Quiz {
       isPrimary: isPrimary,
     });
 
-    // Update UI
-    const choicesContainer = document.getElementById("answer-choices");
-    const choices = choicesContainer.querySelectorAll(".answer-choice");
-
     choices.forEach((choice) => {
+      // const choiceText = choice.textContent.trim();
+      const choiceText = choice.getAttribute("data-answer");
+
       choice.classList.add("disabled");
-      const choiceText = choice.textContent;
+      // Mark all as answered to lock them
+      choice.dataset.answered = "true";
 
       if (choiceText === question.primaryCorrectAnswer) {
-        choice.classList.add("correct");
-        choice.classList.add("primary-correct");
+        choice.classList.add("correct", "primary-correct");
       } else if (question.alternativeCorrectAnswers.includes(choiceText)) {
-        choice.classList.add("correct");
-        choice.classList.add("secondary-correct");
-      } else if (choice === buttonElement && !isCorrect) {
+        choice.classList.add("correct", "secondary-correct");
+      } else if (choiceText === selectedAnswer && !isCorrect) {
         choice.classList.add("incorrect");
       }
     });
 
-    // Update button text based on whether this is the last question
     const nextButton = document.getElementById("next-question-btn");
-    if (this.currentQuestionIndex === this.questions.length - 1) {
-      nextButton.textContent = "Submit Quiz";
-    } else {
-      nextButton.textContent = "Next Question";
-    }
+    nextButton.textContent =
+      this.currentQuestionIndex === this.questions.length - 1 ? "Submit Quiz" : "Next Question";
 
-    // Show next button
     setTimeout(() => {
       nextButton.classList.add("visible");
     }, 500);
@@ -778,6 +863,7 @@ class Quiz {
     const quizSettings = {
       questionCount: this.questions.length,
       showTableHints: this.showTableHints,
+      showDescriptionHints: this.showDescriptionHints, // Include description hints in settings
     };
 
     const duration = this.endQuizTimer();
@@ -793,50 +879,100 @@ class Quiz {
       earlyExit: earlyExit,
     };
 
-    const shareLink = this.generateShareableLink(this.lastResultData);
+    if (this.results.length > 0) {
+      const shareLink = this.generateShareableLink(this.lastResultData);
 
-    const shareSection = document.createElement("div");
-    shareSection.id = "share-section";
+      const shareSection = document.createElement("div");
+      shareSection.id = "share-section";
+      shareSection.style.display = "flex";
+      shareSection.style.flexDirection = "column";
+      shareSection.style.alignItems = "center";
+      shareSection.style.justifyContent = "center";
+      shareSection.style.textAlign = "center";
+      shareSection.style.marginTop = "24px"; // optional spacing
 
-    const linkEl = document.createElement("p");
-    linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">${shareLink}</a>`;
+      const linkEl = document.createElement("p");
+      linkEl.innerHTML = `Share your results: <a id="share-link" href="${shareLink}">Link</a>
+    <button id="copy-share-link-btn" class="global-button" style="margin-left: 8px;">Copy Link
+    </button>`;
 
-    const nameUpdateBtn = document.createElement("button");
-    nameUpdateBtn.textContent = "Save Name To Results";
-    nameUpdateBtn.className = "global-button";
-    nameUpdateBtn.style.marginTop = "8px";
+      const usernameInput = document.createElement("input");
+      usernameInput.type = "text";
+      usernameInput.id = "username";
+      usernameInput.placeholder = "Enter your name";
+      usernameInput.className = "search-input";
 
-    nameUpdateBtn.addEventListener("click", () => {
-      const newName = document.getElementById("username")?.value?.trim();
-      if (!newName || newName.toLowerCase() === "anonymous") {
-        alert("Please enter a valid name different from 'Anonymous'.");
-        return;
+      const nameUpdateBtn = document.createElement("button");
+      nameUpdateBtn.textContent = "Save Name To Results";
+      nameUpdateBtn.className = "global-button";
+      nameUpdateBtn.style.marginTop = "8px";
+
+      nameUpdateBtn.addEventListener("click", () => {
+        const newName = document.getElementById("username")?.value?.trim();
+        if (!newName || newName.toLowerCase() === "anonymous") {
+          alert("Please enter a valid name.");
+          return;
+        }
+
+        // Delete the old anonymous result
+        if (this.lastSharedResultId) {
+          localStorage.removeItem("shared_result_" + this.lastSharedResultId);
+        }
+
+        // Update and regenerate link
+        this.lastResultData.username = newName;
+        const newLink = this.generateShareableLink(this.lastResultData);
+        const linkDisplay = document.getElementById("share-link");
+        linkDisplay.href = newLink;
+        // linkDisplay.textContent = newLink;
+
+        alert("Name updated and new link generated!");
+
+        // Disable further changes
+        nameUpdateBtn.disabled = true;
+        nameUpdateBtn.textContent = "Name Saved";
+        nameUpdateBtn.classList.add("disabled");
+      });
+
+      // shareSection.appendChild(linkEl);
+      // shareSection.appendChild(usernameInput);
+      // shareSection.appendChild(nameUpdateBtn);
+      const nameInputWrapper = document.createElement("div");
+      nameInputWrapper.style.display = "flex";
+      nameInputWrapper.style.alignItems = "center";
+      nameInputWrapper.style.justifyContent = "center";
+      nameInputWrapper.style.gap = "10px";
+      nameInputWrapper.style.marginTop = "12px";
+      nameInputWrapper.appendChild(usernameInput);
+      nameInputWrapper.appendChild(nameUpdateBtn);
+
+      shareSection.appendChild(linkEl);
+      shareSection.appendChild(nameInputWrapper);
+
+      document.getElementById("quiz-results").appendChild(shareSection);
+
+      const copyBtn = document.getElementById("copy-share-link-btn");
+      const shareLinkEl = document.getElementById("share-link");
+
+      if (copyBtn && shareLinkEl) {
+        copyBtn.addEventListener("click", () => {
+          const url = shareLinkEl.href;
+
+          navigator.clipboard.writeText(url).then(
+            () => {
+              copyBtn.textContent = "Copied!";
+              setTimeout(() => {
+                copyBtn.textContent = "Copy Link";
+              }, 2000);
+            },
+            (err) => {
+              console.error("Failed to copy link:", err);
+              alert("Failed to copy link. Please copy manually.");
+            }
+          );
+        });
       }
-
-      // Delete the old anonymous result
-      if (this.lastSharedResultId) {
-        localStorage.removeItem("shared_result_" + this.lastSharedResultId);
-      }
-
-      // Update and regenerate link
-      this.lastResultData.username = newName;
-      const newLink = this.generateShareableLink(this.lastResultData);
-      const linkDisplay = document.getElementById("share-link");
-      linkDisplay.href = newLink;
-      linkDisplay.textContent = newLink;
-
-      alert("Name updated and new link generated!");
-
-      // Disable further changes
-      nameUpdateBtn.disabled = true;
-      nameUpdateBtn.textContent = "Name Saved";
-      nameUpdateBtn.classList.add("disabled");
-    });
-
-    shareSection.appendChild(linkEl);
-    shareSection.appendChild(nameUpdateBtn);
-    document.getElementById("quiz-results").appendChild(shareSection);
-
+    }
     // Initialize submit button state
     const submitButton = document.getElementById("submit-score-btn");
     submitButton.disabled = false;
@@ -850,7 +986,6 @@ class Quiz {
     if (existingSuccess) {
       existingSuccess.remove();
     }
-
     this.loadLeaderboard();
   }
 
@@ -953,15 +1088,27 @@ class Quiz {
         const [score, total] = entry.score.split("/").map(Number);
         const percentage = Math.round((score / total) * 100);
 
+        // Build settings display with description hints
+        const settingsParts = [];
+        if (entry.settings.questionCount) {
+          settingsParts.push(`Questions: ${entry.settings.questionCount}`);
+        }
+        if (entry.settings.showTableHints !== undefined) {
+          settingsParts.push(`Table hints: ${entry.settings.showTableHints ? "On" : "Off"}`);
+        }
+        if (entry.settings.showDescriptionHints !== undefined) {
+          settingsParts.push(
+            `Description hints: ${entry.settings.showDescriptionHints ? "On" : "Off"}`
+          );
+        }
+
         li.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
             <div>
               <strong>${entry.username}</strong><br/>
               Score: ${entry.score} (${percentage}%)<br/>
               Time: ${entry.duration}s<br/>
-              <small>Questions: ${entry.settings.questionCount || "N/A"}, Hints: ${
-          entry.settings.showTableHints ? "On" : "Off"
-        }</small>
+              <small>${settingsParts.join(", ")}</small>
             </div>
             <a href="?result=${resultId}" class="global-button">View Details</a>
           </div>
@@ -1006,7 +1153,7 @@ class Quiz {
       document.getElementById("score-display").appendChild(earlyMsg);
     }
 
-    // Show quiz settings
+    // Show quiz settings including description hints
     const settingsDisplay = document.createElement("div");
     settingsDisplay.style.margin = "10px 0";
 
@@ -1018,6 +1165,9 @@ class Quiz {
     }
     if (settings.showTableHints !== undefined) {
       settingLines.push(`Table hints: ${settings.showTableHints ? "On" : "Off"}`);
+    }
+    if (settings.showDescriptionHints !== undefined) {
+      settingLines.push(`Description hints: ${settings.showDescriptionHints ? "On" : "Off"}`);
     }
     if (data.duration) {
       settingLines.push(`Duration: ${data.duration}s`);
