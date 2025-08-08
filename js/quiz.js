@@ -1336,26 +1336,7 @@ class Quiz {
       </div>
     `;
 
-    setTimeout(() => {
-      const btn = document.getElementById("toggle-quiz-settings");
-      const content = document.getElementById("quiz-settings-content");
-
-      if (btn && content) {
-        btn.addEventListener("click", () => {
-          const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-
-          if (isOpen) {
-            content.style.maxHeight = "0";
-            content.style.paddingBottom = "0";
-            btn.innerHTML = "Quiz Settings ▼";
-          } else {
-            content.style.maxHeight = content.scrollHeight + 40 + "px";
-            content.style.paddingBottom = "16px";
-            btn.innerHTML = "Quiz Settings ▲";
-          }
-        });
-      }
-    }, 0);
+    this.observeAndBindSettingsDropdown();
 
     breakdown.innerHTML = "";
 
@@ -1572,6 +1553,36 @@ class Quiz {
       shortUrl = longUrl;
     }
     return shortUrl;
+  }
+
+  observeAndBindSettingsDropdown() {
+    const observer = new MutationObserver(() => {
+      const btn = document.getElementById("toggle-quiz-settings");
+      const content = document.getElementById("quiz-settings-content");
+
+      if (btn && content) {
+        observer.disconnect(); // Stop observing once found
+
+        btn.addEventListener("click", () => {
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+          if (isOpen) {
+            content.style.maxHeight = "0";
+            content.style.paddingBottom = "0";
+            btn.innerHTML = "Quiz Settings ▼";
+          } else {
+            content.style.maxHeight = content.scrollHeight + 40 + "px";
+            content.style.paddingBottom = "16px";
+            btn.innerHTML = "Quiz Settings ▲";
+          }
+        });
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   }
 }
 
