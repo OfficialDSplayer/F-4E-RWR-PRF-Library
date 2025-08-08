@@ -242,6 +242,10 @@ nav.scrolled {
 .logo {
   font-size: 1.1rem;
   font-weight: bold;
+  display: flex;
+  /* align-items: center; */
+  line-height: 31px;
+  gap: 10px; /* replaces margin-right on img */
 }
 
 .logo img {
