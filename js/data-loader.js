@@ -80,9 +80,7 @@ class DataLoader {
               radarInfo.type === "SEARCH_AND_TRACK" &&
               radarInfo.prf_search == radarInfo.prf_track
             ) {
-              console.log(
-                `🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`
-              );
+              console.log(`🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`);
               continue;
             }
           }
@@ -94,7 +92,6 @@ class DataLoader {
             description: meta.description,
             hidden: false,
           });
-
         } catch (error) {
           console.error(`❌ Failed to process metadata for ${file}:`, error);
           continue;
@@ -105,7 +102,6 @@ class DataLoader {
       }
 
       return this.soundMeta;
-
     } catch (error) {
       console.error("❌ Error loading sound metadata:", error);
       throw error;
@@ -199,7 +195,6 @@ class DataLoader {
         Object.keys(this.radarSymbolMap).length,
         "entries (custom data takes precedence)"
       );
-
     } catch (e) {
       console.error("❌ Failed to load emitter_id_data.json:", e);
     }

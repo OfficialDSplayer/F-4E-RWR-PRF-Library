@@ -48,6 +48,11 @@
   padding: 4px;
 }
 
+/* Moving the checkbox label slightly upwards to align with center */
+.checkbox-item label {
+  transform: translateY(3.5px);
+}
+
 .checkbox-item input[type="checkbox"] {
   accent-color: var(--primary-color);
 }
@@ -127,6 +132,7 @@
   transition: all var(--transition-fast);
   font-family: "HornetDisplay", sans-serif;
   font-size: 1em;
+  position: relative; /* Ensure tooltips position relative to this */
 }
 
 .answer-choice:hover {
@@ -187,6 +193,63 @@
 .answer-choice.disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* Tooltip content */
+.answer-choice-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  z-index: 1000;
+  width: max-content;
+  max-width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Arrow below tooltip */
+.answer-choice-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.answer-choice:hover .answer-choice-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .answer-choice-tooltip {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    padding: 8px 10px;
+    max-width: 240px;
+    white-space: normal;
+  }
+
+  .answer-choice-tooltip::after {
+    left: 50%;
+    margin-left: -5px;
+  }
 }
 
 .quiz-results {

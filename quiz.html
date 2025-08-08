@@ -102,7 +102,9 @@
             />
           </div>
 
-          <div class="setup-group">
+          <h3>Hints</h3>
+
+          <div class="setup-group" style="margin-bottom: 6px">
             <div class="checkbox-item">
               <input type="checkbox" id="show-table-hint" checked />
               <label
@@ -111,6 +113,19 @@
                 title="Shows what RWR table (ex: Air Intercept Table, Land Table, Sea Table) the entry is from."
               >
                 Show source table hints during quiz</label
+              >
+            </div>
+          </div>
+
+          <div class="setup-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="show-description-hint" />
+              <label
+                for="show-description-hint"
+                style="cursor: pointer"
+                title="Shows a tooltip when that reveals the description (ex: vehicle name) of the radar system when hovered over."
+              >
+                Show radar description hints during quiz</label
               >
             </div>
           </div>
@@ -124,7 +139,22 @@
         <div class="quiz-game" id="quiz-game">
           <div class="question-counter" id="question-counter">Question 1 of 10</div>
 
-          <h3>What radar system has this RWR symbol and PRF tone?</h3>
+          <h3>
+            What radar system has this RWR symbol and PRF tone?
+            <span class="description-hint" id="description-hint-container" style="display: none">
+              <button
+                class="description-hint-button"
+                id="description-hint-button"
+                type="button"
+                title="Click for radar description"
+              >
+                ?
+              </button>
+              <div class="description-tooltip" id="description-tooltip">
+                <!-- Populated by JavaScript -->
+              </div>
+            </span>
+          </h3>
 
           <div class="symbol-display" id="symbol-display">
             <!-- Populated by JavaScript -->
@@ -134,9 +164,7 @@
             class="table-hint"
             id="table-hint"
             style="margin: 15px 0; font-size: 0.9em; color: var(--highlight); display: none"
-          >
-            <!-- Populated by JavaScript -->
-          </div>
+          ></div>
 
           <div class="audio-controls">
             <button class="play-button" id="quiz-play-btn">▶ Play Sound</button>
@@ -172,6 +200,17 @@
             <!-- Populated by JavaScript -->
           </div>
 
+          <!-- Note: Leaderboard Disabled -->
+          <!-- <div class="leaderboard-submit">
+            <h3>Submit to Leaderboard</h3>
+            <input type="text" id="username" placeholder="Enter your name" class="search-input" />
+            <button id="submit-score-btn" class="global-button">Submit Score</button>
+          </div> -->
+
+          <!-- <div id="leaderboard-button-container" class="controls">
+            <a href="leaderboard.html" class="global-button">🏆 View Leaderboard</a>
+          </div> -->
+
           <div class="controls">
             <button class="global-button" id="restart-quiz-btn">Take Another Quiz</button>
           </div>
@@ -201,5 +240,6 @@
     <script src="js/audio-manager.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
   </body>
 </html>

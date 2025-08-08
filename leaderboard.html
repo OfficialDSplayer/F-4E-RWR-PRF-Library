@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ALR-46 Symbol and PRF Quiz Leaderboard - F-4E RWR PRF Library</title>
+    <meta name="title" content="ALR-46 Symbol and PRF Quiz Leaderboard - F-4E RWR PRF Library" />
+    <meta
+      name="description"
+      content="Quiz yourself on the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" type="image/png" />
+
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" href="/F-4E-RWR-PRF-Library/assets/handoff_favicon.png" />
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta
+      property="og:title"
+      content="ALR-46 Symbol and PRF Quiz Leaderboard - F-4E RWR PRF Library"
+    />
+    <meta
+      property="og:description"
+      content="Quiz yourself on the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta property="og:image" content="/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="/F-4E-RWR-PRF-Library/index.html" />
+    <meta
+      name="twitter:title"
+      content="ALR-46 Symbol and PRF Quiz Leaderboard - F-4E RWR PRF Library"
+    />
+    <meta
+      name="twitter:description"
+      content="Quiz yourself on the PRF tones from the ALR-46 on the Heatblur DCS F-4E Phantom II."
+    />
+    <meta name="twitter:image" content="/F-4E-RWR-PRF-Library/assets/handoff_icon.jpg" />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+
+    <style>
+      /* Additional styles for enhanced leaderboard */
+      .leaderboard-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--box-shadow-lg);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .leaderboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .leaderboard-stats {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .leaderboard-controls {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .control-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.85rem;
+        transition: background-color var(--transition-fast), transform var(--transition-fast);
+      }
+
+      .control-button:hover {
+        background-color: #1976d2;
+        transform: translateY(-1px);
+      }
+
+      .control-button.danger {
+        background-color: var(--danger-color);
+      }
+
+      .control-button.danger:hover {
+        background-color: #c62828;
+      }
+
+      .control-button.success {
+        background-color: var(--success-color);
+      }
+
+      .control-button.success:hover {
+        background-color: #388e3c;
+      }
+
+      #leaderboard-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--muted);
+      }
+
+      .empty-state h3 {
+        color: var(--highlight);
+        margin-bottom: 1rem;
+      }
+
+      .stats-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+        padding: 1rem;
+        background: rgba(33, 150, 243, 0.05);
+        border-radius: var(--border-radius);
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .stat-label {
+        font-size: 0.8em;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 768px) {
+        .leaderboard-container {
+          padding: 1rem;
+          margin: 1rem;
+        }
+
+        .leaderboard-header {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: center;
+        }
+
+        .leaderboard-controls {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="nav-header">
+        <a href="index.html" class="logo" style="text-decoration: none">
+          <img alt="Logo" src="assets/handoff_icon.jpg" />
+          F-4E RWR PRF Library
+        </a>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+      <div class="nav-links" id="navMenu">
+        <button class="hamburger close-menu" id="menuClose" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="quiz.html">Quiz</a>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <h1>🏆 Quiz Leaderboard</h1>
+
+      <div class="leaderboard-container">
+        <div class="leaderboard-header">
+          <div>
+            <h2 style="margin: 0; color: var(--primary-color)">Top Performers</h2>
+            <div class="leaderboard-stats" id="leaderboard-stats">Loading leaderboard...</div>
+          </div>
+          <div class="leaderboard-controls">
+            <button
+              class="control-button"
+              onclick="refreshLeaderboard()"
+              title="Refresh leaderboard"
+            >
+              🔄 Refresh
+            </button>
+            <button
+              class="control-button success"
+              onclick="exportLeaderboard()"
+              title="Export data as JSON"
+            >
+              💾 Export
+            </button>
+            <button
+              class="control-button danger"
+              onclick="clearLeaderboard()"
+              title="Clear all entries"
+            >
+              🗑️ Clear All
+            </button>
+          </div>
+        </div>
+
+        <div id="stats-container"></div>
+        <ul id="leaderboard-list"></ul>
+      </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/leaderboard.js"></script>
+  </body>
+</html>
