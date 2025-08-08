@@ -1008,7 +1008,8 @@ class Quiz {
           const shortUrl = await response.text();
 
           // Copy shortened URL to clipboard
-          await navigator.clipboard.writeText(shortUrl);
+          // await navigator.clipboard.writeText(shortUrl);
+          await copyToClipboard(shortUrl);
 
           copyBtn.textContent = "Copied!";
           setTimeout(() => {
@@ -1036,6 +1037,61 @@ class Quiz {
     //   existingSuccess.remove();
     // }
     // this.loadLeaderboard();
+  }
+
+  copyToClipboard(text) {
+    // Check for modern Clipboard API support
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    } else {
+      // Enhanced fallback for older browsers and mobile devices
+      return new Promise((resolve, reject) => {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+
+        // Better positioning and styling for mobile compatibility
+        textArea.style.position = "fixed";
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.width = "2em";
+        textArea.style.height = "2em";
+        textArea.style.padding = "0";
+        textArea.style.border = "none";
+        textArea.style.outline = "none";
+        textArea.style.boxShadow = "none";
+        textArea.style.background = "transparent";
+        textArea.style.fontSize = "16px"; // Prevents zoom on iOS
+
+        document.body.appendChild(textArea);
+
+        // iOS Safari requires different handling
+        if (/iP(ad|hone|od)/.test(navigator.userAgent)) {
+          const range = document.createRange();
+          range.selectNodeContents(textArea);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          textArea.setSelectionRange(0, 999999);
+        } else {
+          textArea.focus();
+          textArea.select();
+        }
+
+        try {
+          const successful = document.execCommand("copy");
+          document.body.removeChild(textArea);
+
+          if (successful) {
+            resolve();
+          } else {
+            reject(new Error("Copy command failed"));
+          }
+        } catch (err) {
+          document.body.removeChild(textArea);
+          reject(err);
+        }
+      });
+    }
   }
 
   restartQuiz() {
@@ -1376,7 +1432,8 @@ class Quiz {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const shortUrl = await response.text();
-        await navigator.clipboard.writeText(shortUrl);
+        // await navigator.clipboard.writeText(shortUrl);
+        await copyToClipboard(shortUrl);
 
         copySharedLinkBtn.textContent = "Copied!";
         setTimeout(() => {
