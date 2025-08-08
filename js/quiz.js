@@ -11,14 +11,16 @@ class Quiz {
     this.startTime = 0;
     this.endTime = 0;
     this.params = new URLSearchParams(window.location.search);
+    this.lastSharedResultId = null;
+    this.lastResultData = null;
+    this.quizSubmitted = false; // Track if current quiz has been submitted
+
     if (this.params.has("result")) {
       const data = JSON.parse(localStorage.getItem("shared_result_" + this.params.get("result")));
       if (data) {
         this.showResultsFromSharedData(data);
       }
     }
-    this.lastSharedResultId = null;
-    this.lastResultData = null;
 
     const shareSection = document.getElementById("share-section");
     if (shareSection) shareSection.remove();
@@ -95,43 +97,54 @@ class Quiz {
       this.exitQuiz();
     });
 
+    // Fixed submit score button event listener
     document.getElementById("submit-score-btn").addEventListener("click", () => {
-      // Check if already submitted
-      if (localStorage.getItem("quiz_leaderboard_submitted") === "true") {
-        alert("You've already submitted your score to the leaderboard.");
-        return;
-      }
+      this.handleScoreSubmission();
+    });
+  }
 
-      const username = document.getElementById("username").value.trim();
-      if (!username) {
-        alert("Please enter your name.");
-        return;
-      }
+  handleScoreSubmission() {
+    const button = document.getElementById("submit-score-btn");
 
-      const duration = this.endQuizTimer();
+    // Prevent multiple submissions for the same quiz
+    if (this.quizSubmitted || button.disabled) {
+      return;
+    }
 
-      const quizSettings = {
+    const username = document.getElementById("username").value.trim();
+    if (!username) {
+      alert("Please enter your name before submitting.");
+      return;
+    }
+
+    // Submit to leaderboard
+    this.submitToLeaderboard(
+      username,
+      `${this.score}/${this.results.length}`,
+      {
         questionCount: this.questions.length,
         showTableHints: this.showTableHints,
-      };
+      },
+      this.endQuizTimer(),
+      this.results
+    );
 
-      this.submitToLeaderboard(
-        username,
-        `${this.score}/${this.results.length}`,
-        quizSettings,
-        duration,
-        this.results
-      );
+    // Mark as submitted and disable button
+    this.quizSubmitted = true;
+    button.disabled = true;
+    button.classList.add("disabled");
+    button.textContent = "Score Submitted ✓";
 
-      // ✅ Mark as submitted
-      localStorage.setItem("quiz_leaderboard_submitted", "true");
+    // Show success message
+    const successMsg = document.createElement("div");
+    successMsg.style.color = "var(--success-color, #4CAF50)";
+    successMsg.style.marginTop = "10px";
+    successMsg.style.fontWeight = "bold";
+    successMsg.textContent = "Score successfully submitted to leaderboard!";
+    button.parentNode.appendChild(successMsg);
 
-      // 🔒 Disable the button and input
-      document.getElementById("submit-score-btn").disabled = true;
-      document.getElementById("username").disabled = true;
-
-      alert("Score submitted successfully!");
-    });
+    // Update leaderboard display
+    this.loadLeaderboard();
   }
 
   initializeVolumeControl() {
@@ -209,14 +222,8 @@ class Quiz {
       img.alt = symbol;
       img.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
 
-      // const label = document.createElement("label");
-      // label.textContent = symbol;
-      // label.style.cursor = "pointer";
-      // label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
-
       item.appendChild(checkbox);
       item.appendChild(img);
-      // item.appendChild(label);
       container.appendChild(item);
     });
   }
@@ -293,10 +300,12 @@ class Quiz {
     // Generate questions
     this.generateQuestions(availableSounds, Math.min(questionCount, availableSounds.length));
 
-    // Start the quiz
+    // Reset quiz state
     this.currentQuestionIndex = 0;
     this.score = 0;
     this.results = [];
+    this.quizSubmitted = false; // Reset submission status for new quiz
+    this.startQuizTimer(); // Start timing the quiz
 
     const setupEl = document.getElementById("quiz-setup");
     const gameEl = document.getElementById("quiz-game");
@@ -372,8 +381,6 @@ class Quiz {
     const sortedSymbols1 = [...symbols1].sort();
     const sortedSymbols2 = [...symbols2].sort();
 
-    // Check if they share any symbols
-    // const hasSharedSymbol = symbols1.some((symbol) => symbols2.includes(symbol));
     const symbolsMatch = sortedSymbols1.every((symbol, index) => symbol === sortedSymbols2[index]);
     if (!symbolsMatch) return false;
 
@@ -758,21 +765,19 @@ class Quiz {
       }
 
       details.innerHTML = `
-      <strong>${correctAnswersDisplay}</strong><br>
-      Your answer: ${result.selectedAnswer}${answerStatusHTML}
-    `;
+        <strong>${correctAnswersDisplay}</strong><br>
+        Your answer: ${result.selectedAnswer}${answerStatusHTML}
+      `;
 
       item.appendChild(questionNum);
       item.appendChild(symbolsDiv);
       item.appendChild(details);
       breakdown.appendChild(item);
-      this.loadLeaderboard();
     });
 
     const quizSettings = {
       questionCount: this.questions.length,
       showTableHints: this.showTableHints,
-      // Optional: you can include symbol/group selections here too
     };
 
     const duration = this.endQuizTimer();
@@ -822,7 +827,7 @@ class Quiz {
 
       alert("Name updated and new link generated!");
 
-      // 🔒 Disable further changes
+      // Disable further changes
       nameUpdateBtn.disabled = true;
       nameUpdateBtn.textContent = "Name Saved";
       nameUpdateBtn.classList.add("disabled");
@@ -831,6 +836,22 @@ class Quiz {
     shareSection.appendChild(linkEl);
     shareSection.appendChild(nameUpdateBtn);
     document.getElementById("quiz-results").appendChild(shareSection);
+
+    // Initialize submit button state
+    const submitButton = document.getElementById("submit-score-btn");
+    submitButton.disabled = false;
+    submitButton.classList.remove("disabled");
+    submitButton.textContent = "Submit Score";
+
+    // Remove any existing success messages
+    const existingSuccess = submitButton.parentNode.querySelector(
+      '[style*="color: var(--success-color"]'
+    );
+    if (existingSuccess) {
+      existingSuccess.remove();
+    }
+
+    this.loadLeaderboard();
   }
 
   restartQuiz() {
@@ -838,13 +859,11 @@ class Quiz {
     const resultsEl = document.getElementById("quiz-results");
     const setupEl = document.getElementById("quiz-setup");
 
-    // Remove previous share link, if it exists
-    const existingShareLinks = resultsEl.querySelectorAll("p");
-    existingShareLinks.forEach((el) => {
-      if (el.textContent.includes("Share your results:")) {
-        el.remove();
-      }
-    });
+    // Remove previous share section if it exists
+    const shareSection = document.getElementById("share-section");
+    if (shareSection) {
+      shareSection.remove();
+    }
 
     resultsEl.classList.add("fade-out");
 
@@ -854,11 +873,17 @@ class Quiz {
       setupEl.classList.remove("fade-out");
     }, 400);
 
+    // Reset quiz state for new quiz
+    this.quizSubmitted = false;
+    this.currentQuestionIndex = 0;
+    this.score = 0;
+    this.results = [];
+    this.questions = [];
+
     if (window.history.replaceState) {
       const cleanUrl = window.location.origin + window.location.pathname;
       window.history.replaceState({}, document.title, cleanUrl);
     }
-    localStorage.removeItem("quiz_leaderboard_submitted");
   }
 
   exitQuiz() {
@@ -868,156 +893,93 @@ class Quiz {
     }
   }
 
+  submitToLeaderboard(username, score, settings, duration, results) {
+    try {
+      const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+      const entry = {
+        username,
+        score,
+        settings,
+        duration,
+        results,
+        timestamp: new Date().toISOString(),
+      };
+
+      leaderboard.push(entry);
+      localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+
+      console.log("Score submitted to leaderboard:", entry);
+      return true;
+    } catch (error) {
+      console.error("Error submitting to leaderboard:", error);
+      alert("Error submitting score to leaderboard. Please try again.");
+      return false;
+    }
+  }
+
   loadLeaderboard() {
     const list = document.getElementById("leaderboard-list");
-    const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+    if (!list) return; // Element might not exist on quiz page
 
-    leaderboard.sort((a, b) => {
-      const [scoreA, totalA] = a.score.split("/").map(Number);
-      const [scoreB, totalB] = b.score.split("/").map(Number);
+    try {
+      const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
 
-      const percentA = scoreA / totalA;
-      const percentB = scoreB / totalB;
+      // Sort by percentage (descending), then by duration (ascending) for ties
+      leaderboard.sort((a, b) => {
+        const [scoreA, totalA] = a.score.split("/").map(Number);
+        const [scoreB, totalB] = b.score.split("/").map(Number);
 
-      return percentB - percentA || a.duration - b.duration;
-    });
+        const percentA = scoreA / totalA;
+        const percentB = scoreB / totalB;
 
-    list.innerHTML = ""; // clear old list
-
-    leaderboard.slice(0, 10).forEach((entry, index) => {
-      const li = document.createElement("li");
-      li.style.marginBottom = "16px";
-      li.style.padding = "12px";
-      li.style.border = "1px solid #ccc";
-      li.style.borderRadius = "8px";
-      li.style.background = "var(--card-bg)";
-      li.style.boxShadow = "var(--box-shadow)";
-
-      const resultId = `local_result_${index}`;
-      localStorage.setItem("shared_result_" + resultId, JSON.stringify(entry)); // save local link
-
-      li.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <strong>${entry.username}</strong><br/>
-          Score: ${entry.score}<br/>
-          Time: ${entry.duration}s<br/>
-          <small>Settings: ${JSON.stringify(entry.settings)}</small>
-        </div>
-        <a href="?result=${resultId}" class="global-button">View Details</a>
-      </div>
-    `;
-
-      list.appendChild(li);
-    });
-  }
-
-  submitToLeaderboard(username, score, settings, duration, results) {
-    const leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
-
-    leaderboard.push({
-      username,
-      score,
-      settings,
-      duration,
-      results,
-      timestamp: new Date().toISOString(),
-    });
-
-    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-    this.loadLeaderboard();
-  }
-
-  renderDetailedLeaderboardEntry(entry, container) {
-    const breakdown = document.createElement("div");
-    breakdown.className = "results-breakdown";
-
-    entry.results.forEach((result, index) => {
-      const isCorrect = result.isCorrect;
-      const isPrimary = result.isPrimary;
-      const q = result.question;
-
-      const item = document.createElement("div");
-      item.className = isCorrect
-        ? isPrimary
-          ? "result-item correct primary-correct"
-          : "result-item correct secondary-correct"
-        : "result-item incorrect";
-
-      const questionNum = document.createElement("span");
-      questionNum.textContent = `Q${index + 1}:`;
-      questionNum.style.fontWeight = "bold";
-
-      const symbolsDiv = document.createElement("div");
-      symbolsDiv.style.display = "flex";
-      symbolsDiv.style.gap = "5px";
-
-      q.symbols?.forEach((symbol) => {
-        const imageFile = Config.SYMBOL_TO_IMAGE_MAP[symbol];
-        if (imageFile) {
-          const img = document.createElement("img");
-          img.src = `assets/rwr-symbols/${imageFile}.jpg`;
-          img.alt = symbol;
-          symbolsDiv.appendChild(img);
-        }
+        return percentB - percentA || a.duration - b.duration;
       });
 
-      const details = document.createElement("div");
-      let correctAnswersDisplay = q.primaryCorrectAnswer;
-      if (q.alternativeCorrectAnswers?.length > 0) {
-        correctAnswersDisplay += ` (or ${q.alternativeCorrectAnswers.join(", ")})`;
-      }
+      list.innerHTML = ""; // Clear existing entries
 
-      let answerStatus = "";
-      let tooltipText = "";
+      leaderboard.slice(0, 10).forEach((entry, index) => {
+        const li = document.createElement("li");
+        li.style.marginBottom = "16px";
+        li.style.padding = "12px";
+        li.style.border = "1px solid #ccc";
+        li.style.borderRadius = "8px";
+        li.style.background = "var(--card-bg)";
+        li.style.boxShadow = "var(--box-shadow)";
 
-      if (isCorrect) {
-        if (isPrimary) {
-          answerStatus = " ✓ (Primary)";
-        } else {
-          answerStatus = " ✓ (Alternative)";
-          tooltipText =
-            "Alternative answers are radar systems that have the same RWR symbols and PRF tone as the primary answer.";
-        }
-      } else {
-        answerStatus = " ❌";
-      }
+        const resultId = `local_result_${Date.now()}_${index}`;
+        localStorage.setItem("shared_result_" + resultId, JSON.stringify(entry));
 
-      let answerStatusHTML = answerStatus;
-      if (isCorrect && !isPrimary) {
-        answerStatusHTML = `<span class="alternative-answer-tooltip" data-tooltip="${tooltipText}">${answerStatus}</span>`;
-      }
+        const [score, total] = entry.score.split("/").map(Number);
+        const percentage = Math.round((score / total) * 100);
 
-      details.innerHTML = `
-      <strong>${correctAnswersDisplay}</strong><br>
-      Your answer: ${result.selectedAnswer}${answerStatusHTML}
-    `;
+        li.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <strong>${entry.username}</strong><br/>
+              Score: ${entry.score} (${percentage}%)<br/>
+              Time: ${entry.duration}s<br/>
+              <small>Questions: ${entry.settings.questionCount || "N/A"}, Hints: ${
+          entry.settings.showTableHints ? "On" : "Off"
+        }</small>
+            </div>
+            <a href="?result=${resultId}" class="global-button">View Details</a>
+          </div>
+        `;
 
-      item.appendChild(questionNum);
-      item.appendChild(symbolsDiv);
-      item.appendChild(details);
-      breakdown.appendChild(item);
-    });
-
-    container.innerHTML = "";
-    container.appendChild(breakdown);
+        list.appendChild(li);
+      });
+    } catch (error) {
+      console.error("Error loading leaderboard:", error);
+    }
   }
 
   generateShareableLink(resultsData) {
     const id = crypto.randomUUID();
     localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
     this.lastSharedResultId = id;
-    localStorage.setItem("shared_result_" + id, JSON.stringify(resultsData));
     return `${window.location.href.split("?")[0]}?result=${id}`;
   }
-
-  // showResultsFromSharedData(data) {
-  //   // Display similar to normal results
-  //   document.getElementById("quiz-setup").style.display = "none";
-  //   document.getElementById("quiz-results").style.display = "block";
-  //   document.getElementById("score-display").innerText = `${data.score}`;
-  //   // Populate data.results and data.settings visually
-  // }
 
   showResultsFromSharedData(data) {
     const resultsEl = document.getElementById("quiz-results");
@@ -1026,11 +988,10 @@ class Quiz {
     document.getElementById("quiz-setup").style.display = "none";
     document.getElementById("quiz-game").style.display = "none";
     resultsEl.style.display = "block";
-    document.querySelector("#quiz-results h2").textContent = "Quiz Results";
+    document.querySelector("#quiz-results h2").textContent = "Shared Quiz Results";
 
     const [scoreNum, totalNum] = data.score.split("/").map(Number);
-    const percentage =
-      this.results.length > 0 ? Math.round((this.score / this.results.length) * 100) : 0;
+    const percentage = Math.round((scoreNum / totalNum) * 100);
     const username = data.username || "Anonymous";
 
     document.getElementById(
@@ -1058,15 +1019,16 @@ class Quiz {
     if (settings.showTableHints !== undefined) {
       settingLines.push(`Table hints: ${settings.showTableHints ? "On" : "Off"}`);
     }
-
-    // You can add more settingLines here if needed
+    if (data.duration) {
+      settingLines.push(`Duration: ${data.duration}s`);
+    }
 
     settingsDisplay.innerHTML = `<em><strong>Quiz Settings:</strong> ${settingLines.join(
       ", "
     )}</em>`;
-    document.getElementById("results-breakdown").prepend(settingsDisplay);
 
     breakdown.innerHTML = "";
+    breakdown.appendChild(settingsDisplay);
 
     data.results.forEach((result, index) => {
       const isCorrect = result.isCorrect;
@@ -1083,6 +1045,7 @@ class Quiz {
       const questionNum = document.createElement("span");
       questionNum.textContent = `Q${index + 1}:`;
       questionNum.style.fontWeight = "bold";
+      questionNum.style.minWidth = "35px";
 
       const symbolsDiv = document.createElement("div");
       symbolsDiv.style.display = "flex";
@@ -1125,9 +1088,9 @@ class Quiz {
       }
 
       details.innerHTML = `
-      <strong>${correctAnswersDisplay}</strong><br>
-      Your answer: ${result.selectedAnswer}${answerStatusHTML}
-    `;
+        <strong>${correctAnswersDisplay}</strong><br>
+        Your answer: ${result.selectedAnswer}${answerStatusHTML}
+      `;
 
       item.appendChild(questionNum);
       item.appendChild(symbolsDiv);
@@ -1135,12 +1098,23 @@ class Quiz {
       breakdown.appendChild(item);
     });
 
-    // Hide leaderboard input
-    document.querySelector(".leaderboard-submit").style.display = "none";
-    document.getElementById("leaderboard").style.display = "none";
+    // Hide leaderboard submission section for shared results
+    const leaderboardSubmit = document.querySelector(".leaderboard-submit");
+    if (leaderboardSubmit) {
+      leaderboardSubmit.style.display = "none";
+    }
 
-    // Rename button
-    document.getElementById("restart-quiz-btn").innerText = "Take a quiz";
+    // Hide leaderboard display for shared results
+    const leaderboard = document.getElementById("leaderboard");
+    if (leaderboard) {
+      leaderboard.style.display = "none";
+    }
+
+    // Change restart button text
+    const restartBtn = document.getElementById("restart-quiz-btn");
+    if (restartBtn) {
+      restartBtn.textContent = "Take a Quiz";
+    }
   }
 }
 
