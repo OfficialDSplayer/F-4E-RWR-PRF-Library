@@ -48,6 +48,11 @@
   padding: 4px;
 }
 
+/* Moving the checkbox label slightly upwards to align with center */
+.checkbox-item label {
+  transform: translateY(3.5px);
+}
+
 .checkbox-item input[type="checkbox"] {
   accent-color: var(--primary-color);
 }

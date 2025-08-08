@@ -1118,7 +1118,7 @@ class Quiz {
             <div>
               <strong>${entry.username}</strong><br/>
               Score: ${entry.score} (${percentage}%)<br/>
-              Time: ${entry.duration}s<br/>
+              Time: ${this.formatDuration(entry.duration)}<br/>
               <small>${settingsParts.join(", ")}</small>
             </div>
             <a href="?result=${resultId}" class="global-button">View Details</a>
@@ -1164,6 +1164,14 @@ class Quiz {
       document.getElementById("score-display").appendChild(earlyMsg);
     }
 
+    if (data.duration) {
+      const quizTime = document.createElement("div");
+      quizTime.style.color = "green";
+      quizTime.style.fontSize = "0.75em";
+      quizTime.textContent = `Duration: ${this.formatDuration(data.duration)}`;
+      document.getElementById("score-display").appendChild(quizTime);
+    }
+
     // Show quiz settings including description hints
     const settingsDisplay = document.createElement("div");
     settingsDisplay.style.margin = "10px 0";
@@ -1196,63 +1204,62 @@ class Quiz {
       settingLines.push(`Groups: [✔️ ${selected}] [❌ ${unselected}]`);
     }
 
+    const selectedSymbolImgs =
+      (settings.selectedSymbols || [])
+        .map((s) => {
+          const img = Config.SYMBOL_TO_IMAGE_MAP?.[s];
+          return img
+            ? `<img src="assets/rwr-symbols/${img}.jpg" alt="${s}" title="${s}" style="height: 32px; border: 1px solid white; border-radius: 4px;">`
+            : `<span>${s}</span>`;
+        })
+        .join("") || "None";
+
+    const groupText = settings.selectedGroups?.join(", ") || "None";
+
     settingsDisplay.innerHTML = `
-      <details class="quiz-settings-container" closed style="
+      <div class="quiz-settings-dropdown" style="
         border: 1px solid #ccc;
         border-radius: 8px;
-        padding: 0;
-        background: var(--card-bg, #f9f9f9);
+        background: var(--bg-color);
         box-shadow: var(--box-shadow, 0 2px 6px rgba(0, 0, 0, 0.1));
         margin-bottom: 20px;
+        overflow: hidden;
+        color: var(--text-color)
       ">
-        <summary style="
+        <button id="toggle-quiz-settings" style="
+          width: 100%;
+          text-align: left;
           padding: 12px 16px;
           cursor: pointer;
           font-size: 1.1em;
           font-weight: bold;
+          background-color: var(--card-bg);
+          border: none;
+          border-radius: 8px 8px 0 0;
           user-select: none;
+          color: var(--text-color)
         ">
-          📋 Quiz Settings
-        </summary>
-        <div style="padding: 16px;">
-          <ul style="padding-left: 20px; margin: 0;">
+          Quiz Settings ▼
+        </button>
+        <div id="quiz-settings-content" style="
+          padding: 0 16px;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease, padding 0.4s ease;
+        ">
+          <ul style="padding-left: 20px; margin: 16px 0;">
             <li><strong>Questions:</strong> ${settings.questionCount ?? "?"}</li>
-            <li><strong>Table Hints:</strong> ${settings.showTableHints ? "✅ On" : "❌ Off"}</li>
+            <li><strong>Table Hints:</strong> ${settings.showTableHints ? "On" : "Off"}</li>
             <li><strong>Description Hints:</strong> ${
-              settings.showDescriptionHints ? "✅ On" : "❌ Off"
+              settings.showDescriptionHints ? "On" : "Off"
             }</li>
-            <li><strong>Duration:</strong> ${data.duration ?? "?"} seconds</li>
             <li>
               <strong>Symbols:</strong><br>
               <div style="margin-left: 10px;">
                 <div style="margin-bottom: 6px;">
-                  <span style="color: green;">✔️ Selected:</span><br>
+                  <span style="color: green;">Selected:</span><br>
                   <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
-                    ${
-                      (settings.selectedSymbols || [])
-                        .map((s) => {
-                          const img = Config.SYMBOL_TO_IMAGE_MAP?.[s];
-                          return img
-                            ? `<img src="assets/rwr-symbols/${img}.jpg" alt="${s}" title="${s}" style="height: 32px; border: 1px solid white; border-radius: 4px;">`
-                            : `<span>${s}</span>`;
-                        })
-                        .join("") || "None"
-                    }
-                  </div>
-                </div>
-                <div>
-                  <span style="color: red;">❌ Unselected:</span><br>
-                  <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;">
-                    ${
-                      (settings.unselectedSymbols || [])
-                        .map((s) => {
-                          const img = Config.SYMBOL_TO_IMAGE_MAP?.[s];
-                          return img
-                            ? `<img src="assets/rwr-symbols/${img}.jpg" alt="${s}" title="${s}" style="height: 32px; border: 1px solid white; border-radius: 4px;">`
-                            : `<span>${s}</span>`;
-                        })
-                        .join("") || "None"
-                    }
+                    ${selectedSymbolImgs}
                   </div>
                 </div>
               </div>
@@ -1261,21 +1268,35 @@ class Quiz {
               <strong>Groups:</strong><br>
               <div style="margin-left: 10px;">
                 <div style="margin-bottom: 6px;">
-                  <span style="color: green;">✔️ Selected:</span> ${
-                    settings.selectedGroups?.join(", ") || "None"
-                  }
-                </div>
-                <div>
-                  <span style="color: red;">❌ Unselected:</span> ${
-                    settings.unselectedGroups?.join(", ") || "None"
-                  }
+                  <span style="color: green;">Selected:</span> ${groupText}
                 </div>
               </div>
             </li>
           </ul>
         </div>
-      </details>
+      </div>
     `;
+
+    setTimeout(() => {
+      const btn = document.getElementById("toggle-quiz-settings");
+      const content = document.getElementById("quiz-settings-content");
+
+      if (btn && content) {
+        btn.addEventListener("click", () => {
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+          if (isOpen) {
+            content.style.maxHeight = "0";
+            content.style.paddingBottom = "0";
+            btn.innerHTML = "Quiz Settings ▼";
+          } else {
+            content.style.maxHeight = content.scrollHeight + 40 + "px";
+            content.style.paddingBottom = "16px";
+            btn.innerHTML = "Quiz Settings ▲";
+          }
+        });
+      }
+    }, 0);
 
     breakdown.innerHTML = "";
     breakdown.appendChild(settingsDisplay);
@@ -1365,6 +1386,15 @@ class Quiz {
     if (restartBtn) {
       restartBtn.textContent = "Take a Quiz";
     }
+  }
+
+  formatDuration(seconds) {
+    if (seconds < 60) {
+      return `${seconds} seconds`;
+    }
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins} mins ${secs} secs`;
   }
 }
 
