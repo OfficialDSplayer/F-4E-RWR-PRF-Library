@@ -1,8 +1,12 @@
+/* ===================== LAYOUT / WRAPPER ===================== */
+
 .quiz-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
+
+/* ===================== SETUP (CONFIG) ===================== */
 
 .quiz-setup {
   background: var(--card-bg);
@@ -17,6 +21,7 @@
   color: var(--primary-color);
 }
 
+/* Field groups */
 .setup-group {
   margin-bottom: 20px;
 }
@@ -28,6 +33,7 @@
   color: var(--text-color);
 }
 
+/* Checkbox list with virtual scroll window */
 .checkbox-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -43,12 +49,11 @@
 .checkbox-item {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   gap: 8px;
   padding: 4px;
 }
 
-/* Moving the checkbox label slightly upwards to align with center */
+/* Slight baseline alignment nudge for text beside checkbox */
 .checkbox-item label {
   transform: translateY(3.5px);
 }
@@ -61,9 +66,10 @@
   height: 50px;
   border: 1px solid #ccc;
   border-radius: 2px;
-  background: white;
+  background: #fff;
 }
 
+/* Numeric input used in setup */
 .number-input {
   font-family: "HornetDisplay", sans-serif;
   padding: 8px 12px;
@@ -74,13 +80,15 @@
   width: 100px;
 }
 
+/* ===================== GAME (ACTIVE QUESTION) ===================== */
+
 .quiz-game {
   background: var(--card-bg);
   padding: 30px;
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   text-align: center;
-  display: none;
+  display: none; /* toggled by JS */
 }
 
 .question-counter {
@@ -89,6 +97,7 @@
   color: var(--highlight);
 }
 
+/* Prompted symbol / image pair */
 .symbol-display {
   margin: 20px 0;
   display: flex;
@@ -101,10 +110,11 @@
   height: 80px;
   border: 2px solid var(--primary-color);
   border-radius: 4px;
-  background: white;
+  background: #fff;
   padding: 4px;
 }
 
+/* Optional audio control row */
 .audio-controls {
   margin: 20px 0;
   display: flex;
@@ -112,27 +122,29 @@
   gap: 10px;
 }
 
+/* ===================== ANSWER CHOICES ===================== */
+
+/* Two-column grid by default; stacks on small screens */
 .answer-choices {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
-  margin: 20px 0;
+  margin: 20px auto;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
+/* Answer card */
 .answer-choice {
+  position: relative; /* anchor for tooltip */
   padding: 12px 16px;
   border: 2px solid #ccc;
   border-radius: 8px;
   background: var(--card-bg);
   color: var(--card-text);
   cursor: pointer;
-  transition: all var(--transition-fast);
   font-family: "HornetDisplay", sans-serif;
   font-size: 1em;
-  position: relative; /* Ensure tooltips position relative to this */
+  transition: all var(--transition-fast);
 }
 
 .answer-choice:hover {
@@ -140,6 +152,7 @@
   background: rgba(33, 150, 243, 0.1);
 }
 
+/* States — keep base consistent; colorize via modifiers */
 .answer-choice.correct {
   border-color: var(--success-color);
   background: rgba(76, 175, 80, 0.2);
@@ -147,24 +160,19 @@
   font-weight: bold;
 }
 
-/* Primary correct answer - original green color */
+/* Primary vs Secondary (alternative) correct answers */
 .answer-choice.correct.primary-correct {
-  border-color: var(--success-color);
-  background: rgba(76, 175, 80, 0.2);
-  color: var(--success-color);
-  font-weight: bold;
+  /* same palette as .correct for emphasis continuity */
 }
 
 .answer-choice.correct.primary-correct:hover {
   background: rgba(76, 175, 80, 0.2);
 }
 
-/* Secondary correct answer - different shade of green/blue */
 .answer-choice.correct.secondary-correct {
   border-color: var(--success-color-2);
   background: rgba(41, 128, 185, 0.2);
   color: var(--success-color-2);
-  font-weight: bold;
 }
 
 .answer-choice.correct.secondary-correct:hover {
@@ -195,7 +203,7 @@
   opacity: 0.6;
 }
 
-/* Tooltip content */
+/* Inline tooltip for answer reasoning or hints */
 .answer-choice-tooltip {
   visibility: hidden;
   opacity: 0;
@@ -204,7 +212,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  color: #fff;
   padding: 10px 14px;
   border-radius: 6px;
   font-size: 0.9em;
@@ -217,7 +225,6 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Arrow below tooltip */
 .answer-choice-tooltip::after {
   content: "";
   position: absolute;
@@ -229,28 +236,12 @@
   border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
 }
 
-/* Show tooltip on hover */
 .answer-choice:hover .answer-choice-tooltip {
   visibility: visible;
   opacity: 1;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .answer-choice-tooltip {
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.8em;
-    padding: 8px 10px;
-    max-width: 240px;
-    white-space: normal;
-  }
-
-  .answer-choice-tooltip::after {
-    left: 50%;
-    margin-left: -5px;
-  }
-}
+/* ===================== RESULTS ===================== */
 
 .quiz-results {
   background: var(--card-bg);
@@ -258,7 +249,7 @@
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   text-align: center;
-  display: none;
+  display: none; /* toggled by JS */
 }
 
 .score-display {
@@ -273,12 +264,12 @@
 }
 
 .result-item {
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   gap: 15px;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
 }
 
 .result-item.correct {
@@ -286,46 +277,42 @@
   border-left: 4px solid var(--success-color);
 }
 
-.result-item.incorrect {
-  background: rgba(244, 67, 54, 0.1);
-  border-left: 4px solid var(--danger-color);
-}
-
-/* Results breakdown styling */
-/* .result-item.correct .details {
-  color: #27ae60;
-}
-
-.result-item.incorrect .details {
-  color: #e74c3c;
-} */
-
-/* Primary correct answer - original green color */
 .result-item.correct.primary-correct {
-  background: rgba(76, 175, 80, 0.1);
-  border-left: 4px solid var(--success-color);
+  /* same treatment as .correct */
 }
 
-/* Secondary/Alternative correct answer - blue color */
 .result-item.correct.secondary-correct {
   background: rgba(41, 128, 185, 0.1);
   border-left: 4px solid var(--success-color-2);
 }
 
+.result-item.incorrect {
+  background: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--danger-color);
+}
+
 .result-item img {
   height: 32px;
-  background: white;
+  background: #fff;
   border: 1px solid #ccc;
   border-radius: 2px;
 }
 
-/* Tooltip styles for alternative answers */
+/* ===================== GENERIC TOOLTIP (ALT ANSWERS, ETC.) ===================== */
+
+/* Use when you need a tooltip outside of .answer-choice cards */
+.question-desc-tooltip,
+.alt-desc-tooltip,
+.answer-desc-tooltip,
 .alternative-answer-tooltip {
   position: relative;
   cursor: help;
   border-bottom: 1px dotted currentColor;
 }
 
+.question-desc-tooltip::after,
+.alt-desc-tooltip::after,
+.answer-desc-tooltip::after,
 .alternative-answer-tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -333,22 +320,24 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  color: #fff;
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 0.85em;
-  white-space: nowrap;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
   pointer-events: none;
+  width: max-content;
   max-width: 300px;
   white-space: normal;
-  width: max-content;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
+.question-desc-tooltip::before,
+.alt-desc-tooltip::before,
+.answer-desc-tooltip::before,
 .alternative-answer-tooltip::before {
   content: "";
   position: absolute;
@@ -362,42 +351,48 @@
   transition: opacity 0.3s, visibility 0.3s;
 }
 
+.question-desc-tooltip:hover::after,
+.question-desc-tooltip:hover::before,
+.alt-desc-tooltip:hover::after,
+.alt-desc-tooltip:hover::before,
+.answer-desc-tooltip:hover::after,
+.answer-desc-tooltip:hover::before,
 .alternative-answer-tooltip:hover::after,
 .alternative-answer-tooltip:hover::before {
   opacity: 1;
   visibility: visible;
 }
 
-/* Dark theme tooltip adjustments */
-[data-theme="dark"] .alternative-answer-tooltip::after {
-  /* background-color: rgba(255, 255, 255, 0.95); */
+/* Dark theme adjustment */
+[data-theme="dark"] .question-desc-tooltip::after,
+.alt-desc-tooltip::after,
+.answer-desc-tooltip::after,
+.alternative-answer-tooltip::after {
   color: var(--text-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="dark"] .alternative-answer-tooltip::before {
-  /* border-top-color: rgba(255, 255, 255, 0.95); */
-}
+/* ===================== CONTROLS & HINTS ===================== */
 
 .next-question-btn {
   margin-top: 20px;
+  margin-right: 10px;
   padding: 12px 24px;
   background: var(--primary-color);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 5px;
   font-family: "HornetDisplay", sans-serif;
   font-size: 1em;
   cursor: pointer;
-  opacity: 0;
-  pointer-events: none; /* Prevent clicks when hidden */
+  opacity: 0; /* hidden by default */
+  pointer-events: none;
   transition: opacity var(--transition-normal);
-  margin-right: 10px;
 }
 
 .next-question-btn.visible {
   opacity: 1;
-  pointer-events: auto; /* Allow clicks when visible */
+  pointer-events: auto;
 }
 
 .next-question-btn:hover {
@@ -418,33 +413,9 @@
   border-color: rgba(0, 255, 231, 0.3);
 }
 
-@media (max-width: 600px) {
-  .answer-choices {
-    grid-template-columns: 1fr;
-  }
+/* ===================== TRANSITIONS / VIEW STATES ===================== */
 
-  .checkbox-group {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-
-  .audio-controls {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .alternative-answer-tooltip::after {
-    max-width: 250px;
-    font-size: 0.8em;
-    left: 0;
-    transform: none;
-  }
-
-  .alternative-answer-tooltip::before {
-    left: 20px;
-    transform: translateX(-50%) translateY(1px);
-  }
-}
-
+/* When swapping between setup/game/results, we animate opacity & Y */
 .quiz-setup,
 .quiz-game,
 .quiz-results {
@@ -457,4 +428,50 @@
   opacity: 0 !important;
   transform: translateY(20px) !important;
   pointer-events: none;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 768px) {
+  .answer-choices {
+    grid-template-columns: 1fr; /* stack answers */
+  }
+
+  .answer-choice-tooltip {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    padding: 8px 10px;
+    max-width: 240px;
+    white-space: normal;
+  }
+
+  .answer-choice-tooltip::after {
+    left: 50%;
+    margin-left: -5px;
+  }
+
+  .audio-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .checkbox-group {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  /* Fine-tune standalone tooltip on narrow screens */
+  .alternative-answer-tooltip::after {
+    max-width: 250px;
+    font-size: 0.8em;
+    left: 0;
+    transform: none;
+  }
+
+  .alternative-answer-tooltip::before {
+    left: 20px;
+    transform: translateX(-50%) translateY(1px);
+  }
 }

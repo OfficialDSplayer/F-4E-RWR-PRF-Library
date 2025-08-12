@@ -844,10 +844,53 @@ class Quiz {
 
       const details = document.createElement("div");
 
-      // Show all correct answers with different styling
-      let correctAnswersDisplay = result.question.primaryCorrectAnswer;
-      if (result.question.alternativeCorrectAnswers.length > 0) {
-        correctAnswersDisplay += ` (or ${result.question.alternativeCorrectAnswers.join(", ")})`;
+      // --- helpers (inline) ---
+      const escapeHtml = (str) =>
+        String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+      const makeRadarTooltip = (radarName, cls) => {
+        const sound = this.dataLoader.getSoundMeta().find((s) => s.name === radarName);
+        if (!sound) return escapeHtml(radarName);
+        const desc = escapeHtml(this.getRadarDescription(sound) || "");
+        const safeName = escapeHtml(radarName);
+        return `<span class="${cls}" data-tooltip="${desc}">${safeName}</span>`;
+      };
+
+      // --- Tooltip for QUESTION (primary correct) ---
+      const questionTooltipHTML = makeRadarTooltip(
+        result.question.primaryCorrectAnswer,
+        "question-desc-tooltip"
+      );
+
+      // --- Tooltips for ALTERNATIVE correct answers ---
+      const alternativesTooltipHTML = (result.question.alternativeCorrectAnswers || [])
+        .map((name) => makeRadarTooltip(name, "alt-desc-tooltip"))
+        .join(", ");
+
+      // Build the display string including tooltips
+      let correctAnswersDisplay = questionTooltipHTML;
+      if (alternativesTooltipHTML) {
+        correctAnswersDisplay += ` (or ${alternativesTooltipHTML})`;
+      }
+
+      // --- Tooltip for SELECTED answer ---
+      const answerSound = this.dataLoader
+        .getSoundMeta()
+        .find((sound) => sound.name === result.selectedAnswer);
+
+      let answerTooltipHTML = result.selectedAnswer;
+      if (answerSound) {
+        const rawDesc = this.getRadarDescription(answerSound) || "";
+        const safeDesc = rawDesc
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        answerTooltipHTML = `<span class="answer-desc-tooltip" data-tooltip="${safeDesc}">${result.selectedAnswer}</span>`;
       }
 
       let answerStatus = "";
@@ -865,7 +908,6 @@ class Quiz {
         answerStatus = " ❌";
       }
 
-      // Create the answer status span with tooltip if it's an alternative answer
       let answerStatusHTML = answerStatus;
       if (result.isCorrect && !result.isPrimary) {
         answerStatusHTML = `<span class="alternative-answer-tooltip" data-tooltip="${tooltipText}">${answerStatus}</span>`;
@@ -873,7 +915,7 @@ class Quiz {
 
       details.innerHTML = `
         <strong>${correctAnswersDisplay}</strong><br>
-        Your answer: ${result.selectedAnswer}${answerStatusHTML}
+        Your answer: ${answerTooltipHTML}${answerStatusHTML}
       `;
 
       item.appendChild(questionNum);
@@ -1199,6 +1241,19 @@ class Quiz {
   }
 
   async showResultsFromSharedData(data) {
+    // Ensure metadata (soundMeta + groups) is loaded for lookups
+    const needsLoad =
+      !(this.dataLoader?.getSoundMeta?.() || []).length ||
+      !Object.keys(this.dataLoader?.getGroupsData?.() || {}).length;
+
+    if (needsLoad && typeof this.dataLoader?.loadAllData === "function") {
+      try {
+        await this.dataLoader.loadAllData();
+      } catch (e) {
+        console.warn("Could not (re)load data for shared results:", e);
+      }
+    }
+
     const resultsEl = document.getElementById("quiz-results");
     const breakdown = document.getElementById("results-breakdown");
 
@@ -1423,11 +1478,76 @@ class Quiz {
       });
 
       const details = document.createElement("div");
-      let correctAnswersDisplay = q.primaryCorrectAnswer;
-      if (q.alternativeCorrectAnswers?.length > 0) {
-        correctAnswersDisplay += ` (or ${q.alternativeCorrectAnswers.join(", ")})`;
+      details.style.overflow = "visible"; // avoid clipping
+
+      // --- helpers ---
+      const escapeHtml = (str) =>
+        String(str ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+      // normalize: case-insensitive, ignore spaces, hyphens, slashes, underscores, periods
+      const normalize = (s) =>
+        String(s ?? "")
+          .toUpperCase()
+          .replace(/[\s_\-./]+/g, "");
+
+      // Build a name→sound map once (per call) for fast lookups
+      if (!this._soundByNormName) {
+        const meta = this.dataLoader?.getSoundMeta?.() || [];
+        this._soundByNormName = new Map();
+        for (const s of meta) {
+          const variants = new Set([
+            s.name,
+            s.file,
+            s.file?.split("/").pop() || "",
+            (s.file?.split("/").pop() || "").replace(/\.(wav|mp3|ogg)$/i, ""),
+          ]);
+          for (const v of variants) {
+            const key = normalize(v);
+            if (key) this._soundByNormName.set(key, s);
+          }
+        }
       }
 
+      // tolerant lookup by display name or filename-ish strings
+      const getSoundByName = (name) => {
+        if (!name) return null;
+        const key = normalize(name);
+        return this._soundByNormName?.get(key) || null;
+      };
+
+      const getDesc = (sound) => {
+        // your getRadarDescription reads from groupsData[sound.file] first, then sound.description
+        return sound ? this.getRadarDescription(sound) || "" : "";
+      };
+
+      const makeTooltip = (label, cls) => {
+        const sound = getSoundByName(label);
+        const desc = getDesc(sound);
+        const safeLabel = escapeHtml(label);
+        const tip = escapeHtml(desc || label); // fallback to label if no desc
+        return `<span class="${cls} tooltip-trigger" data-tooltip="${tip}" title="${tip}" tabindex="0">${safeLabel}</span>`;
+      };
+
+      // --- tooltips for QUESTION (primary + alternatives) ---
+      const questionTooltipHTML = makeTooltip(q.primaryCorrectAnswer, "question-desc-tooltip");
+
+      const alternativesTooltipHTML = (q.alternativeCorrectAnswers || [])
+        .map((name) => makeTooltip(name, "alt-desc-tooltip"))
+        .join(", ");
+
+      let correctAnswersDisplay = questionTooltipHTML;
+      if (alternativesTooltipHTML) {
+        correctAnswersDisplay += ` (or ${alternativesTooltipHTML})`;
+      }
+
+      // --- tooltip for SELECTED ANSWER ---
+      const answerTooltipHTML = makeTooltip(result.selectedAnswer, "answer-desc-tooltip");
+
+      // status (existing)
       let answerStatus = "";
       let tooltipText = "";
 
@@ -1445,12 +1565,13 @@ class Quiz {
 
       let answerStatusHTML = answerStatus;
       if (isCorrect && !isPrimary) {
-        answerStatusHTML = `<span class="alternative-answer-tooltip" data-tooltip="${tooltipText}">${answerStatus}</span>`;
+        const safe = escapeHtml(tooltipText);
+        answerStatusHTML = `<span class="alternative-answer-tooltip tooltip-trigger" data-tooltip="${safe}" title="${safe}" tabindex="0">${answerStatus}</span>`;
       }
 
       details.innerHTML = `
         <strong>${correctAnswersDisplay}</strong><br>
-        Your answer: ${result.selectedAnswer}${answerStatusHTML}
+        Your answer: ${answerTooltipHTML}${answerStatusHTML}
       `;
 
       item.appendChild(questionNum);
