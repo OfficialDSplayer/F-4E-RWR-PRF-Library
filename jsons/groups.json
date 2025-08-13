@@ -67,8 +67,8 @@
   },
   "imported_wavs/2S6 Tunguska_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-19 Grison Track",
-    "description": "SA-19 Grison - 2S6 Tunguska - Hot Shot TR",
+    "name": "SA-19 Grison Hot Shot TR Track",
+    "description": "SA-19 'Grison' - 2S6 Tunguska - 1RL144 'Hot Shot' TR",
     "hidden": false
   },
   "imported_wavs/55G6 EWR_SEARCH.wav": {
@@ -709,8 +709,8 @@
   },
   "imported_wavs/Big_bird_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-10 Big Bird SR Search",
-    "description": "SA-10 Big Bird",
+    "name": "SA-10 Grumble Big Bird SR Search",
+    "description": "SA-10 'Grumble' - S-300PS - 64N6 'Big Bird' SR",
     "hidden": false
   },
   "imported_wavs/Big_bird_TRACK.wav": {
@@ -1021,8 +1021,8 @@
   },
   "imported_wavs/Hot_Shot_search_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-19 Grison Search",
-    "description": "SA-19 Grison - 2S6 Tunguska - Hot Shot SR",
+    "name": "SA-19 Grison Hot Shot SR Search",
+    "description": "SA-19 'Grison' - 2S6 Tunguska - 1RL144 'Hot Shot' SR",
     "hidden": false
   },
   "imported_wavs/Hot_Shot_search_TRACK.wav": {
@@ -1081,8 +1081,8 @@
   },
   "imported_wavs/Kub 1S91 str_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 Straight Flush STR Search",
-    "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
+    "name": "SA-6 Gainful Straight Flush STR Search",
+    "description": "SA-6 'Gainful' - 2K12 Kub - 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/Kub 1S91 str_TRACK.wav": {
@@ -1315,8 +1315,8 @@
   },
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-8 Osa Track",
-    "description": "SA-8 Osa 9A33 'Gecko' (Same PRF as Search)",
+    "name": "SA-8 Gecko Land Roll TR Track",
+    "description": "SA-8 'Gecko' - 9A33 Osa - 1S51M3 'Land Roll' SR (Same PRF as Search)",
     "hidden": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
@@ -1501,8 +1501,8 @@
   },
   "imported_wavs/RLS_19J6_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-5/SA-10 Tin Shield RLS-19J6 Search",
-    "description": "SA-5/SA-10 Tin Shield RLS-19J6",
+    "name": "SA-5/SA-10 Tin Shield SR Search",
+    "description": "SA-5/SA-10 'Grumble'/'Gammon' - RLS-19J6 'Tin Shield' SR",
     "hidden": false
   },
   "imported_wavs/RLS_19J6_TRACK.wav": {
@@ -1526,13 +1526,13 @@
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-5 Gammon Square Pair TR Search",
-    "description": "RPC S-200 TR",
-    "hidden": true
+    "description": "SA-5 'Gammon' - S-200 - 'Square Pair' TR",
+    "hidden": false
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-5 Gammon Square Pair TR Track",
-    "description": "RPC S-200 TR",
+    "description": "SA-5 'Gammon' - S-200 - 'Square Pair' TR",
     "hidden": false
   },
   "imported_wavs/RP_22SMA_SEARCH.wav": {
@@ -1681,20 +1681,20 @@
   },
   "imported_wavs/S-300PS 40B6M tr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-10 Flap Lid TR Search",
+    "name": "SA-10 Grumble Flap Lid TR Search",
     "description": "S-300PS 40B6M",
     "hidden": true
   },
   "imported_wavs/S-300PS 40B6M tr_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-10 Flap Lid TR Track",
-    "description": "SA-10 Flap Lid S-300PS 40B6M TR",
+    "name": "SA-10 Grumble Flap Lid TR Track",
+    "description": "SA-10 'Grumble' -  S-300PS - 40B6M 'Flap Lid' TR",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-10 Clam Shell SR Search",
-    "description": "S-300PS 40B6MD",
+    "name": "SA-10 Grumble Clam Shell SR Search",
+    "description": "SA-10 'Grumble' - S-300PS - 40B6MD 'Clam Shell' SR",
     "hidden": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
@@ -1735,14 +1735,14 @@
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-11 Snow Drift Buk TR Track",
-    "description": "SA-11 Buk",
+    "name": "SA-11 Gadfly Fire Dome TR Track",
+    "description": "SA-11 'Gadfly' - 9K37 Buk - 9S35 'Fire Dome' TR",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-11 Snow Drift Buk SR Search",
-    "description": "SA-11 Buk",
+    "name": "SA-11 Gadfly Snow Drift SR Search",
+    "description": "SA-11 'Gadfly' - 9K37 Buk - 9S18M1 'Snow Drift' SR",
     "hidden": false
   },
   "imported_wavs/SA_11_Snow_Drift_TRACK.wav": {
@@ -1753,8 +1753,8 @@
   },
   "imported_wavs/Scrum_Half_Search_1_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15 Gauntlet Tor Search",
-    "description": "SA-15 'Gauntlet' Tor 9A331 Search Radar",
+    "name": "SA-15 Gauntlet Scrum Half SR Search",
+    "description": "SA-15 'Gauntlet' - 9A331/9K330 Tor - 'Scrum Half' SR",
     "hidden": false
   },
   "imported_wavs/Scrum_Half_Search_1_TRACK.wav": {
@@ -1927,8 +1927,8 @@
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15 Gauntlet Tor Track",
-    "description": "SA-15 'Gauntlet' Tor 9A331 Track Radar",
+    "name": "SA-15 Gauntlet Scrum Half TR Track",
+    "description": "SA-15 'Gauntlet' - 9A331/9K330 Tor - 'Scrum Half' TR",
     "hidden": false
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
@@ -2233,14 +2233,14 @@
   },
   "imported_wavs/amazonka_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 RD-75 Amazonka Search/Track",
-    "description": "SA-2 Rangefinding Radar",
+    "name": "SA-2 Guideline Amazonka RF Search/Track",
+    "description": "SA-2 'Guideline' - S-75 Desna - RD-75 'Amazonka' Rangefinding Radar",
     "hidden": false
   },
   "imported_wavs/amazonka_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 RD-75 Amazonka Track",
-    "description": "SA-2 Rangefinding Radar",
+    "name": "SA-2 Guideline Amazonka Track",
+    "description": "SA-2 'Guideline' - S-75 Desna - RD-75 'Amazonka' Rangefinding Radar",
     "hidden": false
   },
   "imported_wavs/carrier search radar_SEARCH.wav": {
@@ -2257,14 +2257,14 @@
   },
   "imported_wavs/fan_song_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 Guideline Acquisition",
-    "description": "SA-2 Fan Song Track Radar",
+    "name": "SA-2 Guideline Fan Song Acquisition",
+    "description": "SA-2 'Guideline' - S-75 Desna - SNR-75 'Fan Song' TR",
     "hidden": false
   },
   "imported_wavs/fan_song_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-2 Guideline Track",
-    "description": "SA-2 Fan Song Track Radar",
+    "name": "SA-2 Guideline Fan Song Track",
+    "description": "SA-2 'Guideline' - S-75 Desna - SNR-75 'Fan Song' TR",
     "hidden": false
   },
   "imported_wavs/molniya search radar_SEARCH.wav": {
@@ -2371,8 +2371,8 @@
   },
   "imported_wavs/sa_6_TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-6 Straight Flush STR Track",
-    "description": "SA-6 Kub 1S91 STR (Same PRF as Track)",
+    "name": "SA-6 Gainful Straight Flush STR Track",
+    "description": "SA-6 'Gainful' - 2K12 Kub - 1S91 STR (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_high_SEARCH.wav": {
@@ -2389,8 +2389,8 @@
   },
   "imported_wavs/sa_8_Search_low_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-8 Osa Search",
-    "description": "SA-8 Osa 9A33 'Gecko' (Same PRF as Track)",
+    "name": "SA-8 Gecko Land Roll SR Search",
+    "description": "SA-8 'Gecko' - 9A33 Osa - 1S51M3 'Land Roll' SR (Same PRF as Track)",
     "hidden": false
   },
   "imported_wavs/sa_8_Search_low_TRACK.wav": {
@@ -2413,14 +2413,14 @@
   },
   "imported_wavs/snr s-125 tr_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-3 Goa TR Acquisition",
-    "description": "SA-3 Goa 'Low Blow' Track Radar",
+    "name": "SA-3 Goa Low Blow TR Acquisition",
+    "description": "SA-3 'Goa' - S-125 Neva - 'Low Blow' TR",
     "hidden": false
   },
   "imported_wavs/snr s-125 tr_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-3 Goa TR Track",
-    "description": "SA-3 Goa 'Low Blow' Track Radar",
+    "name": "SA-3 Goa Low Blow TR Track",
+    "description": "SA-3 'Goa' - S-125 Neva - 'Low Blow' TR",
     "hidden": false
   },
   "imported_wavs/son-9 tr_SEARCH.wav": {
