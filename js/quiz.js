@@ -454,7 +454,6 @@ class Quiz {
     return null;
   }
 
-  // Returns "Search", "Track", or "Search/Track" when PRF & symbols match
   // Parse mode from the radar NAME only.
   getModeLabelFromName(name) {
     if (!name) return "";
@@ -462,10 +461,17 @@ class Quiz {
     const n = String(name).toLowerCase().trim();
 
     // Robustly match "Search/Track" variants
-    const both =
+    const bothSearchTrack =
       /(search\s*\/\s*track|track\s*\/\s*search|search\s*&\s*track|track\s*&\s*search|search\s*and\s*track|track\s*and\s*search)/i;
-    if (both.test(n)) return "Search/Track";
+    if (bothSearchTrack.test(n)) return "Search/Track";
 
+    // Robustly match "Acquisition/Track" variants
+    const bothAcqTrack =
+      /(acquisition\s*\/\s*track|track\s*\/\s*acquisition|acquisition\s*&\s*track|track\s*&\s*acquisition|acquisition\s*and\s*track|track\s*and\s*acquisition)/i;
+    if (bothAcqTrack.test(n)) return "Acquisition/Track";
+
+    // Single mode checks
+    if (/\bacquisition\b/i.test(n)) return "Acquisition";
     if (/\bsearch\b/i.test(n)) return "Search";
     if (/\btrack\b/i.test(n)) return "Track";
 
