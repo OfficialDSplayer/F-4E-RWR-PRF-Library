@@ -107,26 +107,42 @@
           <div class="setup-group" style="margin-bottom: 6px">
             <div class="checkbox-item">
               <input type="checkbox" id="show-table-hint" checked />
-              <label
-                for="show-table-hint"
-                style="cursor: pointer"
-                title="Shows what RWR table (ex: Air Intercept Table, Land Table, Sea Table) the entry is from."
-              >
-                Show source table hints during quiz</label
-              >
+              <label for="show-table-hint" style="cursor: pointer">
+                <span
+                  class="question-desc-tooltip"
+                  data-tooltip="Shows what RWR table (ex: Air Intercept Table, Land Table, Sea Table) the entry is from."
+                >
+                  Show source table hints during quiz
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setup-group" style="margin-bottom: 6px">
+            <div class="checkbox-item">
+              <input type="checkbox" id="show-description-hint" />
+              <label for="show-description-hint" style="cursor: pointer">
+                <span
+                  class="question-desc-tooltip"
+                  data-tooltip="Shows a tooltip when that reveals the description (ex: vehicle name) of the radar system when hovered over."
+                >
+                  Show radar description hints during quiz
+                </span>
+              </label>
             </div>
           </div>
 
           <div class="setup-group">
             <div class="checkbox-item">
-              <input type="checkbox" id="show-description-hint" />
-              <label
-                for="show-description-hint"
-                style="cursor: pointer"
-                title="Shows a tooltip when that reveals the description (ex: vehicle name) of the radar system when hovered over."
-              >
-                Show radar description hints during quiz</label
-              >
+              <input type="checkbox" id="use-easier-names" onclick="onEasierNamesToggle()" />
+              <label for="use-easier-names" style="cursor: pointer">
+                <span
+                  class="question-desc-tooltip"
+                  data-tooltip="Replace default radar names with the radar description (ex: vehicle name) for easier identification."
+                >
+                  Easier Radar Names
+                </span>
+              </label>
             </div>
           </div>
 
@@ -229,6 +245,44 @@
         .then((html) => {
           document.getElementById("footer").innerHTML = html;
         });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const easierNames = document.getElementById("use-easier-names");
+        const descHint = document.getElementById("show-description-hint");
+
+        // Run once on load to sync the UI
+        if (easierNames.checked) {
+          descHint.checked = false;
+          descHint.disabled = true;
+        } else {
+          descHint.disabled = false;
+        }
+
+        // Also keep the click handler for changes
+        easierNames.addEventListener("change", () => {
+          if (easierNames.checked) {
+            descHint.checked = false;
+            descHint.disabled = true;
+          } else {
+            descHint.disabled = false;
+          }
+        });
+      });
+
+      function onEasierNamesToggle() {
+        const easierNames = document.getElementById("use-easier-names");
+        const descHint = document.getElementById("show-description-hint");
+
+        if (easierNames.checked) {
+          // Disable and uncheck the description hint
+          descHint.checked = false;
+          descHint.disabled = true;
+        } else {
+          // Re-enable if easier names is off
+          descHint.disabled = false;
+        }
+      }
     </script>
 
     <!-- JavaScript Files -->

@@ -7,8 +7,12 @@ class Quiz {
     this.score = 0;
     this.results = [];
     this.currentSound = null;
+
+    // Hints
     this.showTableHints = true;
-    this.showDescriptionHints = false; // New property for description hints
+    this.showDescriptionHints = false;
+    this.useEasierNames = false;
+
     this.startTime = 0;
     this.endTime = 0;
     this.params = new URLSearchParams(window.location.search);
@@ -313,6 +317,14 @@ class Quiz {
     const questionCount = parseInt(document.getElementById("question-count").value);
     this.showTableHints = document.getElementById("show-table-hint").checked;
     this.showDescriptionHints = document.getElementById("show-description-hint").checked;
+    this.useEasierNames = document.getElementById("use-easier-names").checked;
+
+    // If easier names is on, ignore/override description hints
+    if (this.useEasierNames) {
+      this.showDescriptionHints = false;
+    } else {
+      this.showDescriptionHints = document.getElementById("show-description-hint").checked;
+    }
 
     // Get full list of all symbols and groups
     const allSymbols = [
@@ -440,6 +452,37 @@ class Quiz {
     }
 
     return null;
+  }
+
+  // Returns "Search", "Track", or "Search/Track" when PRF & symbols match
+  // Parse mode from the radar NAME only.
+  getModeLabelFromName(name) {
+    if (!name) return "";
+
+    const n = String(name).toLowerCase().trim();
+
+    // Robustly match "Search/Track" variants
+    const both =
+      /(search\s*\/\s*track|track\s*\/\s*search|search\s*&\s*track|track\s*&\s*search|search\s*and\s*track|track\s*and\s*search)/i;
+    if (both.test(n)) return "Search/Track";
+
+    if (/\bsearch\b/i.test(n)) return "Search";
+    if (/\btrack\b/i.test(n)) return "Track";
+
+    return "";
+  }
+
+  // Builds the label using description when available, plus the mode suffix
+  getEasierName(sound) {
+    const desc = (this.getRadarDescription(sound) || "").trim();
+    const base = desc || sound.name; // fall back to original name if no description
+    const mode = this.getModeLabelFromName(sound.name);
+
+    if (!mode) return base;
+
+    // Avoid duplicate suffix if the base already mentions it
+    const modeRegex = new RegExp(`\\b${mode.replace("/", "\\/")}\\b`, "i");
+    return modeRegex.test(base) ? base : `${base} — ${mode}`;
   }
 
   // Helper function to check if two radars have matching symbols and PRF
@@ -691,23 +734,52 @@ class Quiz {
       const button = document.createElement("button");
       button.className = "answer-choice";
       // button.dataset.answer = answer;
-      button.textContent = answer;
+
+      const answerSound = this.dataLoader.getSoundMeta().find((s) => s.name === answer);
+      // Display text for the button
+      const displayText =
+        this.useEasierNames && answerSound ? this.getEasierName(answerSound) : answer;
+
+      button.textContent = displayText;
       button.setAttribute("data-answer", answer);
-      button.addEventListener("click", () => this.selectAnswer(answer, button));
 
-      // Add description tooltip to answer button if enabled
-      if (this.showDescriptionHints) {
-        // Find the sound that matches this answer
-        const answerSound = this.dataLoader.getSoundMeta().find((sound) => sound.name === answer);
+      // --- Tooltip visuals ---
+      // If "Use Easier Names" is on, show DEFAULT NAME using the same tooltip UI.
+      // Otherwise, if description hints are on, show the description tooltip (existing behavior).
+      if (this.useEasierNames && answerSound) {
+        const tooltip = document.createElement("div");
+        tooltip.className = "answer-choice-tooltip"; // same visuals
+        tooltip.textContent = answerSound.name; // default radar name
+        button.appendChild(tooltip);
+
+        // Optional a11y: keep the spoken label as default name too
+        button.setAttribute("aria-label", answerSound.name);
+      } else if (this.showDescriptionHints) {
         const answerDescription = answerSound ? this.getRadarDescription(answerSound) : null;
-
         if (answerDescription) {
           const tooltip = document.createElement("div");
-          tooltip.className = "answer-choice-tooltip";
+          tooltip.className = "answer-choice-tooltip"; // same visuals
           tooltip.innerHTML = `${answerDescription}`;
           button.appendChild(tooltip);
         }
       }
+
+      button.addEventListener("click", () => this.selectAnswer(answer, button));
+
+      // OLD DESCRIPTION TOOLTIP
+      // // Add description tooltip to answer button if enabled
+      // if (this.showDescriptionHints) {
+      //   // Find the sound that matches this answer
+      //   const answerSound = this.dataLoader.getSoundMeta().find((sound) => sound.name === answer);
+      //   const answerDescription = answerSound ? this.getRadarDescription(answerSound) : null;
+
+      //   if (answerDescription) {
+      //     const tooltip = document.createElement("div");
+      //     tooltip.className = "answer-choice-tooltip";
+      //     tooltip.innerHTML = `${answerDescription}`;
+      //     button.appendChild(tooltip);
+      //   }
+      // }
 
       choicesContainer.appendChild(button);
     });
@@ -928,6 +1000,7 @@ class Quiz {
       questionCount: this.questions.length,
       showTableHints: this.showTableHints,
       showDescriptionHints: this.showDescriptionHints, // Include description hints in settings
+      useEasierNames: this.useEasierNames, // Include easier radar name hint in settings
     };
 
     // const duration = this.endQuizTimer();
@@ -1302,6 +1375,10 @@ class Quiz {
     if (settings.showDescriptionHints !== undefined) {
       settingLines.push(`Description hints: ${settings.showDescriptionHints ? "On" : "Off"}`);
     }
+
+    if (settings.useEasierNames !== undefined) {
+      settingLines.push(`Use Easer Names: ${settings.useEasierNames ? "On" : "Off"}`);
+    }
     if (data.duration) {
       settingLines.push(`Duration: ${data.duration}s`);
     }
@@ -1367,6 +1444,7 @@ class Quiz {
             <li><strong>Description Hints:</strong> ${
               settings.showDescriptionHints ? "On" : "Off"
             }</li>
+            <li><strong>Easier Radar Names:</strong> ${settings.useEasierNames ? "On" : "Off"}</li>
             <li>
               <strong>Symbols:</strong><br>
               <div style="margin-left: 10px;">
@@ -1616,6 +1694,7 @@ class Quiz {
       e: data.earlyExit,
       t: data.settings?.showTableHints ? 1 : 0,
       h: data.settings?.showDescriptionHints ? 1 : 0,
+      n: data.settings?.useEasierNames ? 1 : 0,
       q: data.settings?.questionCount,
       g: data.settings?.selectedGroups,
       r: data.settings?.selectedSymbols,
@@ -1640,6 +1719,7 @@ class Quiz {
         questionCount: data.q,
         showTableHints: !!data.t,
         showDescriptionHints: !!data.h,
+        useEasierNames: !!data.n,
         selectedGroups: data.g,
         selectedSymbols: data.r,
       },
