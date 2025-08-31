@@ -603,28 +603,53 @@ class Quiz {
     const shuffled = [...availableSounds].sort(() => Math.random() - 0.5);
     const selectedSounds = shuffled.slice(0, questionCount);
 
+    // Helper: dedupe while preserving order
+    const uniq = (arr) => {
+      const seen = new Set();
+      const out = [];
+      for (const x of arr) {
+        if (!seen.has(x)) {
+          seen.add(x);
+          out.push(x);
+        }
+      }
+      return out;
+    };
+
     this.questions = selectedSounds.map((sound) => {
       const primaryCorrectAnswer = sound.name;
 
-      // Find alternative correct answers (radars with same symbol and PRF)
-      const alternativeCorrectAnswers = this.findAlternativeCorrectAnswers(sound, availableSounds);
+      // All potential correct answers (primary + alternates)
+      const alternativesRaw = this.findAlternativeCorrectAnswers(sound, availableSounds).filter(
+        (n) => n && n !== primaryCorrectAnswer
+      );
 
-      // Generate wrong answers from other sounds (excluding all correct answers)
-      const allCorrectAnswers = [primaryCorrectAnswer, ...alternativeCorrectAnswers];
-      const wrongAnswers = availableSounds
-        .filter((s) => !allCorrectAnswers.includes(s.name))
-        .map((s) => s.name)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4 - allCorrectAnswers.length); // Adjust number of wrong answers based on correct ones
+      // Dedupe while keeping the declared order
+      const allCorrectUnique = uniq([primaryCorrectAnswer, ...alternativesRaw]);
 
-      // Shuffle all answers
-      const answers = [...allCorrectAnswers, ...wrongAnswers].sort(() => Math.random() - 0.5);
+      // Keep the primary and up to three alternates (max 4 correct choices total)
+      const selectedCorrect = allCorrectUnique.slice(0, 4);
+
+      // How many wrong answers do we still need to reach 4 total options?
+      const needWrong = Math.max(0, 4 - selectedCorrect.length);
+
+      // Candidates for wrong answers: every other unique name not in selectedCorrect
+      const allNames = uniq(availableSounds.map((s) => s.name));
+      const wrongCandidates = allNames.filter((n) => !selectedCorrect.includes(n));
+
+      // Randomly pick the needed number of wrong answers, without replacement
+      const wrongAnswers = wrongCandidates.sort(() => Math.random() - 0.5).slice(0, needWrong);
+
+      // Final options: exactly 4, no repeats, shuffled
+      const answers = [...selectedCorrect, ...wrongAnswers]
+        .slice(0, 4) // safety cap
+        .sort(() => Math.random() - 0.5);
 
       return {
         sound,
         primaryCorrectAnswer,
-        alternativeCorrectAnswers,
-        allCorrectAnswers,
+        alternativeCorrectAnswers: alternativesRaw, // keep full list for tooltips, etc.
+        allCorrectAnswers: selectedCorrect, // the subset actually present among the 4 answers
         answers,
         symbols: this.getSoundSymbols(sound),
         tableSources: this.getTableSources(sound),
