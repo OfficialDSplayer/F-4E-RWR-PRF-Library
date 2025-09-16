@@ -5,6 +5,7 @@ class App {
     this.audioManager = new AudioManager();
     this.soundDisplay = null;
     this.symbolFilter = null;
+    this.radarInfoFilter = null;
   }
 
   async initialize() {
@@ -19,6 +20,7 @@ class App {
       // Initialize UI components
       this.soundDisplay = new SoundDisplay(this.dataLoader, this.audioManager);
       this.symbolFilter = new SymbolFilter(this.soundDisplay);
+      this.radarInfoFilter = new RadarInfoFilter(this.dataLoader, this.soundDisplay);
 
       // Set up event listeners
       this.setupEventListeners();
@@ -32,8 +34,9 @@ class App {
       // Clear loading message
       document.getElementById("audio-list").innerHTML = "";
 
-      // Populate symbol filter and display sounds
+      // Populate both filters
       this.symbolFilter.populateSymbolFilter(soundMeta);
+      this.radarInfoFilter.populateRadarInfoFilter(soundMeta);
 
       console.log("✅ Application initialized successfully");
     } catch (error) {
@@ -76,8 +79,64 @@ class App {
 
     // Search input
     document.getElementById("search-input").addEventListener("input", () => {
-      this.symbolFilter.updateDisplay();
+      this.updateDisplay();
     });
+
+    // Listen for radar filter changes
+    document.addEventListener("radarFilterChanged", () => {
+      this.updateDisplay();
+    });
+  }
+
+  updateDisplay() {
+    const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
+    const soundMeta = this.dataLoader.getSoundMeta();
+
+    // Filter sounds based on symbol filter, radar info filter, and text search
+    const filteredSounds = soundMeta.filter((sound) => {
+      // Text search filter
+      const haystack = `${sound.name} ${sound.description}`.toLowerCase();
+      const matchesText = haystack.includes(searchTerm.toLowerCase());
+      if (!matchesText) return false;
+
+      // Symbol filter
+      const matchesSymbol = this.matchesSymbolFilter(sound);
+      if (!matchesSymbol) return false;
+
+      // Radar info filters
+      const matchesRadarInfo = this.radarInfoFilter.matchesRadarInfoFilters(sound);
+      return matchesRadarInfo;
+    });
+
+    // Get selected symbols from symbol filter for display
+    const selectedSymbols = this.symbolFilter.getSelectedSymbols();
+    this.soundDisplay.displayGroups(filteredSounds, searchTerm, selectedSymbols);
+  }
+
+  matchesSymbolFilter(sound) {
+    const alr46Info = this.dataLoader.getAlr46Info();
+    const radarInfo = alr46Info[sound.file];
+    if (!radarInfo) return true; // Allow sounds without radar info
+
+    const selectedSymbols = this.symbolFilter.getSelectedSymbols();
+    const normalized = Utils.normalizeRadarName(
+      sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+    );
+    const radarEntry = window.radarSymbolMap?.[normalized];
+    const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+
+    let matchesSymbol = radarEntries.some(
+      (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+    );
+
+    // Handle unknown fallback
+    if (!matchesSymbol && radarEntries.length === 0 && radarInfo.band != null) {
+      const freq = Number(radarInfo.band);
+      const fallback = Utils.getUnknownSymbolFromFrequency(freq);
+      matchesSymbol = fallback && selectedSymbols.has(fallback);
+    }
+
+    return matchesSymbol;
   }
 }
 
