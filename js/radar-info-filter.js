@@ -78,6 +78,8 @@ class RadarInfoFilter {
     container.style.padding = "8px";
     container.style.minWidth = "260px";
 
+    // container.style.maxWidth = "100%";
+
     // --- Combined Launch Warning and Radar Type row ---
     const topRow = document.createElement("div");
     topRow.style.display = "flex";
@@ -179,7 +181,8 @@ class RadarInfoFilter {
     prfWrap.style.display = "flex";
     prfWrap.style.flexDirection = "column";
     prfWrap.style.gap = "8px";
-    prfWrap.style.overflowX = "auto";
+    // prfWrap.style.overflowX = "auto";
+    prfWrap.style.overflow = "hidden";
     prfWrap.style.minWidth = "0";
     prfWrap.style.maxWidth = "100%";
 
@@ -237,7 +240,8 @@ class RadarInfoFilter {
     freqWrap.style.display = "flex";
     freqWrap.style.flexDirection = "column";
     freqWrap.style.gap = "8px";
-    freqWrap.style.overflowX = "auto";
+    // freqWrap.style.overflowX = "auto";
+    freqWrap.style.overflow = "hidden";
     freqWrap.style.minWidth = "0";
     freqWrap.style.maxWidth = "100%";
 
