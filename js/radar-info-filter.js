@@ -27,19 +27,40 @@ class RadarInfoFilter {
     const dropdown = document.getElementById("radar-info-filter-dropdown");
 
     if (toggleBtn && dropdown) {
+      const updateDropdownPosition = () => {
+        if (dropdown.classList.contains("visible")) {
+          const rect = toggleBtn.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+
+          dropdown.style.position = "absolute";
+          dropdown.style.zIndex = 1000;
+
+          // If window is small (mobile-like), make dropdown full width and center it
+          if (windowWidth < 768) {
+            dropdown.style.top = rect.bottom + window.scrollY + "px";
+            dropdown.style.left = "10px";
+            dropdown.style.right = "10px";
+            dropdown.style.width = "400px";
+            dropdown.style.minWidth = "400px";
+          } else {
+            // Normal positioning below the button
+            dropdown.style.top = rect.bottom + window.scrollY + "px";
+            dropdown.style.left = rect.left + window.scrollX + "px";
+            dropdown.style.right = "auto";
+            dropdown.style.width = "auto";
+            dropdown.style.minWidth = rect.width + "px";
+          }
+        }
+      };
+
       toggleBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         dropdown.classList.toggle("visible");
-
-        if (dropdown.classList.contains("visible")) {
-          const rect = toggleBtn.getBoundingClientRect();
-          dropdown.style.position = "absolute";
-          dropdown.style.top = rect.bottom + window.scrollY + "px";
-          dropdown.style.left = rect.left + window.scrollX + "px";
-          dropdown.style.minWidth = rect.width + "px";
-          dropdown.style.zIndex = 1000;
-        }
+        updateDropdownPosition();
       });
+
+      // Update dropdown position when window is resized
+      window.addEventListener("resize", updateDropdownPosition);
 
       document.addEventListener("click", (e) => {
         const wrapper = document.getElementById("radar-info-filter-wrapper");
@@ -67,9 +88,12 @@ class RadarInfoFilter {
   createRadarInfoContent(container) {
     container.style.display = "flex";
     container.style.flexDirection = "row";
+    // container.style.gap = "16px";
+    // container.style.padding = "8px";
+
     // container.style.alignItems = "stretch";
     // container.style.width = "100%";
-    container.style.width = "450px";
+    // container.style.width = "450px";
     container.style.height = "450px"; // make it square
     // container.style.resize = "both"; // make it resizable
     // container.style.overflow = "auto"; // allow scroll if content exceeds size
