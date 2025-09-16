@@ -1316,7 +1316,7 @@
   "imported_wavs/Osa 9A33 ln_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-8 Gecko Land Roll TR Track",
-    "description": "SA-8 'Gecko' - 9A33 Osa - 1S51M3 'Land Roll' SR (Same PRF as Search)",
+    "description": "SA-8 'Gecko' - 9A33 Osa - 1S51M3 'Land Roll' TR (Same PRF as Search)",
     "hidden": false
   },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
