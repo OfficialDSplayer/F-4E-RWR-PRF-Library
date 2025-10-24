@@ -133,25 +133,25 @@
   },
   "imported_wavs/AIM_120_Seeker_SEARCH.wav": {
     "group": "Missiles",
-    "name": "AIM-120 Seeker Search",
+    "name": "AIM-120 Seeker Search/Track",
     "description": "AIM-120B/C AMRAAM Radar",
     "hidden": false
   },
   "imported_wavs/AIM_120_Seeker_TRACK.wav": {
     "group": "Missiles",
-    "name": "AIM-120 Seeker Track",
+    "name": "AIM-120 Seeker Search/Track",
     "description": "AIM-120B/C AMRAAM Radar",
     "hidden": false
   },
   "imported_wavs/AIM_54_Seeker_SEARCH.wav": {
     "group": "Missiles",
-    "name": "AIM-54 Seeker Search",
+    "name": "AIM-54 Seeker Search/Track",
     "description": "AIM-54A/C Phoenix Radar",
     "hidden": false
   },
   "imported_wavs/AIM_54_Seeker_TRACK.wav": {
     "group": "Missiles",
-    "name": "AIM-54 Seeker Track",
+    "name": "AIM-54 Seeker Search/Track",
     "description": "AIM-54A/C Phoenix Radar",
     "hidden": false
   },
@@ -1729,9 +1729,9 @@
   },
   "imported_wavs/SA-11 Buk TR_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-11 Buk TR Search",
-    "description": "",
-    "hidden": true
+    "name": "SA-11 Gadfly Fire Dome TR Acquisition",
+    "description": "SA-11 'Gadfly' - 9K37 Buk - 9S35 'Fire Dome' TR",
+    "hidden": false
   },
   "imported_wavs/SA-11 Buk TR_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
@@ -1927,8 +1927,8 @@
   },
   "imported_wavs/Tor 9A331_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15 Gauntlet Scrum Half TR Track",
-    "description": "SA-15 'Gauntlet' - 9A331/9K330 Tor - 'Scrum Half' TR",
+    "name": "SA-15/15B Gauntlet Scrum Half TR Track",
+    "description": "SA-15/15B 'Gauntlet' - 9A331/9K330 Tor / 9A332 Tor-M2 - 'Scrum Half' TR",
     "hidden": false
   },
   "imported_wavs/Tornado SS radar_SEARCH.wav": {
@@ -2472,147 +2472,147 @@
     "hidden": false
   },
   "imported_wavs/1RS2_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "1RS2_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-22 Greyhound 1RS2 Acquisition",
+    "description": "SA-22 'Greyhound' - Pantsir-S1 - 1RS2 'Hot Shot' TR",
     "hidden": false
   },
   "imported_wavs/1RS2_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "1RS2_TRACK",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-22 Greyhound 1RS2 Track",
+    "description": "SA-22 'Greyhound' - Pantsir-S1 - 1RS2 'Hot Shot' TR",
     "hidden": false
   },
   "imported_wavs/CH 2RL80 air_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH 2RL80 air_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-22 Greyhound 2RL80 Search",
+    "description": "SA-22 'Greyhound' - Pantsir-S1 - 2RL80 SR",
     "hidden": false
   },
   "imported_wavs/CH 2RL80 air_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "CH 2RL80 air_TRACK",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-22 Greyhound 2RL80 Search",
+    "description": "SA-22 'Greyhound' - Pantsir-S1 - 2RL80 SR",
     "hidden": false
   },
   "imported_wavs/CH Obzor surface_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH Obzor surface_SEARCH",
-    "description": "Add a description here",
+    "group": "Air Radar (Soviet)",
+    "name": "Obzor",
+    "description": "Tu-95MS Search Radar",
     "hidden": false
   },
   "imported_wavs/CH Obzor surface_TRACK.wav": {
     "group": "Ungrouped",
     "name": "CH Obzor surface_TRACK",
-    "description": "Add a description here",
+    "description": "Tu-95MS Search Radar",
     "hidden": false
   },
   "imported_wavs/CH Pozitiv-ME 1.2 air_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH Pozitiv-ME 1.2 air_SEARCH",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Pozitiv-ME 1.2 Air Search",
+    "description": "Project 22160 Air Track Radar",
     "hidden": false
   },
   "imported_wavs/CH Pozitiv-ME 1.2 air_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "CH Pozitiv-ME 1.2 air_TRACK",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Pozitiv-ME 1.2 Air Track",
+    "description": "Project 22160 Air Track Radar",
     "hidden": false
   },
   "imported_wavs/CH Pozitiv-ME 1.2 surface_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH Pozitiv-ME 1.2 surface_SEARCH",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Pozitiv-ME 1.2 Surface Search",
+    "description": "Project 22160 Surface Track Radar",
     "hidden": false
   },
   "imported_wavs/CH Pozitiv-ME 1.2 surface_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "CH Pozitiv-ME 1.2 surface_TRACK",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Pozitiv-ME 1.2 Surface Track",
+    "description": "Project 22160 Surface Track Radar",
     "hidden": false
   },
   "imported_wavs/CH TRML-4D air_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH TRML-4D air_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (NATO)",
+    "name": "TRML-4D Search",
+    "description": "IRIS-T SLM STR",
     "hidden": false
   },
   "imported_wavs/CH TRML-4D air_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "CH TRML-4D air_TRACK",
-    "description": "Add a description here",
+    "group": "SAM Radar (NATO)",
+    "name": "TRML-4D TRACK",
+    "description": "IRIS-T SLM STR",
     "hidden": false
   },
   "imported_wavs/CH Tor M2 air_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "CH Tor M2 air_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-15B Gauntlet Search",
+    "description": "Tor-M2 Search Radar",
     "hidden": false
   },
   "imported_wavs/CH Tor M2 air_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "CH Tor M2 air_TRACK",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-15B Gauntlet Track",
     "description": "Add a description here",
     "hidden": false
   },
   "imported_wavs/HB_ANAPQ_120_SEARCH.wav": {
     "group": "Ungrouped",
     "name": "HB_ANAPQ_120_SEARCH",
-    "description": "Add a description here",
-    "hidden": false
+    "description": "Replaced",
+    "hidden": true
   },
   "imported_wavs/HB_ANAPQ_120_TRACK.wav": {
     "group": "Ungrouped",
     "name": "HB_ANAPQ_120_TRACK",
-    "description": "Add a description here",
-    "hidden": false
+    "description": "Replaced",
+    "hidden": true
   },
   "imported_wavs/Pal-N_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Pal-N_SEARCH",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Pal-N Search",
+    "description": "Project 22160 Search Radar",
     "hidden": false
   },
   "imported_wavs/Pal-N_TRACK.wav": {
     "group": "Ungrouped",
     "name": "Pal-N_TRACK",
-    "description": "Add a description here",
+    "description": "Project 22160 Search Radar",
     "hidden": false
   },
   "imported_wavs/SA_11_TR_Track_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "SA_11_TR_Track_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-11 Gadfly Fire Dome TR Track",
+    "description": "SA-11 'Gadfly' - 9K37 Buk - 9S35 'Fire Dome' TR",
     "hidden": false
   },
   "imported_wavs/SA_11_TR_Track_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "SA_11_TR_Track_TRACK",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-11 Gadfly Fire Dome TR Track",
+    "description": "SA-11 'Gadfly' - 9K37 Buk - 9S35 'Fire Dome' TR",
     "hidden": false
   },
   "imported_wavs/SD10_Seeker_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "SD10_Seeker_SEARCH",
-    "description": "Add a description here",
+    "group": "Missiles",
+    "name": "PL-12/SD-10 Seeker Search/Track",
+    "description": "PL-12/SD-10 Radar",
     "hidden": false
   },
   "imported_wavs/SD10_Seeker_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "SD10_Seeker_TRACK",
-    "description": "Add a description here",
+    "group": "Missiles",
+    "name": "PL-12/SD-10 Seeker Search/Track",
+    "description": "PL-12/SD-10 Radar",
     "hidden": false
   },
   "imported_wavs/SG_radar_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "SG_radar_SEARCH",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "SG Radar Search",
+    "description": "Essex-class Surface Search Radar",
     "hidden": false
   },
   "imported_wavs/SG_radar_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "SG_radar_TRACK",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "SG Radar Track",
+    "description": "Essex-class Surface Search Radar",
     "hidden": false
   }
 }

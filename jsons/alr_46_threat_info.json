@@ -80,7 +80,7 @@
     "undetectable": true
   },
   "imported_wavs/1RS2_SEARCH.wav": {
-    "type": "TRACK",
+    "type": "TRACK_ONLY",
     "band": 11.5,
     "prf_search": 25500.0,
     "prf_track": 25500.0,
@@ -88,7 +88,7 @@
     "undetectable": false
   },
   "imported_wavs/1RS2_TRACK.wav": {
-    "type": "TRACK",
+    "type": "TRACK_ONLY",
     "band": 11.5,
     "prf_search": 25500.0,
     "prf_track": 25500.0,
