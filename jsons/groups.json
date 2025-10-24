@@ -1658,8 +1658,8 @@
   "imported_wavs/Rubidy MM_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
     "name": "Rubidy-MM Search",
-    "description": "Tu-95MS Search Radar",
-    "hidden": false
+    "description": "Tu-95MS Search Radar (Obsolete due to CH)",
+    "hidden": true
   },
   "imported_wavs/Rubidy MM_TRACK.wav": {
     "group": "Ungrouped",
@@ -2497,7 +2497,7 @@
   },
   "imported_wavs/CH Obzor surface_SEARCH.wav": {
     "group": "Air Radar (Soviet)",
-    "name": "Obzor",
+    "name": "Obzor Search",
     "description": "Tu-95MS Search Radar",
     "hidden": false
   },
