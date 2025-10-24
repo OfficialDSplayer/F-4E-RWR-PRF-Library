@@ -2470,5 +2470,149 @@
     "name": "AIDA-2 Track",
     "description": "Mirage F1Ax Radar",
     "hidden": false
+  },
+  "imported_wavs/1RS2_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "1RS2_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/1RS2_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "1RS2_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH 2RL80 air_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH 2RL80 air_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH 2RL80 air_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH 2RL80 air_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Obzor surface_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH Obzor surface_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Obzor surface_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH Obzor surface_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Pozitiv-ME 1.2 air_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH Pozitiv-ME 1.2 air_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Pozitiv-ME 1.2 air_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH Pozitiv-ME 1.2 air_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Pozitiv-ME 1.2 surface_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH Pozitiv-ME 1.2 surface_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Pozitiv-ME 1.2 surface_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH Pozitiv-ME 1.2 surface_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH TRML-4D air_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH TRML-4D air_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH TRML-4D air_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH TRML-4D air_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Tor M2 air_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "CH Tor M2 air_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/CH Tor M2 air_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "CH Tor M2 air_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/HB_ANAPQ_120_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "HB_ANAPQ_120_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/HB_ANAPQ_120_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "HB_ANAPQ_120_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/Pal-N_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Pal-N_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/Pal-N_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Pal-N_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SA_11_TR_Track_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SA_11_TR_Track_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SA_11_TR_Track_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SA_11_TR_Track_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SD10_Seeker_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SD10_Seeker_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SD10_Seeker_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SD10_Seeker_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SG_radar_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "SG_radar_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/SG_radar_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "SG_radar_TRACK",
+    "description": "Add a description here",
+    "hidden": false
   }
 }
