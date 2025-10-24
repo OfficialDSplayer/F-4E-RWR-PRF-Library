@@ -2473,25 +2473,25 @@
   },
   "imported_wavs/1RS2_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-22 Greyhound 1RS2 Acquisition",
+    "name": "SA-22 Greyhound 1RS2 TR Acquisition",
     "description": "SA-22 'Greyhound' - Pantsir-S1 - 1RS2 'Hot Shot' TR",
     "hidden": false
   },
   "imported_wavs/1RS2_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-22 Greyhound 1RS2 Track",
+    "name": "SA-22 Greyhound 1RS2 TR Track",
     "description": "SA-22 'Greyhound' - Pantsir-S1 - 1RS2 'Hot Shot' TR",
     "hidden": false
   },
   "imported_wavs/CH 2RL80 air_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-22 Greyhound 2RL80 Search",
+    "name": "SA-22 Greyhound 2RL80 SR Search",
     "description": "SA-22 'Greyhound' - Pantsir-S1 - 2RL80 SR",
     "hidden": false
   },
   "imported_wavs/CH 2RL80 air_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-22 Greyhound 2RL80 Search",
+    "name": "SA-22 Greyhound 2RL80 SR Search",
     "description": "SA-22 'Greyhound' - Pantsir-S1 - 2RL80 SR",
     "hidden": false
   },
@@ -2545,13 +2545,13 @@
   },
   "imported_wavs/CH Tor M2 air_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15B Gauntlet Search",
+    "name": "SA-15B Gauntlet Scrum Half SR Search",
     "description": "SA-15B 'Gauntlet' - 9A332 Tor-M2 - 'Scrum Half' SR",
     "hidden": false
   },
   "imported_wavs/CH Tor M2 air_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
-    "name": "SA-15B Gauntlet Track",
+    "name": "SA-15B Gauntlet Scrum Half SR Track",
     "description": "SA-15B 'Gauntlet' - 9A332 Tor-M2 - 'Scrum Half' SR",
     "hidden": false
   },
