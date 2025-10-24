@@ -672,15 +672,15 @@
     "hidden": false
   },
   "imported_wavs/Bass_Tilt_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Bass Tilt Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Bass Tilt Acquisition",
+    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160 Track Radar",
     "hidden": false
   },
   "imported_wavs/Bass_Tilt_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Bass Tilt Track",
-    "description": "Moskva (Slava-class), Molniya/Tarantul Track Radar",
+    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160 Track Radar",
     "hidden": false
   },
   "imported_wavs/Berkut-95_SEARCH.wav": {
@@ -812,7 +812,7 @@
   "imported_wavs/Cross_Sword_T_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Cross Sword-T Track",
-    "description": "Kuznetsov, Pyotr Velikiy (Kirov-class), Molniya/Tarantul Track Radar",
+    "description": "Kuznetsov, Pyotr Velikiy (Kirov-class) Track Radar",
     "hidden": false
   },
   "imported_wavs/DA_02_SEARCH.wav": {
@@ -1058,13 +1058,13 @@
   "imported_wavs/Kite_Screech_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Kite Screech Acquisition",
-    "description": "Pyotr Velikiy (Kirov-class), Rezky, Molniya/Tarantul Track Radar",
+    "description": "Pyotr Velikiy (Kirov-class), Rezky, Neustrashimy Track Radar",
     "hidden": false
   },
   "imported_wavs/Kite_Screech_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Kite Screech Track",
-    "description": "Pyotr Velikiy (Kirov-class), Rezky, Molniya/Tarantul Track Radar",
+    "description": "Pyotr Velikiy (Kirov-class), Rezky, Neustrashimy Track Radar",
     "hidden": false
   },
   "imported_wavs/Kopyo_SEARCH.wav": {
@@ -1370,7 +1370,7 @@
   "imported_wavs/Palm_Frond_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Palm Frond Search",
-    "description": "Moskva (Slava-class), Kuznetsov, Molniya/Tarantul Search Radar",
+    "description": "Moskva (Slava-class), Kuznetsov, Pyotr Velikiy (Kirov-Class), Neustrashimy Search Radar",
     "hidden": false
   },
   "imported_wavs/Palm_Frond_TRACK.wav": {
@@ -1417,8 +1417,8 @@
   },
   "imported_wavs/Pop_Group_T_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Pop_Group_T Search",
-    "description": "",
+    "name": "Pop Group-T Acquisition",
+    "description": "Moskva (Slava-class), Grisha (Albatros), Rezky, Molniya/Tarantul Track Radar",
     "hidden": false
   },
   "imported_wavs/Pop_Group_T_TRACK.wav": {
@@ -1848,21 +1848,21 @@
     "hidden": false
   },
   "imported_wavs/Tomb_Stone_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Tomb_Stone Search",
-    "description": "",
+    "group": "Naval Fire Control Radar (Soviet)",
+    "name": "Tomb Stone Search",
+    "description": "Pyotr Velikiy (Kirov-class) Search and Track Radar",
     "hidden": false
   },
   "imported_wavs/Tomb_Stone_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Tomb Stone Track",
-    "description": "Pyotr Velikiy (Kirov-class) Track Radar",
+    "description": "Pyotr Velikiy (Kirov-class) Search and Track Radar",
     "hidden": false
   },
   "imported_wavs/Top_Dome_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
-    "name": "Top_Dome Search",
-    "description": "",
+    "name": "Top Dome Search",
+    "description": "Moskva, Pyotr Velikiy (Kirov-class) Track Radar",
     "hidden": false
   },
   "imported_wavs/Top_Dome_TRACK.wav": {
@@ -2114,7 +2114,7 @@
   "imported_wavs/Type_903_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
     "name": "Type 903 Search",
-    "description": "",
+    "description": "Leandar Track Radar",
     "hidden": false
   },
   "imported_wavs/Type_903_TRACK.wav": {
@@ -2214,9 +2214,9 @@
     "hidden": false
   },
   "imported_wavs/ZW_01_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "ZW_01 Track",
-    "description": "",
+    "group": "Naval Fire Control Radar (NATO)",
+    "name": "ZW-01 Track",
+    "description": "Veinticinco de Mayo Search Radar",
     "hidden": false
   },
   "imported_wavs/albatros search radar_SEARCH.wav": {

@@ -26,14 +26,14 @@
     },
     {
       "radar": "RP_22SMA",
-      "symbol1": "unknown_high",
+      "symbol1": "ai_group_3",
       "symbol2": "unknown_high",
       "priority": 25.0,
       "alt_type": 0,
       "repeat": false,
       "unit": null,
       "note": null,
-      "warning": "⚠️ WARNING: There is a bug as of writing such that this radar is not in the RWR symbol library. It would normally use a symbol similar to the Mirage F1 and MiG-19.<br> Current symbol assigned based on frequency band.",
+      "warning": "⚠️ WARNING: There is a bug as of writing such that player flown versions of this radar is not in the RWR symbol library. It would normally use a symbol similar to the Mirage F1 and MiG-19.<br> Current symbol assigned based on frequency band.",
       "warning2": "⚠️ WARNING: Tracking tone is also NOT presented due to the same bug."
     }
   ],
