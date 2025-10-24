@@ -781,8 +781,8 @@
   },
   "imported_wavs/Castor_2_SEARCH.wav": {
     "group": "Naval Fire Control Radar (NATO)",
-    "name": "Castor 2 Track",
-    "description": "",
+    "name": "Castor 2 Acquisition",
+    "description": "La Combattante IIa (Tiger-class) Track Radar",
     "hidden": false
   },
   "imported_wavs/Castor_2_TRACK.wav": {
@@ -2425,9 +2425,9 @@
   },
   "imported_wavs/son-9 tr_SEARCH.wav": {
     "group": "Fire Director Radar (Soviet)",
-    "name": "SON-9 Fire Can Search",
+    "name": "SON-9 Fire Can Acquisition",
     "description": "SON-9 Fire Can",
-    "hidden": true
+    "hidden": false
   },
   "imported_wavs/son-9 tr_TRACK.wav": {
     "group": "Fire Director Radar (Soviet)",

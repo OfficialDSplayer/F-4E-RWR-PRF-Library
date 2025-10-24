@@ -2544,7 +2544,7 @@
     "undetectable": false
   },
   "imported_wavs/SG_radar_SEARCH.wav": {
-    "type": "SEARCH",
+    "type": "SEARCH_ONLY",
     "band": 3.0,
     "prf_search": 775.0,
     "prf_track": 775.0,
@@ -2552,7 +2552,7 @@
     "undetectable": false
   },
   "imported_wavs/SG_radar_TRACK.wav": {
-    "type": "SEARCH",
+    "type": "SEARCH_ONLY",
     "band": 3.0,
     "prf_search": 775.0,
     "prf_track": 775.0,
