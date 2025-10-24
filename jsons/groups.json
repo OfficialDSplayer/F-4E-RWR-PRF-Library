@@ -2546,13 +2546,13 @@
   "imported_wavs/CH Tor M2 air_SEARCH.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-15B Gauntlet Search",
-    "description": "Tor-M2 Search Radar",
+    "description": "SA-15B 'Gauntlet' - 9A332 Tor-M2 - 'Scrum Half' SR",
     "hidden": false
   },
   "imported_wavs/CH Tor M2 air_TRACK.wav": {
     "group": "SAM Radar (Soviet)",
     "name": "SA-15B Gauntlet Track",
-    "description": "Add a description here",
+    "description": "SA-15B 'Gauntlet' - 9A332 Tor-M2 - 'Scrum Half' SR",
     "hidden": false
   },
   "imported_wavs/HB_ANAPQ_120_SEARCH.wav": {
