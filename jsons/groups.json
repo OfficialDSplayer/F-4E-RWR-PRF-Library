@@ -181,7 +181,7 @@
   },
   "imported_wavs/AN_APG-71_SEARCH.wav": {
     "group": "Air Radar (NATO)",
-    "name": "AN/AWG-9 Search",
+    "name": "AN/AWG-9 Search/Track",
     "description": "F-14A/B Tomcat Radar",
     "hidden": false
   },
