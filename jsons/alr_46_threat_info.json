@@ -562,16 +562,16 @@
   "imported_wavs/AN_SPG_62_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 11.509,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/AN_SPG_62_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 11.509,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1391,6 +1391,22 @@
     "has_cd_command_guidance": false,
     "undetectable": false
   },
+  "imported_wavs/HB_ANAPQ_156_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 16.5,
+    "prf_search": 800.0,
+    "prf_track": 800.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
+  "imported_wavs/HB_ANAPQ_156_TRACK.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 16.5,
+    "prf_search": 800.0,
+    "prf_track": 800.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
   "imported_wavs/HQ-7 SR_SEARCH.wav": {
     "type": "SEARCH_ONLY",
     "band": 2.257,
@@ -1442,32 +1458,32 @@
   "imported_wavs/Hawk tr_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 10.125,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk tr_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 10.125,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_SEARCH.wav": {
     "type": "SEARCH_ONLY",
     "band": 14.536,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Hawk_cwar_TRACK.wav": {
     "type": "SEARCH_ONLY",
     "band": 14.536,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -1698,32 +1714,32 @@
   "imported_wavs/Mark_92_T_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 11.509,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mark_92_T_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 11.509,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mk_95_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 10.608,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Mk_95_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 10.608,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2210,16 +2226,16 @@
   "imported_wavs/RPC S-200 TR_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 7.795,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/RPC S-200 TR_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 7.795,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -2434,16 +2450,16 @@
   "imported_wavs/S-300PS 40B6MD sr_SEARCH.wav": {
     "type": "SEARCH_ONLY",
     "band": 7.75,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/S-300PS 40B6MD sr_TRACK.wav": {
     "type": "SEARCH_ONLY",
     "band": 7.75,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
@@ -3058,16 +3074,16 @@
   "imported_wavs/Type_909_SEARCH.wav": {
     "type": "TRACK_ONLY",
     "band": 7.314,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
   "imported_wavs/Type_909_TRACK.wav": {
     "type": "TRACK_ONLY",
     "band": 7.314,
-    "prf_search": 20000.0,
-    "prf_track": 20000.0,
+    "prf_search": 20999.0,
+    "prf_track": 20999.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
