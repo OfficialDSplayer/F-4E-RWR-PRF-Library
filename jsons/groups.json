@@ -2614,5 +2614,17 @@
     "name": "SG Radar Track",
     "description": "Essex-class Surface Search Radar",
     "hidden": false
+  },
+  "imported_wavs/HB_ANAPQ_156_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "HB_ANAPQ_156_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/HB_ANAPQ_156_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "HB_ANAPQ_156_TRACK",
+    "description": "Add a description here",
+    "hidden": false
   }
 }
