@@ -674,13 +674,13 @@
   "imported_wavs/Bass_Tilt_SEARCH.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Bass Tilt Acquisition",
-    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160 Track Radar",
+    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160, Type 021-1 Track Radar",
     "hidden": false
   },
   "imported_wavs/Bass_Tilt_TRACK.wav": {
     "group": "Naval Fire Control Radar (Soviet)",
     "name": "Bass Tilt Track",
-    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160 Track Radar",
+    "description": "Moskva (Slava-class), Molniya/Tarantul, Project 22160, Type 021-1 Track Radar",
     "hidden": false
   },
   "imported_wavs/Berkut-95_SEARCH.wav": {
@@ -2628,39 +2628,39 @@
     "hidden": false
   },
   "imported_wavs/APN_241v_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "APN_241v_SEARCH",
-    "description": "Add a description here",
+    "group": "Air Radar (NATO)",
+    "name": "AN/APN-241(V) Search",
+    "description": "C-130J Radar",
     "hidden": false
   },
   "imported_wavs/APN_241v_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "APN_241v_TRACK",
-    "description": "Add a description here",
+    "group": "Air Radar (NATO)",
+    "name": "AN/APN-241(V) Track",
+    "description": "C-130J Radar",
     "hidden": false
   },
   "imported_wavs/P14_SR_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "P14_SR_SEARCH",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-5 Gammon Tall King SR Search",
+    "description": "SA-5 'Gammon' - S-200 - 'Tall King' SR",
     "hidden": false
   },
   "imported_wavs/P14_SR_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "P14_SR_TRACK",
-    "description": "Add a description here",
+    "group": "SAM Radar (Soviet)",
+    "name": "SA-5 Gammon Tall King SR Track",
+    "description": "SA-5 'Gammon' - S-200 - 'Tall King' SR",
     "hidden": false
   },
   "imported_wavs/Square_Tie_SEARCH.wav": {
-    "group": "Ungrouped",
-    "name": "Square_Tie_SEARCH",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Square Tie Search",
+    "description": "Type 021-1 Search/Track Radar",
     "hidden": false
   },
   "imported_wavs/Square_Tie_TRACK.wav": {
-    "group": "Ungrouped",
-    "name": "Square_Tie_TRACK",
-    "description": "Add a description here",
+    "group": "Naval Fire Control Radar (Chinese)",
+    "name": "Square Tie Track",
+    "description": "Type 021-1 Search/Track Radar",
     "hidden": false
   }
 }
