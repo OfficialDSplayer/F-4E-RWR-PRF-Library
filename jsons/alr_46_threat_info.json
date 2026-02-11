@@ -863,6 +863,22 @@
     "has_cd_command_guidance": false,
     "undetectable": false
   },
+  "imported_wavs/APN_241v_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 9.355,
+    "prf_search": 958.0,
+    "prf_track": 958.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
+  "imported_wavs/APN_241v_TRACK.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 9.355,
+    "prf_search": 958.0,
+    "prf_track": 958.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
   "imported_wavs/ARI 23274_SEARCH.wav": {
     "type": "SEARCH_AND_TRACK",
     "band": 16.275,
@@ -1935,6 +1951,22 @@
     "has_cd_command_guidance": false,
     "undetectable": false
   },
+  "imported_wavs/P14_SR_SEARCH.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 0.172,
+    "prf_search": 195.0,
+    "prf_track": 195.0,
+    "has_cd_command_guidance": false,
+    "undetectable": true
+  },
+  "imported_wavs/P14_SR_TRACK.wav": {
+    "type": "SEARCH_ONLY",
+    "band": 0.172,
+    "prf_search": 195.0,
+    "prf_track": 195.0,
+    "has_cd_command_guidance": false,
+    "undetectable": true
+  },
   "imported_wavs/PLAN Search Radar A_SEARCH.wav": {
     "type": "SEARCH_ONLY",
     "band": 1.7001251258889,
@@ -2636,6 +2668,22 @@
     "band": 3.35,
     "prf_search": 270.0,
     "prf_track": 270.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
+  "imported_wavs/Square_Tie_SEARCH.wav": {
+    "type": "SEARCH_AND_TRACK",
+    "band": 9.4,
+    "prf_search": 1400.0,
+    "prf_track": 1400.0,
+    "has_cd_command_guidance": false,
+    "undetectable": false
+  },
+  "imported_wavs/Square_Tie_TRACK.wav": {
+    "type": "SEARCH_AND_TRACK",
+    "band": 9.4,
+    "prf_search": 1400.0,
+    "prf_track": 1400.0,
     "has_cd_command_guidance": false,
     "undetectable": false
   },
