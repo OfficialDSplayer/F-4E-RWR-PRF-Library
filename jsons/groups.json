@@ -2626,5 +2626,41 @@
     "name": "AN/APQ-156 Track",
     "description": "A-6E TRAM Radar",
     "hidden": false
+  },
+  "imported_wavs/APN_241v_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "APN_241v_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/APN_241v_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "APN_241v_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/P14_SR_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "P14_SR_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/P14_SR_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "P14_SR_TRACK",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/Square_Tie_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "Square_Tie_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/Square_Tie_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "Square_Tie_TRACK",
+    "description": "Add a description here",
+    "hidden": false
   }
 }
