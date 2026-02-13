@@ -10,149 +10,144 @@ class App {
 
   async initialize() {
     try {
-      // Initialize theme
-      // UIComponents.initializeTheme();
-      // UIComponents.initTheme();
-
-      // Initialize audio context
+      // Initialize audio context early so controls can work immediately.
       await this.audioManager.initialize();
 
-      // Initialize UI components
+      // Create feature modules.
       this.soundDisplay = new SoundDisplay(this.dataLoader, this.audioManager);
       this.symbolFilter = new SymbolFilter(this.soundDisplay);
-      this.radarInfoFilter = new RadarInfoFilter(this.dataLoader, this.soundDisplay);
+      this.radarInfoFilter = new RadarInfoFilter(
+        this.dataLoader,
+        this.soundDisplay,
+      );
 
-      // Set up event listeners
       this.setupEventListeners();
-
-      // Initialize volume control
       UIComponents.initializeVolumeControl(this.audioManager);
 
-      // Load all data
       const soundMeta = await this.dataLoader.loadAllData();
 
-      // Clear loading message
-      document.getElementById("audio-list").innerHTML = "";
+      const audioList = document.getElementById("audio-list");
+      if (audioList) {
+        audioList.innerHTML = "";
+      }
 
-      // Populate both filters
+      // Populate filters once metadata is available.
       this.symbolFilter.populateSymbolFilter(soundMeta);
       this.radarInfoFilter.populateRadarInfoFilter(soundMeta);
 
       console.log("✅ Application initialized successfully");
     } catch (error) {
       console.error("❌ Error initializing application:", error);
-      document.getElementById("audio-list").textContent = "❌ Failed to load application.";
+      const audioList = document.getElementById("audio-list");
+      if (audioList) {
+        audioList.textContent = "❌ Failed to load application.";
+      }
     }
   }
 
   setupEventListeners() {
-    // Global buttons
-    document.getElementById("play-all-btn").addEventListener("click", () => {
-      const soundMeta = this.dataLoader.getSoundMeta();
-      this.audioManager.playAll(soundMeta);
-    });
+    const actions = [
+      [
+        "play-all-btn",
+        () => this.audioManager.playAll(this.dataLoader.getSoundMeta()),
+      ],
+      ["stop-all-btn", () => this.audioManager.stopAll()],
+      ["expand-all-btn", () => UIComponents.expandAllGroups()],
+      ["collapse-all-btn", () => UIComponents.collapseAllGroups()],
+      ["show-all-radar-btn", () => UIComponents.showAllRadarInfo()],
+      ["hide-all-radar-btn", () => UIComponents.hideAllRadarInfo()],
+    ];
 
-    document.getElementById("stop-all-btn").addEventListener("click", () => {
-      this.audioManager.stopAll();
-    });
+    actions.forEach(([id, handler]) => this.bindAction(id, handler));
 
-    // Old deprecated dark mode button
-    // document.getElementById("toggle-dark-mode-btn").addEventListener("click", () => {
-    //   UIComponents.toggleTheme();
-    // });
-
-    document.getElementById("expand-all-btn").addEventListener("click", () => {
-      UIComponents.expandAllGroups();
-    });
-
-    document.getElementById("collapse-all-btn").addEventListener("click", () => {
-      UIComponents.collapseAllGroups();
-    });
-
-    document.getElementById("show-all-radar-btn").addEventListener("click", () => {
-      UIComponents.showAllRadarInfo();
-    });
-
-    document.getElementById("hide-all-radar-btn").addEventListener("click", () => {
-      UIComponents.hideAllRadarInfo();
-    });
-
-    // Search input
-    document.getElementById("search-input").addEventListener("input", () => {
+    const searchInput = document.getElementById("search-input");
+    searchInput?.addEventListener("input", () => {
       this.updateDisplay();
     });
 
-    // Listen for radar filter changes
     document.addEventListener("radarFilterChanged", () => {
       this.updateDisplay();
     });
   }
 
+  bindAction(id, handler) {
+    const element = document.getElementById(id);
+    if (!element) {
+      // Some pages reuse script bundles but do not include every control.
+      return;
+    }
+    element.addEventListener("click", handler);
+  }
+
   updateDisplay() {
-    const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
+    const searchTerm =
+      document.getElementById("search-input")?.value?.trim() || "";
+    const searchTermLower = searchTerm.toLowerCase();
     const soundMeta = this.dataLoader.getSoundMeta();
 
-    // Filter sounds based on symbol filter, radar info filter, and text search
+    // Filter sounds based on symbol filter, radar info filter, and text search.
     const filteredSounds = soundMeta.filter((sound) => {
-      // Text search filter
       const haystack = `${sound.name} ${sound.description}`.toLowerCase();
-      const matchesText = haystack.includes(searchTerm.toLowerCase());
-      if (!matchesText) return false;
+      if (!haystack.includes(searchTermLower)) {
+        return false;
+      }
 
-      // Symbol filter
-      const matchesSymbol = this.matchesSymbolFilter(sound);
-      if (!matchesSymbol) return false;
+      if (!this.matchesSymbolFilter(sound)) {
+        return false;
+      }
 
-      // Radar info filters
-      const matchesRadarInfo = this.radarInfoFilter.matchesRadarInfoFilters(sound);
-      return matchesRadarInfo;
+      return this.radarInfoFilter.matchesRadarInfoFilters(sound);
     });
 
-    // Get selected symbols from symbol filter for display
     const selectedSymbols = this.symbolFilter.getSelectedSymbols();
-    this.soundDisplay.displayGroups(filteredSounds, searchTerm, selectedSymbols);
+    this.soundDisplay.displayGroups(
+      filteredSounds,
+      searchTerm,
+      selectedSymbols,
+    );
   }
 
   matchesSymbolFilter(sound) {
     const alr46Info = this.dataLoader.getAlr46Info();
     const radarInfo = alr46Info[sound.file];
-    if (!radarInfo) return true; // Allow sounds without radar info
+    if (!radarInfo) {
+      return true; // Allow sounds without radar info.
+    }
 
     const selectedSymbols = this.symbolFilter.getSelectedSymbols();
     const normalized = Utils.normalizeRadarName(
-      sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+      sound.file
+        .replace(/^imported_wavs\//i, "")
+        .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
     );
+
     const radarEntry = window.radarSymbolMap?.[normalized];
-    const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+    const radarEntries = Array.isArray(radarEntry)
+      ? radarEntry
+      : radarEntry
+        ? [radarEntry]
+        : [];
 
     let matchesSymbol = radarEntries.some(
-      (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+      (entry) =>
+        selectedSymbols.has(entry.symbol1) ||
+        selectedSymbols.has(entry.symbol2),
     );
 
-    // Handle unknown fallback
+    // Handle unknown fallback when no symbol mapping exists.
     if (!matchesSymbol && radarEntries.length === 0 && radarInfo.band != null) {
-      const freq = Number(radarInfo.band);
-      const fallback = Utils.getUnknownSymbolFromFrequency(freq);
-      matchesSymbol = fallback && selectedSymbols.has(fallback);
+      const fallback = Utils.getUnknownSymbolFromFrequency(
+        Number(radarInfo.band),
+      );
+      matchesSymbol = Boolean(fallback && selectedSymbols.has(fallback));
     }
 
     return matchesSymbol;
   }
 }
 
-// Initialize the application when the DOM is loaded
+// Initialize the application when the DOM is loaded.
 document.addEventListener("DOMContentLoaded", () => {
-  // const currentPage = window.location.pathname.split("/").pop();
-  // const navLinks = document.querySelectorAll(".nav-link");
-  // navLinks.forEach((link) => {
-  //   const linkPage = link.getAttribute("href");
-  //   if (linkPage === currentPage) {
-  //     link.classList.add("active");
-  //   } else {
-  //     link.classList.remove("active");
-  //   }
-  // });
-
   const app = new App();
   app.initialize();
 });

@@ -392,21 +392,27 @@ class RadarInfoFilter {
     }
 
     // Radar type (if any selected; if none selected, treat as allow all)
-    if (this.radarFilters.radarType && this.radarFilters.radarType.size > 0 && radarInfo.type) {
+    if (
+      this.radarFilters.radarType &&
+      this.radarFilters.radarType.size > 0 &&
+      radarInfo.type
+    ) {
       if (!this.radarFilters.radarType.has(radarInfo.type)) return false;
     }
 
     // PRF range
     const prf = this.getPRFForSound(sound, radarInfo);
     if (prf != null) {
-      if (prf < this.radarFilters.prfMin || prf > this.radarFilters.prfMax) return false;
+      if (prf < this.radarFilters.prfMin || prf > this.radarFilters.prfMax)
+        return false;
     }
 
     // Frequency range (band)
     if (radarInfo.band != null) {
       const f = Number(radarInfo.band);
       if (Number.isFinite(f)) {
-        if (f < this.radarFilters.freqMin || f > this.radarFilters.freqMax) return false;
+        if (f < this.radarFilters.freqMin || f > this.radarFilters.freqMax)
+          return false;
       }
     }
 
@@ -419,17 +425,23 @@ class RadarInfoFilter {
       return Number(radarInfo.prf_search);
     } else if (fullPath.includes("TRACK") && radarInfo.type === "TRACK_ONLY") {
       return Number(radarInfo.prf_track);
-    } else if (fullPath.includes("SEARCH") && radarInfo.type === "SEARCH_AND_TRACK") {
+    } else if (
+      fullPath.includes("SEARCH") &&
+      radarInfo.type === "SEARCH_AND_TRACK"
+    ) {
       return Number(radarInfo.prf_search);
-    } else if (fullPath.includes("TRACK") && radarInfo.type === "SEARCH_AND_TRACK") {
+    } else if (
+      fullPath.includes("TRACK") &&
+      radarInfo.type === "SEARCH_AND_TRACK"
+    ) {
       return Number(radarInfo.prf_track);
     } else {
       // default to whichever is present
       return radarInfo.prf_search != null
         ? Number(radarInfo.prf_search)
         : radarInfo.prf_track != null
-        ? Number(radarInfo.prf_track)
-        : null;
+          ? Number(radarInfo.prf_track)
+          : null;
     }
   }
 

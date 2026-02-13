@@ -7,11 +7,15 @@
   gap: 20px;
   margin-bottom: 20px;
   /* overflow: visible; Breaks margins with the footer */
-  transition: max-height var(--transition-slow), opacity var(--transition-slow),
+  transition:
+    max-height var(--transition-slow),
+    opacity var(--transition-slow),
     transform var(--transition-slow);
   transform-origin: top;
   opacity: 1;
-  max-height: 2000px;
+  /* Large fallback value prevents clipping/overlap on long mobile lists. */
+  max-height: 100000px;
+  overflow: hidden;
   transform: scaleY(1);
 }
 
@@ -67,12 +71,16 @@
   overflow: hidden;
   opacity: 0;
   transform: translateY(-10px);
-  transition: max-height var(--transition-normal), opacity var(--transition-normal),
-    transform var(--transition-normal), margin-top var(--transition-normal);
+  transition:
+    max-height var(--transition-normal),
+    opacity var(--transition-normal),
+    transform var(--transition-normal),
+    margin-top var(--transition-normal);
 }
 
 .extra-info.visible {
-  max-height: 2000px;
+  /* Keep high to support long metadata blocks on smaller screens. */
+  max-height: 10000px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -90,7 +98,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 button:hover {
@@ -190,8 +200,11 @@ button:hover {
   justify-content: center;
   opacity: 0;
   transform: translateY(-10px);
-  transition: max-height var(--transition-normal), opacity var(--transition-normal),
-    transform var(--transition-normal), padding var(--transition-normal);
+  transition:
+    max-height var(--transition-normal),
+    opacity var(--transition-normal),
+    transform var(--transition-normal),
+    padding var(--transition-normal);
 }
 
 .symbol-dropdown.visible {
@@ -229,7 +242,10 @@ nav {
   z-index: 100;
   background: var(--nav-bg);
   backdrop-filter: blur(0px);
-  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease;
   box-sizing: border-box;
 }
 
@@ -339,7 +355,11 @@ nav.scrolled {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.7)
+  );
   z-index: 0;
 }
 
@@ -442,7 +462,9 @@ nav.scrolled {
     justify-content: center;
     align-items: center;
     /* MODIFIED: Added 'background' to the transition for smooth theme changes */
-    transition: top 0.3s ease, background 0.3s ease;
+    transition:
+      top 0.3s ease,
+      background 0.3s ease;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -462,6 +484,23 @@ nav.scrolled {
     /* border-left: 3px solid var(--accent); */
     /* padding-left: 15px; */
     /* margin-left: -18px; */
+  }
+}
+
+@media (max-width: 768px) {
+  .audio-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .audio-card {
+    padding: 12px;
+  }
+
+  .button-group {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 

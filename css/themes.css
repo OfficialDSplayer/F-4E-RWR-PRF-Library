@@ -74,7 +74,8 @@
   --box-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] a:visited:not(.nav-links a):not(.nav-header a):not(.hero-content a) {
+[data-theme="dark"]
+  a:visited:not(.nav-links a):not(.nav-header a):not(.hero-content a) {
   color: #a871d6;
 }
 
@@ -82,7 +83,9 @@
 
 /* Smooth theme switching */
 * {
-  transition: background-color var(--transition-normal), color var(--transition-normal),
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal),
     border-color var(--transition-normal);
 }
 

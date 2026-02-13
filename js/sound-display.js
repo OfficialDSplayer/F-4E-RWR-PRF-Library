@@ -29,21 +29,29 @@ class SoundDisplay {
         if (!radarInfo) return matchesText; // allow text-only match
 
         const normalized = Utils.normalizeRadarName(
-          sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+          sound.file
+            .replace(/^imported_wavs\//i, "")
+            .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
         );
         const radarEntry = window.radarSymbolMap?.[normalized];
         const radarEntries = Array.isArray(radarEntry)
           ? radarEntry
           : radarEntry
-          ? [radarEntry]
-          : [];
+            ? [radarEntry]
+            : [];
 
         let matchesSymbol = radarEntries.some(
-          (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+          (entry) =>
+            selectedSymbols.has(entry.symbol1) ||
+            selectedSymbols.has(entry.symbol2),
         );
 
         // Also handle unknown fallback
-        if (!matchesSymbol && radarEntries.length === 0 && radarInfo.band != null) {
+        if (
+          !matchesSymbol &&
+          radarEntries.length === 0 &&
+          radarInfo.band != null
+        ) {
           const freq = Number(radarInfo.band);
           const fallback = Utils.getUnknownSymbolFromFrequency(freq);
           matchesSymbol = fallback && selectedSymbols.has(fallback);
@@ -57,7 +65,10 @@ class SoundDisplay {
 
       // Sort visible sounds by their 'name'
       const sortedSounds = visibleSounds.sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" })
+        a.name.localeCompare(b.name, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        }),
       );
 
       const groupTitle = document.createElement("h2");
@@ -82,14 +93,27 @@ class SoundDisplay {
         if (groupGrid.classList.contains("collapsed")) {
           this.collapsedGroups.push(groupName);
         } else {
-          this.collapsedGroups = this.collapsedGroups.filter((g) => g !== groupName);
+          this.collapsedGroups = this.collapsedGroups.filter(
+            (g) => g !== groupName,
+          );
+
+          // Recalculate after expanding to avoid clipped content on mobile.
+          requestAnimationFrame(() => this.updateGroupHeight(groupGrid));
         }
 
-        localStorage.setItem("collapsedGroups", JSON.stringify(this.collapsedGroups));
+        localStorage.setItem(
+          "collapsedGroups",
+          JSON.stringify(this.collapsedGroups),
+        );
       });
 
       audioList.appendChild(groupTitle);
       audioList.appendChild(groupGrid);
+
+      if (!groupGrid.classList.contains("collapsed")) {
+        // Measure after insertion so grid height fits all cards on small screens.
+        requestAnimationFrame(() => this.updateGroupHeight(groupGrid));
+      }
     }
   }
 
@@ -114,7 +138,6 @@ class SoundDisplay {
     // Toggle dropdown on name click
     name.style.cursor = "pointer";
     name.addEventListener("click", () => {
-      const wasVisible = extraInfo.classList.contains("visible");
       extraInfo.classList.toggle("visible");
 
       // Update group height after animation completes
@@ -151,15 +174,13 @@ class SoundDisplay {
   updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Temporarily remove max-height to measure natural height
-    const originalMaxHeight = groupGrid.style.maxHeight;
+    // Temporarily remove max-height to measure natural height.
     groupGrid.style.maxHeight = "none";
 
-    // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Set appropriate max-height with buffer for smooth animations and content changes
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
+    // Use measured height so very long mobile lists never clip/overlap below content.
+    groupGrid.style.maxHeight = `${naturalHeight + 64}px`;
   }
 
   buildExtraInfo(sound, extraInfo) {
@@ -213,14 +234,18 @@ class SoundDisplay {
       radarInfo.type == "TRACK_ONLY" &&
       radarInfo.prf_search != radarInfo.prf_track
     ) {
-      parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+      parts.push(
+        `PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`,
+      );
       parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
     } else if (
       fullPath.includes("TRACK") &&
       radarInfo.type == "TRACK_ONLY" &&
       radarInfo.prf_search != radarInfo.prf_track
     ) {
-      parts.push(`PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`);
+      parts.push(
+        `PRF (Acquisition): ${Number(radarInfo.prf_search).toFixed(2)}`,
+      );
       parts.push(`PRF (Track): ${Number(radarInfo.prf_track).toFixed(2)}`);
     } else if (
       fullPath.includes("SEARCH") &&
@@ -283,7 +308,11 @@ class SoundDisplay {
     // Also try partial matching if exact match fails
     if (!radarEntry && window.radarSymbolMap) {
       for (const [key, entry] of Object.entries(window.radarSymbolMap)) {
-        if (normalizedOptions.some((opt) => key.includes(opt) || opt.includes(key))) {
+        if (
+          normalizedOptions.some(
+            (opt) => key.includes(opt) || opt.includes(key),
+          )
+        ) {
           radarEntry = entry;
           matchedKey = key;
           matchType = "partial";
@@ -307,7 +336,9 @@ class SoundDisplay {
 
   displayKnownRadarSymbols(radarEntry, extraInfo, sound) {
     // Loop through each radarEntry
-    for (const radarEntryVariant of Array.isArray(radarEntry) ? radarEntry : [radarEntry]) {
+    for (const radarEntryVariant of Array.isArray(radarEntry)
+      ? radarEntry
+      : [radarEntry]) {
       const { symbol1, symbol2, source, warning, warning2 } = radarEntryVariant;
 
       const isManualUnknownSymbol =
@@ -324,17 +355,27 @@ class SoundDisplay {
       symbolContainer.style.flexWrap = "wrap";
 
       // Render first RWR symbol
-      const symbol1Element = UIComponents.createSymbolWithLabel(symbol1, 1, isManualUnknownSymbol);
+      const symbol1Element = UIComponents.createSymbolWithLabel(
+        symbol1,
+        1,
+        isManualUnknownSymbol,
+      );
       if (symbol1Element) {
         symbolContainer.appendChild(symbol1Element);
       }
 
       // Render second RWR symbol (only if different from symbol1)
       if (symbol2 && symbol2 !== symbol1) {
-        const isSymbol2Unknown = ["unknown_low", "unknown_medium", "unknown_high"].includes(
-          symbol2
+        const isSymbol2Unknown = [
+          "unknown_low",
+          "unknown_medium",
+          "unknown_high",
+        ].includes(symbol2);
+        const symbol2Element = UIComponents.createSymbolWithLabel(
+          symbol2,
+          2,
+          isSymbol2Unknown,
         );
-        const symbol2Element = UIComponents.createSymbolWithLabel(symbol2, 2, isSymbol2Unknown);
         if (symbol2Element) {
           symbolContainer.appendChild(symbol2Element);
         }
@@ -374,8 +415,10 @@ class SoundDisplay {
       unknownSymbol = Utils.getUnknownSymbolFromFrequency(freqGHz);
 
       if (freqGHz >= 2 && freqGHz < 4) frequencyBand = "Low band (2-4 GHz)";
-      else if (freqGHz >= 4 && freqGHz < 8) frequencyBand = "Medium band (4-8 GHz)";
-      else if (freqGHz >= 8 && freqGHz <= 20) frequencyBand = "High band (8-20 GHz)";
+      else if (freqGHz >= 4 && freqGHz < 8)
+        frequencyBand = "Medium band (4-8 GHz)";
+      else if (freqGHz >= 8 && freqGHz <= 20)
+        frequencyBand = "High band (8-20 GHz)";
     }
 
     if (unknownSymbol) {
@@ -387,7 +430,11 @@ class SoundDisplay {
       symbolContainer.style.marginTop = "8px";
 
       // Display unknown symbol
-      const unknownElement = UIComponents.createSymbolWithLabel(unknownSymbol, null, true);
+      const unknownElement = UIComponents.createSymbolWithLabel(
+        unknownSymbol,
+        null,
+        true,
+      );
       if (unknownElement) {
         symbolContainer.appendChild(unknownElement);
       }
@@ -485,7 +532,9 @@ class SoundDisplay {
         this.updateGroupHeight(groupGrid);
       }, 450); // Slightly longer than CSS transition
 
-      this.collapsedGroups = this.collapsedGroups.filter((name) => name !== groupName);
+      this.collapsedGroups = this.collapsedGroups.filter(
+        (name) => name !== groupName,
+      );
       StorageService.setCollapsedGroups(this.collapsedGroups);
     }
   }

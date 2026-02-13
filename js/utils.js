@@ -1,28 +1,41 @@
 // Utility functions
 class Utils {
+  static BAND_DESIGNATIONS = [
+    [0.003, 0.03, "HF"],
+    [0.03, 0.3, "VHF"],
+    [0.3, 1, "UHF"],
+    [1, 2, "L"],
+    [2, 4, "S"],
+    [4, 8, "C"],
+    [8, 12, "X"],
+    [12, 18, "Ku"],
+    [18, 27, "K"],
+    [27, 40, "Ka"],
+    [40, 75, "V"],
+    [75, 110, "W"],
+    [110, 300, "mm or G"],
+  ];
+
   static normalizeRadarName(str) {
     return str
       .toLowerCase()
-      .replace(/[\s\-\/\\]+/g, "_") // spaces, slashes, dashes → underscore
+      .replace(/[\s\-/\\]+/g, "_") // spaces, slashes, dashes → underscore
       .replace(/[^a-z0-9_]/g, "") // remove remaining special chars
       .replace(/_+/g, "_") // collapse multiple underscores
       .trim();
   }
 
   static getBandDesignation(freqGHz) {
-    if (freqGHz >= 0.003 && freqGHz < 0.03) return "HF";
-    if (freqGHz >= 0.03 && freqGHz < 0.3) return "VHF";
-    if (freqGHz >= 0.3 && freqGHz < 1) return "UHF";
-    if (freqGHz >= 1 && freqGHz < 2) return "L";
-    if (freqGHz >= 2 && freqGHz < 4) return "S";
-    if (freqGHz >= 4 && freqGHz < 8) return "C";
-    if (freqGHz >= 8 && freqGHz < 12) return "X";
-    if (freqGHz >= 12 && freqGHz < 18) return "Ku";
-    if (freqGHz >= 18 && freqGHz < 27) return "K";
-    if (freqGHz >= 27 && freqGHz < 40) return "Ka";
-    if (freqGHz >= 40 && freqGHz < 75) return "V";
-    if (freqGHz >= 75 && freqGHz < 110) return "W";
-    if (freqGHz >= 110 && freqGHz <= 300) return "mm or G";
+    for (const [min, max, band] of Utils.BAND_DESIGNATIONS) {
+      if (freqGHz >= min && freqGHz < max) {
+        return band;
+      }
+    }
+
+    if (freqGHz === 300) {
+      return "mm or G";
+    }
+
     return "Unknown Band";
   }
 

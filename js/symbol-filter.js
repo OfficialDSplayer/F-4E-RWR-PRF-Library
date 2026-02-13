@@ -33,14 +33,16 @@ class SymbolFilter {
       if (!radarInfo) continue;
 
       const normalized = Utils.normalizeRadarName(
-        fullPath.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+        fullPath
+          .replace(/^imported_wavs\//i, "")
+          .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
       );
       const radarEntry = window.radarSymbolMap?.[normalized];
       const radarEntries = Array.isArray(radarEntry)
         ? radarEntry
         : radarEntry
-        ? [radarEntry]
-        : [];
+          ? [radarEntry]
+          : [];
 
       for (const entry of radarEntries) {
         if (entry.symbol1) usedSymbols.add(entry.symbol1);
@@ -56,7 +58,7 @@ class SymbolFilter {
 
     const container = document.getElementById("symbol-filter-dropdown");
     container.innerHTML = "";
-    
+
     const innerWrapper = document.createElement("div");
     innerWrapper.style.display = "flex";
     innerWrapper.style.flexDirection = "column";
@@ -130,8 +132,12 @@ class SymbolFilter {
         }
 
         // Recalculate if all are selected
-        const checkboxes = gridWrapper.querySelectorAll("input[type='checkbox']");
-        const checkedBoxes = gridWrapper.querySelectorAll("input[type='checkbox']:checked");
+        const checkboxes = gridWrapper.querySelectorAll(
+          "input[type='checkbox']",
+        );
+        const checkedBoxes = gridWrapper.querySelectorAll(
+          "input[type='checkbox']:checked",
+        );
 
         allSelected = checkboxes.length === checkedBoxes.length;
         selectAllBtn.textContent = allSelected ? "Deselect All" : "Select All";
@@ -156,18 +162,25 @@ class SymbolFilter {
 
     // Initialize selectedSymbols with all checked symbols
     this.selectedSymbols.clear();
-    container.querySelectorAll("input[type='checkbox']:checked").forEach((cb) => {
-      this.selectedSymbols.add(cb.value);
-    });
+    container
+      .querySelectorAll("input[type='checkbox']:checked")
+      .forEach((cb) => {
+        this.selectedSymbols.add(cb.value);
+      });
 
     // Trigger initial display update
     this.updateDisplay();
   }
 
   updateDisplay() {
-    const searchTerm = document.getElementById("search-input")?.value?.trim() || "";
+    const searchTerm =
+      document.getElementById("search-input")?.value?.trim() || "";
     const soundMeta = this.soundDisplay.dataLoader.getSoundMeta();
-    this.soundDisplay.displayGroups(soundMeta, searchTerm, this.selectedSymbols);
+    this.soundDisplay.displayGroups(
+      soundMeta,
+      searchTerm,
+      this.selectedSymbols,
+    );
   }
 
   getSelectedSymbols() {

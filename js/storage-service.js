@@ -1,4 +1,4 @@
-// Local storage management
+// Local storage management helpers.
 class StorageService {
   static getTheme() {
     return localStorage.getItem("theme");
@@ -18,10 +18,10 @@ class StorageService {
 
   static getVolumeLevel() {
     const saved = localStorage.getItem("volumeLevel");
-    return saved !== null ? parseInt(saved) : 50;
+    return saved !== null ? Number.parseInt(saved, 10) : 50;
   }
 
   static setVolumeLevel(level) {
-    localStorage.setItem("volumeLevel", level);
+    localStorage.setItem("volumeLevel", String(level));
   }
 }

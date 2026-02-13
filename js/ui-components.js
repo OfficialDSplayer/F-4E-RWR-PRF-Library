@@ -36,9 +36,11 @@ class UIComponents {
     const imageFileName = Config.SYMBOL_TO_IMAGE_MAP[symbolValue];
     if (!imageFileName) return null;
 
-    const isKnownUnknownSymbol = ["unknown_low", "unknown_medium", "unknown_high"].includes(
-      symbolValue
-    );
+    const isKnownUnknownSymbol = [
+      "unknown_low",
+      "unknown_medium",
+      "unknown_high",
+    ].includes(symbolValue);
 
     const symbolWrapper = document.createElement("div");
     symbolWrapper.style.display = "flex";
@@ -57,7 +59,8 @@ class UIComponents {
 
     label.style.fontSize = "0.8em";
     label.style.fontWeight = "bold";
-    label.style.color = isUnknown || isKnownUnknownSymbol ? "#ff6b35" : "var(--highlight)";
+    label.style.color =
+      isUnknown || isKnownUnknownSymbol ? "#ff6b35" : "var(--highlight)";
     label.style.textAlign = "center";
 
     const img = document.createElement("img");
@@ -69,7 +72,9 @@ class UIComponents {
     img.className = "radar-symbol-img";
     img.style.maxHeight = "65px";
     img.style.border =
-      isUnknown || isKnownUnknownSymbol ? "2px solid #ff6b35" : "1px solid var(--highlight)";
+      isUnknown || isKnownUnknownSymbol
+        ? "2px solid #ff6b35"
+        : "1px solid var(--highlight)";
     img.style.borderRadius = "1px";
     img.style.background = "white";
     img.style.padding = "1px";
@@ -117,14 +122,13 @@ class UIComponents {
   static updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Temporarily remove max-height to measure natural height
+    // Temporarily remove max-height to measure natural height.
     groupGrid.style.maxHeight = "none";
 
-    // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Set appropriate max-height with buffer for smooth animations and content changes
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
+    // Use measured height so very long mobile lists never clip/overlap below content.
+    groupGrid.style.maxHeight = `${naturalHeight + 64}px`;
   }
 
   static expandAllGroups() {
@@ -153,9 +157,9 @@ class UIComponents {
       });
     });
 
-    const collapsedGroups = Array.from(document.querySelectorAll(".group-title")).map((title) =>
-      title.textContent.trim()
-    );
+    const collapsedGroups = Array.from(
+      document.querySelectorAll(".group-title"),
+    ).map((title) => title.textContent.trim());
     StorageService.setCollapsedGroups(collapsedGroups);
   }
 
@@ -193,7 +197,8 @@ class UIComponents {
     const toggleBtn = document.querySelector(".theme-toggle");
     if (!toggleBtn) return;
 
-    const theme = currentTheme || document.documentElement.getAttribute("data-theme");
+    const theme =
+      currentTheme || document.documentElement.getAttribute("data-theme");
     toggleBtn.textContent = theme === "dark" ? "Dark Mode" : "Light Mode";
   }
 
@@ -215,7 +220,8 @@ class UIComponents {
   }
 
   static setActiveNavLink() {
-    const currentFile = window.location.pathname.split("/").pop() || "index.html";
+    const currentFile =
+      window.location.pathname.split("/").pop() || "index.html";
     const navLinks = document.querySelectorAll(".nav-links a");
 
     navLinks.forEach((link) => {
@@ -225,7 +231,7 @@ class UIComponents {
         linkHref === currentFile ||
           (currentFile === "" && linkHref === "index.html") ||
           (currentFile === "index.html" && linkHref === "index.html") ||
-          (currentFile === "sounds.html" && linkHref === "sounds.html")
+          (currentFile === "sounds.html" && linkHref === "sounds.html"),
       );
     });
   }
