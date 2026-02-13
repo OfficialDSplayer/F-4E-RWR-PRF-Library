@@ -13,7 +13,9 @@
     transform var(--transition-slow);
   transform-origin: top;
   opacity: 1;
-  max-height: 2000px;
+  /* Large fallback value prevents clipping/overlap on long mobile lists. */
+  max-height: 100000px;
+  overflow: hidden;
   transform: scaleY(1);
 }
 
@@ -77,7 +79,8 @@
 }
 
 .extra-info.visible {
-  max-height: 2000px;
+  /* Keep high to support long metadata blocks on smaller screens. */
+  max-height: 10000px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -481,6 +484,23 @@ nav.scrolled {
     /* border-left: 3px solid var(--accent); */
     /* padding-left: 15px; */
     /* margin-left: -18px; */
+  }
+}
+
+@media (max-width: 768px) {
+  .audio-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .audio-card {
+    padding: 12px;
+  }
+
+  .button-group {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 

@@ -96,6 +96,9 @@ class SoundDisplay {
           this.collapsedGroups = this.collapsedGroups.filter(
             (g) => g !== groupName,
           );
+
+          // Recalculate after expanding to avoid clipped content on mobile.
+          requestAnimationFrame(() => this.updateGroupHeight(groupGrid));
         }
 
         localStorage.setItem(
@@ -106,6 +109,11 @@ class SoundDisplay {
 
       audioList.appendChild(groupTitle);
       audioList.appendChild(groupGrid);
+
+      if (!groupGrid.classList.contains("collapsed")) {
+        // Measure after insertion so grid height fits all cards on small screens.
+        requestAnimationFrame(() => this.updateGroupHeight(groupGrid));
+      }
     }
   }
 
@@ -130,7 +138,6 @@ class SoundDisplay {
     // Toggle dropdown on name click
     name.style.cursor = "pointer";
     name.addEventListener("click", () => {
-      const wasVisible = extraInfo.classList.contains("visible");
       extraInfo.classList.toggle("visible");
 
       // Update group height after animation completes
@@ -167,15 +174,13 @@ class SoundDisplay {
   updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Temporarily remove max-height to measure natural height
-    const originalMaxHeight = groupGrid.style.maxHeight;
+    // Temporarily remove max-height to measure natural height.
     groupGrid.style.maxHeight = "none";
 
-    // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Set appropriate max-height with buffer for smooth animations and content changes
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
+    // Use measured height so very long mobile lists never clip/overlap below content.
+    groupGrid.style.maxHeight = `${naturalHeight + 64}px`;
   }
 
   buildExtraInfo(sound, extraInfo) {

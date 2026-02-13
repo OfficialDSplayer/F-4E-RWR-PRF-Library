@@ -122,14 +122,13 @@ class UIComponents {
   static updateGroupHeight(groupGrid) {
     if (!groupGrid || groupGrid.classList.contains("collapsed")) return;
 
-    // Temporarily remove max-height to measure natural height
+    // Temporarily remove max-height to measure natural height.
     groupGrid.style.maxHeight = "none";
 
-    // Get the natural height
     const naturalHeight = groupGrid.scrollHeight;
 
-    // Set appropriate max-height with buffer for smooth animations and content changes
-    groupGrid.style.maxHeight = Math.max(naturalHeight + 200, 1500) + "px";
+    // Use measured height so very long mobile lists never clip/overlap below content.
+    groupGrid.style.maxHeight = `${naturalHeight + 64}px`;
   }
 
   static expandAllGroups() {
