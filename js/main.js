@@ -1,39 +1,67 @@
 // Main application initialization
 class Site {
-  constructor() {
-    // this.dataLoader = new DataLoader();
-    // this.audioManager = new AudioManager();
-    // this.soundDisplay = null;
-    // this.symbolFilter = null;
-  }
-
   async initialize() {
     try {
       // Initialize theme
       UIComponents.initializeTheme();
-      // UIComponents.initTheme();
-
       // Initialize Navbar Scroll Effect
       UIComponents.initNavbarScrollEffect();
-
       // Initialize set active Navbar Link
       UIComponents.setActiveNavLink();
 
-      // Bind toggleTheme button click
-      const toggleBtn = document.querySelector(".theme-toggle");
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", UIComponents.toggleTheme);
-      }
+      this.bindThemeToggle();
+      this.configureHeroVideo();
+      this.bindMobileMenu();
 
       console.log("✅ Application initialized successfully");
     } catch (error) {
       console.error("❌ Error initializing application:", error);
-      // document.getElementById("audio-list").textContent = "❌ Failed to load application.";
     }
   }
 
-  setupEventListeners() {
-    // Global buttons
+  bindThemeToggle() {
+    const toggleBtn = document.querySelector(".theme-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", UIComponents.toggleTheme);
+    }
+  }
+
+  configureHeroVideo() {
+    const video = document.querySelector(".hero-video");
+    if (!video) {
+      return;
+    }
+
+    // Keep hero video autoplay-friendly across browsers.
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.warn("Autoplay failed:", error);
+      });
+    }
+  }
+
+  bindMobileMenu() {
+    const menuToggle = document.getElementById("menuToggle");
+    const menuClose = document.getElementById("menuClose");
+    const navMenu = document.getElementById("navMenu");
+
+    // Some pages don't include the mobile menu layout.
+    if (!menuToggle || !menuClose || !navMenu) {
+      return;
+    }
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.add("menu-open");
+    });
+
+    menuClose.addEventListener("click", () => {
+      navMenu.classList.remove("menu-open");
+    });
   }
 }
 
@@ -43,47 +71,6 @@ document.addEventListener("popstate", () => {
 
 // Initialize the application when the DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const video = document.querySelector(".hero-video");
-  if (video) {
-    video.muted = true;
-    video.playsInline = true;
-    video.autoplay = true;
-
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Autoplay started
-        })
-        .catch((error) => {
-          console.warn("Autoplay failed:", error);
-        });
-    }
-  }
-  // UIComponents.initNavbarScrollEffect();
-  // UIComponents.initializeTheme();
-  // UIComponents.setActiveNavLink();
-
-  // Bind toggleTheme button click
-  // const toggleBtn = document.querySelector(".theme-toggle");
-  // if (toggleBtn) {
-  //   toggleBtn.addEventListener("click", UIComponents.toggleTheme);
-  // }
-
   const site = new Site();
   site.initialize();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menuToggle");
-  const menuClose = document.getElementById("menuClose");
-  const navMenu = document.getElementById("navMenu");
-
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.add("menu-open");
-  });
-
-  menuClose.addEventListener("click", () => {
-    navMenu.classList.remove("menu-open");
-  });
 });
