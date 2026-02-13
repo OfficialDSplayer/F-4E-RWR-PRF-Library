@@ -7,7 +7,9 @@ body {
   color: var(--fg);
   scroll-behavior: smooth;
   line-height: 1.6;
-  transition: background var(--transition-normal), color var(--transition-normal);
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal);
   margin: 0;
   /* padding: 20px; */
 }
@@ -153,7 +155,9 @@ input[type="range"] {
   opacity: 0;
   max-height: 0 !important;
   overflow: hidden;
-  transition: max-height var(--transition-slow), opacity var(--transition-slow);
+  transition:
+    max-height var(--transition-slow),
+    opacity var(--transition-slow);
 }
 
 /* ===================== RESPONSIVENESS ===================== */

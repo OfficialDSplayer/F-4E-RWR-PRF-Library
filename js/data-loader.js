@@ -11,38 +11,33 @@ class DataLoader {
     Utils.updateProgressBar(0);
 
     try {
-      // Fetch all metadata in parallel
+      // Fetch all metadata in parallel to reduce startup time.
       const [
-        wavListResponse,
-        customWavListResponse,
-        groupsMainResponse,
-        groupsCustomResponse,
-        alr46ThreatInfoAutoResponse,
-        alr46ThreatInfoCustomResponse,
+        wavFiles,
+        customWavFiles,
+        groupsMain,
+        groupsCustom,
+        alr46ThreatInfoAuto,
+        alr46ThreatInfoCustom,
       ] = await Promise.all([
-        fetch(Config.API_ENDPOINTS.WAV_LIST + "?v=" + Date.now()),
-        fetch(Config.API_ENDPOINTS.CUSTOM_WAV_LIST + "?v=" + Date.now()),
-        fetch(Config.API_ENDPOINTS.GROUPS + "?v=" + Date.now()),
-        fetch(Config.API_ENDPOINTS.CUSTOM_GROUPS + "?v=" + Date.now()),
-        fetch(Config.API_ENDPOINTS.ALR46_THREAT_INFO + "?v=" + Date.now()),
-        fetch(Config.API_ENDPOINTS.ALR46_THREAT_INFO_CUSTOM + "?v=" + Date.now()),
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.WAV_LIST),
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.CUSTOM_WAV_LIST),
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.GROUPS),
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.CUSTOM_GROUPS),
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.ALR46_THREAT_INFO),
+        this.fetchJsonWithCacheBust(
+          Config.API_ENDPOINTS.ALR46_THREAT_INFO_CUSTOM,
+        ),
         this.buildRadarSymbolMap(),
       ]);
-
-      const wavFiles = await wavListResponse.json();
-      const customWavFiles = await customWavListResponse.json();
-      const groupsMain = await groupsMainResponse.json();
-      const groupsCustom = await groupsCustomResponse.json();
-      const alr46ThreatInfoAuto = await alr46ThreatInfoAutoResponse.json();
-      const alr46ThreatInfoCustom = await alr46ThreatInfoCustomResponse.json();
 
       this.alr46Info = { ...alr46ThreatInfoAuto, ...alr46ThreatInfoCustom };
       this.groupsData = { ...groupsMain, ...groupsCustom };
 
-      const allFiles = [...wavFiles, ...customWavFiles];
+      const allFiles = [...wavFiles, ...customWavFiles].sort((a, b) =>
+        a.localeCompare(b),
+      );
       const allGroups = { ...groupsMain, ...groupsCustom };
-
-      allFiles.sort((a, b) => a.localeCompare(b));
 
       // Process sound metadata
       let processed = 0;
@@ -50,39 +45,15 @@ class DataLoader {
 
       for (const file of allFiles) {
         try {
-          const meta = allGroups[file] || {
-            group: "Other",
-            name: file.split("/").pop(),
-            description: "",
-            hidden: false,
-          };
+          const meta = allGroups[file] || this.createDefaultMeta(file);
 
-          const isUndetectable = this.alr46Info[file]?.undetectable === true;
+          // Skip hidden and undetectable sounds entirely.
+          if (meta.hidden || this.alr46Info[file]?.undetectable === true) {
+            continue;
+          }
 
-          // Skip hidden and undetectable sounds entirely
-          if (meta.hidden || isUndetectable) continue;
-
-          // Apply radar-based skipping logic
-          const radarInfo = this.alr46Info[file];
-          if (radarInfo) {
-            if (
-              file.includes("SEARCH") &&
-              radarInfo.type === "TRACK_ONLY" &&
-              radarInfo.prf_search == radarInfo.prf_track
-            ) {
-              console.log(`🔒 Skipped (SEARCH wav with TRACK_ONLY radar, same PRF): ${file}`);
-              continue;
-            } else if (file.includes("TRACK") && radarInfo.type === "SEARCH_ONLY") {
-              console.log(`🔒 Skipped (TRACK wav with SEARCH_ONLY radar): ${file}`);
-              continue;
-            } else if (
-              file.includes("TRACK") &&
-              radarInfo.type === "SEARCH_AND_TRACK" &&
-              radarInfo.prf_search == radarInfo.prf_track
-            ) {
-              console.log(`🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`);
-              continue;
-            }
+          if (this.shouldSkipFile(file, this.alr46Info[file])) {
+            continue;
           }
 
           this.soundMeta.push({
@@ -110,17 +81,61 @@ class DataLoader {
     }
   }
 
+  async fetchJsonWithCacheBust(endpoint) {
+    const response = await fetch(`${endpoint}?v=${Date.now()}`);
+    return response.json();
+  }
+
+  createDefaultMeta(file) {
+    return {
+      group: "Other",
+      name: file.split("/").pop(),
+      description: "",
+      hidden: false,
+    };
+  }
+
+  shouldSkipFile(file, radarInfo) {
+    if (!radarInfo) {
+      return false;
+    }
+
+    const samePrf = radarInfo.prf_search === radarInfo.prf_track;
+    const isSearchFile = file.includes("SEARCH");
+    const isTrackFile = file.includes("TRACK");
+
+    if (isSearchFile && radarInfo.type === "TRACK_ONLY" && samePrf) {
+      console.log(
+        `🔒 Skipped (SEARCH wav with TRACK_ONLY radar, same PRF): ${file}`,
+      );
+      return true;
+    }
+
+    if (isTrackFile && radarInfo.type === "SEARCH_ONLY") {
+      console.log(`🔒 Skipped (TRACK wav with SEARCH_ONLY radar): ${file}`);
+      return true;
+    }
+
+    if (isTrackFile && radarInfo.type === "SEARCH_AND_TRACK" && samePrf) {
+      console.log(
+        `🔒 Skipped (TRACK wav with SEARCH_AND_TRACK radar, same PRF): ${file}`,
+      );
+      return true;
+    }
+
+    return false;
+  }
+
   async buildRadarSymbolMap() {
     if (this.radarSymbolMap) return;
 
     try {
-      const [mainResponse, customResponse] = await Promise.all([
-        fetch(Config.API_ENDPOINTS.EMITTER_ID_DATA),
-        fetch(Config.API_ENDPOINTS.EMITTER_ID_DATA_CUSTOM),
+      const [emitterDataMain, emitterDataCustom] = await Promise.all([
+        this.fetchJsonWithCacheBust(Config.API_ENDPOINTS.EMITTER_ID_DATA),
+        this.fetchJsonWithCacheBust(
+          Config.API_ENDPOINTS.EMITTER_ID_DATA_CUSTOM,
+        ),
       ]);
-
-      const emitterDataMain = await mainResponse.json();
-      const emitterDataCustom = await customResponse.json();
 
       this.radarSymbolMap = {};
 
@@ -141,7 +156,9 @@ class DataLoader {
             this.radarSymbolMap[key] = [newEntry];
           } else {
             const existingEntries = this.radarSymbolMap[key];
-            const existingIdx = existingEntries.findIndex((e) => e.source === source);
+            const existingIdx = existingEntries.findIndex(
+              (e) => e.source === source,
+            );
 
             if (existingIdx === -1) {
               existingEntries.push(newEntry);
@@ -159,7 +176,10 @@ class DataLoader {
               } else {
                 if (currentRepeat === 1) {
                   shouldReplace = true;
-                } else if (existingRepeat === false && typeof currentRepeat === "number") {
+                } else if (
+                  existingRepeat === false &&
+                  typeof currentRepeat === "number"
+                ) {
                   shouldReplace = true;
                 } else if (
                   typeof existingRepeat === "number" &&
@@ -178,12 +198,20 @@ class DataLoader {
       };
 
       // Process MAIN data first
-      addEntries(emitterDataMain.ai_file_entries || [], "ai_file_entries", false);
+      addEntries(
+        emitterDataMain.ai_file_entries || [],
+        "ai_file_entries",
+        false,
+      );
       addEntries(emitterDataMain.new_land_file || [], "new_land_file", false);
       addEntries(emitterDataMain.new_sea_file || [], "new_sea_file", false);
 
       // Process CUSTOM data second (will override main data)
-      addEntries(emitterDataCustom.ai_file_entries || [], "ai_file_entries", true);
+      addEntries(
+        emitterDataCustom.ai_file_entries || [],
+        "ai_file_entries",
+        true,
+      );
       addEntries(emitterDataCustom.new_land_file || [], "new_land_file", true);
       addEntries(emitterDataCustom.new_sea_file || [], "new_sea_file", true);
 
@@ -193,7 +221,7 @@ class DataLoader {
       console.log(
         "✅ Radar symbol map built with",
         Object.keys(this.radarSymbolMap).length,
-        "entries (custom data takes precedence)"
+        "entries (custom data takes precedence)",
       );
     } catch (e) {
       console.error("❌ Failed to load emitter_id_data.json:", e);

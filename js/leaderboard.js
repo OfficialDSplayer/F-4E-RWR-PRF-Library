@@ -167,9 +167,12 @@ class LeaderboardManager {
       const timeDisplay = this.formatTime(duration);
       const settings = entry.settings || {};
       const settingsDisplay = [];
-      if (settings.questionCount) settingsDisplay.push(`${settings.questionCount} questions`);
+      if (settings.questionCount)
+        settingsDisplay.push(`${settings.questionCount} questions`);
       if (settings.showTableHints !== undefined) {
-        settingsDisplay.push(settings.showTableHints ? "hints: on" : "hints: off");
+        settingsDisplay.push(
+          settings.showTableHints ? "hints: on" : "hints: off",
+        );
       }
 
       let percentageColor = "var(--muted)";
@@ -198,7 +201,11 @@ class LeaderboardManager {
   }
 
   clearLeaderboard() {
-    if (confirm("Are you sure you want to clear all leaderboard entries? This cannot be undone!")) {
+    if (
+      confirm(
+        "Are you sure you want to clear all leaderboard entries? This cannot be undone!",
+      )
+    ) {
       localStorage.removeItem(this.leaderboardKey);
 
       const keys = Object.keys(localStorage);

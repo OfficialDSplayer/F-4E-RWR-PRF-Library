@@ -48,6 +48,6 @@ const Config = {
     ALR46_THREAT_INFO: "jsons/alr_46_threat_info.json",
     ALR46_THREAT_INFO_CUSTOM: "jsons/alr_46_threat_info_custom.json",
     EMITTER_ID_DATA: "jsons/emitter_id_data.json",
-    EMITTER_ID_DATA_CUSTOM: "jsons/emitter_id_data_custom.json"
-  }
+    EMITTER_ID_DATA_CUSTOM: "jsons/emitter_id_data_custom.json",
+  },
 };

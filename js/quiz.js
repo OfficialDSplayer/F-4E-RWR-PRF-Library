@@ -34,7 +34,9 @@ class Quiz {
     if (this.params.has("data")) {
       try {
         const compressed = this.params.get("data");
-        const json = JSON.parse(LZString.decompressFromEncodedURIComponent(compressed));
+        const json = JSON.parse(
+          LZString.decompressFromEncodedURIComponent(compressed),
+        );
         const fullData = this.expandResultData(json);
         this.showResultsFromSharedData(fullData);
       } catch (err) {
@@ -97,21 +99,29 @@ class Quiz {
 
   setupEventListeners() {
     // Setup buttons
-    document.getElementById("select-all-symbols").addEventListener("click", () => {
-      this.toggleAllCheckboxes("#symbol-selection", true);
-    });
+    document
+      .getElementById("select-all-symbols")
+      .addEventListener("click", () => {
+        this.toggleAllCheckboxes("#symbol-selection", true);
+      });
 
-    document.getElementById("deselect-all-symbols").addEventListener("click", () => {
-      this.toggleAllCheckboxes("#symbol-selection", false);
-    });
+    document
+      .getElementById("deselect-all-symbols")
+      .addEventListener("click", () => {
+        this.toggleAllCheckboxes("#symbol-selection", false);
+      });
 
-    document.getElementById("select-all-groups").addEventListener("click", () => {
-      this.toggleAllCheckboxes("#group-selection", true);
-    });
+    document
+      .getElementById("select-all-groups")
+      .addEventListener("click", () => {
+        this.toggleAllCheckboxes("#group-selection", true);
+      });
 
-    document.getElementById("deselect-all-groups").addEventListener("click", () => {
-      this.toggleAllCheckboxes("#group-selection", false);
-    });
+    document
+      .getElementById("deselect-all-groups")
+      .addEventListener("click", () => {
+        this.toggleAllCheckboxes("#group-selection", false);
+      });
 
     document.getElementById("start-quiz-btn").addEventListener("click", () => {
       this.startQuiz();
@@ -128,13 +138,17 @@ class Quiz {
       this.audioManager.stopAll();
     });
 
-    document.getElementById("next-question-btn").addEventListener("click", () => {
-      this.nextQuestion();
-    });
+    document
+      .getElementById("next-question-btn")
+      .addEventListener("click", () => {
+        this.nextQuestion();
+      });
 
-    document.getElementById("restart-quiz-btn").addEventListener("click", () => {
-      this.restartQuiz();
-    });
+    document
+      .getElementById("restart-quiz-btn")
+      .addEventListener("click", () => {
+        this.restartQuiz();
+      });
 
     document.getElementById("exit-quiz-btn").addEventListener("click", () => {
       this.exitQuiz();
@@ -206,9 +220,11 @@ class Quiz {
   }
 
   toggleAllCheckboxes(selector, checked) {
-    document.querySelectorAll(`${selector} input[type="checkbox"]`).forEach((cb) => {
-      cb.checked = checked;
-    });
+    document
+      .querySelectorAll(`${selector} input[type="checkbox"]`)
+      .forEach((cb) => {
+        cb.checked = checked;
+      });
   }
 
   populateSetupOptions() {
@@ -228,10 +244,16 @@ class Quiz {
       if (!radarInfo) continue;
 
       const normalized = Utils.normalizeRadarName(
-        sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+        sound.file
+          .replace(/^imported_wavs\//i, "")
+          .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
       );
       const radarEntry = window.radarSymbolMap?.[normalized];
-      const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+      const radarEntries = Array.isArray(radarEntry)
+        ? radarEntry
+        : radarEntry
+          ? [radarEntry]
+          : [];
 
       for (const entry of radarEntries) {
         if (entry.symbol1) usedSymbols.add(entry.symbol1);
@@ -264,7 +286,10 @@ class Quiz {
       const img = document.createElement("img");
       img.src = `assets/rwr-symbols/${imageFile}.jpg`;
       img.alt = symbol;
-      img.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
+      img.addEventListener(
+        "click",
+        () => (checkbox.checked = !checkbox.checked),
+      );
 
       item.appendChild(checkbox);
       item.appendChild(img);
@@ -293,7 +318,10 @@ class Quiz {
         const label = document.createElement("label");
         label.textContent = groupName;
         label.style.cursor = "pointer";
-        label.addEventListener("click", () => (checkbox.checked = !checkbox.checked));
+        label.addEventListener(
+          "click",
+          () => (checkbox.checked = !checkbox.checked),
+        );
 
         item.appendChild(checkbox);
         item.appendChild(label);
@@ -306,43 +334,57 @@ class Quiz {
     const selectedGroups = new Set();
 
     // Get selected symbols
-    document.querySelectorAll('#symbol-selection input[type="checkbox"]:checked').forEach((cb) => {
-      selectedSymbols.add(cb.value);
-    });
+    document
+      .querySelectorAll('#symbol-selection input[type="checkbox"]:checked')
+      .forEach((cb) => {
+        selectedSymbols.add(cb.value);
+      });
 
     // Get selected groups
-    document.querySelectorAll('#group-selection input[type="checkbox"]:checked').forEach((cb) => {
-      selectedGroups.add(cb.value);
-    });
-    const questionCount = parseInt(document.getElementById("question-count").value);
+    document
+      .querySelectorAll('#group-selection input[type="checkbox"]:checked')
+      .forEach((cb) => {
+        selectedGroups.add(cb.value);
+      });
+    const questionCount = parseInt(
+      document.getElementById("question-count").value,
+    );
     this.showTableHints = document.getElementById("show-table-hint").checked;
-    this.showDescriptionHints = document.getElementById("show-description-hint").checked;
+    this.showDescriptionHints = document.getElementById(
+      "show-description-hint",
+    ).checked;
     this.useEasierNames = document.getElementById("use-easier-names").checked;
 
     // If easier names is on, ignore/override description hints
     if (this.useEasierNames) {
       this.showDescriptionHints = false;
     } else {
-      this.showDescriptionHints = document.getElementById("show-description-hint").checked;
+      this.showDescriptionHints = document.getElementById(
+        "show-description-hint",
+      ).checked;
     }
 
     // Get full list of all symbols and groups
     const allSymbols = [
       ...document.querySelectorAll('#symbol-selection input[type="checkbox"]'),
     ].map((cb) => cb.value);
-    const allGroups = [...document.querySelectorAll('#group-selection input[type="checkbox"]')].map(
-      (cb) => cb.value
-    );
+    const allGroups = [
+      ...document.querySelectorAll('#group-selection input[type="checkbox"]'),
+    ].map((cb) => cb.value);
 
     // const selectedSymbols = new Set();
     // const selectedGroups = new Set();
 
-    document.querySelectorAll('#symbol-selection input[type="checkbox"]:checked').forEach((cb) => {
-      selectedSymbols.add(cb.value);
-    });
-    document.querySelectorAll('#group-selection input[type="checkbox"]:checked').forEach((cb) => {
-      selectedGroups.add(cb.value);
-    });
+    document
+      .querySelectorAll('#symbol-selection input[type="checkbox"]:checked')
+      .forEach((cb) => {
+        selectedSymbols.add(cb.value);
+      });
+    document
+      .querySelectorAll('#group-selection input[type="checkbox"]:checked')
+      .forEach((cb) => {
+        selectedGroups.add(cb.value);
+      });
 
     this.lastSelectedOptions = {
       selectedSymbols: [...selectedSymbols],
@@ -367,7 +409,7 @@ class Quiz {
     if (availableSounds.length < questionCount) {
       if (
         !confirm(
-          `Only ${availableSounds.length} sounds match your criteria. Continue with ${availableSounds.length} questions?`
+          `Only ${availableSounds.length} sounds match your criteria. Continue with ${availableSounds.length} questions?`,
         )
       ) {
         return;
@@ -375,7 +417,10 @@ class Quiz {
     }
 
     // Generate questions
-    this.generateQuestions(availableSounds, Math.min(questionCount, availableSounds.length));
+    this.generateQuestions(
+      availableSounds,
+      Math.min(questionCount, availableSounds.length),
+    );
 
     // Reset quiz state
     this.currentQuestionIndex = 0;
@@ -417,17 +462,29 @@ class Quiz {
       if (!radarInfo) return false;
 
       const normalized = Utils.normalizeRadarName(
-        sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+        sound.file
+          .replace(/^imported_wavs\//i, "")
+          .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
       );
       const radarEntry = window.radarSymbolMap?.[normalized];
-      const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+      const radarEntries = Array.isArray(radarEntry)
+        ? radarEntry
+        : radarEntry
+          ? [radarEntry]
+          : [];
 
       let hasSelectedSymbol = radarEntries.some(
-        (entry) => selectedSymbols.has(entry.symbol1) || selectedSymbols.has(entry.symbol2)
+        (entry) =>
+          selectedSymbols.has(entry.symbol1) ||
+          selectedSymbols.has(entry.symbol2),
       );
 
       // Check unknown symbols
-      if (!hasSelectedSymbol && radarEntries.length === 0 && radarInfo.band != null) {
+      if (
+        !hasSelectedSymbol &&
+        radarEntries.length === 0 &&
+        radarInfo.band != null
+      ) {
         const freq = Number(radarInfo.band);
         const fallback = Utils.getUnknownSymbolFromFrequency(freq);
         hasSelectedSymbol = fallback && selectedSymbols.has(fallback);
@@ -512,7 +569,9 @@ class Quiz {
     const sortedSymbols1 = [...symbols1].sort();
     const sortedSymbols2 = [...symbols2].sort();
 
-    const symbolsMatch = sortedSymbols1.every((symbol, index) => symbol === sortedSymbols2[index]);
+    const symbolsMatch = sortedSymbols1.every(
+      (symbol, index) => symbol === sortedSymbols2[index],
+    );
     if (!symbolsMatch) return false;
 
     // Compare PRF values using the same logic as sound-display.js
@@ -620,9 +679,10 @@ class Quiz {
       const primaryCorrectAnswer = sound.name;
 
       // All potential correct answers (primary + alternates)
-      const alternativesRaw = this.findAlternativeCorrectAnswers(sound, availableSounds).filter(
-        (n) => n && n !== primaryCorrectAnswer
-      );
+      const alternativesRaw = this.findAlternativeCorrectAnswers(
+        sound,
+        availableSounds,
+      ).filter((n) => n && n !== primaryCorrectAnswer);
 
       // Dedupe while keeping the declared order
       const allCorrectUnique = uniq([primaryCorrectAnswer, ...alternativesRaw]);
@@ -635,10 +695,14 @@ class Quiz {
 
       // Candidates for wrong answers: every other unique name not in selectedCorrect
       const allNames = uniq(availableSounds.map((s) => s.name));
-      const wrongCandidates = allNames.filter((n) => !selectedCorrect.includes(n));
+      const wrongCandidates = allNames.filter(
+        (n) => !selectedCorrect.includes(n),
+      );
 
       // Randomly pick the needed number of wrong answers, without replacement
-      const wrongAnswers = wrongCandidates.sort(() => Math.random() - 0.5).slice(0, needWrong);
+      const wrongAnswers = wrongCandidates
+        .sort(() => Math.random() - 0.5)
+        .slice(0, needWrong);
 
       // Final options: exactly 4, no repeats, shuffled
       const answers = [...selectedCorrect, ...wrongAnswers]
@@ -665,10 +729,16 @@ class Quiz {
 
     if (radarInfo) {
       const normalized = Utils.normalizeRadarName(
-        sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+        sound.file
+          .replace(/^imported_wavs\//i, "")
+          .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
       );
       const radarEntry = window.radarSymbolMap?.[normalized];
-      const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+      const radarEntries = Array.isArray(radarEntry)
+        ? radarEntry
+        : radarEntry
+          ? [radarEntry]
+          : [];
 
       for (const entry of radarEntries) {
         if (entry.symbol1 && Config.SYMBOL_TO_IMAGE_MAP[entry.symbol1]) {
@@ -703,14 +773,21 @@ class Quiz {
 
     if (radarInfo) {
       const normalized = Utils.normalizeRadarName(
-        sound.file.replace(/^imported_wavs\//i, "").replace(/_(SEARCH|TRACK)\.wav$/i, "")
+        sound.file
+          .replace(/^imported_wavs\//i, "")
+          .replace(/_(SEARCH|TRACK)\.wav$/i, ""),
       );
       const radarEntry = window.radarSymbolMap?.[normalized];
-      const radarEntries = Array.isArray(radarEntry) ? radarEntry : radarEntry ? [radarEntry] : [];
+      const radarEntries = Array.isArray(radarEntry)
+        ? radarEntry
+        : radarEntry
+          ? [radarEntry]
+          : [];
 
       for (const entry of radarEntries) {
         if (entry.source) {
-          const friendlyName = Config.SOURCE_NAME_MAP[entry.source] || entry.source;
+          const friendlyName =
+            Config.SOURCE_NAME_MAP[entry.source] || entry.source;
           sources.add(friendlyName);
         }
       }
@@ -747,14 +824,16 @@ class Quiz {
     if (this.showTableHints && question.tableSources.length > 0) {
       tableHint.style.display = "block";
       tableHint.innerHTML = `<strong>Hint - </strong> This symbol appears in: ${question.tableSources.join(
-        ", "
+        ", ",
       )}`;
     } else {
       tableHint.style.display = "none";
     }
 
     // Hide description hint from question area since we're showing it for answers
-    const descriptionHintContainer = document.getElementById("description-hint-container");
+    const descriptionHintContainer = document.getElementById(
+      "description-hint-container",
+    );
     descriptionHintContainer.style.display = "none";
 
     // Display answer choices
@@ -766,10 +845,14 @@ class Quiz {
       button.className = "answer-choice";
       // button.dataset.answer = answer;
 
-      const answerSound = this.dataLoader.getSoundMeta().find((s) => s.name === answer);
+      const answerSound = this.dataLoader
+        .getSoundMeta()
+        .find((s) => s.name === answer);
       // Display text for the button
       const displayText =
-        this.useEasierNames && answerSound ? this.getEasierName(answerSound) : answer;
+        this.useEasierNames && answerSound
+          ? this.getEasierName(answerSound)
+          : answer;
 
       button.textContent = displayText;
       button.setAttribute("data-answer", answer);
@@ -786,7 +869,9 @@ class Quiz {
         // Optional a11y: keep the spoken label as default name too
         button.setAttribute("aria-label", answerSound.name);
       } else if (this.showDescriptionHints) {
-        const answerDescription = answerSound ? this.getRadarDescription(answerSound) : null;
+        const answerDescription = answerSound
+          ? this.getRadarDescription(answerSound)
+          : null;
         if (answerDescription) {
           const tooltip = document.createElement("div");
           tooltip.className = "answer-choice-tooltip"; // same visuals
@@ -826,7 +911,8 @@ class Quiz {
     // Prevent multiple selections
     const choicesContainer = document.getElementById("answer-choices");
     const choices = choicesContainer.querySelectorAll(".answer-choice");
-    if ([...choices].some((choice) => choice.dataset.answered === "true")) return;
+    if ([...choices].some((choice) => choice.dataset.answered === "true"))
+      return;
 
     const question = this.questions[this.currentQuestionIndex];
     const isCorrect = question.allCorrectAnswers.includes(selectedAnswer);
@@ -862,7 +948,9 @@ class Quiz {
 
     const nextButton = document.getElementById("next-question-btn");
     nextButton.textContent =
-      this.currentQuestionIndex === this.questions.length - 1 ? "Submit Quiz" : "Next Question";
+      this.currentQuestionIndex === this.questions.length - 1
+        ? "Submit Quiz"
+        : "Next Question";
 
     setTimeout(() => {
       nextButton.classList.add("visible");
@@ -894,14 +982,15 @@ class Quiz {
     }, 400);
 
     const percentage =
-      this.results.length > 0 ? Math.round((this.score / this.results.length) * 100) : 0;
+      this.results.length > 0
+        ? Math.round((this.score / this.results.length) * 100)
+        : 0;
 
     const message = earlyExit ? "Quiz Ended Early" : "Quiz Complete!";
     document.querySelector("#quiz-results h2").textContent = message;
 
-    document.getElementById(
-      "score-display"
-    ).textContent = `${this.score}/${this.results.length} (${percentage}%)`;
+    document.getElementById("score-display").textContent =
+      `${this.score}/${this.results.length} (${percentage}%)`;
 
     const durationEl = document.createElement("div");
     durationEl.style.color = "green";
@@ -956,7 +1045,9 @@ class Quiz {
           .replace(/>/g, "&gt;");
 
       const makeRadarTooltip = (radarName, cls) => {
-        const sound = this.dataLoader.getSoundMeta().find((s) => s.name === radarName);
+        const sound = this.dataLoader
+          .getSoundMeta()
+          .find((s) => s.name === radarName);
         if (!sound) return escapeHtml(radarName);
         const desc = escapeHtml(this.getRadarDescription(sound) || "");
         const safeName = escapeHtml(radarName);
@@ -966,11 +1057,13 @@ class Quiz {
       // --- Tooltip for QUESTION (primary correct) ---
       const questionTooltipHTML = makeRadarTooltip(
         result.question.primaryCorrectAnswer,
-        "question-desc-tooltip"
+        "question-desc-tooltip",
       );
 
       // --- Tooltips for ALTERNATIVE correct answers ---
-      const alternativesTooltipHTML = (result.question.alternativeCorrectAnswers || [])
+      const alternativesTooltipHTML = (
+        result.question.alternativeCorrectAnswers || []
+      )
         .map((name) => makeRadarTooltip(name, "alt-desc-tooltip"))
         .join(", ");
 
@@ -1224,7 +1317,11 @@ class Quiz {
   }
 
   exitQuiz() {
-    if (confirm("Are you sure you want to end the quiz now and see your results so far?")) {
+    if (
+      confirm(
+        "Are you sure you want to end the quiz now and see your results so far?",
+      )
+    ) {
       this.audioManager.stopAll();
       this.showResults(true); // Pass a flag to indicate early exit
     }
@@ -1340,7 +1437,9 @@ class Quiz {
   // }
   generateShareableLink(resultsData) {
     const compactData = this.minifyResultData(resultsData);
-    const compressed = LZString.compressToEncodedURIComponent(JSON.stringify(compactData));
+    const compressed = LZString.compressToEncodedURIComponent(
+      JSON.stringify(compactData),
+    );
     return `${window.location.origin}${window.location.pathname}?data=${compressed}`;
   }
 
@@ -1364,15 +1463,15 @@ class Quiz {
     document.getElementById("quiz-setup").style.display = "none";
     document.getElementById("quiz-game").style.display = "none";
     resultsEl.style.display = "block";
-    document.querySelector("#quiz-results h2").textContent = "Shared Quiz Results";
+    document.querySelector("#quiz-results h2").textContent =
+      "Shared Quiz Results";
 
     const [scoreNum, totalNum] = data.score.split("/").map(Number);
     const percentage = Math.round((scoreNum / totalNum) * 100);
     const username = data.username || "Anonymous";
 
-    document.getElementById(
-      "score-display"
-    ).innerHTML = `<strong>${username}</strong><br>${data.score} (${percentage}%)`;
+    document.getElementById("score-display").innerHTML =
+      `<strong>${username}</strong><br>${data.score} (${percentage}%)`;
 
     if (data.earlyExit) {
       const earlyMsg = document.createElement("div");
@@ -1401,14 +1500,20 @@ class Quiz {
       settingLines.push(`Questions: ${settings.questionCount}`);
     }
     if (settings.showTableHints !== undefined) {
-      settingLines.push(`Table hints: ${settings.showTableHints ? "On" : "Off"}`);
+      settingLines.push(
+        `Table hints: ${settings.showTableHints ? "On" : "Off"}`,
+      );
     }
     if (settings.showDescriptionHints !== undefined) {
-      settingLines.push(`Description hints: ${settings.showDescriptionHints ? "On" : "Off"}`);
+      settingLines.push(
+        `Description hints: ${settings.showDescriptionHints ? "On" : "Off"}`,
+      );
     }
 
     if (settings.useEasierNames !== undefined) {
-      settingLines.push(`Use Easer Names: ${settings.useEasierNames ? "On" : "Off"}`);
+      settingLines.push(
+        `Use Easer Names: ${settings.useEasierNames ? "On" : "Off"}`,
+      );
     }
     if (data.duration) {
       settingLines.push(`Duration: ${data.duration}s`);
@@ -1642,7 +1747,10 @@ class Quiz {
       };
 
       // --- tooltips for QUESTION (primary + alternatives) ---
-      const questionTooltipHTML = makeTooltip(q.primaryCorrectAnswer, "question-desc-tooltip");
+      const questionTooltipHTML = makeTooltip(
+        q.primaryCorrectAnswer,
+        "question-desc-tooltip",
+      );
 
       const alternativesTooltipHTML = (q.alternativeCorrectAnswers || [])
         .map((name) => makeTooltip(name, "alt-desc-tooltip"))
@@ -1654,7 +1762,10 @@ class Quiz {
       }
 
       // --- tooltip for SELECTED ANSWER ---
-      const answerTooltipHTML = makeTooltip(result.selectedAnswer, "answer-desc-tooltip");
+      const answerTooltipHTML = makeTooltip(
+        result.selectedAnswer,
+        "answer-desc-tooltip",
+      );
 
       // status (existing)
       let answerStatus = "";
@@ -1772,7 +1883,7 @@ class Quiz {
     try {
       // Shorten using TinyURL API
       const response = await fetch(
-        `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`
+        `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`,
       );
 
       if (!response.ok) {
@@ -1796,7 +1907,8 @@ class Quiz {
         observer.disconnect(); // Stop observing once found
 
         btn.addEventListener("click", () => {
-          const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+          const isOpen =
+            content.style.maxHeight && content.style.maxHeight !== "0px";
 
           if (isOpen) {
             content.style.maxHeight = "0";

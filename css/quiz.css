@@ -222,7 +222,9 @@
   text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .answer-choice-tooltip::after {
@@ -332,7 +334,9 @@
   max-width: 300px;
   white-space: normal;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 }
 
 .question-desc-tooltip::before,
@@ -348,7 +352,9 @@
   border-top-color: rgba(0, 0, 0, 0.9);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 }
 
 .question-desc-tooltip:hover::after,
@@ -421,7 +427,9 @@
 .quiz-results {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
 }
 
 .fade-out {
