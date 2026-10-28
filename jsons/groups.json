@@ -2662,5 +2662,17 @@
     "name": "Square Tie Track",
     "description": "Type 021-1 Search/Track Radar",
     "hidden": false
+  },
+  "imported_wavs/PS-46_A_SEARCH.wav": {
+    "group": "Ungrouped",
+    "name": "PS-46_A_SEARCH",
+    "description": "Add a description here",
+    "hidden": false
+  },
+  "imported_wavs/PS-46_A_TRACK.wav": {
+    "group": "Ungrouped",
+    "name": "PS-46_A_TRACK",
+    "description": "Add a description here",
+    "hidden": false
   }
 }
